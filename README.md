@@ -9,11 +9,11 @@
 - El proyecto está dirigido a todos aquellos usuarios que deseen adquirir maquillaje de calidad, a un precio competitivo y contar con toda la informacion necesaria para poder hacer una compra inteligente. 
 - Tambien esta dirigido a profesionales que utilizan maquillaje como materia prima de su trabajo.
 ## Páginas web similares
-Farmacity : https://www.farmacity.com
-Parfumerie : https://www.parfumerie.com.ar
-Sugar : https://sugarbrush.com.ar
-Loreal : https://www.lorealparis.com.ar
-Sephora : https://www.sephora.com/
+- Farmacity : https://www.farmacity.com
+- Parfumerie : https://www.parfumerie.com.ar
+- Sugar : https://sugarbrush.com.ar
+- Loreal : https://www.lorealparis.com.ar
+- Sephora : https://www.sephora.com/
 ## Manual de Marca
 - Nombre del sitio: Cosmica
 - Logo: ... 
