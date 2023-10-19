@@ -23,10 +23,10 @@
     - ... 
 ## Integrantes del equipo
 - ...
-- ...
 - Matias Agustin Diaz: Tengo 27 años, soy de Santiago del Estero, trabajo en una ferreteria, cursé el profesorado de educacion fisica pero no lo finalicé. Actualmente realizando el curso de Desarrollador web full stack.
 - Uzzante Ernesto Gabriel (Gabyfinn💁): Tengo 31 años, soy un apasionado por la tecnologia, computadoras, juegos y la informatica 🖥️, soy de Santiago del Estero, Argentina. Cursando la Licenciatura en Sistemas de la Informacion en la UNSE 😄.
 - Exequiel Ruiz: Tengo 19 años, soy de Santiago del Estero, Argentina. Actualmente estoy cursando la carrera de Ingeniería en Informática.
 - Florencia Secco: 29 años de edad, soy de Santiago del Estero, Argentina. Soy Contadora y estoy estudiando para ser Desarrolladora Full Stack.
 - Alan Quiroga: Tengo 26 años, me considero un amante de la cocina y la tecnologia, soy alguien curioso que le gusta aprender cosas nuevas cada dia. Actualmente cursando en DigitalHouse la carrera de Desarrollador web full stack
 ## Link al tablero de trabajo:
+- https://trello.com/b/lVSAGcRr/digital-house-grupo-2
