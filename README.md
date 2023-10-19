@@ -16,13 +16,17 @@
 - Sephora : https://www.sephora.com/
 ## Manual de Marca
 - Nombre del sitio: Cosmica
-- Logo: ... 
+- Logo:
+  ![isotipo_cosmica](https://github.com/Florsecco/grupo_2_cosmica/assets/89713801/68d11a35-21b9-4a5d-8793-5ec35bd233d2)
+
 - Tipografía:
-    - ...
+  ![tipografia_cosmica](https://github.com/Florsecco/grupo_2_cosmica/assets/89713801/610ef4ce-e1b4-405a-8485-1783a45fc46c)
+
 - Paleta de colores:    
   ![colores_cosmica](https://github.com/Florsecco/grupo_2_cosmica/assets/89713801/9f1c0b0b-3670-4da6-80b6-15aaa838df60)
+  
 ## Integrantes del equipo
-- ...
+- Gonzalo Aguirre: 22 años, de Santiago del Estero Capital, Argentina. Me gusta la robotica, la biología, y aprender en general. Soy ilustrador y guionista de comics. Voy por la mitad de la lic. en Ecología y por recibirme de tecnico en Programación. Me gustaria especializarme en bioinformatica y robotica.
 - Matias Agustin Diaz: Tengo 27 años, soy de Santiago del Estero, trabajo en una ferreteria, cursé el profesorado de educacion fisica pero no lo finalicé. Actualmente realizando el curso de Desarrollador web full stack.
 - Uzzante Ernesto Gabriel (Gabyfinn💁): Tengo 31 años, soy un apasionado por la tecnologia, computadoras, juegos y la informatica 🖥️, soy de Santiago del Estero, Argentina. Cursando la Licenciatura en Sistemas de la Informacion en la UNSE 😄.
 - Exequiel Ruiz: Tengo 19 años, soy de Santiago del Estero, Argentina. Actualmente estoy cursando la carrera de Ingeniería en Informática.
