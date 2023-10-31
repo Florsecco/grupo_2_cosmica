@@ -1,4 +1,4 @@
-# Restrospectiva
+# Restrospectiva (rama express)
 
 ## Comenza a hacer
 -  Pair-programming 
