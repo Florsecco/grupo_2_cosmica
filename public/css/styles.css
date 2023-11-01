@@ -4,7 +4,11 @@
     padding: 0;
 }
 body{
-    font-family:"Roboto", sans-serif;;
+    font-family:"Roboto", sans-serif;
+    background-color: #f4f2fb;
+}
+footer{
+    background-color: #ff5355;
 }
 .main-bar{
     display: flex;
@@ -37,10 +41,14 @@ body{
     border: none;
     border-radius: 50%;
     text-align: center;
-    line-height: 120px;
+    line-height: 125px;
     width: 90px;
     height: 90px;
 }
 .img-category{
     width: 50px;
+}
+.subscribe{
+    background-color: #3e005b;
+    color: white;
 }
