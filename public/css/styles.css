@@ -3,3 +3,44 @@
     margin: 0;
     padding: 0;
 }
+body{
+    font-family:"Roboto", sans-serif;;
+}
+.main-bar{
+    display: flex;
+    justify-content: space-between;
+}
+.menu-logo{
+    display: flex;
+    align-items: center;
+}
+.icons-log-reg{
+    display: flex;
+    align-items: center;
+}
+.logo{
+    width: 100px;
+}
+.banner{
+    width: 100%;
+}
+.categories{
+    display: flex;
+    justify-content: space-around;
+}
+.category-section{
+    color: white;
+    background-color: #3e005b;
+}
+.category{
+    background-color: white;
+    border: none;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 120px;
+    width: 90px;
+    height: 90px;
+}
+.img-category{
+    width: 50px;
+}
