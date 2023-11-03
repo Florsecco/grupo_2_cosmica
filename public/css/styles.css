@@ -110,6 +110,25 @@ footer{
 .subscribe{
     background-color: #3e005b;
     color: white;
+    text-align: center;
+    padding: 5px;
+    line-height: 1.9em;
+}
+.login-bar input{
+    padding: 5px;
+    border-radius: 7px;
+    border: none;
+    width: 50%;
+    text-align: center;
+}
+.button-subscribe{
+    border: none;
+    border-radius: 10px;
+    width: 25%;
+    line-height: 1.5em;
+    background-color: #1b0025;
+    color: white;
+    margin: 5px;
 }
 /* tablets */
 @media (min-width: 576px){
