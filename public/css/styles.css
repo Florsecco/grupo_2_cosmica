@@ -8,6 +8,15 @@ body{
     background-color: #f4f2fb;
     font-size: 12px;
 }
+h3{
+    margin: 15px 0px;
+    font-size: 1.5em;
+    color: #3e005b;
+}
+header{
+    position: sticky;
+    top: 0;
+}
 footer{
     background-color: #ff5355;
 }
@@ -28,7 +37,11 @@ footer{
     padding: 5px;
     color: #1b0025;
     font-size: 2em;
+    max-width: 1200px;
+    margin: auto;
+    background-color: #f4f2fb;
 }
+
 /* clase que contiene el hamburguer y el logo */ 
 .menu-logo{
     display: flex;
@@ -55,7 +68,7 @@ footer{
 .category-section{
     color: white;
     background-color: #3e005b;
-    padding: 5px 5px 10px 5px;
+    padding: 5px;
 }
 /* titulo de la barra de categorias */
 .category-tittle{
@@ -65,10 +78,13 @@ footer{
     font-size: 1.1em;
 }
 /* seccion de categorias */ 
-.categories{
+
+.categories1, .categories2{
     display: flex;
     justify-content: space-around;
     gap: 5px;
+    flex-wrap: wrap;
+    margin-bottom: 10px;
 }
 /* categoria */
 .category{
@@ -76,13 +92,13 @@ footer{
     border: none;
     border-radius: 50%;
     text-align: center;
-    line-height: 120px;
-    width: 80px;
-    height: 80px;
+    line-height: 215px;
+    width: 130px;
+    height: 130px;
 }
 /* imagen de la categoria */
 .img-category{
-    width: 50px;
+    width: 90px;
 }
 /* seccion de productos */ 
 .main-section{
@@ -99,11 +115,36 @@ footer{
     width: 100%;
     max-width: 350px;
     margin: auto;
+    background-color: white;
+    margin-bottom: 10px;
+}
+.descrip{
+    background-color: white;
+    border-top: #f4f2fb 3px solid;
+    font-size: 1.2em;
+    padding: 5px;
+    text-align: center;
+}
+.product-full-price{
+    display: flex;
+    justify-content: space-around;
+}
+.product-tittle{
+    font-weight: 500;
+}
+.product-price{
+    font-weight: 600;
+    color: #ff5355;
+}
+.product-dsc{
+    color: #3e005b;
+    font-weight: 500;
 }
 .product-img, .descrip{
     width: 100%;
     max-width: 350px;
 }
+
 
 /*fin del header */ 
 /* footer */
@@ -130,6 +171,21 @@ footer{
     color: white;
     margin: 5px;
 }
+.footer-info{
+    text-align: center;
+}
+.footer-info h6{
+    font-size: 1.2em;
+}
+.footer-info i, .social i{
+    font-size: 2em;
+}
+.footer-info section{
+    margin: 10px 5px;
+}
+.social{
+    text-align: center;
+}
 /* tablets */
 @media (min-width: 576px){
     .featured-products{
@@ -137,6 +193,20 @@ footer{
     }
     .product{
         width: 40vw;
+    }
+    .categories{
+        display: flex;
+        justify-content: space-around;
+    }
+    .categories1, .categories2{
+        width: 50%;
+    }
+    .footer-info{
+        display: flex;
+        justify-content: space-around;
+    }
+    .footer-info section{
+        width: 28%;
     }
 }
 /* desktops */
