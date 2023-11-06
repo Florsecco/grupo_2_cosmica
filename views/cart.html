@@ -1,52 +1,105 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- Agregue awesome para usar los iconos -->
-    <script src="https://kit.fontawesome.com/c08cc80d65.js" crossorigin="anonymous"></script> 
+    <script
+      src="https://kit.fontawesome.com/c08cc80d65.js"
+      crossorigin="anonymous"
+    ></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/css/normalize.css" />
+    <link rel="stylesheet" href="/css/styles.css" />
     <title>Mi carrito</title>
-</head>
-<body>
-    <header class="main-header">
-    <div class="main-header-top-bar">
-        <div class="logo">
-            <img src="" alt="">
+  </head>
+  <body>
+    <header>
+        <div class="header-top">
+          <p>10% off en tu primera compra</p>
         </div>
-        <div class="form" action="#" method="GET">
-            <input type="text" placeholder="Buscar productos">
-            <button><i class="fa-solid fa-magnifying-glass"></i></button>
+        <div class="main-bar">
+          <div class="menu-logo">
+            <i class="fa-solid fa-bars"></i>
+            <img
+              class="logo"
+              src="/img/cosmica_logo_almostblack.png"
+              alt="logo"
+            />
+          </div>
+          <div class="icons-log-reg">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <i class="fa-solid fa-circle-user"></i>
+            <i class="fa-solid fa-cart-shopping"></i>
+          </div>
         </div>
-        <div class="hambuger-menu">
-            <i class="fa-solid fa-bars fa-xl"></i>
-        </div>
-    </div>
+      </header>
     <main>
-    <h2>Mi carrito</h2>
-    <h3>2 items</h3>
-    <section class="cart-product">
+      <h2>Mi carrito</h2>
+      <h3>2 items</h3>
+      <section class="cart-product">
         <article>
+          <div>
+            <img src="" alt="image_product_1" />
+          </div>
+          <div>
+            <h4>Name_Product_1</h4>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis
+              eligendi quos praesentium alias maxime quod architecto dolor a.
+              Obcaecati explicabo distinctio error voluptates ipsum qui at?
+              Minima eaque debitis labore.
+            </p>
+            <p class="cart-product-price">Price: $123.45</p>
             <div>
-            <img src="" alt="image_product_1">
+              <button type="button">-</button>
+              <p>1</p>
+              <button type="button">+</button>
             </div>
             <div>
-                <h4>Name_Product_1</h4>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis eligendi quos praesentium alias maxime quod architecto dolor a. Obcaecati explicabo distinctio error voluptates ipsum qui at? Minima eaque debitis labore.</p>
-                <p class="cart-product-price">Price: $123.45</p>
-                <div>
-                <button>-</button>
-                <p>1</p>
-                <button>+</button>
-                </div>
-                <div>
-                <button>Eliminar producto</button>
-                </div>
+              <button type="button">Eliminar producto</button>
             </div>
-
+          </div>
         </article>
-    </section>
+      </section>
     </main>
-    </header>
     <h1>Carrito perrito</h1>
-</body>
+    <footer>
+      <div class="subscribe">
+        <p>¡No te pierdas nuestras novedades y ofertas!</p>
+        <div class="login-bar">
+          <input type="email" placeholder="Ingresá tu correo electrónico" />
+        </div>
+        <button type="submit" class="button-subscribe">Suscribirme</button>
+      </div>
+      <div>
+        <div class="footer-info">
+          <section>
+            <i class="fa-solid fa-store"></i>
+            <h6>Sobre nosotros</h6>
+            <p>COSMICA SA</p>
+            <p>P. Sherman Calle Wallaby 42, Sidney</p>
+          </section>
+          <section>
+            <i class="fa-solid fa-truck"></i>
+            <h6>Envíos gratis desde $100</h6>
+            <p>Envíos a todo el país con una compra minima de $100</p>
+          </section>
+          <section>
+            <i class="fa-solid fa-credit-card"></i>
+            <h6>12 cuotas sin interés</h6>
+            <p>Con todas las tarjetas bancarizadas</p>
+          </section>
+        </div>
+        <div class="social">
+          <i class="fa-brands fa-instagram"></i>
+          <i class="fa-brands fa-facebook"></i>
+          <i class="fa-brands fa-whatsapp"></i>
+        </div>
+      </div>
+    </footer>
+  </body>
 </html>
