@@ -201,8 +201,10 @@ footer{
     margin: 5px;
     transition: background-color 450ms;
 }
-.button-subscribe:hover{
+.button-subscribe:hover, :focus{
     background-color: #ff5355;
+    outline: none;
+
 }
 /* seccion de informacion del footer */ 
 .footer-info{
