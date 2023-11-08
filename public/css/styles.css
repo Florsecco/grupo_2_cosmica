@@ -201,7 +201,7 @@ footer{
     margin: 5px;
     transition: background-color 450ms;
 }
-.button-subscribe:hover, :focus{
+.button-subscribe:hover, .button-subscribe:focus{
     background-color: #ff5355;
     outline: none;
 
@@ -234,6 +234,7 @@ h2{
     padding-top: 5px;
     padding-bottom: 5px;
     width: 100vw;
+    font-size: 1.2em;
 }
 h3{
     text-align: center;
@@ -293,7 +294,35 @@ h4{
     padding: 3px;
     font-weight: 500;
 }
-
+/* register */
+.form-register{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.form-register input{
+    border-radius: 2px;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    padding: 1px;
+    border: 1px solid #3e005b;
+    text-align: center;
+    width: 198px;
+}
+.password{
+    border-radius: 2px;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    padding: 1px;
+    border: 1px solid #3e005b;
+    width: 198px;
+}
+.password input{
+    border: none;
+}
 /* tablets */
 @media (min-width: 576px){
     .featured-products{
