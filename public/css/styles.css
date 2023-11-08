@@ -11,7 +11,6 @@ body{
 h3{
     margin: 15px 0px;
     color: #3e005b;
-    text-align: center;
     font-size: 1.5em;
 }
 header{
@@ -323,6 +322,7 @@ h4{
     text-align: center;
     font-size: 1em;
     line-height: normal;
+    margin-top: 2px;
 }
 .ship-form{
     background-color: #ff5355;
@@ -425,6 +425,7 @@ h4{
     align-items: center;
     justify-content: flex-end;
     padding: 1px;
+    padding-right: 2px;
     border: 1px solid #3e005b;
     width: 250px;
     height: 30px;
@@ -438,7 +439,7 @@ h4{
 }
 .password input{
     border: none;
-    width: 220px;
+    width: 210px;
     margin: 0;
     height: 20px;
 }
@@ -447,6 +448,7 @@ h4{
 }
 .password i{
     color: #1b0025;
+    margin-right: 2px;
 }
 .form-register button{
     background-color: #ff5355;
@@ -509,5 +511,8 @@ h4{
     .product-descrip{
         width: 70%;
         font-size: 1.3em;
+    }
+    .product-quant{
+        font-size: 1.5em;
     }
 }
