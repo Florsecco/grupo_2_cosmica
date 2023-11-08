@@ -30,7 +30,7 @@
     </div>
   </header>
   <main>
-    <h2>My cart</h2>
+    <h2>Mi Carrito</h2>
     <section class="main-section">
       <h3>2 items</h3>
       <section class="cart-product">
@@ -50,7 +50,7 @@
               <button type="button">+</button>
             </div>
             <div>
-              <button type="button">Delete</button>
+              <button type="button">Eliminar</button>
             </div>
           </div>
         </div>
@@ -72,53 +72,53 @@
               <button type="button">+</button>
             </div>
             <div>
-              <button type="button">Delete</button>
+              <button type="button">Eliminar</button>
             </div>
           </div>
         </div>
       </section>
     </section>
     <section>
-      <div>
-        <p>Have you a discount cupon? Type here!</p>
-        <input type="text" placeholder="A45E87GB">
+      <div class="cupon-disc">
+        <p>¿Tenés un cupón de descuento?</p>
+        <input type="text" placeholder="Ingresalo acá">
       </div>
-      <form action="">
-        <p>Details of shipment</p>
+      <form action="" class="ship-form">
+        <p>Detalles de Envío</p>
         <div>
-          <label for="adress">Adress</label>
+          <label for="adress">Dirección</label>
           <input type="text" name="adress" id="adress">
         </div>
         <div>
-          <label for="postal-code">Postal Code</label>
+          <label for="postal-code">Código Postal</label>
           <input type="text" name="postal-code" id="postal-code">
         </div>
         <div>
-          <label for="phone-number">Phone number</label>
+          <label for="phone-number">Número de Teléfono</label>
           <input type="text" name="phone-number" id="phone-number">
         </div>
         <div>
-          <label for="more-details">Details:</label>
+          <label for="more-details">Detalles</label>
           <textarea name="more-details" id="more-details" cols="15" rows="2"></textarea>
         </div>
       </form>
     </section>
-    <section>
-      <div>
-        <label>Subtotal:</label> <label>$235.44</label>
+    <section class="purchase-total">
+      <div class="payment-details">
+        <label>Subtotal</label> <label>$235.44</label>
       </div>
-      <div>
-        <label>Discounts:</label> <label>$35.31</label>
+      <div class="payment-details">
+        <label>Descuentos</label> <label>$35.31</label>
       </div>
-      <div>
-        <label>Shipment:</label> <label>$7.99</label>
+      <div class="payment-details">
+        <label>Envío</label> <label>$7.99</label>
       </div>
-      <div>
-        <label>Total:</label> <label>$208.12</label>
+      <div class="total">
+        <label>TOTAL</label> <label>$208.12</label>
       </div>
-      <div>
-        <button type="button">Finalize purchase</button>
-        <button type="button">Keep buying</button>
+      <div class="purchase-button">
+        <button type="button">FINALIZAR COMPRA</button>
+        <button type="button">SEGUIR COMPRANDO</button>
       </div>
     </section>
   </main>
