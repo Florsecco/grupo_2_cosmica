@@ -112,7 +112,6 @@ footer{
 .main-section{
     width: 90vw;
     margin: auto;
-    max-width: 1200px;
 }
 /* clase que contiene todos los productos */
 .featured-products{
