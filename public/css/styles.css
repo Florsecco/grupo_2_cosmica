@@ -10,8 +10,9 @@ body{
 }
 h3{
     margin: 15px 0px;
-    font-size: 1.5em;
     color: #3e005b;
+    text-align: center;
+    font-size: 1.5em;
 }
 header{
     position: sticky;
@@ -237,13 +238,18 @@ h2{
     width: 100vw;
     font-size: 1.2em;
 }
-h3{
-    text-align: center;
-    font-size: 1.3em;
-}
 h4{
     font-size: 1.3em;
     margin-bottom: 3px;
+}
+.product-quant{
+    font-size: 1em;
+    text-align: center;
+    font-weight: 600;
+    color:#3e005b;
+    padding: 5px;
+    margin-top: 5px;
+    border-bottom: 1px solid #F2E0F7;
 }
 .product-descrip{
     margin: 3px;
@@ -258,7 +264,8 @@ h4{
     justify-content: space-between;
     gap: 5px;
     margin-bottom: 5px;
-    box-shadow: 0px 0px 1px rgb(100, 100, 100);
+    margin-top: 5px;
+    border-bottom: 1px solid #F2E0F7;
 }
 .cart-product img{
     width: 40vw;
