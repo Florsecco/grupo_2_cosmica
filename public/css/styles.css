@@ -225,6 +225,75 @@ footer{
 .social{
     text-align: center;
 }
+
+/* carrito */ 
+h2{
+    background-color: #3e005b;
+    color: white;
+    padding-left: 30px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    width: 100vw;
+}
+h3{
+    text-align: center;
+    font-size: 1.3em;
+}
+h4{
+    font-size: 1.3em;
+    margin-bottom: 3px;
+}
+.product-descrip{
+    margin: 3px;
+}
+.product-descrip p{
+    margin-top: 3px;
+    margin-bottom: 3px;
+}
+.cart-product{
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+}
+.cart-product img{
+    width: 40vw;
+    margin-bottom: 5px;
+    max-width: 350px;
+}
+.cart-product-price{
+    font-size: 1.1em;
+    color: #ff5355;
+    font-weight: 700;
+    margin-top: 3px;
+    margin-bottom: 3px;
+}
+.add-delete-product{
+    display: flex;
+    justify-content: space-between;
+    font-weight: 600;
+    margin-top: 5px;
+}
+.button-plus{
+    display: flex;
+    gap: 3px;   
+    align-items: center;
+}
+.button-plus button{
+    width: 20px;
+    height: 20px;
+    line-height: 14px;
+    font-weight: 500;
+}
+.add-delete-product button{
+    background-color: #ff5355;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    font-size: 1.2em;
+    padding: 3px;
+    font-weight: 500;
+}
+
 /* tablets */
 @media (min-width: 576px){
     .featured-products{
