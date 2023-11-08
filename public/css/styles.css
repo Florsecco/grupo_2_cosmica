@@ -3,3 +3,329 @@
     margin: 0;
     padding: 0;
 }
+body{
+    font-family:"Roboto", sans-serif;
+    background-color: #f4f2fb;
+    font-size: 12px;
+}
+h3{
+    margin: 15px 0px;
+    font-size: 1.5em;
+    color: #3e005b;
+}
+header{
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background-color: #f4f2fb;
+}
+footer{
+    background-color: #ff5355;
+}
+/* header */ 
+/* barra de informacion header */
+.header-top{
+    background-color: #1b0025;
+    color: white;
+    text-align: center;
+    font-size: 1em;
+    padding: 5px;
+}
+/* barra principal del header */ 
+/*clase que contiene toda la barra */ 
+.main-bar{
+    display: flex;
+    justify-content: space-between;
+    padding: 5px;
+    color: #1b0025;
+    font-size: 2em;
+    max-width: 1200px;
+    margin: auto;
+    background-color: #f4f2fb;
+}
+.main-bar i{
+    transition: color,300ms;
+}
+.main-bar i:hover{
+    color: #ff5355;
+}
+/* clase que contiene el hamburguer y el logo */ 
+.menu-logo{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+/* clase que contiene el logo */
+.logo{
+    width: 100px;
+}
+/* clase que contiene los iconos de busqueda registracion y carrito */
+.icons-log-reg{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+/* fin de header */ 
+/* clase que contiene el banner */ 
+.banner{
+    width: 100%;
+}
+/* main */ 
+/* barra de categorias */ 
+.category-section{
+    color: white;
+    background-color: #3e005b;
+    padding: 5px;
+}
+/* titulo de la barra de categorias */
+.category-tittle{
+    margin-bottom: 5px;
+    margin-left: 5px;
+    font-weight: 550;
+    font-size: 1.3em;
+}
+/* seccion de categorias */ 
+
+.categories1, .categories2{
+    display: flex;
+    justify-content: space-around;
+    gap: 5px;
+    flex-wrap: wrap;
+    margin-bottom: 10px;
+}
+/* categoria */
+.category{
+    background-color: white;
+    border: none;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 215px;
+    width: 130px;
+    height: 130px;
+}
+/* imagen de la categoria */
+.img-category{
+    width: 90px;
+}
+/* seccion de productos */ 
+.main-section{
+    width: 90vw;
+    margin: auto;
+}
+/* clase que contiene todos los productos */
+.featured-products{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+/* clase de cada producto */
+.product{
+    width: 100%;
+    max-width: 350px;
+    margin: auto;
+    background-color: white;
+    margin-bottom: 10px;
+}
+/* clase de la descripcion de producto */ 
+.descrip{
+    background-color: white;
+    border-top: #f4f2fb 1px solid;
+    font-size: 1.2em;
+    padding: 5px;
+    text-align: center;
+    position: relative;
+}
+.descrip i{
+    position: absolute;
+    top: -10px;
+    right: 10px;
+    font-size: 1.8em;
+    color: #1b0025;
+    transition: all 300ms;
+}
+.descrip i:hover{
+    font-size: 2em;
+    color: #ff5355;
+}
+/* clase que contiene el precio y el descuento */ 
+.product-full-price{
+    display: flex;
+    justify-content: space-around;
+}
+/* detalle de producto */
+.product-tittle{
+    font-weight: 500;
+}
+.product-price{
+    font-weight: 600;
+    color: #ff5355;
+}
+.product-dsc{
+    color: #3e005b;
+    font-weight: 500;
+}
+.product-img, .descrip{
+    width: 100%;
+    max-width: 350px;
+}
+
+
+/*fin del header */ 
+/* footer */
+/* seccion de suscribirse */ 
+.subscribe{
+    background-color: #3e005b;
+    color: white;
+    text-align: center;
+    padding: 5px;
+    line-height: 1.9em;
+}
+.login-bar input{
+    padding: 5px;
+    border-radius: 7px;
+    border: none;
+    width: 50%;
+    text-align: center;
+}
+.login-bar input:focus, .login-bar input:hover{
+    outline: 2px #ff5355 solid;
+}
+.button-subscribe{
+    border: none;
+    border-radius: 10px;
+    width: 25%;
+    line-height: 1.5em;
+    background-color: #1b0025;
+    color: white;
+    margin: 5px;
+    transition: background-color 450ms;
+}
+.button-subscribe:hover, :focus{
+    background-color: #ff5355;
+    outline: none;
+
+}
+/* seccion de informacion del footer */ 
+.footer-info{
+    text-align: center;
+}
+.footer-info h6{
+    font-size: 1.2em;
+}
+.footer-info i, .social i{
+    font-size: 2em;
+}
+.footer-info i:hover, .social i:hover{
+    color: #3e005b;
+}
+.footer-info section{
+    margin: 10px 5px;
+}
+.social{
+    text-align: center;
+}
+
+/* carrito */ 
+h2{
+    background-color: #3e005b;
+    color: white;
+    padding-left: 30px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    width: 100vw;
+}
+h3{
+    text-align: center;
+    font-size: 1.3em;
+}
+h4{
+    font-size: 1.3em;
+    margin-bottom: 3px;
+}
+.product-descrip{
+    margin: 3px;
+}
+.product-descrip p{
+    margin-top: 3px;
+    margin-bottom: 3px;
+}
+.cart-product{
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+}
+.cart-product img{
+    width: 40vw;
+    margin-bottom: 5px;
+    max-width: 350px;
+}
+.cart-product-price{
+    font-size: 1.1em;
+    color: #ff5355;
+    font-weight: 700;
+    margin-top: 3px;
+    margin-bottom: 3px;
+}
+.add-delete-product{
+    display: flex;
+    justify-content: space-between;
+    font-weight: 600;
+    margin-top: 5px;
+}
+.button-plus{
+    display: flex;
+    gap: 3px;   
+    align-items: center;
+}
+.button-plus button{
+    width: 20px;
+    height: 20px;
+    line-height: 14px;
+    font-weight: 500;
+}
+.add-delete-product button{
+    background-color: #ff5355;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    font-size: 1.2em;
+    padding: 3px;
+    font-weight: 500;
+}
+
+/* tablets */
+@media (min-width: 576px){
+    .featured-products{
+        flex-direction: row;
+    }
+    .product{
+        width: 40vw;
+    }
+    .categories{
+        display: flex;
+        justify-content: space-around;
+    }
+    .categories1, .categories2{
+        width: 50%;
+    }
+    .footer-info{
+        display: flex;
+        justify-content: space-around;
+    }
+    .footer-info section{
+        width: 28%;
+    }
+    .product{
+        transition: box-shadow, 300ms;
+    }
+    .product:hover{
+        box-shadow: 0px 0px 10px rgb(100, 100, 100);
+    }
+}
+/* desktops */
+@media (min-width: 992px) {
+    .product{
+        width: 22vw;
+    }
+}
