@@ -253,6 +253,8 @@ input:focus, input:hover{
 /* seccion de informacion del footer */
 .footer-info {
     text-align: center;
+    max-width: 1200px;
+    margin: auto;
 }
 
 .footer-info h6 {
@@ -280,15 +282,6 @@ input:focus, input:hover{
 /*
 ProductDetail
 */
-
-/* .container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    margin: 0;
-    background-color: #f0f0f0;
-} */
 
 .product-container{
     display: flex;
@@ -381,14 +374,18 @@ ProductDetail
     display: block;
 }
 /* carrito */ 
-h2{
+.section-tittle{
     background-color: #3e005b;
     color: white;
     padding-left: 30px;
     padding-top: 5px;
     padding-bottom: 5px;
     width: 100vw;
-    font-size: 1.2em;
+    font-size: 1em;
+}
+.section-tittle h2{
+    max-width: 1200px;
+    margin: auto;
 }
 h4{
     font-size: 1.3em;
@@ -474,6 +471,7 @@ h4{
     text-align: center;
     margin: auto;
     margin-bottom: 5px;
+    max-width: 700px;
 }
 .cupon-disc input{
     border: none;
@@ -496,12 +494,14 @@ h4{
     margin-bottom: 7px;
 }
 .ship-form div{
-    margin-top: 5px;
-    margin-bottom: 5px;
     display: flex;
     align-items: center;
     font-size: 1em;
     justify-content: space-between;
+    max-width: 900px;
+    margin: auto;
+    margin-top: 5px;
+    margin-bottom: 5px;
 }
 .ship-form label{
     display: inline-block;
@@ -521,12 +521,13 @@ h4{
     padding: 5px;
     font-size: 1.1em;
 }
+
 .payment-details{
     display: flex;
     justify-content: space-between;
     font-weight: 500;
-    margin-right: 20px;
-    margin-left: 20px;
+    margin: auto;
+    max-width: 900px;
     margin-bottom: 10px;
 }
 .total{
@@ -536,10 +537,12 @@ h4{
     font-weight: 600;
     display: flex;
     justify-content: space-between;
+    margin: auto;
     margin-top: 5px;
     margin-bottom: 5px;
-    padding-left: 20px;
-    padding-right: 20px;
+    padding-left: 2px;
+    padding-right: 2px;
+    max-width: 900px;
 }
 .purchase-button{
     display: flex;
