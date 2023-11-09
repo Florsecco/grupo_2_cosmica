@@ -54,6 +54,7 @@ footer {
     transition: color, 300ms;
 }
 
+
 .main-bar i:hover {
     color: #ff5355;
 }
@@ -75,6 +76,10 @@ footer {
     display: flex;
     align-items: center;
     gap: 5px;
+}
+.main-bar a{
+    text-decoration: none;
+    color: #1b0025;
 }
 
 /* fin de header */
@@ -166,6 +171,7 @@ footer {
     font-size: 1.8em;
     color: #1b0025;
     transition: all 300ms;
+    cursor: pointer;
 }
 
 .descrip i:hover {
