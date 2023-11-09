@@ -639,6 +639,31 @@ h4{
     margin-top: 5px;
     margin-bottom: 5px;
 }
+/*login */
+.button-login button{
+    color: #1b0025;
+}
+.button-remember{
+    display: flex;
+    font-size: 1em;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    height: 20px;
+    color: #ff5355;
+}
+.button-remember input{
+    width: 15px;
+}
+.button-remember input:focus, .button-remember input:hover{
+    border: none;
+    outline: none;
+}
+.forgot-password{
+    color: #ff5355;
+    font-size: 1em;
+}
+
 /* tablets */
 @media (min-width: 576px) {
     .featured-products {
