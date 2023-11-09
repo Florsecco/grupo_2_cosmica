@@ -702,6 +702,9 @@ h4{
     .product-container img {
         width: 60%;
     }
+    .product-details{
+        border-left:1px solid #F2E0F7;
+    }
 }
 /* desktops */
 @media (min-width: 992px){
