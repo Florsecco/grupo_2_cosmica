@@ -698,8 +698,8 @@ h4{
     }
     .product-container img {
         width: 60%;
+    }
 }
-
 /* desktops */
 @media (min-width: 992px){
     .product {
