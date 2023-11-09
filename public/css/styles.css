@@ -12,8 +12,8 @@ body {
 
 h3 {
     margin: 15px 0px;
-    font-size: 1.5em;
     color: #3e005b;
+    font-size: 1.5em;
 }
 
 header {
@@ -201,7 +201,7 @@ footer {
 }
 
 
-/*fin del header */
+/*fin del main */ 
 /* footer */
 /* seccion de suscribirse */
 .subscribe {
@@ -219,10 +219,8 @@ footer {
     width: 50%;
     text-align: center;
 }
-
-.login-bar input:focus,
-.login-bar input:hover {
-    outline: 2px #ff5355 solid;
+input:focus, input:hover{
+    outline: 2px #ff5355 solid; 
 }
 
 .button-subscribe {
@@ -235,9 +233,7 @@ footer {
     margin: 5px;
     transition: background-color 450ms;
 }
-
-.button-subscribe:hover,
-:focus {
+.button-subscribe:hover, .button-subscribe:focus{
     background-color: #ff5355;
     outline: none;
 
@@ -406,6 +402,243 @@ ProductDetail
 ProductDetail
 */
 
+/*probando*/
+/* carrito */ 
+h2{
+    background-color: #3e005b;
+    color: white;
+    padding-left: 30px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    width: 100vw;
+    font-size: 1.2em;
+}
+h4{
+    font-size: 1.3em;
+    margin-bottom: 3px;
+}
+.product-quant{
+    font-size: 1em;
+    text-align: center;
+    font-weight: 600;
+    color:#3e005b;
+    padding: 5px;
+    margin-top: 5px;
+    border-bottom: 1px solid #F2E0F7;
+}
+.product-descrip{
+    margin: 3px;
+}
+.product-descrip p{
+    margin-top: 3px;
+    margin-bottom: 3px;
+}
+.cart-product{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 5px;
+    margin-bottom: 5px;
+    margin-top: 5px;
+    border-bottom: 1px solid #F2E0F7;
+}
+.cart-product img{
+    width: 40vw;
+    margin-bottom: 5px;
+    max-width: 350px;
+}
+.cart-product-price{
+    font-size: 1.1em;
+    color: #ff5355;
+    font-weight: 700;
+    margin-top: 3px;
+    margin-bottom: 3px;
+}
+.add-delete-product{
+    display: flex;
+    justify-content: space-between;
+    font-weight: 600;
+    margin-top: 5px;
+    max-width: 300px;
+}
+.button-plus{
+    display: flex;
+    gap: 3px;   
+    align-items: center;
+}
+.button-plus button{
+    width: 20px;
+    height: 20px;
+    line-height: 14px;
+    font-weight: 500;
+}
+.add-delete-product button, .purchase-total button{
+    background-color: #ff5355;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    font-size: 1.2em;
+    padding: 3px;
+    font-weight: 500;
+}
+.cupon-disc{
+    background-color: #3e005b;
+    color: white;
+    border: none;
+    border-radius: 15px;
+    padding: 5px;
+    height: 40px;
+    width: 80vw;
+    text-align: center;
+    margin: auto;
+    margin-bottom: 5px;
+}
+.cupon-disc input{
+    border: none;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 1em;
+    line-height: normal;
+    margin-top: 2px;
+}
+.ship-form{
+    background-color: #ff5355;
+    color: white;
+    padding: 10px;
+    font-weight: 400;
+    margin-bottom: 5px;
+}
+.ship-form p{
+    font-weight: 500;
+    text-align: center;
+    margin-bottom: 7px;
+}
+.ship-form div{
+    margin-top: 5px;
+    margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+    font-size: 1em;
+    justify-content: space-between;
+}
+.ship-form label{
+    display: inline-block;
+    width: 30%;
+}
+.ship-form input, .ship-form textarea{
+    width: 70%;
+    border: none;
+    padding: 3px;
+    border-radius: 3px;
+}
+.purchase-total{
+    background-color: #3e005b;
+    color: white;
+    margin: auto;
+    margin-bottom: 5px;
+    padding: 5px;
+    font-size: 1.1em;
+}
+.payment-details{
+    display: flex;
+    justify-content: space-between;
+    font-weight: 500;
+    margin-right: 20px;
+    margin-left: 20px;
+    margin-bottom: 10px;
+}
+.total{
+    background-color: #ff5355;
+    color: #3e005b;
+    font-size: 1.1em;
+    font-weight: 600;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+.purchase-button{
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+}
+.purchase-button button{
+    color: #3e005b;
+    font-size: 0.8em;
+    line-height: 15px;
+    font-weight: 500;
+}
+/* register */
+.form-register{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.form-register input{
+    border-radius: 2px;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    padding: 1px;
+    border: 1px solid #3e005b;
+    text-align: center;
+    width: 250px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    height: 30px;
+    border-radius: 10px;
+}
+.form-register input:focus, .form-register input:hover{
+    border: 0px #ff5355 solid;
+}
+.password{
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 1px;
+    padding-right: 2px;
+    border: 1px solid #3e005b;
+    width: 250px;
+    height: 30px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    border-radius: 10px;
+}
+.password:focus, .password:hover{
+    outline: 2px #ff5355 solid; 
+    border: 0px #ff5355 solid;
+}
+.password input{
+    border: none;
+    width: 210px;
+    margin: 0;
+    height: 20px;
+}
+.password input:hover, .password input:focus{
+    outline: none;
+}
+.password i{
+    color: #1b0025;
+    margin-right: 2px;
+}
+.form-register button{
+    background-color: #ff5355;
+    border: none;
+    border-radius: 10px;
+    padding: 3px;
+    font-size: 1.1em;
+    font-weight: 600;
+    width: 250px;
+    height: 30px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
 /* tablets */
 @media (min-width: 576px) {
     .featured-products {
@@ -442,11 +675,30 @@ ProductDetail
     .product:hover {
         box-shadow: 0px 0px 10px rgb(100, 100, 100);
     }
+    .product-descrip{
+        width: 55%;
+    }
 }
 
 /* desktops */
 @media (min-width: 992px) {
     .product {
         width: 22vw;
+    }
+    .form-register{
+        border: #ff5355 3px solid;
+        padding: 10px;
+        border-radius: 15px;
+        width: 300px;
+        margin: auto;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+    .product-descrip{
+        width: 70%;
+        font-size: 1.3em;
+    }
+    .product-quant{
+        font-size: 1.5em;
     }
 }
