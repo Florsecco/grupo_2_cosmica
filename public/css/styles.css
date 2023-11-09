@@ -391,7 +391,7 @@ ProductDetail
     margin: auto;
 }
 h4{
-    font-size: 1.3em;
+    font-size: 1em;
     margin-bottom: 3px;
 }
 .main-section-detail-product{
@@ -406,14 +406,17 @@ h4{
     color:#3e005b;
     padding: 5px;
     margin-top: 5px;
-    border-bottom: 1px solid #F2E0F7;
+    
 }
 .product-descrip{
     margin: 3px;
+    border-left: 1px solid #F2E0F7;
+    padding: 5px;
 }
 .product-descrip p{
     margin-top: 3px;
     margin-bottom: 3px;
+
 }
 .cart-product{
     display: flex;
@@ -422,7 +425,8 @@ h4{
     gap: 5px;
     margin-bottom: 5px;
     margin-top: 5px;
-    border-bottom: 1px solid #F2E0F7;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 .cart-product img{
     width: 40vw;
@@ -439,6 +443,7 @@ h4{
 .add-delete-product{
     display: flex;
     justify-content: space-between;
+    align-items: center;
     font-weight: 600;
     margin-top: 5px;
     max-width: 300px;
@@ -449,9 +454,9 @@ h4{
     align-items: center;
 }
 .button-plus button{
-    width: 20px;
-    height: 20px;
-    line-height: 14px;
+    width: 14px;
+    height: 14px;
+    line-height: 8px;
     font-weight: 500;
 }
 .add-delete-product button, .purchase-total button{
@@ -459,8 +464,8 @@ h4{
     color: white;
     border: none;
     border-radius: 3px;
-    font-size: 1.2em;
-    padding: 3px;
+    font-size: 0.8em;
+    padding: 2px;
     font-weight: 500;
 }
 .cupon-disc{
@@ -735,6 +740,8 @@ h4{
     .product-descrip{
         width: 70%;
         font-size: 1.3em;
+        padding-right: 15px;
+        padding-left: 15px;
     }
     .product-container{
         gap: 15px;
