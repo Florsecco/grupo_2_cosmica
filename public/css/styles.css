@@ -140,6 +140,7 @@ footer {
 .main-section {
     width: 90vw;
     margin: auto;
+    max-width: 1200px;
 }
 
 /* clase que contiene todos los productos */
@@ -228,6 +229,7 @@ footer {
     border-radius: 7px;
     border: none;
     width: 50%;
+    max-width: 500px;
     text-align: center;
 }
 input:focus, input:hover{
@@ -238,6 +240,7 @@ input:focus, input:hover{
     border: none;
     border-radius: 10px;
     width: 25%;
+    max-width: 280px;
     line-height: 1.5em;
     background-color: #1b0025;
     color: white;
@@ -658,10 +661,15 @@ h4{
     .product {
         width: 40vw;
     }
-
+    .category-tittle{
+        max-width: 1200px;
+        margin: auto;
+    }
     .categories {
         display: flex;
         justify-content: space-around;
+        max-width: 1200px;
+        margin: auto;
     }
 
     .categories1,
@@ -719,6 +727,10 @@ h4{
         margin: auto;
         margin-top: 10px;
         margin-bottom: 10px;
+    }
+    .product-img, .descrip, .product {
+        max-width: 272px;
+
     }
     .product-descrip{
         width: 70%;
