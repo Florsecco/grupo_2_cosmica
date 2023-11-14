@@ -15,4 +15,4 @@
 -
 ## Dejar de hacer 
 -  Por ahora nada
--  Probando si funciona la regla
+-  
