@@ -657,6 +657,30 @@ h4{
     font-size: 1em;
 }
 
+/* create product */
+.form-create-product{
+    margin: auto;
+    padding: 5px;
+    max-width: 1200px;
+    font-size: 1.5em;
+}
+.product-items-block p{
+    margin: 15px;
+}
+.product-items-block label{
+    margin: 5px 15px 5px 15px;
+}
+.product-items{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin: 15px;
+}
+
+.form-create-product input:hover{
+    outline: none;
+}
+
 /* tablets */
 @media (min-width: 576px) {
     .featured-products {

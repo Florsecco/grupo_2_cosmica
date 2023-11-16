@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cosmica</title>
+    <link rel="stylesheet" href="/css/styles.css" />
+    <link rel="stylesheet" href="/css/normalize.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet" />
+    <script src="https://kit.fontawesome.com/d920995c8a.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <header>
+        <div class="header-top">
+            <p>10% off en tu primera compra</p>
+        </div>
+        <div class="main-bar">
+            <div class="menu-logo">
+                <a href="/"><i class="fa-solid fa-bars"></i></a>
+                <a href="/">
+                    <img class="logo" src="/img/cosmica_logo_almostblack.png" alt="logo" />
+                </a>
+            </div>
+            <div class="icons-log-reg">
+                <a><i class="fa-solid fa-magnifying-glass"></i></a>
+                <a href="/login"><i class="fa-solid fa-circle-user"></i></a>
+                <a href="/cart"><i class="fa-solid fa-cart-shopping"></i></a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="section-tittle">
+            <h2>Crear Producto</h2>
+        </div>
+        <form action="" method="" class="form-create-product">
+            <div class="product-items" >
+                <label>Nombre del Producto</label>
+                <input type="text" name="first-name" placeholder="Nombre Producto">
+            </div>
+            <div class="product-items"> 
+                <label>Descripción</label>
+                <textarea name="descrip-product" placeholder="Descripción del producto"></textarea>
+            </div>
+            <div class="product-items">
+                <label>Imagen del Producto</label>
+                <input type="file" name="img-product" multiple>
+            </div>
+            <div class="product-items-block">
+                <p>Categoría</p>
+                <label><input type="radio" name="category" value="base" /> Bases </label>
+                <label><input type="radio" name="category" value="labial" /> Labiales </label>
+                <label><input type="radio" name="category" value="lapiz" /> Lápices de ojos </label>
+                <label><input type="radio" name="category" value="delineador" /> Delineadores </label>
+            </div>
+            <div class="product-items-block">
+                <p>Color</p>
+                <label><input type="radio" name="color" value="red" /> Rojo </label>
+                <label><input type="radio" name="color" value="pink" /> Rosa </label>
+                <label><input type="radio" name="color" value="nude" /> Nude </label>
+                <label><input type="radio" name="color" value="brown" /> Marrón </label>
+            </div>
+            <div class="product-items">
+                <label>Precio</label>
+                <input type="number" name="price" placeholder="1234">
+            </div>
+        </form>
+    </main>
+
+    <footer>
+        <div class="subscribe">
+            <p>¡No te pierdas nuestras novedades y ofertas!</p>
+            <div class="login-bar">
+                <input type="email" placeholder="Ingresá tu correo electrónico" />
+            </div>
+            <button type="submit" class="button-subscribe">Suscribirme</button>
+        </div>
+        <div>
+            <div class="footer-info">
+                <section>
+                    <i class="fa-solid fa-store"></i>
+                    <h6>Sobre nosotros</h6>
+                    <p>COSMICA SA</p>
+                    <p>P. Sherman Calle Wallaby 42, Sidney</p>
+                </section>
+                <section>
+                    <i class="fa-solid fa-truck"></i>
+                    <h6>Envíos gratis desde $100</h6>
+                    <p>Envíos a todo el país con una compra minima de $100</p>
+                </section>
+                <section>
+                    <i class="fa-solid fa-credit-card"></i>
+                    <h6>12 cuotas sin interés</h6>
+                    <p>Con todas las tarjetas bancarizadas</p>
+                </section>
+            </div>
+            <div class="social">
+                <i class="fa-brands fa-instagram"></i>
+                <i class="fa-brands fa-facebook"></i>
+                <i class="fa-brands fa-whatsapp"></i>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>
