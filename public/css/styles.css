@@ -662,7 +662,7 @@ h4{
     margin: auto;
     padding: 15px 30px;      
     max-width: 1200px;
-    font-size: 1em;
+    font-size: 1.1em;
     font-weight: 400;
     color: #1b0025;
 }
@@ -762,10 +762,13 @@ h4{
         border-left:1px solid #F2E0F7;
     }
     .product-items input, .product-items textarea{
-        width: 300px;
+        width: 350px;
     }
     .product-items label{
         width: 90px;
+    }
+    .form-create-product{
+        font-size: 1.3em;
     }
 }
 /* desktops */
@@ -818,5 +821,11 @@ h4{
     .banner-1000px {
         width: 100%;
         display: block;
+    }
+    .form-create-product{
+        font-size: 1.4em;
+    }
+    .product-items input, .product-items textarea{
+        width: 500px;
     }
 }
