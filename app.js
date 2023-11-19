@@ -4,6 +4,7 @@ const path = require('path')
 const PORT = 3010
 
 app.use(express.static(__dirname + '/public'))
+app.use('view engine', 'ejs')
 
 app.listen(PORT, () => console.log("Servidor corriendo en el puerto " + PORT))
 
