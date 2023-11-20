@@ -3,30 +3,24 @@ const app = express()
 const path = require('path')
 const PORT = 3010
 
+const mainRouter = require('./routes/main.js');
+const userRouter = require('./routes/user.js');
+const productRouter = require('./routes/product.js');
+
 app.use(express.static(__dirname + '/public'))
-app.use('view engine', 'ejs')
+app.set('view engine', 'ejs')
 
 app.listen(PORT, () => console.log("Servidor corriendo en el puerto " + PORT))
 
-app.get('/', (req, res) => {
-    res.sendFile(path.resolve(__dirname, './views/home.html'))
-})
+app.use('/',mainRouter);
+app.use('/',userRouter);
+app.use('/',productRouter);
 
-app.get('/cart', (req, res) => {
-    res.sendFile(path.resolve(__dirname, './views/cart.html'))
-})
 
-app.get('/register', (req, res) => {
-    res.sendFile(path.resolve(__dirname, './views/register.html'))
-})
 
-app.get("/productDetail", (req, res) => {
-    res.sendFile(path.resolve(__dirname, './views/productDetail.html'))
-});
 
-app.get("/login", (req, res) => {
-    res.sendFile(path.resolve(__dirname, './views/login.html'))
-});
-app.get("/createProduct", (req, res) => {
-    res.sendFile(path.resolve(__dirname, './views/createProduct.html'))
-});
+
+
+
+
+
