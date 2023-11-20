@@ -660,24 +660,43 @@ h4{
 /* create product */
 .form-create-product{
     margin: auto;
-    padding: 5px;
+    padding: 15px 30px;      
     max-width: 1200px;
-    font-size: 1.5em;
+    font-size: 1.1em;
+    font-weight: 400;
+    color: #1b0025;
 }
-.product-items-block p{
-    margin: 15px;
-}
-.product-items-block label{
-    margin: 5px 15px 5px 15px;
-}
+
+
 .product-items{
     display: flex;
     gap: 10px;
     align-items: center;
-    margin: 15px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 5px;
 }
-
-.form-create-product input:hover{
+.product-items input, .product-items textarea{
+    border: 1px solid #3e005b;
+    border-radius: 5px;
+    padding: 5px;
+    width: 60%;
+}
+.product-items label{
+    width: 25%;
+}
+.product-items-block{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 5px;
+}
+.product-items-block p{
+   margin-bottom: 5px;
+}
+.product-items-block label{
+    margin-right: 5px;
+}
+.form-create-product input:hover,.form-create-product input:focus{
     outline: none;
 }
 
@@ -742,6 +761,15 @@ h4{
     .product-details{
         border-left:1px solid #F2E0F7;
     }
+    .product-items input, .product-items textarea{
+        width: 350px;
+    }
+    .product-items label{
+        width: 90px;
+    }
+    .form-create-product{
+        font-size: 1.3em;
+    }
 }
 /* desktops */
 @media (min-width: 992px){
@@ -793,5 +821,11 @@ h4{
     .banner-1000px {
         width: 100%;
         display: block;
+    }
+    .form-create-product{
+        font-size: 1.4em;
+    }
+    .product-items input, .product-items textarea{
+        width: 500px;
     }
 }
