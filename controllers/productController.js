@@ -62,7 +62,9 @@ const productController = {
     res.render("./products/cart");
   },
   productDetail: (req, res) => {
-    res.render("./products/productDetail");
+    const { idProduct } = req.params;
+    const product = products.find(x => x.id == idProduct);
+    res.render("./products/productDetail", { product });
   },
   createProduct: (req, res) => {
     res.render("./products/createProduct");
