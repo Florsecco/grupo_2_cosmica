@@ -26,9 +26,10 @@
 
 
                 <% if (product.discount> 0) { %>
-                  <p class="product-container-price">$<%= product.price %>
-
-                      <p class="product-container-price">$<%= product.price - (product.price*product.discount/100) %>
+                  <div class="old-price">
+                    <p class="product-container-price strikethrough price-old">$<%= product.price %> </p>
+                  </div>  
+                      <p class="product-container-price ">$<%= (product.price - (product.price*product.discount/100)).toFixed(2) %> </p>
 
                           <% } else { %>
                             <p class="product-container-price">$<%= product.price %>

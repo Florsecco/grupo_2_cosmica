@@ -53,8 +53,8 @@ const products = [
     tittle: "Paleta de iluminador y rubor",
     price: 15.99,
     discount: 20,
-    img: "rubor-2.jpg",
-  },
+    img: "rubor-2.jpg"
+  }
 ];
 
 const productController = {
@@ -68,7 +68,10 @@ const productController = {
   },
   createProduct: (req, res) => {
     res.render("./products/createProduct");
-  },
+  },  
+  editProduct: (req, res) => {
+    res.render("./products/editProduct");
+  }
 };
 
 module.exports = productController;

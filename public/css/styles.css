@@ -200,7 +200,11 @@ footer {
     font-weight: 600;
     color: #ff5355;
 }
-
+.price-old{
+    color: #666;
+    opacity: 0.6;
+    font-weight: 600;
+}
 .product-dsc {
     color: #3e005b;
     font-weight: 500;
@@ -332,7 +336,28 @@ ProductDetail
     color: #3e005b;
     font-weight: 800;
 }
-
+.old-price{
+    width: 50px;
+    margin: auto;
+}
+.strikethrough {
+    position: relative;
+  }
+.strikethrough:before {
+    position: absolute;
+    content: "";
+    left: 0;
+    top: 50%;
+    right: 0;
+    border-top: 1px solid;
+    border-color: inherit;
+    
+    -webkit-transform:rotate(-5deg);
+    -moz-transform:rotate(-5deg);
+    -ms-transform:rotate(-5deg);
+    -o-transform:rotate(-5deg);
+    transform:rotate(-10deg);
+  }
 .add-to-cart {
     background-color: #ff5355;
     color: #fff;
@@ -827,5 +852,8 @@ h4{
     }
     .product-items input, .product-items textarea{
         width: 500px;
+    }
+    .old-price{
+        width: 65px;
     }
 }
