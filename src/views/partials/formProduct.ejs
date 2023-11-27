@@ -7,7 +7,8 @@
     </div>
     <div class="product-items">
         <label>Descripción</label>
-        <textarea name="descrip-product" placeholder="Descripción del producto"></textarea>
+        <textarea name="descrip-product"
+            placeholder="Descripción del producto"><%if(product !=null){%><%=product.description%><%}%></textarea>
     </div>
     <div class="product-items">
         <label>Imagen</label>
