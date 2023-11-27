@@ -12,7 +12,50 @@
         <div class="section-tittle">
             <h2>Editar Producto</h2>
         </div>
-        <%- include('../partials/formProduct') %>
+        <form action="" method="POST" class="form-create-product">
+            <div class="product-items" >
+                <label>Nombre</label>
+                <input type="text" name="first-name" placeholder="Nombre Producto">
+            </div>
+            <div class="product-items"> 
+                <label>Descripción</label>
+                <textarea name="descrip-product" placeholder="Descripción del producto"></textarea>
+            </div>
+            <div class="product-items">
+                <label>Imagen</label>
+                <input type="file" name="img-product" multiple>
+            </div>
+            <div class="product-items-block">
+                <p>Categoría</p>
+                <label><input type="radio" name="category" value="base" /> Bases </label>
+                <label><input type="radio" name="category" value="labial" /> Labiales </label>
+                <label><input type="radio" name="category" value="lapiz" /> Rubores </label>
+                <label><input type="radio" name="category" value="delineador" /> Delineadores </label>
+            </div>
+            <div class="product-items-block">
+                <p>Color</p>
+                <label><input type="radio" name="color" value="red" /> Rojo </label>
+                <label><input type="radio" name="color" value="pink" /> Rosa </label>
+                <label><input type="radio" name="color" value="nude" /> Nude </label>
+                <label><input type="radio" name="color" value="brown" /> Marrón </label>
+            </div>
+            <div class="product-items">
+                <label>Precio</label>
+                <input type="number" name="price" placeholder="$12.34">
+            </div>
+            <div class="product-items">
+                <label>Stock</label>
+                <input type="number" name="stock" placeholder="30">
+            </div>
+            <div>
+                <button  type="submit">
+                    Guardar producto
+                </button>
+                <button  type="submit">
+                    Eliminar producto
+                </button>
+            </div>
+        </form>
     </main>
     <!-- footer -->
     <%- include('../partials/footer') %>
