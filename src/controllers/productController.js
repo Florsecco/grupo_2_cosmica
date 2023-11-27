@@ -20,7 +20,6 @@ const productController = {
   create: (req, res) => {
 
     console.log(req.body);
-    console.log('entre');
     const products = index();
     const object = {
       id: 2,
@@ -29,12 +28,6 @@ const productController = {
       discount: 0,
       img: "delineador-1.jpg"
     };
-    console.log('entre');
-    if (products === null) {
-      console.log('entre');
-      products = [];
-    }
-
     products.push(object);
     create(products);
     res.redirect('/');
