@@ -4,15 +4,20 @@
   "description": "- El objetivo de nuestro proyecto es crear un Marketplace que ofrezca productos de maquillaje, donde los usuarios puedan informarse y adquirir los mismos  \r ## Productos Ofrecidos\r - Bases de maquillaje, rubores, delineadores y lapices de labios.\r - Los productos ofrecidos serán acotados en un principio, dejando lugar a la escalabilidad del proyecto.\r ## Público al que esta dirigido\r - El proyecto está dirigido a todos aquellos usuarios que deseen adquirir maquillaje de calidad, a un precio competitivo y contar con toda la informacion necesaria para poder hacer una compra inteligente. \r - Tambien esta dirigido a profesionales que utilizan maquillaje como materia prima de su trabajo.\r ## Páginas web similares\r - Farmacity : https://www.farmacity.com\r - Parfumerie : https://www.parfumerie.com.ar\r - Sugar : https://sugarbrush.com.ar\r - Loreal : https://www.lorealparis.com.ar\r - Sephora : https://www.sephora.com/\r ## Manual de Marca\r - Nombre del sitio: Cosmica\r - Logo:\r   ![isotipo_cosmica](https://github.com/Florsecco/grupo_2_cosmica/assets/89713801/68d11a35-21b9-4a5d-8793-5ec35bd233d2)",
   "main": "app.js",
   "scripts": {
-    "start": "node app.js",
-    "test": "nodemon app.js"
+    "start": "node src/app.js",
+    "test": "nodemon src/app.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "ejs": "^3.1.9",
+    "ejs": "3.1.9",
     "express": "4.18.2",
+    "method-override": "^3.0.0",
     "nodemon": "3.0.1"
+  },
+  "nodemonConfig": {
+    "ignore": ["*.json", "public/javascripts/*.js"]
   }
+
 }
