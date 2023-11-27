@@ -11,9 +11,9 @@
 
             <main>
                 <div class="section-tittle">
-                    <h2>Editar Producto</h2>
+                    <h2>Crear Producto</h2>
                 </div>
-                <%- include('../partials/formProduct', { method:"POST", path:'/products'}) %>
+                <%- include('../partials/formProduct', { method:"POST", path:'/products', product:null}) %>
             </main>
             <!-- footer -->
             <%- include('../partials/footer') %>

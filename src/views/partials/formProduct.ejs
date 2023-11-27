@@ -1,7 +1,9 @@
 <form action="<%=path%>" method="<%=method%>" class="form-create-product">
     <div class="product-items">
         <label>Nombre</label>
-        <input type="text" name="first-name" placeholder="Nombre Producto">
+        <input type="text" name="first-name" placeholder="Nombre Producto" <% if (product !=null) { %>
+        value="<%=product.name%>"
+            <% } %>>
     </div>
     <div class="product-items">
         <label>Descripción</label>

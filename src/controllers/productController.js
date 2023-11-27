@@ -22,16 +22,26 @@ const productController = {
     console.log(req.body);
     const products = index();
     const object = {
-      id: 2,
-      tittle: "Delineador de ojos 1",
-      price: 5.99,
+      id: 1,
+      name: "Base de maquillaje 1",
+      description: "descripcion1",
+      price: 9.99,
       discount: 0,
-      img: "delineador-1.jpg"
+      image: "base-1.jpg",
+      stock: 1,
+      category: "bases",
+      colors: "rosa"
     };
     products.push(object);
     create(products);
     res.redirect('/');
-  }
+  },
+  productEdit: (req, res) => {
+    const { id } = req.params;
+    const product = findOne(id);
+    console.log(product);
+    res.render("./products/editProduct", { product });
+  },
 };
 
 module.exports = productController;
