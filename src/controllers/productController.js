@@ -41,10 +41,10 @@ const productController = {
       id,
       name,
       description,
-      price,
-      discount,
+      price: parseInt(price),
+      discount: parseInt(discount),
       image: req.file.filename,
-      stock,
+      stock: parseInt(stock),
       category,
       color
     };
