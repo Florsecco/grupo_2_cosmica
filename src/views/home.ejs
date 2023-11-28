@@ -78,7 +78,9 @@
                       <p class="product-dsc">
                         <%=product.discount%>% OFF
                       </p>
-                      <p class="product-price">$<%=product.price%>
+                      <p class="product-price strikethrough price-old">$<%=product.price%></p>
+                      <p class="product-price">
+                        $<%= (product.price - (product.price*product.discount/100)).toFixed(2) %>
                       </p>
                     </div>
                   </div>
