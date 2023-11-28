@@ -20,9 +20,9 @@
               <%= product.name %>
             </p>
             <div class="product-small-container">
-              <img src="/img/<%=product.image%>" alt="Imagen del producto">
+              <img src="<%=product.image%>" alt="<%=product.name%>">
               <div class="product-details">
-                <p>Una base economica pero eficiente para realzar el color de la piel</p>
+                <p><%=product.description%></p>
 
 
                 <% if (product.discount> 0) { %>

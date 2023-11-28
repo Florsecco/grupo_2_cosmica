@@ -8,7 +8,7 @@
         "image": "makeup3.jpg",
         "stock": 6,
         "category": "rubores",
-        "colors": "negro"
+        "color": "negro"
     },
     {
         "id": 2,
@@ -19,7 +19,7 @@
         "image": "makeup1.jpg",
         "stock": 14,
         "category": "labiales",
-        "colors": "oscura"
+        "color": "oscura"
     },
     {
         "id": 3,
@@ -30,7 +30,7 @@
         "image": "makeup1.jpg",
         "stock": 97,
         "category": "bases",
-        "colors": "nude"
+        "color": "nude"
     },
     {
         "id": 4,
@@ -41,7 +41,7 @@
         "image": "makeup1.jpg",
         "stock": 22,
         "category": "rubores",
-        "colors": "rosa"
+        "color": "rosa"
     },
     {
         "id": 5,
@@ -52,7 +52,7 @@
         "image": "makeup2.jpg",
         "stock": 25,
         "category": "labiales",
-        "colors": "rojo"
+        "color": "rojo"
     },
     {
         "id": 6,
@@ -63,7 +63,7 @@
         "image": "makeup1.jpg",
         "stock": 75,
         "category": "bases",
-        "colors": "azul"
+        "color": "azul"
     },
     {
         "id": 7,
@@ -74,7 +74,7 @@
         "image": "makeup2.jpg",
         "stock": 84,
         "category": "labiales",
-        "colors": "media"
+        "color": "media"
     },
     {
         "id": 8,
@@ -85,7 +85,7 @@
         "image": "makeup2.jpg",
         "stock": 99,
         "category": "labiales",
-        "colors": "nude"
+        "color": "nude"
     },
     {
         "id": 9,
@@ -96,7 +96,7 @@
         "image": "makeup3.jpg",
         "stock": 42,
         "category": "bases",
-        "colors": "nude"
+        "color": "nude"
     },
     {
         "id": 10,
@@ -107,7 +107,7 @@
         "image": "makeup1.jpg",
         "stock": 96,
         "category": "bases",
-        "colors": "rosa"
+        "color": "rosa"
     },
     {
         "id": 11,
@@ -118,7 +118,7 @@
         "image": "makeup1.jpg",
         "stock": 27,
         "category": "rubores",
-        "colors": "marron"
+        "color": "marron"
     },
     {
         "id": 12,
@@ -129,7 +129,7 @@
         "image": "makeup1.jpg",
         "stock": 39,
         "category": "rubores",
-        "colors": "azul"
+        "color": "azul"
     },
     {
         "id": 13,
@@ -140,7 +140,7 @@
         "image": "makeup1.jpg",
         "stock": 16,
         "category": "delineadores",
-        "colors": "oscura"
+        "color": "oscura"
     },
     {
         "id": 14,
@@ -151,7 +151,7 @@
         "image": "makeup2.jpg",
         "stock": 82,
         "category": "rubores",
-        "colors": "rosa"
+        "color": "rosa"
     },
     {
         "id": 15,
@@ -162,7 +162,7 @@
         "image": "makeup1.jpg",
         "stock": 35,
         "category": "delineadores",
-        "colors": "rosa"
+        "color": "rosa"
     },
     {
         "id": 16,
@@ -173,7 +173,7 @@
         "image": "makeup3.jpg",
         "stock": 85,
         "category": "delineadores",
-        "colors": "marron"
+        "color": "marron"
     },
     {
         "id": 17,
@@ -184,7 +184,7 @@
         "image": "makeup2.jpg",
         "stock": 45,
         "category": "rubores",
-        "colors": "clara"
+        "color": "clara"
     },
     {
         "id": 18,
@@ -195,7 +195,7 @@
         "image": "makeup3.jpg",
         "stock": 11,
         "category": "delineadores",
-        "colors": "clara"
+        "color": "clara"
     },
     {
         "id": 19,
@@ -206,18 +206,18 @@
         "image": "makeup3.jpg",
         "stock": 51,
         "category": "labiales",
-        "colors": "naranja"
+        "color": "naranja"
     },
     {
         "id": 20,
         "name": "Base en polvo compacta",
         "description": "pretium iaculis diam erat fermentum justo nec condimentum neque sapien placerat ante nulla",
-        "price": 8432.0,
+        "price": 8432,
         "discount": 39,
         "image": "makeup3.jpg",
         "stock": 69,
         "category": "rubores",
-        "colors": "rosa"
+        "color": "rosa"
     },
     {
         "id": 21,
@@ -228,7 +228,7 @@
         "image": "makeup2.jpg",
         "stock": 87,
         "category": "delineadores",
-        "colors": "rosa"
+        "color": "rosa"
     },
     {
         "id": 22,
@@ -239,7 +239,7 @@
         "image": "makeup3.jpg",
         "stock": 81,
         "category": "delineadores",
-        "colors": "rojo"
+        "color": "rojo"
     },
     {
         "id": 23,
@@ -250,7 +250,7 @@
         "image": "makeup3.jpg",
         "stock": 78,
         "category": "bases",
-        "colors": "oscura"
+        "color": "oscura"
     },
     {
         "id": 24,
@@ -261,7 +261,7 @@
         "image": "makeup3.jpg",
         "stock": 100,
         "category": "bases",
-        "colors": "rojo"
+        "color": "rojo"
     },
     {
         "id": 25,
@@ -272,7 +272,7 @@
         "image": "makeup1.jpg",
         "stock": 69,
         "category": "rubores",
-        "colors": "azul"
+        "color": "azul"
     },
     {
         "id": 26,
@@ -283,7 +283,7 @@
         "image": "makeup2.jpg",
         "stock": 79,
         "category": "bases",
-        "colors": "negro"
+        "color": "negro"
     },
     {
         "id": 27,
@@ -294,7 +294,7 @@
         "image": "makeup3.jpg",
         "stock": 32,
         "category": "delineadores",
-        "colors": "naranja"
+        "color": "naranja"
     },
     {
         "id": 28,
@@ -305,7 +305,7 @@
         "image": "makeup3.jpg",
         "stock": 88,
         "category": "rubores",
-        "colors": "media"
+        "color": "media"
     },
     {
         "id": 29,
@@ -316,7 +316,7 @@
         "image": "makeup1.jpg",
         "stock": 21,
         "category": "rubores",
-        "colors": "nude"
+        "color": "nude"
     },
     {
         "id": 30,
@@ -327,7 +327,7 @@
         "image": "makeup2.jpg",
         "stock": 91,
         "category": "labiales",
-        "colors": "oscura"
+        "color": "oscura"
     },
     {
         "id": 31,
@@ -338,7 +338,7 @@
         "image": "makeup3.jpg",
         "stock": 77,
         "category": "bases",
-        "colors": "negro"
+        "color": "negro"
     },
     {
         "id": 32,
@@ -349,7 +349,7 @@
         "image": "makeup2.jpg",
         "stock": 9,
         "category": "labiales",
-        "colors": "azul"
+        "color": "azul"
     },
     {
         "id": 33,
@@ -360,7 +360,7 @@
         "image": "makeup2.jpg",
         "stock": 95,
         "category": "labiales",
-        "colors": "azul"
+        "color": "azul"
     },
     {
         "id": 34,
@@ -371,7 +371,7 @@
         "image": "makeup2.jpg",
         "stock": 71,
         "category": "delineadores",
-        "colors": "nude"
+        "color": "nude"
     },
     {
         "id": 35,
@@ -382,7 +382,7 @@
         "image": "makeup2.jpg",
         "stock": 70,
         "category": "rubores",
-        "colors": "oscura"
+        "color": "oscura"
     },
     {
         "id": 36,
@@ -393,7 +393,7 @@
         "image": "makeup3.jpg",
         "stock": 54,
         "category": "labiales",
-        "colors": "oscura"
+        "color": "oscura"
     },
     {
         "id": 37,
@@ -404,7 +404,7 @@
         "image": "makeup2.jpg",
         "stock": 28,
         "category": "delineadores",
-        "colors": "rojo"
+        "color": "rojo"
     },
     {
         "id": 38,
@@ -415,7 +415,7 @@
         "image": "makeup3.jpg",
         "stock": 92,
         "category": "rubores",
-        "colors": "nude"
+        "color": "nude"
     },
     {
         "id": 39,
@@ -426,7 +426,7 @@
         "image": "makeup2.jpg",
         "stock": 83,
         "category": "rubores",
-        "colors": "negro"
+        "color": "negro"
     },
     {
         "id": 40,
@@ -437,6 +437,70 @@
         "image": "makeup3.jpg",
         "stock": 74,
         "category": "delineadores",
-        "colors": "rosa"
+        "color": "rosa"
+    },
+    {
+        "id": 1,
+        "name": "Base de maquillaje 1",
+        "description": "descripcion1",
+        "price": 9.99,
+        "discount": 0,
+        "image": "base-1.jpg",
+        "stock": 1,
+        "category": "bases",
+        "color": "rosa"
+    },
+    {
+        "id": 1,
+        "name": "Base de maquillaje 1",
+        "description": "descripcion1",
+        "price": 9.99,
+        "discount": 0,
+        "image": "base-1.jpg",
+        "stock": 1,
+        "category": "bases",
+        "color": "rosa"
+    },
+    {
+        "id": 1,
+        "name": "Base de maquillaje 1",
+        "description": "descripcion1",
+        "price": 9.99,
+        "discount": 0,
+        "image": "base-1.jpg",
+        "stock": 1,
+        "category": "bases",
+        "color": "rosa"
+    },
+    {
+        "id": 1,
+        "name": "Base de maquillaje 1",
+        "description": "descripcion1",
+        "price": 9.99,
+        "discount": 0,
+        "image": "base-1.jpg",
+        "stock": 1,
+        "category": "bases",
+        "color": "rosa"
+    },
+    {
+        "id": 41,
+        "price": "500",
+        "discount": 0,
+        "image": "/img/products/product-1701180922052-333759502.png",
+        "stock": "10",
+        "category": "bases",
+        "color": "red"
+    },
+    {
+        "id": 42,
+        "name": "El producto de gabyfinn",
+        "description": "Es una descripcion del producto de gabyfinn",
+        "price": "322132",
+        "discount": 0,
+        "image": "/img/products/product-1701181025854-336118349.png",
+        "stock": "321",
+        "category": "labiales",
+        "color": "pink"
     }
 ]
