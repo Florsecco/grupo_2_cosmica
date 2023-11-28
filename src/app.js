@@ -17,7 +17,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.listen(PORT, () => console.log("Servidor corriendo en el puerto " + PORT));
 
 app.use('/', mainRouter);
-app.use('/', userRouter);
+app.use('/users', userRouter);
 app.use('/products', productRouter);
 app.use((req, res, next) => {
   res.status(404).render('not-found');
