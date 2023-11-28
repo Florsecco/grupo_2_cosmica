@@ -24,18 +24,20 @@
               <div class="product-details">
                 <p><%=product.description%></p>
 
-
+                <div class="display-flex-detail">
                 <% if (product.discount> 0) { %>
+                    
                   <div class="old-price">
-                    <p class="product-container-price strikethrough price-old">$<%= product.price %> </p>
+                    <p class="product-container-price strikethrough price-old">$<%= toThousand(product.price) %> </p>
                   </div>  
-                      <p class="product-container-price ">$<%= (product.price - (product.price*product.discount/100)).toFixed(2) %> </p>
+                      <p class="product-container-price ">$<%= toThousand(product.price - (product.price*product.discount/100)) %> </p>
 
                           <% } else { %>
-                            <p class="product-container-price">$<%= product.price %>
+                            <p class="product-container-price">$<%=toThousand(product.price) %>
 
                                 <% } %>
                             </p>
+                          </div>          
                             <p>Cuotas sin interés con <i class="fa-regular fa-credit-card"></i></p>
                             <div>
                               <a href="#" class="add-to-cart">Comprar</a>

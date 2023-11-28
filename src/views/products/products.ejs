@@ -17,25 +17,27 @@
         <img class="banner-360px" src="/img/cosmica_banner_600x1000.png" alt="banner" /> -->
       </section>
       <main>
+        <div class="section-tittle">
+          <h2>
+            Productos
+          </h2>
+        </div>
         <section class="main-section">
           <h3>Productos Destacados</h3>
           <div class="featured-products">
-            <% if (products.length == 0) { %>
-              Dolarizando, espere un momento $$$
-            <% } %>
-            <% products.forEach(product=> { %>
+            <% featured.forEach(product=> { %>
               <% if (product.discount==0 ) { %>
 
                 <article class="product">
                   <a href="/products/<%=product.id%>">
-                    <img class="product-img" src="<%=product.image%>" alt="<%=product.name%>" />
+                    <img class="product-img" src="/img/products/<%=product.image%>" alt="<%=product.name%>" />
                   </a>
                   <div class="descrip">
                     <i class="fa-solid fa-heart"></i></a>
                     <p class="product-tittle">
                       <%=product.name%>
                     </p>
-                    <p class="product-price"> $<%=product.price%>
+                    <p class="product-price"> $<%=toThousand(product.price)%>
                     </p>
                   </div>
                 </article>
@@ -44,12 +46,12 @@
           </div>
           <h3>Ofertas</h3>
           <div class="featured-products">
-            <% products.forEach(product=> { %>
+            <% offers.forEach(product=> { %>
               <% if (product.discount>0 ) { %>
 
                 <article class="product">
                   <a href="/products/<%=product.id%>">
-                    <img class="product-img" src="<%=product.image%>" alt="<%=product.image.slice(0,-4)%>" />
+                    <img class="product-img" src="/img/products/<%=product.image%>" alt="<%=product.name%>" />
                   </a>
                   <div class="descrip">
                     <i class="fa-solid fa-heart"></i></a>
@@ -60,7 +62,9 @@
                       <p class="product-dsc">
                         <%=product.discount%>% OFF
                       </p>
-                      <p class="product-price">$<%=product.price%>
+                      <p class="product-price strikethrough price-old">$<%=toThousand(product.price)%></p>
+                      <p class="product-price">
+                        $<%= toThousand(product.price - (product.price*product.discount/100)) %>
                       </p>
                     </div>
                   </div>

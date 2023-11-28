@@ -41,7 +41,7 @@
         <section class="main-section">
           <h3>Productos Destacados</h3>
           <div class="featured-products">
-            <% products.forEach(product=> { %>
+            <% featured.forEach(product=> { %>
               <% if (product.discount==0 ) { %>
 
                 <article class="product">
@@ -53,7 +53,7 @@
                     <p class="product-tittle">
                       <%=product.name%>
                     </p>
-                    <p class="product-price"> $<%=product.price%>
+                    <p class="product-price"> $<%=toThousand(product.price)%>
                     </p>
                   </div>
                 </article>
@@ -62,7 +62,7 @@
           </div>
           <h3>Ofertas</h3>
           <div class="featured-products">
-            <% products.forEach(product=> { %>
+            <% offers.forEach(product=> { %>
               <% if (product.discount>0 ) { %>
 
                 <article class="product">
@@ -78,9 +78,9 @@
                       <p class="product-dsc">
                         <%=product.discount%>% OFF
                       </p>
-                      <p class="product-price strikethrough price-old">$<%=product.price%></p>
+                      <p class="product-price strikethrough price-old">$<%=toThousand(product.price)%></p>
                       <p class="product-price">
-                        $<%= (product.price - (product.price*product.discount/100)).toFixed(2) %>
+                        $<%= toThousand(product.price - (product.price*product.discount/100)) %>
                       </p>
                     </div>
                   </div>

@@ -330,14 +330,18 @@ ProductDetail
     text-align: center;
     padding: 5px;
 }
-
+.display-flex-detail{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
 .product-container-price {
     font-size: 1.4em;
     color: #3e005b;
     font-weight: 800;
 }
 .old-price{
-    width: 50px;
+    width: 60px;
     margin: auto;
 }
 .strikethrough {
@@ -858,6 +862,6 @@ h4{
         width: 500px;
     }
     .old-price{
-        width: 65px;
+        width: 80px;
     }
 }
