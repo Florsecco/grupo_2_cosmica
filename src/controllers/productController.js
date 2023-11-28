@@ -1,4 +1,5 @@
 const { findOne, index, create } = require("../models/product.model");
+const path = require('path');
 
 const productController = {
   index: (req, res) => {
@@ -26,28 +27,34 @@ const productController = {
     res.render("./products/editProduct");
   },
   create: (req, res) => {
-
-    console.log(req.body);
+    const { name, description, price, stock, color, category } = req.body;
     const products = index();
-    const object = {
-      id: 1,
-      name: "Base de maquillaje 1",
-      description: "descripcion1",
-      price: 9.99,
+    let id;
+    if (products.length > 0) {
+
+      id = Math.max(...products.map(x => x.id)) + 1;
+    }
+    else {
+      id = 1;
+    }
+    const product = {
+      id,
+      name,
+      description,
+      price,
       discount: 0,
-      image: "base-1.jpg",
-      stock: 1,
-      category: "bases",
-      colors: "rosa"
+      image: path.join('/img/products', req.file.filename),
+      stock,
+      category,
+      color
     };
-    products.push(object);
+    products.push(product);
     create(products);
     res.redirect('/');
   },
   productEdit: (req, res) => {
     const { id } = req.params;
     const product = findOne(id);
-    console.log(product);
     res.render("./products/editProduct", { product });
   },
 };

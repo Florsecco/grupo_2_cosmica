@@ -1,34 +1,34 @@
-<form action="<%=path%>" method="<%=method%>" class="form-create-product">
+<form action="<%=path%>" method="<%=method%>" enctype="multipart/form-data" class="form-create-product">
     <div class="product-items">
         <label>Nombre</label>
-        <input type="text" name="first-name" placeholder="Nombre Producto" <% if (product !=null) { %>
+        <input type="text" name="name" placeholder="Nombre Producto" <% if (product !=null) { %>
         value="<%=product.name%>"
             <% } %>>
     </div>
     <div class="product-items">
         <label>Descripción</label>
-        <textarea name="descrip-product"
+        <textarea name="description"
             placeholder="Descripción del producto"><%if(product !=null){%><%=product.description%><%}%></textarea>
     </div>
     <div class="product-items">
         <label>Imagen</label>
-        <input type="file" name="img-product" multiple>
+        <input type="file" name="product" multiple>
     </div>
     <div class="product-items-block">
         <p>Categoría</p>
-        <label><input type="radio" name="category" value="bases" <% if (product.category=="bases" ) { %>
+        <label><input type="radio" name="category" value="bases" <% if (product != null && product.category=="bases" ) { %>
             checked
             <% } %> /> Bases
         </label>
-        <label><input type="radio" name="category" value="labiales" <% if (product.category=="labiales" ) { %>
+        <label><input type="radio" name="category" value="labiales" <% if (product != null && product.category=="labiales" ) { %>
             checked
             <% } %> /> Labiales
         </label>
-        <label><input type="radio" name="category" value="rubores" <% if (product.category=="rubores" ) { %>
+        <label><input type="radio" name="category" value="rubores" <% if (product != null && product.category=="rubores" ) { %>
             checked
             <% } %> /> Rubores
         </label>
-        <label><input type="radio" name="category" value="delineadores" <% if (product.category=="delineadores" ) { %>
+        <label><input type="radio" name="category" value="delineadores" <% if (product != null && product.category=="delineadores" ) { %>
             checked
             <% } %> /> Delineadores
         </label>

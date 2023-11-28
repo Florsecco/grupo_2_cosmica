@@ -5,7 +5,6 @@ const model = {
     file: join(__dirname, "../data", "products.json"),
     index: () => {
         try {
-
             return JSON.parse(readFileSync(model.file))
         } catch (error) {
             console.log(error);
