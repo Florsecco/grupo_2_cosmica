@@ -16,10 +16,22 @@
     </div>
     <div class="product-items-block">
         <p>Categoría</p>
-        <label><input type="radio" name="category" value="base" /> Bases </label>
-        <label><input type="radio" name="category" value="labial" /> Labiales </label>
-        <label><input type="radio" name="category" value="lapiz" /> Rubores </label>
-        <label><input type="radio" name="category" value="delineador" /> Delineadores </label>
+        <label><input type="radio" name="category" value="bases" <% if (product.category=="bases" ) { %>
+            checked
+            <% } %> /> Bases
+        </label>
+        <label><input type="radio" name="category" value="labiales" <% if (product.category=="labiales" ) { %>
+            checked
+            <% } %> /> Labiales
+        </label>
+        <label><input type="radio" name="category" value="rubores" <% if (product.category=="rubores" ) { %>
+            checked
+            <% } %> /> Rubores
+        </label>
+        <label><input type="radio" name="category" value="delineadores" <% if (product.category=="delineadores" ) { %>
+            checked
+            <% } %> /> Delineadores
+        </label>
     </div>
     <div class="product-items-block">
         <p>Color</p>

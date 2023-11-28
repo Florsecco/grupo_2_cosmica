@@ -20,17 +20,20 @@
         <section class="main-section">
           <h3>Productos Destacados</h3>
           <div class="featured-products">
+            <% if (products.length == 0) { %>
+              Dolarizando, espere un momento $$$
+            <% } %>
             <% products.forEach(product=> { %>
               <% if (product.discount==0 ) { %>
 
                 <article class="product">
                   <a href="/products/<%=product.id%>">
-                    <img class="product-img" src="/img/<%=product.img%>" alt="foundation" />
+                    <img class="product-img" src="/img/<%=product.image%>" alt="<%=product.image.slice(0,-4)%>" />
                   </a>
                   <div class="descrip">
                     <i class="fa-solid fa-heart"></i></a>
                     <p class="product-tittle">
-                      <%=product.tittle%>
+                      <%=product.name%>
                     </p>
                     <p class="product-price"> $<%=product.price%>
                     </p>
@@ -46,12 +49,12 @@
 
                 <article class="product">
                   <a href="/products/<%=product.id%>">
-                    <img class="product-img" src="/img/<%=product.img%>" alt="foundation" />
+                    <img class="product-img" src="/img/<%=product.image%>" alt="<%=product.image.slice(0,-4)%>" />
                   </a>
                   <div class="descrip">
                     <i class="fa-solid fa-heart"></i></a>
                     <p class="product-tittle">
-                      <%=product.tittle%>
+                      <%=product.name%>
                     </p>
                     <div class="product-full-price">
                       <p class="product-dsc">

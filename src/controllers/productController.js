@@ -2,14 +2,22 @@ const { findOne, index, create } = require("../models/product.model");
 
 const productController = {
   index: (req, res) => {
-    res.render("./products/products", { products: index() })
+    const products = index();
+    console.log(products);
+    // const offers
+    res.render("./products/products", { products })
   },
   cart: (req, res) => {
     res.render("./products/cart");
   },
   productDetail: (req, res) => {
     const { id } = req.params;
-    res.render("./products/productDetail", { product: findOne(id) });
+    console.log(id);
+    const product = findOne(id);
+    if (product === undefined)
+      res.redirect('../not-found');
+    console.log(product);
+    res.render("./products/productDetail", { product });
   },
   createProduct: (req, res) => {
     res.render("./products/createProduct");
