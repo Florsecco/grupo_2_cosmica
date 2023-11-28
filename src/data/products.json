@@ -40,7 +40,7 @@
         "discount": 36,
         "image": "delineador-1.jpg",
         "stock": 22,
-        "category": "rubores",
+        "category": "delineadores",
         "color": "rosa"
     },
     {
@@ -49,7 +49,7 @@
         "description": "pede malesuada in imperdiet et commodo vulputate justo in blandit ultrices enim lorem ipsum dolor sit",
         "price": 8372.13,
         "discount": 23,
-        "image": "makeup2.jpg",
+        "image": "labial-1.jpg",
         "stock": 25,
         "category": "labiales",
         "color": "rojo"
@@ -71,7 +71,7 @@
         "description": "vel pede morbi porttitor lorem id ligula suspendisse ornare consequat lectus in est risus auctor",
         "price": 9089.59,
         "discount": 37,
-        "image": "makeup2.jpg",
+        "image": "labial-2.jpg",
         "stock": 84,
         "category": "labiales",
         "color": "media"
@@ -104,7 +104,7 @@
         "description": "augue vestibulum rutrum rutrum neque aenean auctor gravida sem praesent id massa id nisl venenatis",
         "price": 8492.63,
         "discount": 22,
-        "image": "makeup1.jpg",
+        "image": "rubor-1.jpg",
         "stock": 96,
         "category": "bases",
         "color": "rosa"
@@ -137,9 +137,9 @@
         "description": "tempus semper est quam pharetra magna ac consequat metus sapien ut nunc vestibulum ante ipsum",
         "price": 982.67,
         "discount": 12,
-        "image": "makeup1.jpg",
+        "image": "labial-3.jpg",
         "stock": 16,
-        "category": "delineadores",
+        "category": "labiales",
         "color": "oscura"
     },
     {
@@ -181,9 +181,9 @@
         "description": "primis in faucibus orci luctus et ultrices posuere cubilia curae donec pharetra magna vestibulum aliquet ultrices",
         "price": 9224.86,
         "discount": 48,
-        "image": "makeup2.jpg",
+        "image": "labial-4.jpg",
         "stock": 45,
-        "category": "rubores",
+        "category": "labiales",
         "color": "clara"
     },
     {
@@ -258,9 +258,9 @@
         "description": "sed magna at nunc commodo placerat praesent blandit nam nulla integer pede justo lacinia eget tincidunt eget tempus vel",
         "price": 7405.43,
         "discount": 60,
-        "image": "makeup3.jpg",
+        "image": "labial-5.jpg",
         "stock": 100,
-        "category": "bases",
+        "category": "labiales",
         "color": "rojo"
     },
     {
@@ -269,9 +269,9 @@
         "description": "nam dui proin leo odio porttitor id consequat in consequat ut nulla sed",
         "price": 3766.93,
         "discount": 1,
-        "image": "makeup1.jpg",
+        "image": "labial-6.jpg",
         "stock": 69,
-        "category": "rubores",
+        "category": "labiales",
         "color": "azul"
     },
     {
@@ -280,9 +280,9 @@
         "description": "donec pharetra magna vestibulum aliquet ultrices erat tortor sollicitudin mi sit amet lobortis sapien sapien non mi integer ac neque",
         "price": 9856.94,
         "discount": 56,
-        "image": "makeup2.jpg",
+        "image": "labial-7.jpg",
         "stock": 79,
-        "category": "bases",
+        "category": "labiales",
         "color": "negro"
     },
     {
@@ -313,7 +313,7 @@
         "description": "aliquam convallis nunc proin at turpis a pede posuere nonummy",
         "price": 4767.21,
         "discount": 28,
-        "image": "makeup1.jpg",
+        "image": "base-12.jpg",
         "stock": 21,
         "category": "rubores",
         "color": "nude"
@@ -324,7 +324,7 @@
         "description": "in lacus curabitur at ipsum ac tellus semper interdum mauris ullamcorper purus sit amet nulla quisque arcu libero rutrum",
         "price": 3465.08,
         "discount": 59,
-        "image": "makeup2.jpg",
+        "image": "rubor-2.jpg",
         "stock": 91,
         "category": "labiales",
         "color": "oscura"
@@ -342,11 +342,11 @@
     },
     {
         "id": 32,
-        "name": "Delineador en polvo negro",
+        "name": "Rubor en polvo rosado",
         "description": "est et tempus semper est quam pharetra magna ac consequat",
         "price": 7574.9,
         "discount": 0,
-        "image": "delineador-13.jpg",
+        "image": "rubor-8.jpg",
         "stock": 9,
         "category": "labiales",
         "color": "azul"
@@ -357,29 +357,29 @@
         "description": "lectus pellentesque eget nunc donec quis orci eget orci vehicula condimentum curabitur in libero ut",
         "price": 9172.81,
         "discount": 0,
-        "image": "makeup2.jpg",
+        "image": "labial-8.jpg",
         "stock": 95,
         "category": "labiales",
         "color": "azul"
     },
     {
         "id": 34,
-        "name": "Delineador en polvo negro",
+        "name": "Rubor iluminador ",
         "description": "at vulputate vitae nisl aenean lectus pellentesque eget nunc donec quis orci eget orci vehicula condimentum curabitur in libero",
         "price": 395.01,
         "discount": 51,
-        "image": "delineador-14.jpg",
+        "image": "rubor-7.jpg",
         "stock": 71,
         "category": "delineadores",
         "color": "nude"
     },
     {
         "id": 35,
-        "name": "Labial rosa",
+        "name": "Rubor en mousse",
         "description": "semper porta volutpat quam pede lobortis ligula sit amet eleifend pede libero quis orci nullam molestie nibh in lectus",
         "price": 3366.48,
         "discount": 3,
-        "image": "makeup2.jpg",
+        "image": "rubor-6.jpg",
         "stock": 70,
         "category": "rubores",
         "color": "oscura"
@@ -397,22 +397,22 @@
     },
     {
         "id": 37,
-        "name": "Delineador en polvo azul",
+        "name": "Rubor rosa",
         "description": "cubilia curae donec pharetra magna vestibulum aliquet ultrices erat tortor sollicitudin mi sit amet lobortis sapien sapien non",
         "price": 3003.65,
         "discount": 50,
-        "image": "delineador-15.jpg",
+        "image": "rubor-5.jpg",
         "stock": 28,
         "category": "delineadores",
         "color": "rojo"
     },
     {
         "id": 38,
-        "name": "Delineador en lápiz marrón",
+        "name": "Rubor en crema",
         "description": "rhoncus aliquam lacus morbi quis tortor id nulla ultrices aliquet maecenas leo odio condimentum id luctus nec molestie sed justo",
         "price": 9090.1,
         "discount": 0,
-        "image": "delineador-16.jpg",
+        "image": "rubor-4.jpg",
         "stock": 92,
         "category": "rubores",
         "color": "nude"
@@ -434,7 +434,7 @@
         "description": "morbi vestibulum velit id pretium iaculis diam erat fermentum justo",
         "price": 825.34,
         "discount": 0,
-        "image": "makeup3.jpg",
+        "image": "rubor-3.jpg",
         "stock": 74,
         "category": "delineadores",
         "color": "rosa"
