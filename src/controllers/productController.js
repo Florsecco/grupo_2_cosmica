@@ -27,7 +27,7 @@ const productController = {
     res.render("./products/editProduct");
   },
   create: (req, res) => {
-    const { name, description, price, stock, color, category } = req.body;
+    const { name, description, price, discount, stock, color, category } = req.body;
     const products = index();
     let id;
     if (products.length > 0) {
@@ -42,7 +42,7 @@ const productController = {
       name,
       description,
       price,
-      discount: 0,
+      discount,
       image: path.join('/img/products', req.file.filename),
       stock,
       category,

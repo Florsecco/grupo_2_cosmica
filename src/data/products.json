@@ -5,7 +5,7 @@
         "description": "libero nam dui proin leo odio porttitor id consequat in consequat ut nulla sed accumsan felis ut at dolor",
         "price": 4194.46,
         "discount": 52,
-        "image": "makeup3.jpg",
+        "image": "base-1.jpg",
         "stock": 6,
         "category": "rubores",
         "color": "negro"
@@ -16,7 +16,7 @@
         "description": "luctus ultricies eu nibh quisque id justo sit amet sapien dignissim vestibulum",
         "price": 6942.39,
         "discount": 60,
-        "image": "makeup1.jpg",
+        "image": "base-2.jpg",
         "stock": 14,
         "category": "labiales",
         "color": "oscura"
@@ -27,7 +27,7 @@
         "description": "ultrices vel augue vestibulum ante ipsum primis in faucibus orci",
         "price": 577.21,
         "discount": 57,
-        "image": "makeup1.jpg",
+        "image": "base-3.jpg",
         "stock": 97,
         "category": "bases",
         "color": "nude"
@@ -38,7 +38,7 @@
         "description": "fusce lacus purus aliquet at feugiat non pretium quis lectus suspendisse potenti",
         "price": 1544.04,
         "discount": 36,
-        "image": "makeup1.jpg",
+        "image": "delineador-1.jpg",
         "stock": 22,
         "category": "rubores",
         "color": "rosa"
@@ -60,7 +60,7 @@
         "description": "pede ac diam cras pellentesque volutpat dui maecenas tristique est et tempus semper est quam",
         "price": 2849.73,
         "discount": 25,
-        "image": "makeup1.jpg",
+        "image": "delineador-2.jpg",
         "stock": 75,
         "category": "bases",
         "color": "azul"
@@ -82,7 +82,7 @@
         "description": "aenean lectus pellentesque eget nunc donec quis orci eget orci vehicula condimentum curabitur in libero ut",
         "price": 8178.17,
         "discount": 25,
-        "image": "makeup2.jpg",
+        "image": "delineador-3.jpg",
         "stock": 99,
         "category": "labiales",
         "color": "nude"
@@ -93,7 +93,7 @@
         "description": "vel pede morbi porttitor lorem id ligula suspendisse ornare consequat lectus in est risus auctor sed tristique in tempus sit",
         "price": 4225.77,
         "discount": 22,
-        "image": "makeup3.jpg",
+        "image": "delineador-4.jpg",
         "stock": 42,
         "category": "bases",
         "color": "nude"
@@ -115,7 +115,7 @@
         "description": "amet erat nulla tempus vivamus in felis eu sapien cursus vestibulum proin eu",
         "price": 7165.97,
         "discount": 3,
-        "image": "makeup1.jpg",
+        "image": "delineador-5.jpg",
         "stock": 27,
         "category": "rubores",
         "color": "marron"
@@ -126,7 +126,7 @@
         "description": "turpis integer aliquet massa id lobortis convallis tortor risus dapibus augue vel accumsan tellus nisi eu orci mauris lacinia sapien",
         "price": 6854.19,
         "discount": 33,
-        "image": "makeup1.jpg",
+        "image": "base-4.jpg",
         "stock": 39,
         "category": "rubores",
         "color": "azul"
@@ -148,7 +148,7 @@
         "description": "nisl ut volutpat sapien arcu sed augue aliquam erat volutpat in congue etiam justo etiam pretium iaculis justo",
         "price": 612.32,
         "discount": 22,
-        "image": "makeup2.jpg",
+        "image": "delineador-6.jpg",
         "stock": 82,
         "category": "rubores",
         "color": "rosa"
@@ -159,7 +159,7 @@
         "description": "sed tristique in tempus sit amet sem fusce consequat nulla",
         "price": 6253.58,
         "discount": 49,
-        "image": "makeup1.jpg",
+        "image": "base-5.jpg",
         "stock": 35,
         "category": "delineadores",
         "color": "rosa"
@@ -170,7 +170,7 @@
         "description": "sit amet lobortis sapien sapien non mi integer ac neque duis bibendum morbi non quam nec",
         "price": 7367.03,
         "discount": 53,
-        "image": "makeup3.jpg",
+        "image": "delineador-7.jpg",
         "stock": 85,
         "category": "delineadores",
         "color": "marron"
@@ -192,7 +192,7 @@
         "description": "mattis odio donec vitae nisi nam ultrices libero non mattis pulvinar nulla pede ullamcorper augue a suscipit nulla",
         "price": 6617.93,
         "discount": 39,
-        "image": "makeup3.jpg",
+        "image": "base-6.jpg",
         "stock": 11,
         "category": "delineadores",
         "color": "clara"
@@ -203,7 +203,7 @@
         "description": "dapibus duis at velit eu est congue elementum in hac habitasse platea dictumst morbi vestibulum velit id pretium iaculis diam",
         "price": 3584.64,
         "discount": 11,
-        "image": "makeup3.jpg",
+        "image": "delineador-8.jpg",
         "stock": 51,
         "category": "labiales",
         "color": "naranja"
@@ -214,7 +214,7 @@
         "description": "pretium iaculis diam erat fermentum justo nec condimentum neque sapien placerat ante nulla",
         "price": 8432,
         "discount": 39,
-        "image": "makeup3.jpg",
+        "image": "base-7.jpg",
         "stock": 69,
         "category": "rubores",
         "color": "rosa"
@@ -225,7 +225,7 @@
         "description": "diam neque vestibulum eget vulputate ut ultrices vel augue vestibulum ante",
         "price": 8678.94,
         "discount": 54,
-        "image": "makeup2.jpg",
+        "image": "delineador-9.jpg",
         "stock": 87,
         "category": "delineadores",
         "color": "rosa"
@@ -236,7 +236,7 @@
         "description": "amet sem fusce consequat nulla nisl nunc nisl duis bibendum felis sed interdum venenatis turpis enim",
         "price": 9029.53,
         "discount": 8,
-        "image": "makeup3.jpg",
+        "image": "delineador-10.jpg",
         "stock": 81,
         "category": "delineadores",
         "color": "rojo"
@@ -247,7 +247,7 @@
         "description": "convallis morbi odio odio elementum eu interdum eu tincidunt in leo maecenas pulvinar lobortis",
         "price": 1585.51,
         "discount": 50,
-        "image": "makeup3.jpg",
+        "image": "delineador-11.jpg",
         "stock": 78,
         "category": "bases",
         "color": "oscura"
@@ -291,7 +291,7 @@
         "description": "nulla tempus vivamus in felis eu sapien cursus vestibulum proin eu mi",
         "price": 655.44,
         "discount": 57,
-        "image": "makeup3.jpg",
+        "image": "base-8.jpg",
         "stock": 32,
         "category": "delineadores",
         "color": "naranja"
@@ -302,7 +302,7 @@
         "description": "in tempus sit amet sem fusce consequat nulla nisl nunc nisl duis bibendum felis sed",
         "price": 3330.52,
         "discount": 16,
-        "image": "makeup3.jpg",
+        "image": "delineador-12.jpg",
         "stock": 88,
         "category": "rubores",
         "color": "media"
@@ -335,7 +335,7 @@
         "description": "aliquam lacus morbi quis tortor id nulla ultrices aliquet maecenas leo odio condimentum id luctus nec molestie sed justo",
         "price": 9432.49,
         "discount": 35,
-        "image": "makeup3.jpg",
+        "image": "base-9.jpg",
         "stock": 77,
         "category": "bases",
         "color": "negro"
@@ -346,7 +346,7 @@
         "description": "est et tempus semper est quam pharetra magna ac consequat",
         "price": 7574.9,
         "discount": 0,
-        "image": "makeup2.jpg",
+        "image": "delineador-13.jpg",
         "stock": 9,
         "category": "labiales",
         "color": "azul"
@@ -368,7 +368,7 @@
         "description": "at vulputate vitae nisl aenean lectus pellentesque eget nunc donec quis orci eget orci vehicula condimentum curabitur in libero",
         "price": 395.01,
         "discount": 51,
-        "image": "makeup2.jpg",
+        "image": "delineador-14.jpg",
         "stock": 71,
         "category": "delineadores",
         "color": "nude"
@@ -390,7 +390,7 @@
         "description": "pharetra magna ac consequat metus sapien ut nunc vestibulum ante ipsum primis in faucibus orci",
         "price": 6124.78,
         "discount": 23,
-        "image": "makeup3.jpg",
+        "image": "base-10.jpg",
         "stock": 54,
         "category": "labiales",
         "color": "oscura"
@@ -401,7 +401,7 @@
         "description": "cubilia curae donec pharetra magna vestibulum aliquet ultrices erat tortor sollicitudin mi sit amet lobortis sapien sapien non",
         "price": 3003.65,
         "discount": 50,
-        "image": "makeup2.jpg",
+        "image": "delineador-15.jpg",
         "stock": 28,
         "category": "delineadores",
         "color": "rojo"
@@ -412,7 +412,7 @@
         "description": "rhoncus aliquam lacus morbi quis tortor id nulla ultrices aliquet maecenas leo odio condimentum id luctus nec molestie sed justo",
         "price": 9090.1,
         "discount": 0,
-        "image": "makeup3.jpg",
+        "image": "delineador-16.jpg",
         "stock": 92,
         "category": "rubores",
         "color": "nude"
@@ -423,7 +423,7 @@
         "description": "vestibulum rutrum rutrum neque aenean auctor gravida sem praesent id massa id nisl venenatis lacinia",
         "price": 3640.43,
         "discount": 30,
-        "image": "makeup2.jpg",
+        "image": "base-11.jpg",
         "stock": 83,
         "category": "rubores",
         "color": "negro"
@@ -438,69 +438,5 @@
         "stock": 74,
         "category": "delineadores",
         "color": "rosa"
-    },
-    {
-        "id": 1,
-        "name": "Base de maquillaje 1",
-        "description": "descripcion1",
-        "price": 9.99,
-        "discount": 0,
-        "image": "base-1.jpg",
-        "stock": 1,
-        "category": "bases",
-        "color": "rosa"
-    },
-    {
-        "id": 1,
-        "name": "Base de maquillaje 1",
-        "description": "descripcion1",
-        "price": 9.99,
-        "discount": 0,
-        "image": "base-1.jpg",
-        "stock": 1,
-        "category": "bases",
-        "color": "rosa"
-    },
-    {
-        "id": 1,
-        "name": "Base de maquillaje 1",
-        "description": "descripcion1",
-        "price": 9.99,
-        "discount": 0,
-        "image": "base-1.jpg",
-        "stock": 1,
-        "category": "bases",
-        "color": "rosa"
-    },
-    {
-        "id": 1,
-        "name": "Base de maquillaje 1",
-        "description": "descripcion1",
-        "price": 9.99,
-        "discount": 0,
-        "image": "base-1.jpg",
-        "stock": 1,
-        "category": "bases",
-        "color": "rosa"
-    },
-    {
-        "id": 41,
-        "price": "500",
-        "discount": 0,
-        "image": "/img/products/product-1701180922052-333759502.png",
-        "stock": "10",
-        "category": "bases",
-        "color": "red"
-    },
-    {
-        "id": 42,
-        "name": "El producto de gabyfinn",
-        "description": "Es una descripcion del producto de gabyfinn",
-        "price": "322132",
-        "discount": 0,
-        "image": "/img/products/product-1701181025854-336118349.png",
-        "stock": "321",
-        "category": "labiales",
-        "color": "pink"
     }
 ]
