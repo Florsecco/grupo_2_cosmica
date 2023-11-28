@@ -43,7 +43,7 @@ const productController = {
       description,
       price,
       discount,
-      image: path.join('/img/products', req.file.filename),
+      image: req.file.filename,
       stock,
       category,
       color
