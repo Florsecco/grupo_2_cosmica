@@ -18,14 +18,24 @@ const upload = multer({ storage: storage });
 
 const productController = require("../controllers/productController");
 
+// Products list //
 router.get("/", productController.index);
+
+
+// Cart //
 router.get("/cart", productController.cart);
 
+
+// Create product //
 router.get("/create", productController.createProduct);
-router.get("/editProduct", productController.editProduct);
+router.post("/", upload.single('product'), productController.create);
+
+// Product Detail //
 
 router.get("/:id", productController.productDetail);
+
+// Edit product //
 router.get("/:id/edit", productController.productEdit);
 
-router.post("/", upload.single('product'), productController.create);
+
 module.exports = router;

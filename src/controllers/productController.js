@@ -34,9 +34,6 @@ const productController = {
   createProduct: (req, res) => {
     res.render("./products/createProduct");
   },
-  editProduct: (req, res) => {
-    res.render("./products/editProduct");
-  },
   create: (req, res) => {
     const { name, description, price, discount, stock, color, category } = req.body;
     const products = index();
