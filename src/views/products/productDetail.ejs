@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- head -->
+<%- include('../partials/head') %>
+  <!-- head -->
+
+  <body>
+    <!-- header -->
+    <%- include('../partials/header') %>
+      <!-- header -->
+      <main>
+        <div class="section-tittle">
+          <h2>
+            Detalle del producto
+          </h2>
+        </div>
+        <section class="main-section-detail-product">
+          <div class="product-container">
+            <p class="product-container-tittle">
+              <%= product.name %>
+            </p>
+            <div class="product-small-container">
+              <img src="/img/products/<%= product.image %>" alt="<%=product.name%>">
+              <div class="product-details">
+                <p><%=product.description%></p>
+
+                <div class="display-flex-detail">
+                <% if (product.discount> 0) { %>
+                    
+                  <div class="old-price">
+                    <p class="product-container-price strikethrough price-old">$<%= toThousand(product.price) %> </p>
+                  </div>  
+                      <p class="product-container-price ">$<%= toThousand(product.price - (product.price*product.discount/100)) %> </p>
+
+                          <% } else { %>
+                            <p class="product-container-price">$<%=toThousand(product.price) %>
+
+                                <% } %>
+                            </p>
+                          </div>          
+                            <p>Cuotas sin interés con <i class="fa-regular fa-credit-card"></i></p>
+                            <div>
+                              <a href="#" class="add-to-cart">Comprar</a>
+                            </div>
+                            <div>
+                              <a href="#" class="add-to-cart">Agregar al <i class="fa-solid fa-cart-shopping"></i></a>
+                            </div>
+              </div>
+            </div>
+          </div>
+          <section class="details-container">
+            <div class="items-details-container">
+              <h3> Descripción <i class="fa-regular fa-square-caret-down"></i></h3>
+              <p> La galardonada Airbrush Flawless Foundation de Charlotte es una fórmula ligera de cobertura total que
+                se mantiene todo el día y combina ciencia y color con un acabado mate.</p>
+            </div>
+            <div class="items-details-container">
+              <h3> Reseñas <i class="fa-regular fa-square-caret-down"></i></h3>
+              <p> <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                  class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                Excelente producto!!!</p>
+            </div>
+            <div class="items-details-container">
+              <h3> Ingredientes <i class="fa-regular fa-square-caret-down"></i></h3>
+              <p> INGAQUA/WATER/EAU, CYCLOPENTASILOXANE, ISODODECANE, PEG-10 DIMETHICONE, PROPANEDIOL, POLYGLYCERYL-4
+                ISOSTEARATE, SILICA, NYLON-12.</p>
+            </div>
+          </section>
+          <h3> Articulos Relacionados </h3>
+          <div class="featured-products">
+            <article class="product">
+              <a href="/productDetail">
+                <img class="product-img" src="/img/delineador-2.jpg" alt="liner" />
+              </a>
+              <div class="descrip">
+                <p class="product-tittle">Delineador de ojos marrón</p>
+                <i class="fa-solid fa-heart"></i>
+                <div class="product-full-price">
+                  <p class="product-dsc">20% OFF</p>
+                  <p class="product-price">$11.99</p>
+                </div>
+              </div>
+            </article>
+            <article class="product">
+              <a href="/productDetail">
+                <img class="product-img" src="/img/base-2.jpg" alt="foundation" />
+              </a>
+              <div class="descrip">
+                <p class="product-tittle">Base de maquillaje</p>
+                <i class="fa-solid fa-heart"></i>
+                <div class="product-full-price">
+                  <p class="product-dsc">10% OFF</p>
+                  <p class="product-price">$6.99</p>
+                </div>
+              </div>
+            </article>
+            <article class="product">
+              <a href="/productDetail">
+                <img class="product-img" src="/img/labial-2.jpg" alt="lipstick" />
+              </a>
+              <div class="descrip">
+                <p class="product-tittle">Lápiz de labios</p>
+                <i class="fa-solid fa-heart"></i>
+                <div class="product-full-price">
+                  <p class="product-dsc">5% OFF</p>
+                  <p class="product-price">$9.99</p>
+                </div>
+              </div>
+            </article>
+            <article class="product">
+              <a href="/productDetail">
+                <img class="product-img" src="/img/rubor-2.jpg" alt="blush" />
+              </a>
+              <div class="descrip">
+                <p class="product-tittle">Paleta de iluminador y rubor</p>
+                <i class="fa-solid fa-heart"></i>
+                <div class="product-full-price">
+                  <p class="product-dsc">20% OFF</p>
+                  <p class="product-price">$15.99</p>
+                </div>
+              </div>
+            </article>
+          </div>
+        </section>
+      </main>
+      <!-- footer -->
+      <%- include('../partials/footer') %>
+        <!-- footer -->
+  </body>
+
+</html>

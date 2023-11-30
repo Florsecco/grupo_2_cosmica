@@ -1,36 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <!-- Agregue awesome para usar los iconos -->
-  <script src="https://kit.fontawesome.com/c08cc80d65.js" crossorigin="anonymous"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="/css/normalize.css" />
-  <link rel="stylesheet" href="/css/styles.css" />
-  <title>Mi carrito</title>
-</head>
-
+<!-- head -->
+<%- include('../partials/head') %>
+<!-- head -->
 <body>
-  <header>
-    <div class="header-top">
-      <p>10% off en tu primera compra</p>
-    </div>
-    <div class="main-bar">
-      <div class="menu-logo">
-        <a href="/"><i class="fa-solid fa-bars"></i></a>
-        <a href="/">
-          <img class="logo" src="/img/cosmica_logo_almostblack.png" alt="logo" />
-        </a>
-      </div>
-      <div class="icons-log-reg">
-        <a><i class="fa-solid fa-magnifying-glass"></i></a>
-        <a href="/login"><i class="fa-solid fa-circle-user"></i></a>
-        <a href="/cart"><i class="fa-solid fa-cart-shopping"></i></a>
-      </div>
-    </div>
-  </header>
+  <!-- header -->
+  <%- include('../partials/header') %>
+  <!-- header -->
   <main>
     <div class="section-tittle">
       <h2>Mi Carrito</h2>
@@ -126,40 +102,9 @@
       </div>
     </section>
   </main>
-  <footer>
-    <div class="subscribe">
-      <p>¡No te pierdas nuestras novedades y ofertas!</p>
-      <div class="login-bar">
-        <input type="email" placeholder="Ingresá tu correo electrónico" />
-      </div>
-      <button type="submit" class="button-subscribe">Suscribirme</button>
-    </div>
-    <div>
-      <div class="footer-info">
-        <section>
-          <i class="fa-solid fa-store"></i>
-          <h6>Sobre nosotros</h6>
-          <p>COSMICA SA</p>
-          <p>P. Sherman Calle Wallaby 42, Sidney</p>
-        </section>
-        <section>
-          <i class="fa-solid fa-truck"></i>
-          <h6>Envíos gratis desde $100</h6>
-          <p>Envíos a todo el país con una compra minima de $100</p>
-        </section>
-        <section>
-          <i class="fa-solid fa-credit-card"></i>
-          <h6>12 cuotas sin interés</h6>
-          <p>Con todas las tarjetas bancarizadas</p>
-        </section>
-      </div>
-      <div class="social">
-        <i class="fa-brands fa-instagram"></i>
-        <i class="fa-brands fa-facebook"></i>
-        <i class="fa-brands fa-whatsapp"></i>
-      </div>
-    </div>
-  </footer>
+  <!-- footer -->
+  <%- include('../partials/footer') %>
+  <!-- footer -->
 </body>
 
 </html>

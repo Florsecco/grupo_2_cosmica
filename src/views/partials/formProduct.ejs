@@ -1,0 +1,58 @@
+<form action="<%=path%>" method="<%=method%>" enctype="multipart/form-data" class="form-create-product">
+    <div class="product-items">
+        <label>Nombre</label>
+        <input type="text" name="name" placeholder="Nombre Producto" <% if (product !=null) { %>
+        value="<%=product.name%>"
+            <% } %>>
+    </div>
+    <div class="product-items">
+        <label>Descripción</label>
+        <textarea name="description"
+            placeholder="Descripción del producto"><%if(product !=null){%><%=product.description%><%}%></textarea>
+    </div>
+    <div class="product-items">
+        <label>Imagen</label>
+        <input type="file" name="product" multiple>
+    </div>
+    <div class="product-items-block">
+        <p>Categoría</p>
+        <label><input type="radio" name="category" value="bases" <% if (product != null && product.category=="bases" ) { %>
+            checked
+            <% } %> /> Bases
+        </label>
+        <label><input type="radio" name="category" value="labiales" <% if (product != null && product.category=="labiales" ) { %>
+            checked
+            <% } %> /> Labiales
+        </label>
+        <label><input type="radio" name="category" value="rubores" <% if (product != null && product.category=="rubores" ) { %>
+            checked
+            <% } %> /> Rubores
+        </label>
+        <label><input type="radio" name="category" value="delineadores" <% if (product != null && product.category=="delineadores" ) { %>
+            checked
+            <% } %> /> Delineadores
+        </label>
+    </div>
+    <div class="product-items-block">
+        <p>Color</p>
+        <label><input type="radio" name="color" value="red" /> Rojo </label>
+        <label><input type="radio" name="color" value="pink" /> Rosa </label>
+        <label><input type="radio" name="color" value="nude" /> Nude </label>
+        <label><input type="radio" name="color" value="brown" /> Marrón </label>
+    </div>
+    <div class="product-items">
+        <label>Precio</label>
+        <input type="number" name="price" placeholder="$12.34">
+    </div>
+    <div class="product-items">
+        <label>Descuento</label>
+        <input type="number" name="discount" placeholder="20">
+    </div>
+    <div class="product-items">
+        <label>Stock</label>
+        <input type="number" name="stock" placeholder="30">
+    </div>
+    <div class="col-12">
+        <button type="submit" class="buy-now-button">Guardar producto</button>
+    </div>
+</form>
