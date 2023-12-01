@@ -21,7 +21,6 @@ const productController = require("../controllers/productController");
 // Products list //
 router.get("/", productController.index);
 
-
 // Cart //
 router.get("/cart", productController.cart);
 

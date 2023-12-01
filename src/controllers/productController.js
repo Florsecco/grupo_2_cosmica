@@ -24,12 +24,12 @@ const productController = {
   },
   productDetail: (req, res) => {
     const { id } = req.params;
-    console.log(id);
+    const products= index();
     const product = findOne(id);
     if (product === undefined)
       res.redirect('../not-found');
     console.log(product);
-    res.render("./products/productDetail", { product, toThousand });
+    res.render("./products/productDetail", { product,products, toThousand });
   },
   createProduct: (req, res) => {
     res.render("./products/createProduct");
