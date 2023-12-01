@@ -36,6 +36,7 @@ router.get("/:id", productController.productDetail);
 
 // Edit product //
 router.get("/:id/edit", productController.productEdit);
+router.put("/:id", productController.update)
 
 
 module.exports = router;

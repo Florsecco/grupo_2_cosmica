@@ -12,7 +12,8 @@ const model = {
         }
     },
     findOne: id => model.index().find(product => product.id == id),
-    create: (file) => writeFileSync(model.file, JSON.stringify(file))
+    create: (file) => writeFileSync(model.file, JSON.stringify(file, null, 2)),
+    
 }
 
 module.exports = model;

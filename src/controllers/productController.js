@@ -65,6 +65,11 @@ const productController = {
     const product = findOne(id);
     res.render("./products/editProduct", { product });
   },
+  update: (req, res) => {
+    const id = req.params.id
+    res.redirect(`/products/${id}`)
+    
+  }
 };
 
 module.exports = productController;
