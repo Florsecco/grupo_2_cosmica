@@ -42,8 +42,6 @@
           <h3>Productos Destacados</h3>
           <div class="featured-products">
             <% featured.forEach(product=> { %>
-              <% if (product.discount==0 ) { %>
-
                 <article class="product">
                   <a href="/products/<%=product.id%>">
                     <img class="product-img" src="/img/products/<%=product.image%>" alt="<%=product.name%>" />
@@ -57,14 +55,11 @@
                     </p>
                   </div>
                 </article>
-                <% } %>
                   <% }) %>
           </div>
           <h3>Ofertas</h3>
           <div class="featured-products">
             <% offers.forEach(product=> { %>
-              <% if (product.discount>0 ) { %>
-
                 <article class="product">
                   <a href="/products/<%=product.id%>">
                     <img class="product-img" src="/img/products/<%=product.image%>" alt="<%=product.name%>" />
@@ -85,7 +80,6 @@
                     </div>
                   </div>
                 </article>
-                <% } %>
                   <% }) %>
           </div>
         </section>
