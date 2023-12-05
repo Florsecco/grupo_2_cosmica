@@ -54,6 +54,11 @@
                 <div>
                   <a href="/products/<%= product.id %>/edit" class="add-to-cart">Editar producto</a>
                 </div>
+                <div>
+                  <form action= "/products/<%= product.id %>?_method=DELETE" method="POST">
+                    <button class= "add-to-cart" type="submit">Eliminar</button> 
+                  </form>
+                </div>
               </div>
             </div>
           </div>

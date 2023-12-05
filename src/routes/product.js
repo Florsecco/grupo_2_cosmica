@@ -37,5 +37,7 @@ router.get("/:id", productController.productDetail);
 router.get("/:id/edit", productController.productEdit);
 router.put("/:id", productController.update)
 
+// delete element //
+router.delete('/:id',productController.delete)
 
 module.exports = router;
