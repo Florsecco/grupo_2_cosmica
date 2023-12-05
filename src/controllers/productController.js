@@ -15,7 +15,7 @@ const productController = {
     const products = index();
     const offers = products.filter((product)=>product.discount!=0)
     const featured = products.filter((product)=>product.discount==0)
-    console.log(products);
+    //console.log(products);//
     // const offers
     res.render("./products/products", { offers,featured,toThousand })
   },
@@ -24,12 +24,12 @@ const productController = {
   },
   productDetail: (req, res) => {
     const { id } = req.params;
-    console.log(id);
+    const products= index();
     const product = findOne(id);
     if (product === undefined)
       res.redirect('../not-found');
-    console.log(product);
-    res.render("./products/productDetail", { product, toThousand });
+    //console.log(product);//
+    res.render("./products/productDetail", { product,products, toThousand });
   },
   createProduct: (req, res) => {
     res.render("./products/createProduct");
@@ -65,6 +65,18 @@ const productController = {
     const product = findOne(id);
     res.render("./products/editProduct", { product });
   },
+  update: (req, res) => {
+    const id = req.params.id
+    res.redirect(`/products/${id}`)
+    
+  },
+  delete: (req, res) => {
+    const productos = index();
+    const id = req.params.id;
+    const produtosRestantes = productos.filter(product => product.id != id);
+    create(produtosRestantes)
+    res.redirect('/products')
+  }
 };
 
 module.exports = productController;

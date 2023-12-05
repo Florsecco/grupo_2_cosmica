@@ -21,7 +21,6 @@ const productController = require("../controllers/productController");
 // Products list //
 router.get("/", productController.index);
 
-
 // Cart //
 router.get("/cart", productController.cart);
 
@@ -36,6 +35,9 @@ router.get("/:id", productController.productDetail);
 
 // Edit product //
 router.get("/:id/edit", productController.productEdit);
+router.put("/:id", productController.update)
 
+// delete element //
+router.delete('/:id',productController.delete)
 
 module.exports = router;

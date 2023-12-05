@@ -13,7 +13,7 @@
 
       <!-- header -->
       <section>
-       <!--  <img class="banner-1000px" src="/img/cosmica_banner_500x2000.png" alt="banner" />
+        <!--  <img class="banner-1000px" src="/img/cosmica_banner_500x2000.png" alt="banner" />
         <img class="banner-360px" src="/img/cosmica_banner_600x1000.png" alt="banner" /> -->
       </section>
       <main>
@@ -26,51 +26,46 @@
           <h3>Productos Destacados</h3>
           <div class="featured-products">
             <% featured.forEach(product=> { %>
-              <% if (product.discount==0 ) { %>
-
-                <article class="product">
-                  <a href="/products/<%=product.id%>">
-                    <img class="product-img" src="/img/products/<%=product.image%>" alt="<%=product.name%>" />
-                  </a>
-                  <div class="descrip">
-                    <i class="fa-solid fa-heart"></i></a>
-                    <p class="product-tittle">
-                      <%=product.name%>
-                    </p>
-                    <p class="product-price"> $<%=toThousand(product.price)%>
-                    </p>
-                  </div>
-                </article>
-                <% } %>
-                  <% }) %>
+              <article class="product">
+                <a href="/products/<%=product.id%>">
+                  <img class="product-img" src="/img/products/<%=product.image%>" alt="<%=product.name%>" />
+                </a>
+                <div class="descrip">
+                  <i class="fa-solid fa-heart"></i></a>
+                  <p class="product-tittle">
+                    <%=product.name%>
+                  </p>
+                  <p class="product-price"> $<%=toThousand(product.price)%>
+                  </p>
+                </div>
+              </article>
+              <% }) %>
           </div>
           <h3>Ofertas</h3>
           <div class="featured-products">
             <% offers.forEach(product=> { %>
-              <% if (product.discount>0 ) { %>
-
-                <article class="product">
-                  <a href="/products/<%=product.id%>">
-                    <img class="product-img" src="/img/products/<%=product.image%>" alt="<%=product.name%>" />
-                  </a>
-                  <div class="descrip">
-                    <i class="fa-solid fa-heart"></i></a>
-                    <p class="product-tittle">
-                      <%=product.name%>
+              <article class="product">
+                <a href="/products/<%=product.id%>">
+                  <img class="product-img" src="/img/products/<%=product.image%>" alt="<%=product.name%>" />
+                </a>
+                <div class="descrip">
+                  <i class="fa-solid fa-heart"></i></a>
+                  <p class="product-tittle">
+                    <%=product.name%>
+                  </p>
+                  <div class="product-full-price">
+                    <p class="product-dsc">
+                      <%=product.discount%>% OFF
                     </p>
-                    <div class="product-full-price">
-                      <p class="product-dsc">
-                        <%=product.discount%>% OFF
-                      </p>
-                      <p class="product-price strikethrough price-old">$<%=toThousand(product.price)%></p>
-                      <p class="product-price">
-                        $<%= toThousand(product.price - (product.price*product.discount/100)) %>
-                      </p>
-                    </div>
+                    <p class="product-price strikethrough price-old">$<%=toThousand(product.price)%>
+                    </p>
+                    <p class="product-price">
+                      $<%= toThousand(product.price - (product.price*product.discount/100)) %>
+                    </p>
                   </div>
-                </article>
-                <% } %>
-                  <% }) %>
+                </div>
+              </article>
+              <% }) %>
           </div>
         </section>
       </main>
