@@ -35,10 +35,18 @@
     </div>
     <div class="product-items-block">
         <p>Color</p>
-        <label><input type="radio" name="color" value="red" /> Rojo </label>
-        <label><input type="radio" name="color" value="pink" /> Rosa </label>
-        <label><input type="radio" name="color" value="nude" /> Nude </label>
-        <label><input type="radio" name="color" value="brown" /> Marrón </label>
+        <label><input type="radio" name="color" value="red" <% if (product != null && product.color=="red" ) { %>
+            checked
+            <% } %>/> Rojo </label>
+        <label><input type="radio" name="color" value="pink"<% if (product != null && product.color=="pink" ) { %>
+            checked
+            <% } %> /> Rosa </label>
+        <label><input type="radio" name="color" value="nude" <% if (product != null && product.color=="nude" ) { %>
+            checked
+            <% } %> /> Nude </label>
+        <label><input type="radio" name="color" value="brown" <% if (product != null && product.color=="brown" ) { %>
+            checked
+            <% } %> /> Marrón </label>
     </div>
     <div class="product-items">
         <label>Precio</label>

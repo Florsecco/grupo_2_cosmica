@@ -1,5 +1,5 @@
 const { findOne, index, create } = require("../models/product.model");
-const path = require('path');
+
 const toThousand = (numero) =>{
   const opciones = {
       style: 'decimal',
