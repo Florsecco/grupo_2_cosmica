@@ -1,4 +1,4 @@
-const { findOne, index, create } = require("../models/product.model");
+const { findOne, index, generateId ,create } = require("../models/product.model");
 
 const toThousand = (numero) =>{
   const opciones = {
@@ -15,8 +15,6 @@ const productController = {
     const products = index();
     const offers = products.filter((product)=>product.discount!=0)
     const featured = products.filter((product)=>product.discount==0)
-    //console.log(products);//
-    // const offers
     res.render("./products/products", { offers,featured,toThousand })
   },
   cart: (req, res) => {
@@ -28,7 +26,6 @@ const productController = {
     const product = findOne(id);
     if (product === undefined)
       res.redirect('../not-found');
-    //console.log(product);//
     res.render("./products/productDetail", { product,products, toThousand });
   },
   createProduct: (req, res) => {
@@ -37,14 +34,7 @@ const productController = {
   create: (req, res) => {
     const { name, description, price, discount, stock, color, category } = req.body;
     const products = index();
-    let id;
-    if (products.length > 0) {
-
-      id = Math.max(...products.map(x => x.id)) + 1;
-    }
-    else {
-      id = 1;
-    }
+    let id = generateId();
     const product = {
       id,
       name,
