@@ -372,6 +372,7 @@ ProductDetail
     margin-top: 5px;
     margin-bottom: 5px;
     display: inline-block;
+    border: none;
     border-radius: 7px;
 }
 .details-container{
@@ -806,6 +807,14 @@ h4{
 }
 /* desktops */
 @media (min-width: 992px){
+    .display-flex-desktop{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        gap: 15px;
+        
+    }
     .product {
         width: 22vw;
     }

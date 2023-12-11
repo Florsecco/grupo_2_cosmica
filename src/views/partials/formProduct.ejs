@@ -50,15 +50,15 @@
     </div>
     <div class="product-items">
         <label>Precio</label>
-        <input type="number" name="price" placeholder="$12.34">
+        <input type="number" name="price" placeholder="$12.34" value="<%if(product !=null){%><%=product.price%><%}%>">
     </div>
     <div class="product-items">
         <label>Descuento</label>
-        <input type="number" name="discount" placeholder="20">
+        <input type="number" name="discount" placeholder="20" value="<%if(product !=null){%><%=product.discount%><%}%>">
     </div>
     <div class="product-items">
         <label>Stock</label>
-        <input type="number" name="stock" placeholder="30">
+        <input type="number" name="stock" placeholder="30" value="<%if(product !=null){%><%=product.stock%><%}%>">
     </div>
     <div class="col-12">
         <button type="submit" class="buy-now-button">Guardar producto</button>
