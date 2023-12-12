@@ -10,7 +10,7 @@ const productRouter = require('./routes/product.js');
 
 app.use(express.urlencoded({ extended: false }));
 app.use(methodOverride('_method'));
-app.use(express.static(__dirname + '/public'));
+app.use(express.static(__dirname + '/../public'));
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
@@ -22,6 +22,8 @@ app.use('/products', productRouter);
 app.use((req, res, next) => {
   res.status(404).render('not-found');
 });
+
+
 
 
 
