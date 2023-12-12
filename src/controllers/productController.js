@@ -75,7 +75,7 @@ const productController = {
     if (req.file != undefined) {
       const imagenAnterior = product.image;
       product.image = req.file.filename;
-      fs.unlinkSync(path.join(__dirname, '../public/img/products', imagenAnterior));
+      fs.unlinkSync(path.join(__dirname, '../../public/img/products', imagenAnterior));
     }
     update(product)
 
