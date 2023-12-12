@@ -96,7 +96,7 @@ const productController = {
     });
     create(productosRestantes)
     
-    fs.unlinkSync(path.join(__dirname, '../public/img/products', img));
+    fs.unlinkSync(path.join(__dirname, '../../public/img/products', img));
     res.redirect('/products')
   }
 };
