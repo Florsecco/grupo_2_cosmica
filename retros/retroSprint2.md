@@ -16,4 +16,3 @@
 ## Dejar de hacer 
 -  Por ahora nada
 -  
--  Funciona la regla 2
