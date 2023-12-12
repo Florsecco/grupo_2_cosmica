@@ -7,7 +7,7 @@
         "discount": 52,
         "image": "base-1.jpg",
         "stock": 6,
-        "category": "rubores",
+        "category": "bases",
         "color": "negro"
     },
     {
@@ -18,7 +18,7 @@
         "discount": 60,
         "image": "base-2.jpg",
         "stock": 14,
-        "category": "labiales",
+        "category": "bases",
         "color": "oscura"
     },
     {
@@ -62,7 +62,7 @@
         "discount": 25,
         "image": "delineador-2.jpg",
         "stock": 75,
-        "category": "bases",
+        "category": "delineadores",
         "color": "azul"
     },
     {
@@ -84,7 +84,7 @@
         "discount": 25,
         "image": "delineador-3.jpg",
         "stock": 99,
-        "category": "labiales",
+        "category": "delineadores",
         "color": "nude"
     },
     {
@@ -95,7 +95,7 @@
         "discount": 22,
         "image": "delineador-4.jpg",
         "stock": 42,
-        "category": "bases",
+        "category": "delineadores",
         "color": "nude"
     },
     {
@@ -106,7 +106,7 @@
         "discount": 22,
         "image": "rubor-1.jpg",
         "stock": 96,
-        "category": "bases",
+        "category": "rubores",
         "color": "rosa"
     },
     {
@@ -117,7 +117,7 @@
         "discount": 3,
         "image": "delineador-5.jpg",
         "stock": 27,
-        "category": "rubores",
+        "category": "delineadores",
         "color": "marron"
     },
     {
@@ -128,7 +128,7 @@
         "discount": 33,
         "image": "base-4.jpg",
         "stock": 39,
-        "category": "rubores",
+        "category": "bases",
         "color": "azul"
     },
     {
@@ -150,7 +150,7 @@
         "discount": 22,
         "image": "delineador-6.jpg",
         "stock": 82,
-        "category": "rubores",
+        "category": "delineadores",
         "color": "rosa"
     },
     {
@@ -161,7 +161,7 @@
         "discount": 49,
         "image": "base-5.jpg",
         "stock": 35,
-        "category": "delineadores",
+        "category": "bases",
         "color": "rosa"
     },
     {
@@ -194,7 +194,7 @@
         "discount": 39,
         "image": "base-6.jpg",
         "stock": 11,
-        "category": "delineadores",
+        "category": "bases",
         "color": "clara"
     },
     {
@@ -205,7 +205,7 @@
         "discount": 11,
         "image": "delineador-8.jpg",
         "stock": 51,
-        "category": "labiales",
+        "category": "delineadores",
         "color": "naranja"
     },
     {
@@ -216,7 +216,7 @@
         "discount": 39,
         "image": "base-7.jpg",
         "stock": 69,
-        "category": "rubores",
+        "category": "bases",
         "color": "rosa"
     },
     {
@@ -249,7 +249,7 @@
         "discount": 50,
         "image": "delineador-11.jpg",
         "stock": 78,
-        "category": "bases",
+        "category": "delineadores",
         "color": "oscura"
     },
     {
@@ -293,7 +293,7 @@
         "discount": 57,
         "image": "base-8.jpg",
         "stock": 32,
-        "category": "delineadores",
+        "category": "bases",
         "color": "naranja"
     },
     {
@@ -304,7 +304,7 @@
         "discount": 16,
         "image": "delineador-12.jpg",
         "stock": 88,
-        "category": "rubores",
+        "category": "delineadores",
         "color": "media"
     },
     {
@@ -315,7 +315,7 @@
         "discount": 28,
         "image": "base-12.jpg",
         "stock": 21,
-        "category": "rubores",
+        "category": "bases",
         "color": "nude"
     },
     {
@@ -326,7 +326,7 @@
         "discount": 59,
         "image": "rubor-2.jpg",
         "stock": 91,
-        "category": "labiales",
+        "category": "rubores",
         "color": "oscura"
     },
     {
@@ -348,8 +348,8 @@
         "discount": 0,
         "image": "rubor-8.jpg",
         "stock": 9,
-        "category": "labiales",
-        "color": "azul"
+        "category": "rubores",
+        "color": "pink"
     },
     {
         "id": 33,
@@ -370,7 +370,7 @@
         "discount": 51,
         "image": "rubor-7.jpg",
         "stock": 71,
-        "category": "delineadores",
+        "category": "rubores",
         "color": "nude"
     },
     {
@@ -392,7 +392,7 @@
         "discount": 23,
         "image": "base-10.jpg",
         "stock": 54,
-        "category": "labiales",
+        "category": "bases",
         "color": "oscura"
     },
     {
@@ -403,7 +403,7 @@
         "discount": 50,
         "image": "rubor-5.jpg",
         "stock": 28,
-        "category": "delineadores",
+        "category": "rubores",
         "color": "rojo"
     },
     {
@@ -425,7 +425,7 @@
         "discount": 30,
         "image": "base-11.jpg",
         "stock": 83,
-        "category": "rubores",
+        "category": "bases",
         "color": "negro"
     },
     {
@@ -436,7 +436,7 @@
         "discount": 0,
         "image": "rubor-3.jpg",
         "stock": 74,
-        "category": "delineadores",
+        "category": "rubores",
         "color": "rosa"
     },
     {

@@ -45,20 +45,23 @@
                 <p>
                   Cuotas sin interés con <i class="fa-regular fa-credit-card"></i>
                 </p>
+                
                 <div>
                   <a href="#" class="add-to-cart">Comprar</a>
                 </div>
                 <div>
                   <a href="#" class="add-to-cart">Agregar al <i class="fa-solid fa-cart-shopping"></i></a>
                 </div>
+              <div class="display-flex-desktop">
                 <div>
-                  <a href="/products/<%= product.id %>/edit" class="add-to-cart">Editar producto</a>
+                  <a href="/products/<%= product.id %>/edit" class="add-to-cart">Editar</a>
                 </div>
                 <div>
                   <form action= "/products/<%= product.id %>?_method=DELETE" method="POST">
                     <button class= "add-to-cart" type="submit">Eliminar</button> 
                   </form>
                 </div>
+              </div>
               </div>
             </div>
           </div>
