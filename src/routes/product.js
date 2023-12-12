@@ -22,7 +22,7 @@ router.get("/:id", productController.productDetail);
 
 // Edit product //
 router.get("/:id/edit", productController.productEdit);
-router.put("/:id", productController.update)
+router.put("/:id", upload.single('product') ,productController.update)
 
 // delete element //
 router.delete('/:id',productController.delete)

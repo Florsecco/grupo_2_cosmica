@@ -1,4 +1,8 @@
-const { findOne, index, generateId ,create } = require("../models/product.model");
+const { findOne, index, generateId ,create, update } = require("../models/product.model");
+
+const fs = require('fs')
+
+const path = require('path')
 
 const toThousand = (numero) =>{
   const opciones = {
@@ -57,14 +61,42 @@ const productController = {
   },
   update: (req, res) => {
     const id = req.params.id
+    const product = findOne(id)
+    const { name, description, price, discount, stock, color, category } = req.body;
+    
+    product.name = name ? name : product.name
+    product.description = description ? description : product.description
+    product.price = price ? price : product.price
+    product.discount = discount ? discount : product.discount
+    product.stock = stock ? stock : product.stock
+    product.color = color ? color : product.color
+    product.category = category ? category : product.category
+
+    if (req.file != undefined) {
+      const imagenAnterior = product.image;
+      product.image = req.file.filename;
+      fs.unlinkSync(path.join(__dirname, '../public/img/products', imagenAnterior));
+    }
+    update(product)
+
     res.redirect(`/products/${id}`)
     
   },
   delete: (req, res) => {
     const productos = index();
     const id = req.params.id;
-    const produtosRestantes = productos.filter(product => product.id != id);
-    create(produtosRestantes)
+    let img
+    const productosRestantes = productos.filter(product => {
+      if(product.id != id){
+        return product
+      }else{
+        img = product.image
+      }
+
+    });
+    create(productosRestantes)
+    
+    fs.unlinkSync(path.join(__dirname, '../public/img/products', img));
     res.redirect('/products')
   }
 };

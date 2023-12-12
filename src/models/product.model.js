@@ -19,8 +19,23 @@ const model = {
     } else {
       id = 1;
     }
+    return id;
   },
   create: (file) => writeFileSync(model.file, JSON.stringify(file, null, 2)),
+  update: (product) => {
+    const products = model.index();
+    const indexProduct = products.findIndex(
+      (oneProduct) => oneProduct.id === product.id
+    );
+    if (indexProduct != -1) {
+      products[indexProduct] = product;
+    } else {
+      products.push(product);
+    }
+    model.create(products);
+  },
 };
+
+
 
 module.exports = model;
