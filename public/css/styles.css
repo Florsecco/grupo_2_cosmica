@@ -633,6 +633,7 @@ h4{
     margin-bottom: 5px;
     border-radius: 10px;
 }
+
 .password:focus, .password:hover{
     outline: 2px #ff5355 solid; 
     border: 0px #ff5355 solid;
@@ -661,6 +662,11 @@ h4{
     height: 30px;
     margin-top: 5px;
     margin-bottom: 5px;
+}
+
+.form-register .avatar input{
+    height: 50px;
+    padding: 13px 5px
 }
 /* create product */ 
 .form-create-product button{
