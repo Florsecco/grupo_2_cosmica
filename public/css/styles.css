@@ -701,6 +701,15 @@ h4{
 .profile a{
     text-decoration: none;
 }
+.log-out{
+    color: #ff5355;
+    font-size: 0.8em ;
+}
+.logout-flex{
+    display: flex;
+    justify-content: space-between;
+    padding: 5px;
+}
 /* create product */ 
 .form-create-product button{
     width: 160px;
