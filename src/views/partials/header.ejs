@@ -11,7 +11,11 @@
       </div>
       <div class="icons-log-reg">
         <a><i class="fa-solid fa-magnifying-glass"></i></a>
+        <% if (locals.isLogged) { %>
+          <a href="/users/profile"><img src="/img/users/<%= locals.userLogged.image %>" width="30px" style="border-radius: 100%;"></a>
+        <% } else { %>
         <a href="/users/login"><i class="fa-solid fa-circle-user"></i></a>
+        <% } %>
         <a href="/products/cart"><i class="fa-solid fa-cart-shopping"></i></a>
       </div>
     </div>

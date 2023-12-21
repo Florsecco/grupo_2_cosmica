@@ -719,6 +719,9 @@ h4{
     color:#3e005b;
     padding: 4px;
 }
+.comeback{
+    font-size: 0.7em;
+}
 /* create product */ 
 .form-create-product button{
     width: 160px;
