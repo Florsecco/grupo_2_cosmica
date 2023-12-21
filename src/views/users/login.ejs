@@ -13,18 +13,34 @@
         <div class="section-tittle">
             <h2>Ingresá</h2>
         </div>
-        <form action="" method="" class="form-register">
+        <form action="" method="POST" class="form-register">
             <div>
-                <input type="email" name="email" placeholder="ejemplo@mail.com">
+                <input type="email" name="email" placeholder="ejemplo@mail.com" value=<%=  locals.old && old.email ? old.email : "" %>>
+               
             </div>
+            <% if (locals.errors && errors.email) { %>
+                <span style="color: red;">
+                   <%= errors.email.msg %>
+                </span>
+               <% } %>
             <div class="password">
                 <input type="password" name="password" placeholder="**************">
                 <i class="fa-solid fa-eye-slash"></i>
             </div>
+            <% if (locals.errors && errors.password) { %>
+             <span style="color: red;">
+                <%= errors.password.msg %>
+             </span>
+            <% } %>
             <label class="button-remember"><input type="checkbox" name="remember-me" value="remember">Recordarme</label>
             <div class="button-login">
                 <button type="submit">Iniciar Sesion</button>
             </div>
+            <% if (locals.errors && locals.errors.msg) { %>
+                <span style="color: red;">
+                   <%= errors.msg %>
+                </span>
+               <% } %>
             <div class="button-login">
                 <a href="/users/register">
                     <button type="button">Registrarme</button>

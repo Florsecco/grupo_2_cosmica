@@ -7,38 +7,77 @@
   <!-- head -->
   <body>
     <!-- header -->
-  <%- include('../partials/header') %>
-  <!-- header -->
+    <%- include('../partials/header') %>
+    <!-- header -->
     <div class="section-tittle">
       <h2>Mi cuenta</h2>
     </div>
     <section class="main-section">
       <h3 class="title-profile">Informacion de la cuenta</h3>
       <div class="profile">
-        <img src="/img/users/<%= user.image %>" alt="img-profile">
-      <form action="" method="" class="form-register" enctype="multipart/form-data">
-        
-        <div class="avatar">
-            <input type="file" name="avatar" >
+        <img src="/img/users/<%= user.image %>" alt="img-profile" />
+        <form
+          action="/users/edit?_method=PUT"
+          method="POST"
+          class="form-register profile-form"
+          enctype="multipart/form-data"
+        >
+          <div class="avatar">
+            <input type="file" name="avatar" />
           </div>
-        <div>
-          <input type="text" name="first_name" placeholder="Nombre" value="<%= user.first_name %>">
-        </div>
-        <div>
-          <input type="text" name="last_name" placeholder="Apellido" value="<%= user.last_name %>">
-        </div>
-        <div>
-          <input type="email" name="email" placeholder="E-mail" value="<%= user.email %>">
-        </div>
-        <div class="password">
-          <input type="password" name="password" placeholder="Contraseña">
-          <i class="fa-solid fa-eye-slash"></i>
-        </div>        
-        <div>
-          <input type="text" name="adress" placeholder="Direccion" value="<%= user.adress %>">
-        </div>
-    </div>
-    </div>
+          <div>
+            <input
+              type="text"
+              name="first_name"
+              placeholder="Nombre"
+              value="<%= user.first_name %>"
+            />
+          </div>
+          <div>
+            <input
+              type="text"
+              name="last_name"
+              placeholder="Apellido"
+              value="<%= user.last_name %>"
+            />
+          </div>
+          <div>
+            <input
+              type="email"
+              name="email"
+              placeholder="E-mail"
+              value="<%= user.email %>"
+            />
+          </div>
+          <div class="password">
+            <input
+              type="password"
+              name="oldPassword"
+              placeholder="Contraseña actual"
+            />
+            <i class="fa-solid fa-eye-slash"></i>
+          </div>
+          <div class="password">
+            <input
+              type="password"
+              name="password"
+              placeholder="Contraseña nueva"
+            />
+            <i class="fa-solid fa-eye-slash"></i>
+          </div>
+          <div>
+            <input
+              type="text"
+              name="address"
+              placeholder="Direccion"
+              value="<%= user.address %>"
+            />
+          </div>
+          <div class="button-login">
+            <button type="submit">Guardar</button>
+          </div>
+        </form>
+      </div>
     </section>
     <!-- footer -->
     <%- include('../partials/footer') %>

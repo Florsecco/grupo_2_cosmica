@@ -1,9 +1,9 @@
 const express = require("express");
 const router = express.Router();
 
-
 const productController = require("../controllers/productController");
-const upload = require('../middlewares/multerMiddleware')
+const upload = require('../middlewares/multerMiddleware');
+const authMiddleware = require("../middlewares/authMiddleware");
 
 // Products list //
 router.get("/", productController.index);
@@ -13,7 +13,7 @@ router.get("/cart", productController.cart);
 
 
 // Create product //
-router.get("/create", productController.createProduct);
+router.get("/create",authMiddleware, productController.createProduct);
 router.post("/", upload.single('product'), productController.create);
 
 // Product Detail //
