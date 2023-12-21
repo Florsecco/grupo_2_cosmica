@@ -26,7 +26,6 @@ const userController = {
   },
   processLogin: (req, res) => {
     const errors = validationResult(req);
-    console.log(errors);
     if (!errors.isEmpty()) {
       return res.render("./users/login", {
         errors: errors.mapped(),
@@ -46,8 +45,12 @@ const userController = {
     delete user.password;
 
     req.session.userLogged = user;
-
+    if(req.body.rememberMe){
+      res.cookie('userEmail', req.body.email, { maxAge: (1000 * 60) * 60 })
+    }
+    
     return res.redirect(`profile`);
+    
   },
   update: (req, res) => {
     const errors = validationResult(req);
@@ -67,7 +70,7 @@ const userController = {
       user.image = req.file.filename;
       fs.unlinkSync(path.join(__dirname, '../../public/img/users', avatarAnterior))
     }
-
+    
 
     const userUpdate = update(userId, user);
     delete userUpdate.password;
@@ -76,6 +79,7 @@ const userController = {
   },
   logout: (req, res) => {
     req.session.destroy();
+    res.clearCookie('userEmail');
     res.redirect("/");
   },
   delete: (req, res) => {

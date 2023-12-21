@@ -27,6 +27,11 @@ const model = {
     }
     return undefined;
   },
+  findUser: (field,text)=>{
+    const users= model.index()
+    const userFound = users.find(user=> user[field] == text)
+    return userFound
+  },
   update: (userId, userUpdated) => {
     let users = model.index();
     let user = users.find((x) => x.id == userId);
