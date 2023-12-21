@@ -35,8 +35,6 @@ const userController = {
     }
 
     const user = findByEmail(req.body);
-    delete user.password;
-    req.session.userLogged = user;
     if (!user)
       return res.render("./users/login", {
         errors: {
@@ -45,7 +43,11 @@ const userController = {
         old: req.body,
       });
 
-    res.redirect(`profile`);
+    delete user.password;
+
+    req.session.userLogged = user;
+
+    return res.redirect(`profile`);
   },
   update: (req, res) => {
     const errors = validationResult(req);
@@ -70,9 +72,11 @@ const userController = {
       );
     }
 
-    update(userId, user);
-    // const {}
-    res.redirect("profile");
+
+    const userUpdate = update(userId, user);
+    delete userUpdate.password;
+    req.session.userLogged = userUpdate;
+    res.redirect("/users/profile");
   },
   logout: (req, res) => {
     req.session.destroy();

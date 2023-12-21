@@ -28,32 +28,25 @@ const model = {
   update: (userId, userUpdated) => {
     let users = model.index();
     let user = users.find((x) => x.id == userId);
-    if (!userUpdated.oldPassword || !userUpdated.password) {
-      delete userUpdated.oldPassword;
-      delete userUpdated.password;
-    }
-
-   
-    let userIsValidPassword = bcrypt.compareSync(
+    if (userUpdated.oldPassword && userUpdated.password) {
+      let userIsValidPassword = bcrypt.compareSync(
         userUpdated.oldPassword,
         user.password
       );
-    if (userIsValidPassword) {
-        delete userUpdated.oldPassword;
-        userUpdated.password = bcrypt.hashSync(userUpdated.password, 10);
-      } else {
-        delete userUpdated.oldPassword;
-        delete userUpdated.password;
-      }
-      
-    delete userUpdated.oldPassword;
-    delete userUpdated.password;
-    console.log("User actualizado:", userUpdated);
 
-    // user = { ...user, ...userUpdated };
-    console.log("User:\n", user);
-    console.log("Users:\n", users);
+      if (userIsValidPassword)
+        user.password = bcrypt.hashSync(userUpdated.password, 10);
+
+    }
+
+    user.first_name = userUpdated.first_name;
+    user.last_name = userUpdated.last_name;
+    user.email = userUpdated.email;
+    user.address = userUpdated.address;
+    user.image = userUpdated.image ? userUpdated.image : user.image;
+
     model.create(users);
+    return user;
   },
 };
 

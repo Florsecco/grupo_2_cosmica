@@ -19,7 +19,7 @@ const validationsUpdate = [
     body('last_name')
         .notEmpty().withMessage('Debe ingresar su Apellido.').bail()
         .isString().withMessage('No debe ingresar numeros'),
-    body('adress')
+    body('address')
         .notEmpty().withMessage('Debe ingresar su domicilio.').bail()
         .isString().withMessage('No debe ingresar numeros'),
     body('email')
