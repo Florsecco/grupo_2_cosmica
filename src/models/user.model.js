@@ -7,7 +7,9 @@ const model = {
   create: (file) => writeFileSync(model.file, JSON.stringify(file, null, 2)),
   index: () => {
     try {
-      return JSON.parse(readFileSync(model.file));
+      const allUsers = JSON.parse(readFileSync(model.file))
+      const activeUsers = allUsers.filter(user => user.state === 1)
+      return activeUsers
     } catch (error) {
       console.log(error);
       return [];
@@ -30,7 +32,7 @@ const model = {
     let user = users.find((x) => x.id == userId);
     if (userUpdated.oldPassword && userUpdated.password) {
       let userIsValidPassword = bcrypt.compareSync(
-        userUpdated.oldPassword,
+        userUpdated.oldPassword,  
         user.password
       );
 
@@ -48,6 +50,15 @@ const model = {
     model.create(users);
     return user;
   },
+  deleteUser: (userId) => {
+    let users = model.index();
+    let user = users.find((x) => x.id == userId);
+    user.state = 0
+
+    model.create(users);
+    
+    return true
+  }
 };
 
 module.exports = model;

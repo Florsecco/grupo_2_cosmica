@@ -1,4 +1,4 @@
-const { index, findOne, findByEmail, update } = require("../models/user.model");
+const { index, findOne, findByEmail, update , create, deleteUser} = require("../models/user.model");
 const bcrypt = require("bcryptjs");
 const salt = 10;
 const { validationResult } = require("express-validator");
@@ -61,15 +61,11 @@ const userController = {
 
     const userId = req.session.userLogged.id;
     const user = req.body;
-    console.log(req.session.userLogged);
-    console.log(req.body);
 
     if (req.file != undefined) {
-      const avatarAnterior = user.image;
+      const avatarAnterior = req.session.userLogged.image;
       user.image = req.file.filename;
-      fs.unlinkSync(
-        path.join(__dirname, "../../public/img/users", avatarAnterior)
-      );
+      fs.unlinkSync(path.join(__dirname, '../../public/img/users', avatarAnterior))
     }
 
 
@@ -82,6 +78,12 @@ const userController = {
     req.session.destroy();
     res.redirect("/");
   },
+  delete: (req, res) => {
+    const id = req.session.userLogged.id;
+    deleteUser(id)
+    req.session.destroy()
+    res.redirect('/users/login')
+  }
 };
 
 module.exports = userController;

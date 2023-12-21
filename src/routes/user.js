@@ -53,7 +53,8 @@ router.put('/edit',upload.single('avatar'), validationsUpdate,userController.upd
 // Logout //
 router.get('/logout', userController.logout)
 
-
+// Delete //
+router.put('/',userController.delete)
 
 
 
