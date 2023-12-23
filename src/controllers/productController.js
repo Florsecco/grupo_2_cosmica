@@ -64,6 +64,7 @@ const productController = {
     const product = findOne(id)
     const { name, description, price, discount, stock, color, category } = req.body;
     
+    
     product.name = name ? name : product.name
     product.description = description ? description : product.description
     product.price = price ? price : product.price

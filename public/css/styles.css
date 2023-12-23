@@ -706,9 +706,21 @@ h4{
     font-size: 0.8em ;
 }
 .logout-flex{
+    border-top:#ff5355 solid 1px;
     display: flex;
     justify-content: space-between;
     padding: 5px;
+}
+.button-profile{
+    background-color: #ff5355;
+    border: none;
+    border-radius: 10px;
+    font-size: 0.7em;
+    color:#3e005b;
+    padding: 4px;
+}
+.comeback{
+    font-size: 0.7em;
 }
 /* create product */ 
 .form-create-product button{
@@ -863,6 +875,7 @@ h4{
         gap: 15px;
         
     }
+    
     .product {
         width: 22vw;
     }
@@ -926,12 +939,16 @@ h4{
         display: flex;
         gap: 10px;
     }
-    .profile form{
+    .profile-container{
+        width: 400px;
+    }
+    .profile-form{
         border: none;
         margin-left: 0;
         margin-top: 0;
         width: 400px;
     }
+    
     .profile input{
         width: 400px;
     }

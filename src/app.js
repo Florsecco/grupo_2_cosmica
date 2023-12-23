@@ -11,6 +11,7 @@ const PORT = 3010;
 const mainRouter = require('./routes/main.js');
 const userRouter = require('./routes/user.js');
 const productRouter = require('./routes/product.js');
+const userLoggedMiddleware = require('./middlewares/userLoggedMiddleware.js');
 
 app.use(morgan('dev'));
 app.use(express.urlencoded({ extended: false }));
@@ -25,6 +26,7 @@ app.use(session({
   saveUninitialized: true,
   // cookie: { secure: true }
 }));
+app.use(userLoggedMiddleware)
 
 app.listen(PORT, () => console.log("Servidor corriendo en el puerto " + PORT));
 
