@@ -1,4 +1,4 @@
-const { index, findOne, findByEmail, update , create, deleteUser} = require("../models/user.model");
+const { index, findOne, findByEmail, update , create, deleteUser, generateId} = require("../models/user.model");
 const bcrypt = require("bcryptjs");
 const salt = 10;
 const { validationResult } = require("express-validator");
@@ -10,6 +10,42 @@ const path = require("path");
 const userController = {
   register: (req, res) => {
     res.render("./users/register");
+  },
+  processRegister: (req, res) => {
+    const errors = validationResult(req);
+
+    if (!req.file || req.fileError) {
+      errors.errors.push({
+          type: 'field',
+          value: undefined,
+          msg: req.fileError || 'Debe subir una imagen',
+          path: 'avatar',
+          location: 'body'
+      });
+    };
+    console.log(errors);
+    if(!errors.isEmpty()){
+      return res.render("./users/register", {
+        errors: errors.mapped(),
+        old: req.body
+      })
+    };
+
+    delete req.body.confirm_password;
+    const user = {
+      id: generateId(),
+      ...req.body,
+      password: bcrypt.hashSync(req.body.password, 10),
+      category: 1,
+      state: 1,
+      image: req.file.filename
+    }
+
+    const users = index();
+    users.push(user);
+    create(users);
+
+    return res.redirect('/users/login');
   },
   login: (req, res) => {
     res.render("./users/login");

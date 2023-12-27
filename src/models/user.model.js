@@ -7,7 +7,7 @@ const model = {
   create: (file) => writeFileSync(model.file, JSON.stringify(file, null, 2)),
   index: () => {
     try {
-      const allUsers = JSON.parse(readFileSync(model.file))
+      const allUsers = JSON.parse(readFileSync(model.file, "utf-8"));
       const activeUsers = allUsers.filter(user => user.state === 1)
       return activeUsers
     } catch (error) {
@@ -63,6 +63,15 @@ const model = {
     model.create(users);
     
     return true
+  },
+  generateId: () => {
+    const users = model.index();
+    if (users.length > 0) {
+      id = Math.max(...users.map((x) => x.id)) + 1;
+    } else {
+      id = 1;
+    }
+    return id;
   }
 };
 
