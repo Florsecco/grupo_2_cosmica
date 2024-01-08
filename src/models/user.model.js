@@ -7,7 +7,7 @@ const model = {
   create: (file) => writeFileSync(model.file, JSON.stringify(file, null, 2)),
   index: () => {
     try {
-      const allUsers = JSON.parse(readFileSync(model.file))
+      const allUsers = JSON.parse(readFileSync(model.file, "utf-8"));
       const activeUsers = allUsers.filter(user => user.state === 1)
       return activeUsers
     } catch (error) {
@@ -32,18 +32,31 @@ const model = {
     const userFound = users.find(user=> user[field] == text)
     return userFound
   },
-  update: (userId, userUpdated) => {
+  passwordCheck:(userId, userUpdated)=>{
     let users = model.index();
     let user = users.find((x) => x.id == userId);
     if (userUpdated.oldPassword && userUpdated.password) {
       let userIsValidPassword = bcrypt.compareSync(
         userUpdated.oldPassword,  
         user.password
-      );
-
-      if (userIsValidPassword)
-        user.password = bcrypt.hashSync(userUpdated.password, 10);
-
+      )
+  
+      if (userIsValidPassword ){
+        return user.password = bcrypt.hashSync(userUpdated.password, 10);
+      }
+      else {
+        return false
+      } 
+    }
+       
+    
+  },
+  update: (userId, userUpdated) => {
+    let users = model.index();
+    let user = users.find((x) => x.id == userId);
+    
+    if(model.passwordCheck(userId,userUpdated)){
+      user.password = model.passwordCheck(userId,userUpdated)
     }
 
     user.first_name = userUpdated.first_name;
@@ -63,6 +76,15 @@ const model = {
     model.create(users);
     
     return true
+  },
+  generateId: () => {
+    const users = model.index();
+    if (users.length > 0) {
+      id = Math.max(...users.map((x) => x.id)) + 1;
+    } else {
+      id = 1;
+    }
+    return id;
   }
 };
 

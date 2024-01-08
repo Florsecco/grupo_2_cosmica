@@ -12,7 +12,34 @@ const storage = multer.diskStorage({
     }
 });
 
-const upload = multer({ storage: storage });
+const fileFilter = (req, file, cb) => {
+    // const extensions = ['.jpg', '.png', '.jpeg'];
+    // const fileExtension = path.extname(file.originalname)
+    // console.log(file);
+    // if(!extensions.includes(fileExtension)) {
+    //     const error = `Los formatos permitidos son ${extensions.join(', ')}`;
+    //     req.fileError = error;
+    //     return cb(null, false);
+    // };
+
+    // cb(null, true);
 
 
-module.exports = upload
+    if (
+        file.mimetype === 'image/jpeg' ||
+        file.mimetype === 'image/png' ||
+        file.mimetype === 'image/jpg'
+      ) {
+        // Si es una imagen, aceptar el archivo
+        cb(null, true);
+      } else {
+        // Si no es una imagen, rechazar el archivo
+        req.fileError = "El archivo debe ser una imagen JPEG, PNG o JPG.";
+        return cb(null, false);
+    };
+}
+
+const upload = multer({ storage: storage, fileFilter });
+
+
+module.exports = upload;
