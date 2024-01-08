@@ -27,10 +27,14 @@ const validationsUpdate = [
     body('email')
         .notEmpty().withMessage('Debe ingresar el email').bail()
         .isEmail().withMessage('Debe ingresar un email valido'),
-    // body('oldPassword')
-    //     .notEmpty().withMessage('Debe ingresar la contraseña.'),
-    // body('password')
-    //     .notEmpty().withMessage('Debe ingresar la contraseña.')
+    body('confirm_password')
+        .custom((value, {req}) => {
+            if(value != req.body.password){
+                throw new Error('Las contraseñas no coinciden');
+            };
+
+            return true;
+        })
 ]
 
 const validationsRegister = [

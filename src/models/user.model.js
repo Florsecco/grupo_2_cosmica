@@ -32,18 +32,31 @@ const model = {
     const userFound = users.find(user=> user[field] == text)
     return userFound
   },
-  update: (userId, userUpdated) => {
+  passwordCheck:(userId, userUpdated)=>{
     let users = model.index();
     let user = users.find((x) => x.id == userId);
     if (userUpdated.oldPassword && userUpdated.password) {
       let userIsValidPassword = bcrypt.compareSync(
         userUpdated.oldPassword,  
         user.password
-      );
-
-      if (userIsValidPassword)
-        user.password = bcrypt.hashSync(userUpdated.password, 10);
-
+      )
+  
+      if (userIsValidPassword ){
+        return user.password = bcrypt.hashSync(userUpdated.password, 10);
+      }
+      else {
+        return false
+      } 
+    }
+       
+    
+  },
+  update: (userId, userUpdated) => {
+    let users = model.index();
+    let user = users.find((x) => x.id == userId);
+    
+    if(model.passwordCheck(userId,userUpdated)){
+      user.password = model.passwordCheck(userId,userUpdated)
     }
 
     user.first_name = userUpdated.first_name;
