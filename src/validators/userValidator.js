@@ -74,7 +74,7 @@ exports.validatePassword = [
     body('password')
         .notEmpty().withMessage('Debe ingresar la contraseña.')
         .isStrongPassword({
-            minLength: 12,
+            minLength: 8,
             minLowercase: 1,
             minUppercase: 1,
             minNumbers: 1,
