@@ -4,7 +4,7 @@ const upload = require('../middlewares/userMulterMiddleware')
 const authMiddleware = require("../middlewares/authMiddleware");
 const guestMiddleware = require("../middlewares/guestMiddleware");
 
-const { validateUser, validatePassword, validateLogin } = require("../validators/userValidator");
+const { validateUser, validatePassword, validateLogin, validateUpdate } = require("../validators/userValidator");
 const multer = require('multer');
 const storage = multer.memoryStorage(); // Almacenamiento en memoria
 const uploadMemory = multer({
@@ -30,7 +30,7 @@ router.get("/profile", authMiddleware, userController.profile);
 // Edit //
 
 router.get("/edit", authMiddleware, userController.edit);
-router.put('/edit', upload.single('avatar'), validateUser, userController.update)
+router.put('/edit', upload.single('avatar'), validateUpdate, userController.update)
 
 // Logout //
 router.get('/logout', userController.logout)
