@@ -15,7 +15,7 @@
     <section class="main-section">
       <h3 class="title-profile">Informacion de la cuenta</h3>
       <div class="profile">
-        <img src="/img/users/<%= user.image %>" alt="img-profile" />
+        <img src="/img/users/<%= locals.userLogged.image %>" alt="img-profile" />
         <form
           action="/users/edit?_method=PUT"
           method="POST"
@@ -30,24 +30,33 @@
               type="text"
               name="first_name"
               placeholder="Nombre"
-              value="<%= user.first_name %>"
+              value="<%if(user){%><%=user.first_name%><%} else if (locals.old &&  old.first_name) { %> <%=old.first_name%> <% }%>"
             />
+            <% if (locals.errors && errors.first_name) { %>
+              <span style="color: red"> <%=errors.first_name.msg%> </span>
+            <% } %>
           </div>
           <div>
             <input
               type="text"
               name="last_name"
               placeholder="Apellido"
-              value="<%= user.last_name %>"
+              value="<%if(user){%><%=user.last_name%><%}else if(locals.old && old.last_name){%><%=old.last_name%><%}%>"
             />
+            <% if (locals.errors && errors.last_name) { %>
+              <span style="color: red"> <%=errors.last_name.msg%> </span>
+            <% } %>
           </div>
           <div>
             <input
               type="email"
               name="email"
               placeholder="E-mail"
-              value="<%= user.email %>"
+              value="<%if(user){%><%=user.email%><%}else if(locals.old && old.email){%><%=old.email%><%}%>"
             />
+            <% if (locals.errors && errors.email) { %>
+              <span style="color: red"> <%=errors.email.msg%> </span>
+            <% } %>
           </div>
           <div class="password">
             <input
@@ -57,6 +66,9 @@
             />
             <i class="fa-solid fa-eye-slash"></i>
           </div>
+          <% if (locals.errors && locals.errors.msg) { %>
+            <span style="color: red"> <%=locals.errors.msg%> </span>
+          <% } %>
           <div class="password">
             <input
               type="password"
@@ -65,13 +77,27 @@
             />
             <i class="fa-solid fa-eye-slash"></i>
           </div>
+          <div class="password">
+            <input
+              type="password"
+              name="confirm_password"
+              placeholder="Confirmar contraseña"
+            />
+            <i class="fa-solid fa-eye-slash"></i>
+          </div>
+          <% if (locals.errors && errors.confirm_password) { %>
+            <span style="color: red"> <%=errors.confirm_password.msg%> </span>
+          <% } %>
           <div>
             <input
               type="text"
               name="address"
               placeholder="Direccion"
-              value="<%= user.address %>"
+              value="<%if(user){%><%=user.address%><%}else if(locals.old && old.address){%><%=old.address%><%}%>"
             />
+            <% if (locals.errors && errors.address) { %>
+              <span style="color: red"> <%=errors.address.msg%> </span>
+            <% } %>
           </div>
           <div >
             <button type="submit" >Guardar</button>

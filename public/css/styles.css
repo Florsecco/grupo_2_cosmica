@@ -679,8 +679,12 @@ h4{
     font-size: 1.5em;
     padding: 5px;
 }
+.profile span{
+    font-size: 0.6em;
+}
 .profile img{
     width: 330px;
+    height: 330px;
 }
 .profile h4{
     color: #3e005b;
