@@ -23,15 +23,16 @@ const userController = {
   processRegister: (req, res) => {
     const errors = validationResult(req);
 
-    if (!req.file || req.fileError) {
-      errors.errors.push({
-        type: "field",
-        value: undefined,
-        msg: req.fileError || "Debe subir una imagen",
-        path: "avatar",
-        location: "body",
-      });
-    }
+    // if (!req.file || req.fileError) {
+    //   errors.errors.push({
+    //     type: "field",
+    //     value: undefined,
+    //     msg: req.fileError || "Debe subir una imagen",
+    //     path: "avatar",
+    //     location: "body",
+    //   });
+    // }
+
     console.log(errors);
     if (!errors.isEmpty()) {
       return res.render("./users/register", {
@@ -40,6 +41,22 @@ const userController = {
       });
     }
 
+    const imagenEnMemoria = req.file.buffer;
+
+    // Guardar la imagen en disco
+    const uniqueSuffix = "user-" + Date.now() + '-' + Math.round(Math.random() * 1E9)
+    const nombreArchivo = req.file.fieldname + '-' + uniqueSuffix + path.extname(req.file.originalname); // Nombre del archivo con extensión
+    const rutaDestino = path.join(__dirname, "../../public/img/users/", nombreArchivo); // Ruta donde se guardará la imagen en disco
+
+    // Escribir la imagen en disco
+    require('fs').writeFile(rutaDestino, imagenEnMemoria, (error) => {
+      if (error) {
+        console.log('Se guardo en el disco la imagen');
+        // return res.status(500).send('Error al guardar la imagen');
+      }
+      // return res.status(200).send('Imagen guardada correctamente en disco');
+    });
+
     delete req.body.confirm_password;
     const user = {
       id: generateId(),
@@ -47,7 +64,7 @@ const userController = {
       password: bcrypt.hashSync(req.body.password, salt),
       category: 1,
       state: 1,
-      image: req.file.filename,
+      image: nombreArchivo,
     };
 
     const users = index();
@@ -130,10 +147,10 @@ const userController = {
 
     const userUpdate = update(userId, user);
     delete userUpdate.password;
-    
-    
+
+
     req.session.userLogged = userUpdate;
-    if(req.cookies.userEmail){
+    if (req.cookies.userEmail) {
       res.clearCookie("userEmail")
       res.cookie("userEmail", userUpdate.email, { maxAge: 1000 * 60 * 60 });
     }
