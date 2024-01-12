@@ -11,7 +11,7 @@ const {
 const bcrypt = require("bcryptjs");
 const salt = 10;
 const { validationResult } = require("express-validator");
-
+const { saveImage } = require('../middlewares/userMulterMemoryMiddleware');
 const fs = require("fs");
 
 const path = require("path");
@@ -23,16 +23,6 @@ const userController = {
   processRegister: (req, res) => {
     const errors = validationResult(req);
 
-    // if (!req.file || req.fileError) {
-    //   errors.errors.push({
-    //     type: "field",
-    //     value: undefined,
-    //     msg: req.fileError || "Debe subir una imagen",
-    //     path: "avatar",
-    //     location: "body",
-    //   });
-    // }
-
     console.log(errors);
     if (!errors.isEmpty()) {
       return res.render("./users/register", {
@@ -40,22 +30,13 @@ const userController = {
         old: req.body,
       });
     }
-
-    const imagenEnMemoria = req.file.buffer;
-
-    // Guardar la imagen en disco
-    const uniqueSuffix = "user-" + Date.now() + '-' + Math.round(Math.random() * 1E9)
-    const nombreArchivo = req.file.fieldname + '-' + uniqueSuffix + path.extname(req.file.originalname); // Nombre del archivo con extensión
-    const rutaDestino = path.join(__dirname, "../../public/img/users/", nombreArchivo); // Ruta donde se guardará la imagen en disco
-
-    // Escribir la imagen en disco
-    require('fs').writeFile(rutaDestino, imagenEnMemoria, (error) => {
-      if (error) {
-        console.log('Se guardo en el disco la imagen');
-        // return res.status(500).send('Error al guardar la imagen');
-      }
-      // return res.status(200).send('Imagen guardada correctamente en disco');
-    });
+    const nombreArchivo = saveImage(req.file);
+    console.log("nombre de archivo", nombreArchivo);
+    if (!nombreArchivo)
+      return res.render("./users/register", {
+        //errors: errors.mapped(),
+        old: req.body,
+      });
 
     delete req.body.confirm_password;
     const user = {
@@ -137,12 +118,20 @@ const userController = {
         });
       }
     }
+
     if (req.file != undefined) {
+      const nombreArchivo = saveImage(req.file);
+      if (!nombreArchivo)
+        return res.redirect("/users/edit");
       const avatarAnterior = req.session.userLogged.image;
-      user.image = req.file.filename;
-      fs.unlinkSync(
-        path.join(__dirname, "../../public/img/users", avatarAnterior)
-      );
+      user.image = nombreArchivo;
+      try {
+        fs.unlinkSync(
+          path.join(__dirname, "../../public/img/users", avatarAnterior)
+        );
+      } catch (error) {
+        console.log("Error:", error);
+      }
     }
 
     const userUpdate = update(userId, user);
