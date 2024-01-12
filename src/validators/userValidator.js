@@ -68,6 +68,23 @@ exports.validateUpdate = [
     body('email')
         .notEmpty().withMessage('Debe ingresar el email').bail()
         .isEmail().withMessage('Debe ingresar un email valido'),
+    body('avatar')
+        .custom((value, { req }) => {
+            console.log(req.file);
+            if (req.file === undefined)
+                return true;
+            if (
+                req.file.mimetype === 'image/jpeg' ||
+                req.file.mimetype === 'image/png' ||
+                req.file.mimetype === 'image/jpg'
+            ) {
+                return true;
+            }
+            else {
+
+                throw new Error('El archivo debe ser una imagen JPEG, PNG o JPG.');
+            }
+        })
 ];
 
 exports.validatePassword = [
