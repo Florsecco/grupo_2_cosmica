@@ -34,7 +34,8 @@ app.use('/', mainRouter);
 app.use('/users', userRouter);
 app.use('/products', productRouter);
 app.use((req, res, next) => {
-  res.status(404).render('not-found');
+  res.redirect('/');
+  // res.status(404).render('not-found');
 });
 
 
