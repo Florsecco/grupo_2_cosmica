@@ -24,13 +24,16 @@
         >
           <div class="avatar">
             <input type="file" name="avatar" />
+            <% if (locals.errors && errors.avatar) { %>
+              <span style="color: red"> <%= errors.avatar.msg %> </span>
+            <% } %>
           </div>
           <div>
             <input
               type="text"
               name="first_name"
               placeholder="Nombre"
-              value="<%if(user){%><%=user.first_name%><%} else if (locals.old &&  old.first_name) { %> <%=old.first_name%> <% }%>"
+              value="<%if(user){%><%=user.first_name%><%} else if (locals.old &&  old.first_name) {%><%=old.first_name%><%}%>"
             />
             <% if (locals.errors && errors.first_name) { %>
               <span style="color: red"> <%=errors.first_name.msg%> </span>
