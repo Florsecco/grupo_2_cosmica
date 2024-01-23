@@ -11,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      User.belongsToMany(models.Perfil, {
+      User.belongsToMany(models.Profile, {
         /* as: "genre", */
         // through: 'actor_movie',
         // foreignKey: 'actor_id',
@@ -56,7 +56,7 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING(100),
       allowNull: false,
     },
-    perfil_id: {
+    profile_id: {
       type: DataTypes.INTEGER,
       allowNull: false
     },
@@ -69,7 +69,7 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.DATE
     },
     deleted_at: {
-      allowNull: false,
+      allowNull: true,
       type: DataTypes.DATE
     }
   }, {
@@ -83,5 +83,5 @@ module.exports = (sequelize, DataTypes) => {
     updatedAt: 'updated_at',
     deletedAt: 'deleted_at'
   });
-  return Actor;
+  return User;
 };

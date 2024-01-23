@@ -3,7 +3,7 @@ const {
   Model
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  class Perfil extends Model {
+  class Profile extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
@@ -11,8 +11,8 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      Perfil.hasMany(models.User, {
-        /* as: "genre", */
+      Profile.hasMany(models.User, {
+        // as: "usuarios",
         // through: 'actor_movie',
         sourceKey: 'id',
         foreignKey: 'id',
@@ -20,7 +20,7 @@ module.exports = (sequelize, DataTypes) => {
       });
     }
   }
-  User.init({
+  Profile.init({
     id: {
       type: DataTypes.INTEGER,
       primaryKey: true,
@@ -31,10 +31,22 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING(100),
       allowNull: false
     },
+    created_at: {
+      allowNull: false,
+      type: DataTypes.DATE
+    },
+    updated_at: {
+      allowNull: false,
+      type: DataTypes.DATE
+    },
+    deleted_at: {
+      allowNull: true,
+      type: DataTypes.DATE
+    }
   }, {
     sequelize,
-    modelName: 'Perfil',
-    tableName: 'perfils',
+    modelName: 'Profile',
+    tableName: 'profiles',
     timestamps: true,
     paranoid: true,
     underscored: true,
@@ -42,5 +54,5 @@ module.exports = (sequelize, DataTypes) => {
     updatedAt: 'updated_at',
     deletedAt: 'deleted_at'
   });
-  return Actor;
+  return Profile;
 };

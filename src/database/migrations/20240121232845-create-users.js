@@ -37,12 +37,12 @@ module.exports = {
         type: Sequelize.STRING(100),
         allowNull: false,
       },
-      perfil_id: {
+      profile_id: {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {
           model: {
-            tableName: 'perfils',
+            tableName: 'profiles',
             // schema: 'schema'
           },
           key: 'id'
@@ -57,7 +57,7 @@ module.exports = {
         type: Sequelize.DATE
       },
       deleted_at: {
-        allowNull: false,
+        allowNull: true,
         type: Sequelize.DATE
       }
     });
