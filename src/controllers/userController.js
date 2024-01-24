@@ -8,6 +8,9 @@ const {
   generateId,
   passwordCheck,
 } = require("../models/user.model");
+const { User, Profile } = require('../database/models');
+const Sequelize = require('sequelize');
+const Op = Sequelize.Op;
 const bcrypt = require("bcryptjs");
 const salt = 10;
 const { validationResult } = require("express-validator");
@@ -20,7 +23,7 @@ const userController = {
   register: (req, res) => {
     res.render("./users/register");
   },
-  processRegister: (req, res) => {
+  processRegister: async (req, res) => {
     const errors = validationResult(req);
 
     console.log(errors);
@@ -39,18 +42,32 @@ const userController = {
       });
 
     delete req.body.confirm_password;
-    const user = {
-      id: generateId(),
-      ...req.body,
-      password: bcrypt.hashSync(req.body.password, salt),
-      category: 1,
-      state: 1,
-      image: nombreArchivo,
-    };
+    const { first_name, last_name, email, password, address } = req.body;
 
-    const users = index();
-    users.push(user);
-    create(users);
+    const newUser = await User.create({
+      first_name,
+      last_name,
+      email,
+      password: bcrypt.hashSync(password, salt),
+      status: 1,
+      image: nombreArchivo,
+      address,
+      profile_id: 3,
+    });
+    console.log(JSON.stringify(newUser, null, 4));
+
+    // const user = {
+    //   id: generateId(),
+    //   ...req.body,
+    //   password: bcrypt.hashSync(req.body.password, salt),
+    //   category: 1,
+    //   state: 1,
+    //   image: nombreArchivo,
+    // };
+
+    // const users = index();
+    // users.push(user);
+    // create(users);
 
     return res.redirect("/users/login");
   },
@@ -67,7 +84,7 @@ const userController = {
     if (user === undefined) res.redirect("../not-found");
     res.render("./users/editProfile", { user });
   },
-  processLogin: (req, res) => {
+  processLogin: async (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       return res.render("./users/login", {
@@ -75,9 +92,21 @@ const userController = {
         old: req.body,
       });
     }
+    const { email, password } = req.body;
 
-    const user = findByEmail(req.body);
-    if (!user)
+    const user = await User.findOne({
+      where: {
+        email: { [Op.like]: `${email}` },
+        status: 1
+      },
+      attributes: ['id', 'first_name', 'last_name', 'email', 'password', 'image', 'address', 'profile_id']
+    });
+
+    const userIsValidPassword = bcrypt.compareSync(
+      password,
+      user.password
+    );
+    if (!userIsValidPassword)
       return res.render("./users/login", {
         errors: {
           msg: "Credenciales incorrectas.",
@@ -85,11 +114,12 @@ const userController = {
         old: req.body,
       });
 
-    delete user.password;
+    const userJson = user.get({ plain: true });
+    delete userJson.password;
 
-    req.session.userLogged = user;
+    req.session.userLogged = userJson;
     if (req.body.rememberMe) {
-      res.cookie("userEmail", req.body.email, { maxAge: 1000 * 60 * 60 });
+      res.cookie("userEmail", email, { maxAge: 1000 * 60 * 60 });
     }
 
     return res.redirect(`profile`);
@@ -150,9 +180,13 @@ const userController = {
     res.clearCookie("userEmail");
     res.redirect("/");
   },
-  delete: (req, res) => {
+  delete: async (req, res) => {
     const id = req.session.userLogged.id;
-    deleteUser(id);
+    const userDeleted = await User.findByPk(id);
+    console.log(userDeleted);
+    if(userDeleted)
+      
+    // deleteUser(id);
     req.session.destroy();
     res.redirect("/users/login");
   },

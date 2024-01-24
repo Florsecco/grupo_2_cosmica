@@ -1,5 +1,6 @@
 const { body } = require('express-validator');
-const { findUser } = require("../models/user.model");
+// const { findUser } = require("../models/user.model");
+const { User } = require('../database/models');
 
 exports.validateLogin = [
     body('email')
@@ -26,8 +27,12 @@ exports.validateUser = [
     body('email')
         .notEmpty().withMessage('Debe ingresar el email').bail()
         .isEmail().withMessage('Debe ingresar un email valido')
-        .custom((value) => {
-            const userExist = findUser('email', value);
+        .custom(async (value) => {
+            const userExist = await User.findOne({
+                where: {
+                    email: value
+                }
+            });
             console.log(userExist);
             if (userExist) {
                 throw new Error('El email ingresado ya está registrado')

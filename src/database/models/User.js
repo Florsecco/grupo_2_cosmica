@@ -11,13 +11,13 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      User.belongsToMany(models.Profile, {
+      User.belongsTo(models.Profile, {
         /* as: "genre", */
         // through: 'actor_movie',
         // foreignKey: 'actor_id',
         // otherKey: 'movie_id'
-        sourceKey: 'id',
-        foreignKey: 'id',
+        // sourceKey: 'id',
+        foreignKey: 'profile_id',
       });
     }
   }
