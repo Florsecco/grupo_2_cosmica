@@ -15,6 +15,7 @@ module.exports = (sequelize,dataTypes) =>{
     
     };
     let config= {
+        tablename: "brands",
         timestamps: true,
         createdAt: 'created_at',
         updatedAt: 'updated_at',
