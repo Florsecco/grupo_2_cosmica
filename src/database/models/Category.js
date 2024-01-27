@@ -18,7 +18,8 @@ module.exports = (sequelize,dataTypes) =>{
         updated_at: dataTypes.TIMESTAMP,     
     
     };
-    let config= {
+    let config= { 
+        tablename: "categories",
         timestamps: true,
         createdAt: 'created_at',
         updatedAt: 'updated_at',
