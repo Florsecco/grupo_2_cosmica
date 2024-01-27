@@ -28,6 +28,13 @@ module.exports = (sequelize,dataTypes) =>{
     const Category = sequelize.define(alias, cols, config); 
 
     Category.associate = function (models) {
+        Category.belongsToMany(models.Color,{
+            as:'colors',
+            through: 'Color_Category',
+            foreignKey: 'category_id',
+            otherKey: 'color_id',
+            timestamps: false   
+        })
         Category.hasMany(models.ColorCategory,{
             foreignKey: 'category_id',
             onDelete: 'CASCADE'

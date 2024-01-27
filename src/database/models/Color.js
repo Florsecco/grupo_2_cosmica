@@ -27,6 +27,24 @@ module.exports = (sequelize,dataTypes) =>{
             foreignKey: 'color_id',
             onDelete: 'CASCADE'
         })
+        Color.belongsToMany(models.Product,{
+            as:'products',
+            through: 'Color_Product',
+            foreignKey: 'color_id',
+            otherKey: 'product_id',
+            timestamps: false   
+        })
+        Color.hasMany(models.ColorProduct,{
+            foreignKey: 'color_id',
+            onDelete: 'CASCADE'
+        })
+        Color.belongsToMany(models.Category,{
+            as:'category',
+            through: 'Color_Category',
+            foreignKey: 'color_id',
+            otherKey: 'category_id',
+            timestamps: false   
+        })
         Color.hasMany(models.ColorCategory,{
             foreignKey: 'color_id',
             onDelete: 'CASCADE'
