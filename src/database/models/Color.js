@@ -10,8 +10,8 @@ module.exports = (sequelize,dataTypes) =>{
             type: dataTypes.STRING(100),
             allowNull: false
         },
-        created_at: dataTypes.TIMESTAMP,
-        updated_at: dataTypes.TIMESTAMP,        
+        // created_at: dataTypes.TIMESTAMP,
+        // updated_at: dataTypes.TIMESTAMP,        
     };
     let config= {
         timestamps: true,

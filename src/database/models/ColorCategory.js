@@ -8,17 +8,9 @@ module.exports = (sequelize,dataTypes) =>{
         },
         color_id: {
             type: dataTypes.INTEGER(10),
-            // references: {
-            //     model: 'Color',
-            //     key: 'id',
-            // }
         },
         category_id: {
             type: dataTypes.INTEGER(10),
-            // references: {
-            //     model: 'Category',
-            //     key: 'id',
-            // }
         }
     };
     let config= {

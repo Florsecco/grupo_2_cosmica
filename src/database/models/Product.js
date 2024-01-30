@@ -50,8 +50,8 @@ module.exports = (sequelize,dataTypes) =>{
             type: dataTypes.INTEGER(10),
             allowNull:true,
         },
-        created_at: dataTypes.TIMESTAMP,
-        updated_at: dataTypes.TIMESTAMP,
+        // created_at: dataTypes.TIMESTAMP,
+        // updated_at: dataTypes.TIMESTAMP,
     };
     let config= {
         timestamps: true,
