@@ -5,10 +5,10 @@ const productController = require("../controllers/productController");
 const upload = require('../middlewares/multerMiddleware');
 const authMiddleware = require("../middlewares/authMiddleware");
 
-// Products list //
+// Products list // Solo falta descomentar el render
 router.get("/", productController.index);
 
-// Cart //
+// Cart // solo se cambia si creamos el cart
 router.get("/cart", productController.cart);
 
 
@@ -16,12 +16,12 @@ router.get("/cart", productController.cart);
 router.get("/create",authMiddleware, productController.createProduct);
 router.post("/", upload.single('product'), productController.create);
 
-// Product Detail //
+// Product Detail // Solo falta descomentar el render♠
 
-router.get("/:id", productController.productDetail);
+router.get("/:id", productController.detail);
 
 // Edit product //
-router.get("/:id/edit", productController.productEdit);
+router.get("/:id/edit", productController.productToEdit);  // aqui solo falta ver lo de los colores
 router.put("/:id", upload.single('product') ,productController.update)
 
 // delete element //

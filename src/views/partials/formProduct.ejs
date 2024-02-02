@@ -6,9 +6,14 @@
             <% } %>>
     </div>
     <div class="product-items">
-        <label>Descripción</label>
-        <textarea name="description"
-            placeholder="Descripción del producto"><%if(product !=null){%><%=product.description%><%}%></textarea>
+        <label>Descripción Corta</label>
+        <textarea name="description_short"
+            placeholder="Descripción del producto"><%if(product !=null){%><%=product.description_short%><%}%></textarea>
+    </div>
+    <div class="product-items">
+        <label>Descripción Larga</label>
+        <textarea name="description_long"
+            placeholder="Descripción del producto"><%if(product !=null){%><%=product.description_long%><%}%></textarea>
     </div>
     <div class="product-items">
         <label>Imagen</label>
@@ -16,37 +21,33 @@
     </div>
     <div class="product-items-block">
         <p>Categoría</p>
-        <label><input type="radio" name="category" value="bases" <% if (product != null && product.category=="bases" ) { %>
+        <% categories.forEach(category => { %>
+           <label><input type="radio" name="category" value="<%=category.id%>" <% if (product != null && product.category_id==category.id ) { %>
             checked
-            <% } %> /> Bases
-        </label>
-        <label><input type="radio" name="category" value="labiales" <% if (product != null && product.category=="labiales" ) { %>
+            <% } %>/> <%=category.name%>
+        </label> 
+        <% }); %>
+    </div>
+    <div class="product-items-block">
+        <p>Marca</p>
+        <% brands.forEach(brand => { %>
+           <label><input type="radio" name="brand" value="<%=brand.id%>" <% if (product != null && product.brand_id==brand.id ) { %>
             checked
-            <% } %> /> Labiales
-        </label>
-        <label><input type="radio" name="category" value="rubores" <% if (product != null && product.category=="rubores" ) { %>
-            checked
-            <% } %> /> Rubores
-        </label>
-        <label><input type="radio" name="category" value="delineadores" <% if (product != null && product.category=="delineadores" ) { %>
-            checked
-            <% } %> /> Delineadores
-        </label>
+            <% } %>/> <%=brand.name%>
+        </label> 
+        <% }); %>
     </div>
     <div class="product-items-block">
         <p>Color</p>
-        <label><input type="radio" name="color" value="red" <% if (product != null && product.color=="red" ) { %>
-            checked
-            <% } %>/> Rojo </label>
-        <label><input type="radio" name="color" value="pink"<% if (product != null && product.color=="pink" ) { %>
-            checked
-            <% } %> /> Rosa </label>
-        <label><input type="radio" name="color" value="nude" <% if (product != null && product.color=="nude" ) { %>
-            checked
-            <% } %> /> Nude </label>
-        <label><input type="radio" name="color" value="brown" <% if (product != null && product.color=="brown" ) { %>
-            checked
-            <% } %> /> Marrón </label>
+        <% colors.forEach(color => { %>
+            <label><input type="radio" name="color" value="<%=color.id%>"/> <%=color.name%>
+         </label> 
+         <% }); %>
+    </div>
+    <div class="product-items">
+        <label>Ingredientes</label>
+        <textarea name="ingredients"
+            placeholder="Ingredientes del producto"><%if(product !=null){%><%=product.ingredients%><%}%></textarea>
     </div>
     <div class="product-items">
         <label>Precio</label>
