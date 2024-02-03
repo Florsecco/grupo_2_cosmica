@@ -40,7 +40,9 @@
     <div class="product-items-block">
         <p>Color</p>
         <% colors.forEach(color => { %>
-            <label><input type="checkbox" name="color" value="<%=color.id%>" /> <%=color.name%>
+            <label><input type="checkbox" name="color" value="<%=color.id%>" <% if (product != null && product.colors[0].id==color.id ){ %>
+                checked
+                <% } %>/> <%=color.name%>
          </label> 
          <% }); %>
     </div>
