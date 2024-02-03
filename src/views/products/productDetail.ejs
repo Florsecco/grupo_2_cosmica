@@ -21,7 +21,7 @@
               <img src="/img/products/<%= product.image %>" alt="<%=product.name%>" />
               <div class="product-details">
                 <p>
-                  <%=product.description%>
+                  <%=product.description_short%>
                 </p>
 
                 <div class="display-flex-detail">
@@ -69,7 +69,7 @@
             <div class="items-details-container">
               <h3>Descripción <i class="fa-regular fa-square-caret-down"></i></h3>
               <p>
-                <%=product.description%>
+                <%=product.description_long%>
               </p>
             </div>
             <div class="items-details-container">
@@ -84,9 +84,7 @@
                 Ingredientes <i class="fa-regular fa-square-caret-down"></i>
               </h3>
               <p>
-                INGAQUA/WATER/EAU, CYCLOPENTASILOXANE, ISODODECANE, PEG-10
-                DIMETHICONE, PROPANEDIOL, POLYGLYCERYL-4 ISOSTEARATE, SILICA,
-                NYLON-12.
+                <%=product.ingredients%>
               </p>
             </div>
           </section>

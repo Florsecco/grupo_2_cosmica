@@ -48,8 +48,8 @@ const productController = {
           discount: { [Op.ne]: 0 },
         },
       });
-      res.json(offers);
-      //res.render("./products/products", { offers, featured, toThousand });
+      //res.json(offers);
+    res.render("./products/products", { offers, featured, toThousand });
     } catch (error) {
       console.log(error);
       res.send(error.message);
@@ -73,8 +73,8 @@ const productController = {
       const products = await Product.findAll();
       const product = await Product.findByPk(id);
       if (product === undefined) res.redirect("../not-found");
-      res.json(product);
-      // res.render("./products/productDetail", { product, products, toThousand });
+      //res.json(product);
+      res.render("./products/productDetail", { product, products, toThousand });
     } catch (error) {
       console.log(error);
       res.send(error.message);
@@ -130,7 +130,8 @@ const productController = {
         brand_id: req.body.brand,
       });
 
-      res.json(product);
+      
+      res.redirect("/");
     } catch (error) {
       console.log(error);
       res.send(error.message);
@@ -154,7 +155,7 @@ const productController = {
       res.send(error.message);
     }
   },
-  update: (req, res) => {
+  'update': (req, res) => {
     const id = req.params.id;
     const product = findOne(id);
     const { name, description, price, discount, stock, color, category } =
@@ -179,6 +180,41 @@ const productController = {
 
     res.redirect(`/products/${id}`);
   },
+  update2: async(req,res)=>{
+    try {
+      const id = req.params.id;
+      const product = await Product.findByPk(id);
+      const { name, description_short, description_long, category, ingredients, price, discount,brand,stock, color } = req.body;
+      const finalPrice = price - (price * discount) / 100;
+      let img = product.image
+      if (req.file != undefined) {
+        fs.unlinkSync(
+          path.join(__dirname, "../../public/img/products", img)
+        );
+        img = req.file.filename  
+        }
+      await Product.update({
+        name: name,
+        description_short: description_short,
+        description_long: description_long,
+        category_id: category,
+        ingredients: ingredients,
+        image: img ,
+        price: price,
+        discount: discount,
+        final_price: finalPrice,
+        brand_id: brand,
+      },{
+          where: {
+              id: req.params.id
+          }
+      })
+      res.redirect(`/products/${id}`);
+    } catch (error) {
+      console.log(error)
+      res.send(error.message)
+  }
+  },
   // 'delete': (req, res) => {
   //   const productos = index();
   //   const id = req.params.id;
@@ -196,6 +232,7 @@ const productController = {
   //   res.redirect("/products");
   // },
   delete: async(req,res)=>{
+
     try {
       let img 
       const { id } = req.params;
