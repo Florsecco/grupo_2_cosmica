@@ -11,6 +11,7 @@ const Product = db.Product;
 const Category = db.Category;
 const Color = db.Color;
 const Brand = db.Brand;
+const ColorProduct= db.ColorProduct
 const { Op } = require("sequelize");
 
 const fs = require("fs");
@@ -147,7 +148,9 @@ const productController = {
       const product = await Product.findByPk(id,{
         include: [{association:'colors'}]
       });
-      console.log('producto',product);
+      console.log('probando product',JSON.stringify(product, null, 4));
+      console.log(product.constructor.prototype);
+      
       if (product === undefined) res.redirect("../not-found");
       res.render("./products/editProduct", { product,categories,colors,brands });
     } catch (error) {
@@ -155,35 +158,21 @@ const productController = {
       res.send(error.message);
     }
   },
-  'update': (req, res) => {
-    const id = req.params.id;
-    const product = findOne(id);
-    const { name, description, price, discount, stock, color, category } =
-      req.body;
-
-    product.name = name ? name : product.name;
-    product.description = description ? description : product.description;
-    product.price = price ? price : product.price;
-    product.discount = discount ? discount : product.discount;
-    product.stock = stock ? stock : product.stock;
-    product.color = color ? color : product.color;
-    product.category = category ? category : product.category;
-
-    if (req.file != undefined) {
-      const imagenAnterior = product.image;
-      product.image = req.file.filename;
-      fs.unlinkSync(
-        path.join(__dirname, "../../public/img/products", imagenAnterior)
-      );
-    }
-    update(product);
-
-    res.redirect(`/products/${id}`);
-  },
   update2: async(req,res)=>{
     try {
       const id = req.params.id;
-      const product = await Product.findByPk(id);
+      const product = await Product.findByPk(id,{
+        include: [
+          {
+            model:Color,
+            as:'colors',
+            through:{
+              attributes:['stock','id']
+            }
+          }
+        ]
+      });
+      console.log('probando product',JSON.stringify(product, null, 4));
       const { name, description_short, description_long, category, ingredients, price, discount,brand,stock, color } = req.body;
       const finalPrice = price - (price * discount) / 100;
       let img = product.image
@@ -193,6 +182,7 @@ const productController = {
         );
         img = req.file.filename  
         }
+
       await Product.update({
         name: name,
         description_short: description_short,
@@ -209,6 +199,22 @@ const productController = {
               id: req.params.id
           }
       })
+      console.log(color)
+      const productColor = await ColorProduct.findOne({
+        where:{
+          product_id:id,
+          color_id:color
+        }
+      })
+      if (productColor) {
+        productColor.stock=stock
+        await productColor.save()  
+      }else{
+        await product.createColorProduct({
+          color_id: color,
+          stock:stock
+        })
+      }
       res.redirect(`/products/${id}`);
     } catch (error) {
       console.log(error)
