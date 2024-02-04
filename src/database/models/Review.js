@@ -18,7 +18,7 @@ module.exports = (sequelize, dataTypes) => {
       type: dataTypes.STRING(255),
       allowNull: false,
     },
-    score: { //no se si es la traduccion mas idonea
+    rating: { //no se si es la traduccion mas idonea
       type: dataTypes.INTEGER(10),
       allowNull: false,
     },
