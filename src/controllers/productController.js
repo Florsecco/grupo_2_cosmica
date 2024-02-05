@@ -260,6 +260,21 @@ const productController = {
       console.log(error);
       res.send(error.message);
     }
+  }, 
+  search: async(req,res)=>{
+    try {
+      const search = req.body.search
+      const products = await Product.findAll({
+        where:{
+          name:{ [Op.like]: `%${search}%`}
+        }
+      })
+        res.render('./products/productSearch',{products, toThousand})
+      
+    } catch (error) {
+      console.log(error);
+      res.send(error.message);
+    }
   }
 };
 

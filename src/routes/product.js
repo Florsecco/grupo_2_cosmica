@@ -11,6 +11,9 @@ router.get("/", productController.index);
 // Cart // solo se cambia si creamos el cart
 router.get("/cart", productController.cart);
 
+// Search product //
+router.post('/search',productController.search )
+
 
 // Create product //
 router.get("/create",authMiddleware, productController.createProduct);
