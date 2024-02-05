@@ -15,7 +15,22 @@ module.exports = {
      },{
       id:4,
       name:'Fenty'
-     }], {});
+     },{
+      id:5,
+      name:'Loreal'
+     },{
+      id:6,
+      name:'Maybelline'
+     },{
+      id:7,
+      name:'Revlon'
+     },{
+      id:8,
+      name:'Milani'
+     },{
+      id:9,
+      name:'Nyx'
+     },], {});
   },
 
   async down (queryInterface, Sequelize) {

@@ -5,17 +5,29 @@ module.exports = {
   async up (queryInterface, Sequelize) {
     await queryInterface.bulkInsert('colors', [{
       id:1,
-      name: 'red',
+      name: 'Red',
      },{
       id:2,
-      name: 'pink',
+      name: 'Pink',
      },{
       id:3,
-      name:'orange'
+      name:'Orange'
      },{
       id:4,
-      name:'black'
-     }], {});
+      name:'Black'
+     },{
+      id:5,
+      name:'Blue'
+     },{
+      id:6,
+      name:'Purple'
+     },{
+      id:7,
+      name:'Brown'
+     },{
+      id:8,
+      name:'Gold'
+     },], {});
   },
 
   async down (queryInterface, Sequelize) {

@@ -78,8 +78,10 @@ module.exports = (sequelize,dataTypes) =>{
             foreignKey: 'product_id',
             otherKey: 'color_id',
             timestamps: false   
-        })
+        }),
+
         Product.hasMany(models.ColorProduct,{
+            as:'stocks',
             foreignKey: 'product_id',
             onDelete: 'CASCADE'
         })

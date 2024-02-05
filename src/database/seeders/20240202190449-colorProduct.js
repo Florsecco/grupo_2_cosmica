@@ -25,7 +25,29 @@ module.exports = {
       color_id:4,
       product_id:4,
       stock:11    
-    }
+    },
+    {
+      id: 5,
+      color_id:2,
+      product_id:4,
+      stock:23    
+    },
+    {
+      id: 6,
+      color_id:3,
+      product_id:2,
+      stock:9    
+    },{
+      id: 7,
+      color_id:4,
+      product_id:1,
+      stock:12    
+    },{
+      id: 8,
+      color_id:2,
+      product_id:1,
+      stock:1    
+    },
     ], {});
   },
 

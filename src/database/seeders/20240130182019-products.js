@@ -135,7 +135,7 @@ module.exports = {
         ingredients:'Pink: Hydrogenated Polyisobutene, Tridecyl Trimellitate, Polybutene, Pentaerythrityl Tetraisostearate, Phytosteryl/Octyldodecyl Lauroyl Glutamate, Ethylene/Propylene/Styrene Copolymer, Ethylhexyl Palmitate, Caprylic/Capric Triglyceride, Butylene/Ethylene/Styrene Copolymer, Parfum (Fragrance), Polyglyceryl-2 Triisostearate',
         price:15,
         final_price: 13.5,
-        discount:10,
+        discount:0,
         brand_id: 4
       },{
         id:11,
@@ -187,7 +187,7 @@ module.exports = {
         ingredients:'Pink: Hydrogenated Polyisobutene, Tridecyl Trimellitate, Polybutene, Pentaerythrityl Tetraisostearate, Phytosteryl/Octyldodecyl Lauroyl Glutamate, Ethylene/Propylene/Styrene Copolymer, Ethylhexyl Palmitate, Caprylic/Capric Triglyceride, Butylene/Ethylene/Styrene Copolymer, Parfum (Fragrance), Polyglyceryl-2 Triisostearate',
         price:15,
         final_price: 13.5,
-        discount:10,
+        discount:0,
         brand_id: 4
       },{
         id:15,
@@ -226,7 +226,7 @@ module.exports = {
         ingredients:'Pink: Hydrogenated Polyisobutene, Tridecyl Trimellitate, Polybutene, Pentaerythrityl Tetraisostearate, Phytosteryl/Octyldodecyl Lauroyl Glutamate, Ethylene/Propylene/Styrene Copolymer, Ethylhexyl Palmitate, Caprylic/Capric Triglyceride, Butylene/Ethylene/Styrene Copolymer, Parfum (Fragrance), Polyglyceryl-2 Triisostearate',
         price:15,
         final_price: 13.5,
-        discount:10,
+        discount:0,
         brand_id: 4
       }
   ], {});

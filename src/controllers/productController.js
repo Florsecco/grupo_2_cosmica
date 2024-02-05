@@ -92,26 +92,26 @@ const productController = {
       res.send(error.message);
     }
   },
-  'create': (req, res) => {
-    const { name, description, price, discount, stock, color, category } =
-      req.body;
-    const products = index();
-    let id = generateId();
-    const product = {
-      id,
-      name,
-      description,
-      price: parseInt(price),
-      discount: parseInt(discount),
-      image: req.file.filename,
-      stock: parseInt(stock),
-      category,
-      color,
-    };
-    products.push(product);
-    create(products);
-    res.redirect("/");
-  },
+  // 'create': (req, res) => {
+  //   const { name, description, price, discount, stock, color, category } =
+  //     req.body;
+  //   const products = index();
+  //   let id = generateId();
+  //   const product = {
+  //     id,
+  //     name,
+  //     description,
+  //     price: parseInt(price),
+  //     discount: parseInt(discount),
+  //     image: req.file.filename,
+  //     stock: parseInt(stock),
+  //     category,
+  //     color,
+  //   };
+  //   products.push(product);
+  //   create(products);
+  //   res.redirect("/");
+  // },
   create2: async (req, res) => {
     try {     
       const precio = parseInt(req.body.price);
@@ -122,7 +122,7 @@ const productController = {
         description_short: req.body.description_short,
         description_long: req.body.description_long,
         status: 1,
-        image: "req.file.filename",
+        image: req.file.filename,
         category_id: req.body.category,
         ingredients: req.body.ingredients,
         price: precio,
@@ -131,7 +131,10 @@ const productController = {
         brand_id: req.body.brand,
       });
 
-      
+      await product.createColorProduct({
+        color_id: req.body.color,
+        stock:req.body.stock
+      })
       res.redirect("/");
     } catch (error) {
       console.log(error);
@@ -146,7 +149,7 @@ const productController = {
       const colors = await Color.findAll()
       const brands = await Brand.findAll()
       const product = await Product.findByPk(id,{
-        include: [{association:'colors'}]
+        include: [{association:'colors'},{model:ColorProduct,as:'stocks'}]
       });
       console.log('probando product',JSON.stringify(product, null, 4));
       console.log(product.constructor.prototype);

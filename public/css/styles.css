@@ -789,7 +789,9 @@ h4{
     font-weight: 300;
     padding: 10px;
 }
-
+.stockInput{
+    width: 50px;
+}
 /* create product */
 .form-create-product{
     margin: auto;

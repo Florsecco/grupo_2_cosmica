@@ -25,7 +25,7 @@ module.exports = (sequelize, dataTypes) => {
       {
         unique: true,
         fields: ["color_id", "product_id"],
-      },
+      }
     ],
   };
 

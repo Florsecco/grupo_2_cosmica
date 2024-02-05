@@ -40,12 +40,29 @@
     <div class="product-items-block">
         <p>Color</p>
         <% colors.forEach(color => { %>
-            <label><input type="checkbox" name="color" value="<%=color.id%>" <% if (product != null && product.colors[0].id==color.id ){ %>
-                checked
-                <% } %>/> <%=color.name%>
-         </label> 
-         <% }); %>
+            <label><%=color.name%></label> 
+                <input type="checkbox" name="color" value="<%=color.id%>" 
+                <% if (product != null) { %>
+                    <% product.colors.forEach(colorProduct => { %>
+                        <% if (colorProduct.id==color.id ){ %>
+                            checked />
+                            <% product.stocks.forEach(conteo => { %> 
+                                <% if (color.id===conteo.color_id) { %>
+                                    <label>Stock de <%= color.name %></label><input class="stockInput" type="number" name="stock" placeholder="30" value="<%=conteo.stock%>">    
+                                <% } %>
+                            <% }) %>
+                        <% } %>
+                        <% })} %>
+
+         <% }) %>
     </div>
+    <% if (product==null) { %>
+        <div class="product-items">
+            <label>Stock</label>
+            <input type="number" name="stock" placeholder="30">
+        </div>
+    <% } %>
+
     <div class="product-items">
         <label>Ingredientes</label>
         <textarea name="ingredients"
@@ -59,10 +76,7 @@
         <label>Descuento</label>
         <input type="number" name="discount" placeholder="20" value="<%if(product !=null){%><%=product.discount%><%}%>">
     </div>
-    <div class="product-items">
-        <label>Stock</label>
-        <input type="number" name="stock" placeholder="30" value="<%if(product !=null){%><%=product.stock%><%}%>">
-    </div>
+    
     <div class="col-12">
         <button type="submit" class="buy-now-button">Guardar producto</button>
     </div>
