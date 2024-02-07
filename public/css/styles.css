@@ -792,6 +792,9 @@ h4{
 .stockInput{
     width: 50px;
 }
+.displayNone{
+    display: none;
+}
 /* create product */
 .form-create-product{
     margin: auto;
@@ -825,14 +828,32 @@ h4{
     margin-bottom: 10px;
     padding: 5px;
 }
-.product-items-block p{
+.product-items-block p,.product-items-block-color p{
    margin-bottom: 5px;
 }
-.product-items-block label{
+.product-items-block label, .product-items-block-color label{
     margin-right: 5px;
 }
 .form-create-product input:hover,.form-create-product input:focus{
     outline: none;
+}
+.product-items-block-color{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 5px;
+}
+.color-item {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    
+
+}
+.color-item label{
+    width: 100px;
+    display: flex;
+    gap:5px
 }
 
 /* tablets */

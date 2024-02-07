@@ -130,8 +130,8 @@ const productController = {
         final_price: finalPrice,
         brand_id: req.body.brand,
       });
-
-      await product.createColorProduct({
+      console.log(product);
+      await product.createStock({
         color_id: req.body.color,
         stock:req.body.stock
       })
@@ -176,7 +176,7 @@ const productController = {
         ]
       });
       console.log('probando product',JSON.stringify(product, null, 4));
-      const { name, description_short, description_long, category, ingredients, price, discount,brand,stock, color } = req.body;
+      const { name, description_short, description_long, category, ingredients, price, discount,brand, color } = req.body;
       const finalPrice = price - (price * discount) / 100;
       let img = product.image
       if (req.file != undefined) {
@@ -202,18 +202,23 @@ const productController = {
               id: req.params.id
           }
       })
-      console.log(color)
+      const stockId = 'stock'+ color
+      console.log(stockId);
+      console.log(req.body);
+      const stock = req.body.stock[color-1]
+      console.log(stock);
       const productColor = await ColorProduct.findOne({
         where:{
           product_id:id,
           color_id:color
         }
       })
+      
       if (productColor) {
         productColor.stock=stock
         await productColor.save()  
       }else{
-        await product.createColorProduct({
+        await product.createStock({
           color_id: color,
           stock:stock
         })
