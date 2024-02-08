@@ -14,8 +14,8 @@ module.exports = (sequelize, DataTypes) => {
       Profile.hasMany(models.User, {
         // as: "usuarios",
         // through: 'actor_movie',
-        sourceKey: 'id',
-        foreignKey: 'id',
+        // sourceKey: 'id',
+        foreignKey: 'profile_id',
         // otherKey: 'movie_id'
       });
     }

@@ -16,8 +16,8 @@ module.exports = (sequelize, DataTypes) => {
         // through: 'actor_movie',
         // foreignKey: 'actor_id',
         // otherKey: 'movie_id'
-        sourceKey: 'id',
-        foreignKey: 'id',
+        // sourceKey: 'id',
+        foreignKey: 'profile_id',
       });
     }
   }

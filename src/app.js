@@ -31,7 +31,7 @@ app.use(session({
   saveUninitialized: true,
   // cookie: { secure: true }
 }));
-app.use(userLoggedMiddleware)
+app.use(userLoggedMiddleware);
 
 app.listen(PORT, () => console.log("Servidor corriendo en el puerto " + PORT));
 
