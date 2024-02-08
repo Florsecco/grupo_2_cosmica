@@ -1,5 +1,7 @@
 const {index, findOne} = require("../models/product.model");
-
+const db = require("../database/models");
+const Product = db.Product;
+const { Op } = require("sequelize");
 const toThousand = (numero) =>{
     const opciones = {
         style: 'decimal',
@@ -12,11 +14,24 @@ const toThousand = (numero) =>{
 
 
 const mainController = {
-  home: (req, res) => {
-    const products = index();
-    const offers = products.filter((product)=>product.discount!=0)
-    const featured = products.filter((product)=>product.discount==0)
+  home: async (req, res) => {
+    try {
+      const featured = await Product.findAll({
+        where: {
+          discount: 0,
+        },
+      });
+      const offers = await Product.findAll({
+        where: {
+          discount: { [Op.ne]: 0 },
+        },
+      });
+      //res.json(offers);
     res.render("home", { offers, featured, toThousand });
+    } catch (error) {
+      console.log(error);
+      res.send(error.message);
+    }
   },
 };
 

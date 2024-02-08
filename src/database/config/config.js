@@ -1,7 +1,7 @@
 module.exports= {
   "development": {
     "username": "root",
-    "password": "root",
+    "password": "",
     "database": "cosmica_development",
     "host": "127.0.0.1",
     "dialect": "mysql"
@@ -21,3 +21,4 @@ module.exports= {
     "dialect": "mysql"
   }
 }
+
