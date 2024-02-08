@@ -19,7 +19,7 @@ module.exports = (sequelize,dataTypes) =>{
     
     };
     let config= { 
-        tablename: "categories",
+        tableName: "categories",
         timestamps: true,
         createdAt: 'created_at',
         updatedAt: 'updated_at',
@@ -31,7 +31,7 @@ module.exports = (sequelize,dataTypes) =>{
     Category.associate = function (models) {
         Category.belongsToMany(models.Color,{
             as:'colors',
-            through: 'Color_Category',
+            through: 'color_categories',
             foreignKey: 'category_id',
             otherKey: 'color_id',
             timestamps: false   

@@ -54,6 +54,7 @@ module.exports = (sequelize,dataTypes) =>{
         // updated_at: dataTypes.TIMESTAMP,
     };
     let config= {
+        tableName: 'products',
         timestamps: true,
         createdAt: 'created_at',
         updatedAt: 'updated_at',
@@ -73,12 +74,14 @@ module.exports = (sequelize,dataTypes) =>{
         })
         Product.belongsToMany(models.Color,{
             as:'colors',
-            through: 'Color_Product',
+            through: 'color_products',
             foreignKey: 'product_id',
             otherKey: 'color_id',
             timestamps: false   
-        })
+        }),
+
         Product.hasMany(models.ColorProduct,{
+            as:'stocks',
             foreignKey: 'product_id',
             onDelete: 'CASCADE'
         })

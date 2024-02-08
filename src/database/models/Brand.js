@@ -15,7 +15,7 @@ module.exports = (sequelize,dataTypes) =>{
     
     };
     let config= {
-        tablename: "brands",
+        tableName: "brands",
         timestamps: true,
         createdAt: 'created_at',
         updatedAt: 'updated_at',
@@ -30,7 +30,5 @@ module.exports = (sequelize,dataTypes) =>{
             foreignKey:'brand_id'
         })
     }
-    
-
     return Brand
 }

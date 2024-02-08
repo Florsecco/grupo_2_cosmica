@@ -14,6 +14,7 @@ module.exports = (sequelize,dataTypes) =>{
         }
     };
     let config= {
+        tableName:'color_categories',
         timestamps: false,
         deletedAt: false
     };

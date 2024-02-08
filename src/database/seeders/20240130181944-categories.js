@@ -7,22 +7,22 @@ module.exports = {
     await queryInterface.bulkInsert('categories', [
       {
        id:1,
-       name:'bases',
+       name:'Bases',
        image:'category1.jpeg'
       },
       {
         id:2,
-        name:'rubores',
+        name:'Rubores',
         image:'category2.jpeg'
        },
        {
         id:3,
-        name:'delineadores',
+        name:'Delineadores',
         image:'category3.jpg'
        },
        {
         id:4,
-        name:'labiales',
+        name:'Labiales',
         image:'category4.jpg'
        },
 
