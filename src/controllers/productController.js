@@ -131,9 +131,11 @@ const productController = {
         brand_id: req.body.brand,
       });
       console.log(product);
+      const posicionStock = req.body.color
+      const stock = req.body.stock[posicionStock-1]
       await product.createStock({
         color_id: req.body.color,
-        stock:req.body.stock
+        stock:stock
       })
       res.redirect("/");
     } catch (error) {
@@ -202,9 +204,9 @@ const productController = {
               id: req.params.id
           }
       })
-      const stockId = 'stock'+ color
-      console.log(stockId);
-      console.log(req.body);
+      // const stockId = 'stock'+ color
+      // console.log(stockId);
+      // console.log(req.body);
       const stock = req.body.stock[color-1]
       console.log(stock);
       const productColor = await ColorProduct.findOne({
