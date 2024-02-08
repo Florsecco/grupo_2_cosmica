@@ -24,6 +24,7 @@ module.exports = (sequelize, dataTypes) => {
     },
   };
   let config = {
+    tableName: 'review',
     timestamps: true,
     createdAt: "created_at",
     updatedAt: "updated_at",
@@ -37,13 +38,11 @@ module.exports = (sequelize, dataTypes) => {
       as: "product",
       foreingKey: product_id,
     });
-  };
-
-  Review.associate = (models) => {
     Review.belongsTo(models.User, {
       as: "user",
       foreingKey: "user_id",
     });
   };
+
   return Review;
 };
