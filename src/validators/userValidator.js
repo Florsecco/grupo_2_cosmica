@@ -1,5 +1,6 @@
 const { body } = require('express-validator');
-const { findUser } = require("../models/user.model");
+// const { findUser } = require("../models/user.model");
+const { User } = require('../database/models');
 
 exports.validateLogin = [
     body('email')
@@ -26,9 +27,12 @@ exports.validateUser = [
     body('email')
         .notEmpty().withMessage('Debe ingresar el email').bail()
         .isEmail().withMessage('Debe ingresar un email valido')
-        .custom((value) => {
-            const userExist = findUser('email', value);
-            console.log(userExist);
+        .custom(async (value) => {
+            const userExist = await User.findOne({
+                where: {
+                    email: value
+                }
+            });
             if (userExist) {
                 throw new Error('El email ingresado ya está registrado')
             };
@@ -37,7 +41,6 @@ exports.validateUser = [
         }),
     body('avatar')
         .custom((value, { req }) => {
-            console.log(value);
             if (req.file === undefined)
                 throw new Error('Tiene que cargar una imagen de avatar.');
 
@@ -70,7 +73,6 @@ exports.validateUpdate = [
         .isEmail().withMessage('Debe ingresar un email valido'),
     body('avatar')
         .custom((value, { req }) => {
-            console.log(req.file);
             if (req.file === undefined)
                 return true;
             if (

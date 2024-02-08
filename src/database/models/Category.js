@@ -14,11 +14,12 @@ module.exports = (sequelize,dataTypes) =>{
             type: dataTypes.STRING(100),
             allowNull: false
         },
-        created_at: dataTypes.TIMESTAMP,
-        updated_at: dataTypes.TIMESTAMP,     
+        // created_at: dataTypes.TIMESTAMP,
+        // updated_at: dataTypes.TIMESTAMP,     
     
     };
-    let config= {
+    let config= { 
+        tableName: "categories",
         timestamps: true,
         createdAt: 'created_at',
         updatedAt: 'updated_at',
@@ -28,6 +29,13 @@ module.exports = (sequelize,dataTypes) =>{
     const Category = sequelize.define(alias, cols, config); 
 
     Category.associate = function (models) {
+        Category.belongsToMany(models.Color,{
+            as:'colors',
+            through: 'color_categories',
+            foreignKey: 'category_id',
+            otherKey: 'color_id',
+            timestamps: false   
+        })
         Category.hasMany(models.ColorCategory,{
             foreignKey: 'category_id',
             onDelete: 'CASCADE'

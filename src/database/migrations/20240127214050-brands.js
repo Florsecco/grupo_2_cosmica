@@ -1,10 +1,11 @@
 "use strict";
+
 const { DataTypes } = require("sequelize");
 
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable("colors", {
+    await queryInterface.createTable("brands", {
       id: {
         type: DataTypes.INTEGER(10),
         primaryKey: true,
@@ -21,13 +22,11 @@ module.exports = {
       updated_at: {
         type: DataTypes.DATE,
         allowNull:true
-      },   
+      },
     });
   },
 
   async down(queryInterface, Sequelize) {
-
-    await queryInterface.dropTable('colors');
-    
+    await queryInterface.dropTable("brands");
   },
 };
