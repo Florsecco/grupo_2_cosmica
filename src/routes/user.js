@@ -12,13 +12,13 @@ const router = express.Router();
 
 // Register //
 
-router.get("/register", userController.register);
-router.post("/register", uploadMemory.single("avatar"), validateUser, validatePassword, userController.processRegister);
+router.get("/register", guestMiddleware, userController.register);
+router.post("/register", guestMiddleware, uploadMemory.single("avatar"), validateUser, validatePassword, userController.processRegister);
 
 // Login //
 
 router.get("/login", guestMiddleware, userController.login);
-router.post("/login", validateLogin, userController.processLogin);
+router.post("/login", guestMiddleware, validateLogin, userController.processLogin);
 
 // Profile //
 
@@ -27,13 +27,13 @@ router.get("/profile", authMiddleware, userController.profile);
 // Edit //
 
 router.get("/edit", authMiddleware, userController.edit);
-router.put('/edit', uploadMemory.single('avatar'), validateUpdate, userController.update)
+router.put('/edit', authMiddleware, uploadMemory.single('avatar'), validateUpdate, userController.update)
 
 // Logout //
-router.get('/logout', userController.logout)
+router.get('/logout', authMiddleware, userController.logout)
 
 // Delete //
-router.put('/', userController.delete)
+router.delete('/', authMiddleware, userController.delete)
 
 
 

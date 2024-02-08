@@ -33,7 +33,6 @@ exports.validateUser = [
                     email: value
                 }
             });
-            console.log(userExist);
             if (userExist) {
                 throw new Error('El email ingresado ya está registrado')
             };
@@ -42,7 +41,6 @@ exports.validateUser = [
         }),
     body('avatar')
         .custom((value, { req }) => {
-            console.log(value);
             if (req.file === undefined)
                 throw new Error('Tiene que cargar una imagen de avatar.');
 
@@ -75,7 +73,6 @@ exports.validateUpdate = [
         .isEmail().withMessage('Debe ingresar un email valido'),
     body('avatar')
         .custom((value, { req }) => {
-            console.log(req.file);
             if (req.file === undefined)
                 return true;
             if (
