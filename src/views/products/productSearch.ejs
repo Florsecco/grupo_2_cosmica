@@ -35,8 +35,22 @@
                       <p class="product-tittle">
                         <%=product.name%>
                       </p>
-                      <p class="product-price"> $<%=toThousand(product.price)%>
-                      </p>
+                     
+                        <% if (product.discount) { %>
+                          <div class="product-full-price">
+                            <p class="product-dsc">
+                              <%=product.discount%>% OFF
+                            </p>
+                            <p class="product-price strikethrough price-old">$<%=toThousand(product.price)%>
+                            </p>
+                            <p class="product-price">
+                              $<%= toThousand(product.price - (product.price*product.discount/100)) %>
+                            </p>
+                          </div>
+                        <% } else { %>
+                          <p class="product-price"> $<%=toThousand(product.price)%>
+                          </p>
+                          <% } %>
                     </div>
                   </article>
                   <% }) %>
