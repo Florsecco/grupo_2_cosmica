@@ -29,19 +29,11 @@ const toThousand = (numero) => {
 };
 
 const productController = {
-  // index: (req, res) => {
-  //   const products = index();
-  //   const offers = products.filter((product) => product.discount != 0);
-  //   const featured = products.filter((product) => product.discount == 0);
-  //   res.render("./products/products", { offers, featured, toThousand });
-  // },
-
-  // el index esta listo solo falta descomentar el render
   index: async (req, res) => {
     try {
       const featured = await Product.findAll({
         where: {
-          discount: 0,
+          discount: 0
         },
       });
       const offers = await Product.findAll({
@@ -49,7 +41,6 @@ const productController = {
           discount: { [Op.ne]: 0 },
         },
       });
-      //res.json(offers);
     res.render("./products/products", { offers, featured, toThousand });
     } catch (error) {
       console.log(error);
@@ -60,21 +51,12 @@ const productController = {
   cart: (req, res) => {
     res.render("./products/cart");
   },
-  // productDetail: (req, res) => {
-  //   const { id } = req.params;
-  //   const products = index();
-  //   const product = findOne(id);
-  //   if (product === undefined) res.redirect("../not-found");
-  //   res.render("./products/productDetail", { product, products, toThousand });
-  // },
-  //aqui solo falta descomentar el render 
   detail: async (req, res) => {
     try {
       const { id } = req.params;
       const products = await Product.findAll();
       const product = await Product.findByPk(id);
       if (product === undefined) res.redirect("../not-found");
-      //res.json(product);
       res.render("./products/productDetail", { product, products, toThousand });
     } catch (error) {
       console.log(error);
@@ -92,26 +74,6 @@ const productController = {
       res.send(error.message);
     }
   },
-  // 'create': (req, res) => {
-  //   const { name, description, price, discount, stock, color, category } =
-  //     req.body;
-  //   const products = index();
-  //   let id = generateId();
-  //   const product = {
-  //     id,
-  //     name,
-  //     description,
-  //     price: parseInt(price),
-  //     discount: parseInt(discount),
-  //     image: req.file.filename,
-  //     stock: parseInt(stock),
-  //     category,
-  //     color,
-  //   };
-  //   products.push(product);
-  //   create(products);
-  //   res.redirect("/");
-  // },
   create2: async (req, res) => {
     try {     
       const precio = parseInt(req.body.price);
@@ -144,7 +106,6 @@ const productController = {
     }
   },
   productToEdit: async(req,res)=>{
-    //aqui falta ver lo de los colores
     try {
       const { id } = req.params;
       const categories = await Category.findAll()
@@ -231,24 +192,7 @@ const productController = {
       res.send(error.message)
   }
   },
-  // 'delete': (req, res) => {
-  //   const productos = index();
-  //   const id = req.params.id;
-  //   let img;
-  //   const productosRestantes = productos.filter((product) => {
-  //     if (product.id != id) {
-  //       return product;
-  //     } else {
-  //       img = product.image;
-  //     }
-  //   });
-  //   create(productosRestantes);
-
-  //   fs.unlinkSync(path.join(__dirname, "../../public/img/products", img));
-  //   res.redirect("/products");
-  // },
   delete: async(req,res)=>{
-
     try {
       let img 
       const { id } = req.params;

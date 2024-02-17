@@ -61,7 +61,7 @@ module.exports = (sequelize,dataTypes) =>{
         deletedAt: false
     };
 
-    const Product = sequelize.define(alias, cols, config); 
+  const Product = sequelize.define(alias, cols, config);
 
     Product.associate = function (models) {
         Product.belongsTo(models.Category,{
@@ -84,7 +84,11 @@ module.exports = (sequelize,dataTypes) =>{
             as:'stocks',
             foreignKey: 'product_id',
             onDelete: 'CASCADE'
-        })
+        }),
+        Product.hasMany(models.Review, {
+          as: "review",
+          foreignKey: "review_id",
+      });
     }
 
     return Product

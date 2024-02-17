@@ -211,7 +211,10 @@ footer {
     color: #3e005b;
     font-weight: 500;
 }
-
+.detaildsc{
+    color: #ff5355;
+    font-weight: 800;
+}
 .product-img,
 .descrip {
     width: 100%;
