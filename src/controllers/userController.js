@@ -1,4 +1,4 @@
-const { User, Profile } = require('../database/models');
+const { User } = require('../database/models');
 const Sequelize = require('sequelize');
 const Op = Sequelize.Op;
 const bcrypt = require("bcryptjs");
@@ -93,6 +93,7 @@ const userController = {
       user.password
     );
 
+    // console.log(bcrypt.hashSync("admin1234", salt));
     if (!userIsValidPassword)
       return res.render("./users/login", {
         errors: {
@@ -161,7 +162,7 @@ const userController = {
     user.email = userBody.email;
     user.address = userBody.address;
     await user.save();
-   
+
     const userJson = await user.get({ plain: true });
     delete userJson.password;
 

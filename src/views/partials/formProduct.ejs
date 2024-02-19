@@ -20,43 +20,33 @@
         <input type="file" name="product" multiple>
     </div>
     <div class="product-items-block">
-        <p>Categoría</p>
-        <% categories.forEach(category => { %>
-           <label><input type="radio" name="category" value="<%=category.id%>" <% if (product != null && product.category_id==category.id ) { %>
-            checked
-            <% } %>/> <%=category.name%>
-        </label> 
-        <% }); %>
+        <label for="category">Categoría:</label>
+        <select name="category" id="category">
+            <option value="" disabled selected>Selecciona una categoría</option>
+            <% categories.forEach(category => { %>
+                <option value="<%=category.id%>" <% if (product != null && product.category_id==category.id ) { %>
+                    selected
+                    <% } %>><%=category.name%></option>
+            <% }); %>
+        </select>
     </div>
     <div class="product-items-block">
         <p>Marca</p>
         <% brands.forEach(brand => { %>
-           <label><input type="radio" name="brand" value="<%=brand.id%>" <% if (product != null && product.brand_id==brand.id ) { %>
+           <label><input id="category" type="radio" name="brand" value="<%=brand.id%>" <% if (product != null && product.brand_id==brand.id ) { %>
             checked
             <% } %>/> <%=brand.name%>
         </label> 
         <% }); %>
     </div>
     <div class="product-items-block-color">
-        <p>Color</p>
-        <% colors.forEach(color => { %>
-            <div class="color-item">
-            <label><%=color.name%>
-                <input class="inputCheckbox" type="checkbox" name="color" value="<%=color.id%>" <% if (product != null) { %>
-                    <% product.colors.forEach(colorProduct => { %>
-                        <% if (colorProduct.id==color.id ){ %>
-                            checked
-                            <%}%>                            
-         <% })}%>/></label>
-         <label>Stock<input class="stockInput" type="number" name="stock" placeholder="30" <% if (product!=null) { %>
-            <% product.stocks.forEach(conteo => { %> 
-                <% if (color.id==conteo.color_id) { %>
-                    value="<%= conteo.stock %>"
-                <% } %>
-            <% }) %>
-            <%}%> ></label>
+        <label for="colors">Colores:</label>
+        <select name="colors" id="colors" multiple>
+            
+        </select><br>
+        <div id="colorStockContainer">
+
         </div>
-        <% }) %> 
     </div>
 
     <div class="product-items">

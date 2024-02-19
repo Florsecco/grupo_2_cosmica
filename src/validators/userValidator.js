@@ -1,5 +1,4 @@
 const { body } = require('express-validator');
-// const { findUser } = require("../models/user.model");
 const { User } = require('../database/models');
 
 exports.validateLogin = [
@@ -15,11 +14,13 @@ exports.validateUser = [
     body('first_name')
         .trim()
         .notEmpty().withMessage('Debe ingresar su Nombre.').bail()
-        .isAlpha('es-ES', { ignore: ' ' }).withMessage('No debe ingresar numeros'),
+        .isAlpha('es-ES', { ignore: ' ' }).withMessage('No debe ingresar numeros.').bail()
+        .isLength({ min: 2 }).withMessage("El nombre debe tener al menos 2 letras."),
     body('last_name')
         .trim()
         .notEmpty().withMessage('Debe ingresar su Apellido.').bail()
-        .isAlpha('es-ES', { ignore: ' ' }).withMessage('No debe ingresar numeros'),
+        .isAlpha('es-ES', { ignore: ' ' }).withMessage('No debe ingresar numeros')
+        .isLength({ min: 2 }).withMessage("El apellido debe tener al menos 2 letras."),
     body('address')
         .trim()
         .notEmpty().withMessage('Debe ingresar su domicilio.').bail()
@@ -60,11 +61,15 @@ exports.validateUser = [
 
 exports.validateUpdate = [
     body('first_name')
+        .trim()
         .notEmpty().withMessage('Debe ingresar su Nombre.').bail()
-        .isString().withMessage('No debe ingresar numeros'),
+        .isAlpha('es-ES', { ignore: ' ' }).withMessage('No debe ingresar numeros').bail()
+        .isLength({ min: 2 }).withMessage("El nombre debe tener al menos 2 letras."),
     body('last_name')
+        .trim()
         .notEmpty().withMessage('Debe ingresar su Apellido.').bail()
-        .isString().withMessage('No debe ingresar numeros'),
+        .isAlpha('es-ES', { ignore: ' ' }).withMessage('No debe ingresar numeros')
+        .isLength({ min: 2 }).withMessage("El apellido debe tener al menos 2 letras."),
     body('address')
         .notEmpty().withMessage('Debe ingresar su domicilio.').bail()
         .isString().withMessage('No debe ingresar numeros'),

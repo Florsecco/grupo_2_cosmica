@@ -1,22 +1,20 @@
-const {
-  findOne,
-  index,
-  generateId,
-  create,
-  update,
-} = require("../models/product.model");
-
 const db = require("../database/models");
 const Product = db.Product;
 const Category = db.Category;
 const Color = db.Color;
 const Brand = db.Brand;
-const ColorProduct= db.ColorProduct
+const Review = db.Review;
+const User = db.User;
+const ColorProduct = db.ColorProduct
 const { Op } = require("sequelize");
+
+const ResponseHandler = require('../models/ResponseHandler');
 
 const fs = require("fs");
 
 const path = require("path");
+const { validationResult } = require("express-validator");
+// const Review = require("../database/models/Review");
 
 const toThousand = (numero) => {
   const opciones = {
@@ -41,113 +39,134 @@ const productController = {
           discount: { [Op.ne]: 0 },
         },
       });
-    res.render("./products/products", { offers, featured, toThousand });
+      res.render("./products/products", { offers, featured, toThousand });
     } catch (error) {
       console.log(error);
       res.send(error.message);
     }
   },
-// esto se cambia si hacemos el cart nomas
+  // esto se cambia si hacemos el cart nomas
   cart: (req, res) => {
     res.render("./products/cart");
   },
   detail: async (req, res) => {
     try {
+      const user_id = req.session.userLogged && req.session.userLogged.id;
       const { id } = req.params;
       const products = await Product.findAll();
-      const product = await Product.findByPk(id);
+      const product = await Product.findByPk(id, {
+        include: {
+          model: Review, attributes: ['comment', 'rating', 'created_at'],
+          include: {
+            model: User, attributes: ['first_name', 'last_name']
+          }
+        }
+      });
       if (product === undefined) res.redirect("../not-found");
-      res.render("./products/productDetail", { product, products, toThousand });
+
+      const reviews = await product.getReviews();
+      let userHasCommented = reviews.some((review) => review.user_id == user_id);
+      const productJson = product.get({ plain: true });
+      res.render("./products/productDetail", { product: productJson, products, toThousand, userHasCommented });
     } catch (error) {
       console.log(error);
       res.send(error.message);
     }
   },
-  createProduct: async(req, res) => {
+  createProduct: async (_, res) => {
     try {
       const categories = await Category.findAll()
       const colors = await Color.findAll()
       const brands = await Brand.findAll()
-      res.render("./products/createProduct", {categories,colors,brands});
+      res.render("./products/createProduct", { categories, colors, brands });
     } catch (error) {
-      console.log(error);
+      console.error(error);
       res.send(error.message);
     }
   },
   create2: async (req, res) => {
-    try {     
-      const precio = parseInt(req.body.price);
-      const descuento = parseInt(req.body.discount);
-      const finalPrice = precio - (precio * descuento) / 100;
-      const product = await Product.create({
-        name: req.body.name,
-        description_short: req.body.description_short,
-        description_long: req.body.description_long,
-        status: 1,
-        image: req.file.filename,
-        category_id: req.body.category,
-        ingredients: req.body.ingredients,
-        price: precio,
-        discount: descuento,
-        final_price: finalPrice,
-        brand_id: req.body.brand,
-      });
-      console.log(product);
-      const posicionStock = req.body.color
-      const stock = req.body.stock[posicionStock-1]
-      await product.createStock({
-        color_id: req.body.color,
-        stock:stock
-      })
-      res.redirect("/");
+    try {
+      const errors = validationResult(req);
+
+      if (!errors.isEmpty()) {
+        return res.render("./products/create", {
+          errors: errors.mapped(),
+          old: req.body,
+        });
+      };
+      console.log(req.body);
+      // const precio = parseInt(req.body.price);
+      // const descuento = parseInt(req.body.discount);
+      // const finalPrice = precio - (precio * descuento) / 100;
+      // const product = await Product.create({
+      //   name: req.body.name,
+      //   description_short: req.body.description_short,
+      //   description_long: req.body.description_long,
+      //   status: 1,
+      //   image: req.file.filename,
+      //   category_id: req.body.category,
+      //   ingredients: req.body.ingredients,
+      //   price: precio,
+      //   discount: descuento,
+      //   final_price: finalPrice,
+      //   brand_id: req.body.brand,
+      // });
+      // console.log(product);
+      // const posicionStock = req.body.color
+      // const stock = req.body.stock[posicionStock - 1]
+      // await product.createStock({
+      //   color_id: req.body.color,
+      //   stock: stock
+      // })
+      // res.redirect("/");
     } catch (error) {
       console.log(error);
       res.send(error.message);
     }
   },
-  productToEdit: async(req,res)=>{
+  productToEdit: async (req, res) => {
     try {
       const { id } = req.params;
       const categories = await Category.findAll()
       const colors = await Color.findAll()
       const brands = await Brand.findAll()
-      const product = await Product.findByPk(id,{
-        include: [{association:'colors'},{model:ColorProduct,as:'stocks'}]
+      const product = await Product.findByPk(id, {
+        include: [{ association: 'colors' }, { model: ColorProduct, as: 'stocks' }]
       });
-      console.log('probando product',JSON.stringify(product, null, 4));
+      console.log('probando product', JSON.stringify(product, null, 4));
       console.log(product.constructor.prototype);
-      
+
       if (product === undefined) res.redirect("../not-found");
-      res.render("./products/editProduct", { product,categories,colors,brands });
+      res.render("./products/editProduct", { product, categories, colors, brands });
     } catch (error) {
       console.log(error);
       res.send(error.message);
     }
   },
-  update2: async(req,res)=>{
+  update2: async (req, res) => {
     try {
       const id = req.params.id;
-      const product = await Product.findByPk(id,{
+      const product = await Product.findByPk(id, {
         include: [
           {
-            model:Color,
-            as:'colors',
-            through:{
-              attributes:['stock','id']
+            model: Color,
+            as: 'colors',
+            through: {
+              attributes: ['stock', 'id']
             }
           }
         ]
       });
-      console.log('probando product',JSON.stringify(product, null, 4));
-      const { name, description_short, description_long, category, ingredients, price, discount,brand, color } = req.body;
+      console.log('probando product', JSON.stringify(product, null, 4));
+      const { name, description_short, description_long, category, ingredients, price, discount, brand, color } = req.body;
       const finalPrice = price - (price * discount) / 100;
       let img = product.image
       if (req.file != undefined) {
         fs.unlinkSync(
           path.join(__dirname, "../../public/img/products", img)
         );
-        img = req.file.filename  
-        }
+        img = req.file.filename
+      }
 
       await Product.update({
         name: name,
@@ -155,81 +174,106 @@ const productController = {
         description_long: description_long,
         category_id: category,
         ingredients: ingredients,
-        image: img ,
+        image: img,
         price: price,
         discount: discount,
         final_price: finalPrice,
         brand_id: brand,
-      },{
-          where: {
-              id: req.params.id
-          }
+      }, {
+        where: {
+          id: req.params.id
+        }
       })
       // const stockId = 'stock'+ color
       // console.log(stockId);
       // console.log(req.body);
-      const stock = req.body.stock[color-1]
+      const stock = req.body.stock[color - 1]
       console.log(stock);
       const productColor = await ColorProduct.findOne({
-        where:{
-          product_id:id,
-          color_id:color
+        where: {
+          product_id: id,
+          color_id: color
         }
       })
-      
+
       if (productColor) {
-        productColor.stock=stock
-        await productColor.save()  
-      }else{
+        productColor.stock = stock
+        await productColor.save()
+      } else {
         await product.createStock({
           color_id: color,
-          stock:stock
+          stock: stock
         })
       }
       res.redirect(`/products/${id}`);
     } catch (error) {
       console.log(error)
       res.send(error.message)
-  }
+    }
   },
-  delete: async(req,res)=>{
+  delete: async (req, res) => {
     try {
-      let img 
+      let img
       const { id } = req.params;
       const product = await Product.findByPk(id);
       if (product === undefined) {
-        res.redirect("../not-found")}
+        res.redirect("../not-found")
+      }
 
-      else{
+      else {
         img = product.image
-      await Product.destroy({
-        where:{
-            id:id
-        }
-    })}
-    fs.unlinkSync(path.join(__dirname, "../../public/img/products", img));
-    res.send("flor ");
-    // res.redirect("/products");    
+        await Product.destroy({
+          where: {
+            id: id
+          }
+        })
+      }
+      fs.unlinkSync(path.join(__dirname, "../../public/img/products", img));
+      res.send("flor ");
+      // res.redirect("/products");    
     } catch (error) {
       console.log(error);
       res.send(error.message);
     }
-  }, 
-  search: async(req,res)=>{
+  },
+  search: async (req, res) => {
     try {
       const search = req.body.search
       const products = await Product.findAll({
-        where:{
-          name:{ [Op.like]: `%${search}%`}
+        where: {
+          name: { [Op.like]: `%${search}%` }
         }
       })
-        res.render('./products/productSearch',{products, toThousand})
-      
+      res.render('./products/productSearch', { products, toThousand })
+
     } catch (error) {
       console.log(error);
       res.send(error.message);
     }
-  }
+  },
+  comment: async (req, res) => {
+    try {
+      const user_id = req.session.userLogged.id;
+      const product_id = parseInt(req.params.id);
+      const { commentText: comment, rating } = req.body;
+      const product = await Product.findByPk(product_id);
+      if (product == null) {
+        const responseHandler = new ResponseHandler(404, "Producto inexistente", null, req.originalUrl);
+        responseHandler.sendResponse(res);
+      }
+      const commentCreated = await product.createReview({ user_id, comment, rating });
+      const commentJson = commentCreated.get({ plain: true });
+      delete commentJson.product_id;
+      delete commentJson.user_id;
+      delete commentJson.updated_at;
+      const responseHandler = new ResponseHandler(200, "Comentario Creado", commentJson, req.originalUrl);
+      responseHandler.sendResponse(res);
+
+    } catch (error) {
+      console.error(error);
+      res.send(error);
+    }
+  },
 };
 
 module.exports = productController;

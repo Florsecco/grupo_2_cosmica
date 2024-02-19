@@ -1,38 +1,67 @@
 "use strict";
 
-const { DataTypes } = require("sequelize");
-
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable("review", {
+    await queryInterface.createTable("reviews", {
       id: {
-        type: DataTypes.INTEGER(10),
+        type: Sequelize.INTEGER,
         primaryKey: true,
         autoIncrement: true,
+        allowNull: false
       },
       product_id: {
-        type: DataTypes.INTEGER(10),
-        allowNulle: false,       
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        references: {
+          model: {
+            tableName: 'products',
+            // schema: 'schema'
+          },
+          key: 'id'
+        }
       },
       user_id: {
-        type: DataTypes.INTEGER(15),
-        allowNulle: false
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        references: {
+          model: {
+            tableName: 'users',
+            // schema: 'schema'
+          },
+          key: 'id'
+        }
       },
       comment: {
-        type: DataTypes.STRING(255),
-        allowNulle: false
+        type: Sequelize.STRING(255),
+        allowNull: false
       },
       rating: {
-        type: DataTypes.INTEGER(10),
-        allowNulle: false
+        type: Sequelize.INTEGER,
+        allowNull: false,
+      },
+      created_at: {
+        allowNull: false,
+        type: Sequelize.DATE
+      },
+      updated_at: {
+        allowNull: false,
+        type: Sequelize.DATE
+      },
+      deleted_at: {
+        allowNull: true,
+        type: Sequelize.DATE
       }
     });
+    await queryInterface.addIndex('reviews', ['product_id', 'user_id'], {
+      unique: true,
+      name: 'review_index'
+    })
   },
 
   async down(queryInterface, Sequelize) {
-    
-    await queryInterface.dropTable('review');
-     
+
+    await queryInterface.dropTable('reviews');
+
   },
 };
