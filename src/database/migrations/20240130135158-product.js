@@ -37,7 +37,7 @@ module.exports = {
         allowNull:false,
     },
     ingredients:{
-        type: DataTypes.STRING(255),
+        type: DataTypes.STRING(500),
         allowNull: true
     },
     price:{

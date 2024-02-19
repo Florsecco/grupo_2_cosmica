@@ -20,7 +20,6 @@ router.get("/create",authMiddleware, productController.createProduct);
 router.post("/", upload.single('product'), productController.create2);
 
 // Product Detail // Solo falta descomentar el render♠
-
 router.get("/:id", productController.detail);
 
 // Edit product //
@@ -30,4 +29,7 @@ router.put("/:id", upload.single('product') ,productController.update2)
 // delete element //
 router.delete('/:id',productController.delete)
 
+
+// Post comment
+router.post("/:id/comment", authMiddleware, productController.comment);
 module.exports = router;

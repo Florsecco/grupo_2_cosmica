@@ -16,9 +16,11 @@ const PORT = process.env.PORT;
 const mainRouter = require('./routes/main.js');
 const userRouter = require('./routes/user.js');
 const productRouter = require('./routes/product.js');
+const categoryRouter = require('./routes/category.js');
 const userLoggedMiddleware = require('./middlewares/userLoggedMiddleware.js');
 
 app.use(morgan('dev'));
+app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(methodOverride('_method'));
 app.use(express.static(__dirname + '/../public'));
@@ -50,6 +52,7 @@ else if (app.get('env') === 'testing') {
 app.use('/', mainRouter);
 app.use('/users', userRouter);
 app.use('/products', productRouter);
+app.use('/categories', categoryRouter);
 app.use((req, res, next) => {
   res.redirect('/');
   // res.status(404).render('not-found');

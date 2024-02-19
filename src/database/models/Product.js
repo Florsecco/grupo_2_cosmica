@@ -31,7 +31,7 @@ module.exports = (sequelize,dataTypes) =>{
             allowNull:false,
         },
         ingredients:{
-            type: dataTypes.STRING(255),
+            type: dataTypes.STRING(500),
             allowNull: true
         },
         price:{
@@ -86,8 +86,8 @@ module.exports = (sequelize,dataTypes) =>{
             onDelete: 'CASCADE'
         }),
         Product.hasMany(models.Review, {
-          as: "review",
-          foreignKey: "review_id",
+        //   as: "reviews",
+          foreignKey: "product_id",
       });
     }
 
