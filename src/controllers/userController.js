@@ -197,6 +197,18 @@ const userController = {
     }
 
   },
+  list: async (req, res) => {
+    try {
+      const users = await User.findAll();
+      console.log(users);
+      res.json({
+        data: users
+      })
+    } catch (error) {
+      console.log(error);
+      res.send(error.message);
+    }
+  }
 };
 
 module.exports = userController;

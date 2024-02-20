@@ -42,11 +42,11 @@
           <div class="password">
             <input type="password" name="password" placeholder="Contraseña" />
             <i class="fa-solid fa-eye-slash"></i>
-            <span class="error"></span>
           </div>
           <% if (locals.errors && errors.password) { %>
             <span style="color: red"> <%= errors.password.msg %> </span>
-          <% } %>
+            <% } %>
+            <span class="error"></span>
         </div>
         <div>
           <div class="password">
@@ -56,12 +56,11 @@
               placeholder="Confirmar contraseña"
             />
             <i class="fa-solid fa-eye-slash"></i> 
-            <span class="error"></span>
           </div>
           <% if (locals.errors && errors.confirm_password) { %>
             <span style="color: red"> <%= errors.confirm_password.msg %> </span>
-          <% } %>
-          <span class="error"></span>
+            <% } %>
+            <span class="error"></span>
         </div>
         <div>
           <input type="text" name="address" placeholder="Direccion" value="<%= locals.old && old.address %>"/>

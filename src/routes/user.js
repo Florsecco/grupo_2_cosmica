@@ -35,6 +35,9 @@ router.get('/logout', authMiddleware, userController.logout)
 // Delete //
 router.delete('/', authMiddleware, userController.delete)
 
+// Users List // 
+
+router.get('/users',  userController.list)
 
 
 module.exports = router;
