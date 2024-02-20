@@ -119,6 +119,7 @@ const productController = {
       //   stock: stock
       // })
       // res.redirect("/");
+      res.send(req.body);
     } catch (error) {
       console.log(error);
       res.send(error.message);
