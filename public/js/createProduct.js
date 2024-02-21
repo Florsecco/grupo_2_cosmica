@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
     // const name = document.getElementsByName('name');
 
-    const body= {
+    const body = {
       name: createProductForm.name.value,
       description_short: createProductForm.description_short.value,
       description_long: createProductForm.description_long.value,
@@ -30,65 +30,75 @@ document.addEventListener('DOMContentLoaded', function () {
       discount: createProductForm.discount.value,
       colorStocks
     };
-    console.log(body);
+    fetch(`http://localhost:3031/api/products/create`, {
+      method: "POST",
+      headers: {
+        'Content-Type': 'application/json',
 
-  });
-  console.log(categorySelected);
-  categorySelected && categorySelected.addEventListener('change', () => {
-    const selectedCategory = categorySelected.value;
-    selectedCategory && fetch(`/categories/${selectedCategory}/colors`)
+      },
+      body: JSON.stringify({ body })
+    })
       .then(response => response.json())
-      .then(colores => {
-        const data = colores.data;
-        colorFieldset.innerHTML = ''; // Limpiar opciones anteriores
-        data.forEach(color => {
-          const checkbox = document.createElement('input');
-          checkbox.type = 'checkbox';
-          checkbox.name = 'color';
-          checkbox.value = color.id;
-          // checkbox.id = `color_${color.id}`;
+      .then(data => console.log(data));
+  })
 
-          const label = document.createElement('label');
-          label.textContent = color.name;
-          console.log("ëntre");
-          checkbox.addEventListener('click', updateColorStockInputs);
-          colorFieldset.appendChild(checkbox);
-          colorFieldset.appendChild(label);
-          colorFieldset.appendChild(document.createElement('br'));
-        });
+});
+console.log(categorySelected);
+categorySelected && categorySelected.addEventListener('change', () => {
+  const selectedCategory = categorySelected.value;
+  selectedCategory && fetch(`/categories/${selectedCategory}/colors`)
+    .then(response => response.json())
+    .then(colores => {
+      const data = colores.data;
+      colorFieldset.innerHTML = ''; // Limpiar opciones anteriores
+      data.forEach(color => {
+        const checkbox = document.createElement('input');
+        checkbox.type = 'checkbox';
+        checkbox.name = 'color';
+        checkbox.value = color.id;
+        // checkbox.id = `color_${color.id}`;
+
+        const label = document.createElement('label');
+        label.textContent = color.name;
+        console.log("ëntre");
+        checkbox.addEventListener('click', updateColorStockInputs);
+        colorFieldset.appendChild(checkbox);
+        colorFieldset.appendChild(label);
+        colorFieldset.appendChild(document.createElement('br'));
       });
-  });
+    });
+});
 
-  function updateColorStockInputs(event) {
-    const checkbox = event.target;
-    const colorId = checkbox.value;
+function updateColorStockInputs(event) {
+  const checkbox = event.target;
+  const colorId = checkbox.value;
 
-    if (checkbox.checked) {
-      const label = checkbox.nextElementSibling; // Obtener el siguiente elemento, que es el label
-      const colorName = label.textContent; // Obtener el texto del label, que es el nombre del color
+  if (checkbox.checked) {
+    const label = checkbox.nextElementSibling; // Obtener el siguiente elemento, que es el label
+    const colorName = label.textContent; // Obtener el texto del label, que es el nombre del color
 
-      const labelStock = document.createElement('label');
-      labelStock.textContent = `Stock para ${colorName}`;
+    const labelStock = document.createElement('label');
+    labelStock.textContent = `Stock para ${colorName}`;
 
-      const stockInput = document.createElement('input');
-      stockInput.type = 'number';
-      stockInput.name = 'stock';
-      stockInput.id = `color_${colorId}`;
+    const stockInput = document.createElement('input');
+    stockInput.type = 'number';
+    stockInput.name = 'stock';
+    stockInput.id = `color_${colorId}`;
 
-      const stockInputContainer = document.getElementById('stockInputs');
+    const stockInputContainer = document.getElementById('stockInputs');
 
-      stockInputContainer.appendChild(labelStock);
-      stockInputContainer.appendChild(stockInput);
-      stockInputContainer.appendChild(document.createElement('br'));
-    }
-    else {
-      const stockInput = document.getElementById(`color_${colorId}`);
-      if (stockInput) {
-        stockInput.previousSibling.remove();
-        stockInput.nextSibling.remove();
-        stockInput.remove();
-      }
-    }
-
+    stockInputContainer.appendChild(labelStock);
+    stockInputContainer.appendChild(stockInput);
+    stockInputContainer.appendChild(document.createElement('br'));
   }
+  else {
+    const stockInput = document.getElementById(`color_${colorId}`);
+    if (stockInput) {
+      stockInput.previousSibling.remove();
+      stockInput.nextSibling.remove();
+      stockInput.remove();
+    }
+  }
+
+}
 });
