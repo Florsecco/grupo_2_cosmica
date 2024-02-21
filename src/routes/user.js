@@ -37,7 +37,7 @@ router.delete('/', authMiddleware, userController.delete)
 
 // Users List // 
 
-router.get('/users',  userController.list)
+router.get('/validate/:email',  userController.list)
 
 
 module.exports = router;

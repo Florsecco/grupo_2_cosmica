@@ -2,35 +2,7 @@ const isEmpty = (input) => input.value && input.value.trim() !== "";
 const long = (input) => input.value.length >= 2;
 
 let passwordCheck;
-fetch('/users/users').then(response => response.json())
-.then(users=>{
-    const data = users
-    console.log(data);
 
-})
-
-/*
-on time y post submit DONE
-Registro de usuarios
-○ Nombre y apellido
-■ Obligatorio. DONE
-■ Deberá tener al menos 2 caracteres. DONE
-○ Email
-■ Obligatorio. DONE
-■ Deberá ser válido DONE
-■ (Opcional) → No puede repetirse con los e-mails ya registrados.
-○ Contraseña
-■ Obligatoria. DONE
-■ Deberá tener al menos 8 caracteres. DONE 
-Agregado que coincida con la anterior contraseña DONE
-■ (Opcional) → Deberá tener letras mayúsculas, minúsculas, un
-número y un carácter especial. DONE
-
-○ Imagen
-■ Deberá ser un archivo válido (JPG, JPEG, PNG, GIF). DONE
-
-
-*/
 
 const validations = [
   {
@@ -81,7 +53,18 @@ const validations = [
         errorMsg: "Debes ingresar un correo electronico valido ",
       },
       {
-        validator: isEmpty,
+        validator:async (input) => {
+          //clearTimeout(timeOutID);
+          console.log('entro por el validador');
+          //timeOutID =
+          //setTimeout(() => {
+          const res = await fetch(`/users/validate/${input.value}`)
+          const data = await res.json()
+          //console.log(data);
+          return data.existe
+          //}, 1500)
+          
+      },
         errorMsg: "Este correo ya esta registrado",
       },
     ],
@@ -196,35 +179,39 @@ const validations = [
 
 window.addEventListener("load", function () {
   const form = document.querySelector(".form-register");
-  
+
   validations.forEach((inputToValidate) => {
     const errores1 = [];
     const input = form[inputToValidate.inputName];
     passwordCheck = form.password;
-    input.addEventListener("blur", (e) => {
-        console.log('validacion on time');
+    input.addEventListener("blur", async(e) => {
+      console.log("validacion on time");
       for (const validation of inputToValidate.validations) {
-        const isValid = validation.validator(input);    
+        const isValid = await validation.validator(input);
         if (!isValid) {
+          
+          console.log('entro por el !isValid');
           errores1.push(validation.errorMsg);
-           if(input.name == 'password' || input.name == 'confirm_password'){
-            input.parentElement.parentElement.querySelector(".error").innerHTML =
-            validation.errorMsg;
-                return;
-           }
+          if (input.name == "password" || input.name == "confirm_password") {
+            input.parentElement.parentElement.querySelector(
+              ".error"
+            ).innerHTML = validation.errorMsg;
+            return;
+          }
           input.parentElement.querySelector(".error").innerHTML =
             validation.errorMsg;
           return;
         }
       }
-      if(input.name == 'password' || input.name == 'confirm_password'){
-        input.parentElement.parentElement.querySelector(".error").innerHTML = "";
-      }else{
-      input.parentElement.querySelector(".error").innerHTML = "";
+      if (input.name == "password" || input.name == "confirm_password") {
+        input.parentElement.parentElement.querySelector(".error").innerHTML =
+          "";
+      } else {
+        input.parentElement.querySelector(".error").innerHTML = "";
       }
     });
   });
-  
+
   form.addEventListener("submit", function (e) {
     e.preventDefault();
 
@@ -237,22 +224,24 @@ window.addEventListener("load", function () {
       for (const validation of inputToValidate.validations) {
         const isValid = validation.validator(input);
         if (!isValid) {
-            console.log('validacion post submit');
+          console.log("validacion post submit");
           errores.push(validation.errorMsg);
-          if(input.name == 'password' || input.name == 'confirm_password'){
-            input.parentElement.parentElement.querySelector(".error").innerHTML =
-            validation.errorMsg;
-                return;
-           }
+          if (input.name == "password" || input.name == "confirm_password") {
+            input.parentElement.parentElement.querySelector(
+              ".error"
+            ).innerHTML = validation.errorMsg;
+            return;
+          }
           input.parentElement.querySelector(".error").innerHTML =
             validation.errorMsg;
           return;
         }
       }
-      if(input.name == 'password' || input.name == 'confirm_password'){
-        input.parentElement.parentElement.querySelector(".error").innerHTML = "";
-      }else{
-      input.parentElement.querySelector(".error").innerHTML = "";
+      if (input.name == "password" || input.name == "confirm_password") {
+        input.parentElement.parentElement.querySelector(".error").innerHTML =
+          "";
+      } else {
+        input.parentElement.querySelector(".error").innerHTML = "";
       }
     });
 
