@@ -1,4 +1,4 @@
-<form action="<%=path%>" method="<%=method%>" enctype="multipart/form-data" class="form-create-product">
+<form action="<%=path%>" method="<%=method%>" enctype="multipart/form-data" class="form-create-product" id="form-create-product">
     <div class="product-items">
         <label>Nombre</label>
         <input type="text" name="name" placeholder="Nombre Producto" <% if (product !=null) { %>
@@ -40,12 +40,16 @@
         <% }); %>
     </div>
     <div class="product-items-block-color">
-        <label for="colors">Colores:</label>
+        <!-- <label for="colors">Colores:</label>
         <select name="colors" id="colors" multiple>
             
-        </select><br>
-        <div id="colorStockContainer">
-
+        </select><br> -->
+        <fieldset>
+            <legend>Colores:</legend>
+            <!-- Aquí se agregarán dinámicamente los checkboxes de colores -->
+        </fieldset><br>
+        <div id="stockInputs">
+            <!-- Aquí se agregarán dinámicamente los campos de stock -->
         </div>
     </div>
 
