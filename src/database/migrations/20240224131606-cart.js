@@ -31,14 +31,15 @@ module.exports = {
         type: DataTypes.INTEGER(10),
         allowNull: true,
       },
-      updated_at: {
+      created_at: {
         allowNull: false,
         type: DataTypes.DATE,
       },
-      deleted_at: {
-        allowNull: true,
+
+      updated_at: {
+        allowNull: false,
         type: DataTypes.DATE,
-      },
+      }
      });
     
   },

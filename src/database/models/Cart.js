@@ -18,12 +18,12 @@ module.exports = (sequelize, dataTypes) => {
       type: dataTypes.INTEGER(10),
       allowNull: true,
     },
-    updated_at: {
-      allowNull: false,
+    created_at: {
+      allowNull: true,
       type: dataTypes.DATE,
     },
-    deleted_at: {
-      allowNull: true,
+    updated_at: {
+      allowNull: false,
       type: dataTypes.DATE,
     },
   };

@@ -9,7 +9,7 @@ const authMiddleware = require("../middlewares/authMiddleware");
 router.get("/", productController.index);
 
 // Cart // solo se cambia si creamos el cart
-router.get("/cart/1", productController.cart);
+router.get("/cart", productController.cart);
 
 // Search product //
 router.post('/search',productController.search )

@@ -5,6 +5,8 @@ const Color = db.Color;
 const Brand = db.Brand;
 const Review = db.Review;
 const User = db.User;
+const Cart = db.Cart;
+const ProductCart = db.ProductCart;
 const ColorProduct = db.ColorProduct
 const { Op } = require("sequelize");
 
@@ -46,9 +48,13 @@ const productController = {
     }
   },
   // esto se cambia si hacemos el cart nomas
-  cart: (req, res) => {
-    const cartId = req.params.id
-    console.log(cartId);
+  cart:async (req, res) => {
+    const cart = await Cart.findByPk(1, {
+      include:{
+        model: ProductCart, attributes:['product_id'],
+      }
+    })
+    console.log(cart);
     res.render("./products/cart");
   },
   detail: async (req, res) => {
