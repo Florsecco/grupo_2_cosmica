@@ -47,6 +47,8 @@ const productController = {
   },
   // esto se cambia si hacemos el cart nomas
   cart: (req, res) => {
+    const cartId = req.params.id
+    console.log(cartId);
     res.render("./products/cart");
   },
   detail: async (req, res) => {
