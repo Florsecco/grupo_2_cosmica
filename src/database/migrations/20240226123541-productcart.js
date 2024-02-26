@@ -6,7 +6,7 @@ const { DataTypes } = require("sequelize");
 module.exports = {
   async up (queryInterface, Sequelize) {
 
-    await queryInterface.createTable('productcarts', {
+    await queryInterface.createTable('productcarts', { 
       id: {
         type: DataTypes.INTEGER(10),
         primaryKey: true,
@@ -15,27 +15,13 @@ module.exports = {
       product_id: {
         type: DataTypes.INTEGER(10),
         allowNull: false,
-        references: {
-          model: {
-            tableName: 'products',
-            // schema: 'schema'
-          },
-          key: 'id'
-        }
+      },
+      quantity:{
+        type: DataTypes.INTEGER(10),
+        allowNull: false,
       },
       cart_id: {
         type: DataTypes.INTEGER(10),
-        allowNull: false,
-        references: {
-          model: {
-            tableName: 'carts',
-            // schema: 'schema'
-          },
-          key: 'id'
-        }
-      },
-      product_price: {
-        type: DataTypes.FLOAT(10),
         allowNull: false,
       },
      });

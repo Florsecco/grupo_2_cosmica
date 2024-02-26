@@ -10,12 +10,12 @@ module.exports = (sequelize, dataTypes) => {
       type: dataTypes.INTEGER(10),
       allowNull: false,
     },
-    cart_id: {
+    quantity:{
       type: dataTypes.INTEGER(10),
       allowNull: false,
     },
-    product_price: {
-      type: dataTypes.FLOAT(10),
+    cart_id: {
+      type: dataTypes.INTEGER(10),
       allowNull: false,
     },
   };
@@ -31,9 +31,6 @@ module.exports = (sequelize, dataTypes) => {
     ProductCart.belongsTo(models.Product, {
       foreignKey: "product_id",
     }),
-      // ProductCart.belongsTo(models.Product, {
-      //   foreignKey: "product_price",
-      // }),
       ProductCart.belongsTo(models.Cart, {
         foreignKey: "cart_id",
       });

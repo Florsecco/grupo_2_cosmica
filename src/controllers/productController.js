@@ -50,12 +50,9 @@ const productController = {
   // esto se cambia si hacemos el cart nomas
   cart:async (req, res) => {
     const cart = await Cart.findByPk(1, {
-      include:{
-        model: ProductCart, attributes:['product_id'],
-      }
+      include:[{ association: 'products' }, { model: ProductCart, as: 'productscarts' }]
     })
-    console.log(cart);
-    res.render("./products/cart");
+    res.render("./products/cart", {cart, toThousand});
   },
   detail: async (req, res) => {
     try {

@@ -15,13 +15,6 @@ module.exports = {
       user_id: {
         type: DataTypes.INTEGER(10),
         allowNull: false,
-        references: {
-          model: {
-            tableName: 'users',
-            // schema: 'schema'
-          },
-          key: 'id'
-        }
       },
       total: {
         type: DataTypes.FLOAT(10),
@@ -32,14 +25,13 @@ module.exports = {
         allowNull: true,
       },
       created_at: {
-        allowNull: false,
+        allowNull: true,
         type: DataTypes.DATE,
       },
-
       updated_at: {
         allowNull: false,
         type: DataTypes.DATE,
-      }
+      },
      });
     
   },
