@@ -1,5 +1,5 @@
 const { body } = require('express-validator');
-const { Category, Brand } = require('../database/models');
+const { Category, Brand, Color } = require('../database/models');
 
 exports.validateCreateProduct = [
   body('name')
@@ -13,8 +13,8 @@ exports.validateCreateProduct = [
   body('description_long')
     .trim()
     .notEmpty().withMessage('Debe ingresar la descripcion larga.').bail()
-    .isLength({ min: 20 }).withMessage("La descripcion larga debe tener 20 letras como minimo."), ,
-  body('category')
+    .isLength({ min: 20 }).withMessage("La descripcion larga debe tener 20 letras como minimo."),
+  body('category_id')
     .notEmpty().withMessage('Debe seleccionar una categoria para el producto.').bail()
     .custom(async (value) => {
       const categoryExist = await Category.findByPk(value);
@@ -22,7 +22,7 @@ exports.validateCreateProduct = [
         throw new Error('La categoria seleccionada no existe');
       return true;
     }),
-  body('brand')
+  body('brand_id')
     .notEmpty().withMessage('Debe seleccionar una marca para el producto.').bail()
     .custom(async (value) => {
       const brandExist = await Brand.findByPk(value);
@@ -31,17 +31,45 @@ exports.validateCreateProduct = [
       return true;
     }),
   body('ingredients')
+    .trim()
     .notEmpty().withMessage('Debe ingresar los ingredientes del producto.').bail(),
   body('price')
     .notEmpty().withMessage('Debe ingresar el precio del producto.').bail(),
   body('discount')
     .notEmpty().withMessage("Debe ingresar el descuento del producto.").bail(),
-  body('color')
-    .notEmpt().withMessage("Debe ingresar un color para el producto").bail(),
-  body('stock')
+  body('colorStocks')
+    .notEmpty().withMessage("Debe ingresar un color para el producto").bail()
+    .custom((async (value) => {
+      const colorStocks = JSON.parse(value);
+      for (const colorStock of colorStocks) {
+        if (colorStock.stock < 1)
+          throw new Error('El stock debe ser mayor a 0');
+        const colorExist = await Color.findByPk(colorStock.color_id);
+        if (colorExist)
+          throw new Error('El color no existe.');
+        return true;
+      }
+    })),
+  body('product')
+    .custom((value, { req }) => {
+      if (req.file === undefined)
+        throw new Error('Tiene que cargar una imagen del product.');
+
+      if (
+        req.file.mimetype === 'image/jpeg' ||
+        req.file.mimetype === 'image/png' ||
+        req.file.mimetype === 'image/jpg'
+      ) {
+        return true;
+      }
+      else {
+
+        throw new Error('El archivo debe ser una imagen JPEG, PNG o JPG.');
+      }
+    })
 
 ];
 
-exports.validateUpdateProduct = [
+// exports.validateUpdateProduct = [
 
-];
+// ];

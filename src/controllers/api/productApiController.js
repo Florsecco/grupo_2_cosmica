@@ -9,6 +9,7 @@ const productsController = {
     const transaction = await sequelize.transaction();
     try {
       const errors = validationResult(req);
+      console.log(errors);
       if (!errors.isEmpty()) {
         const responseHandler = new ResponseHandler(404, "Errores en el formulario.", errors, req.originalUrl);
         responseHandler.sendResponse(res);
@@ -46,7 +47,6 @@ const productsController = {
           color_id: colorStock.color_id,
           stock: colorStock.stock
         }, { transaction });
-
       };
 
       await transaction.commit();
