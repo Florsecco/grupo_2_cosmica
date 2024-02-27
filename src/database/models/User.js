@@ -16,6 +16,10 @@ module.exports = (sequelize, DataTypes) => {
       User.hasMany(models.Review, {
         foreignKey: "user_id",
       });
+      User.belongsTo(models.Cart,{
+        as:'cart',
+        foreignKey:'user_id'
+    })
     }
   }
   User.init({

@@ -5,6 +5,8 @@ const Color = db.Color;
 const Brand = db.Brand;
 const Review = db.Review;
 const User = db.User;
+const Cart = db.Cart;
+const ProductCart = db.ProductCart;
 const ColorProduct = db.ColorProduct
 const { Op } = require("sequelize");
 
@@ -46,8 +48,11 @@ const productController = {
     }
   },
   // esto se cambia si hacemos el cart nomas
-  cart: (req, res) => {
-    res.render("./products/cart");
+  cart:async (req, res) => {
+    const cart = await Cart.findByPk(1, {
+      include:[{ association: 'products' }, { model: ProductCart, as: 'productscarts' }]
+    })
+    res.render("./products/cart", {cart, toThousand});
   },
   detail: async (req, res) => {
     try {
@@ -119,6 +124,7 @@ const productController = {
       //   stock: stock
       // })
       // res.redirect("/");
+      res.send(req.body);
     } catch (error) {
       console.log(error);
       res.send(error.message);
