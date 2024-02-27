@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', function () {
     formData.append('description_short', createProductForm.description_short.value);
     formData.append('description_long', createProductForm.description_long.value);
     formData.append('category_id', createProductForm.category.value);
-    formData.append('brand_id', createProductForm.brand.value);
+    formData.append('brand', createProductForm.brand.value);
     formData.append('ingredients', createProductForm.ingredients.value);
     formData.append('price', createProductForm.price.value);
     formData.append('discount', createProductForm.discount.value);
@@ -43,6 +43,13 @@ document.addEventListener('DOMContentLoaded', function () {
     console.log(createProductForm.product.value);
     console.log(createProductForm.product.files[0]);
     console.log(formData);
+    var elementosError = document.querySelectorAll('.error');
+
+    // Eliminar cada elemento con clase "error"
+    elementosError.forEach(function (elemento) {
+      // elemento.previousSibling.remove();
+      elemento.remove();
+    });
     // console.log(body);
     fetch(`http://localhost:3010/api/products/create`, {
       method: "POST",
@@ -53,8 +60,27 @@ document.addEventListener('DOMContentLoaded', function () {
       body: formData
     })
       .then(response => response.json())
-      .then(data => console.log(data));
+      .then(data => {
+
+        console.log(data);
+        const errores = data.data;
+        if (errores.brand) {
+          const span = document.createElement('span');
+          span.textContent = errores.brand.msg;
+          span.classList.add('error');
+          // createProductForm[errores.brand.path][0].parentNode.parentNode.appendChild(document.createElement('br'))
+          createProductForm[errores.brand.path][0].parentNode.parentNode.appendChild(span)
+        }
+        if (errores.name) {
+          const span = document.createElement('span');
+          span.textContent = errores.name.msg;
+          span.classList.add('error');
+          console.log(createProductForm[errores.name.path]);
+          createProductForm[errores.name.path].parentNode.appendChild(span);
+        }
+      });
   })
+
   console.log(categorySelected);
   categorySelected && categorySelected.addEventListener('change', () => {
     const selectedCategory = categorySelected.value;
@@ -72,7 +98,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
           const label = document.createElement('label');
           label.textContent = color.name;
-          console.log("ëntre");
+          console.log("entre");
           checkbox.addEventListener('click', updateColorStockInputs);
           colorFieldset.appendChild(checkbox);
           colorFieldset.appendChild(label);

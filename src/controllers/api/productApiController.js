@@ -9,10 +9,12 @@ const productsController = {
     const transaction = await sequelize.transaction();
     try {
       const errors = validationResult(req);
-      console.log(errors);
+      // console.log(req.body);
+      // console.log(errors);
       if (!errors.isEmpty()) {
-        const responseHandler = new ResponseHandler(404, "Errores en el formulario.", errors, req.originalUrl);
-        responseHandler.sendResponse(res);
+        if (transaction) await transaction.rollback();
+        const responseHandler = new ResponseHandler(404, "Errores en el formulario.", errors.mapped(), req.originalUrl);
+        return responseHandler.sendResponse(res);
       }
 
       const colorStocks = JSON.parse(req.body.colorStocks);
@@ -33,7 +35,7 @@ const productsController = {
         price,
         discount,
         final_price,
-        brand_id: req.body.brand_id
+        brand_id: req.body.brand
       }, { transaction });
       console.log(JSON.stringify(product, null, 4));
       console.log(product.id);
