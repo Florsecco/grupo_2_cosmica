@@ -21,8 +21,7 @@
     </div>
     <div class="product-items">
         <label>Ingredientes</label>
-        <textarea name="ingredients"
-            placeholder="Ingredientes del producto" > <%if(product !=null){%><%=product.ingredients%><%}%> </textarea>
+        <textarea name="ingredients" placeholder="Ingredientes del producto"><%if(product !=null){%><%=product.ingredients%><%}%></textarea>
             <span class="error"></span>
     </div>
     <div class="product-items">
@@ -55,7 +54,7 @@
     <div class="product-items-block">
         <p>Marca</p>
         <% brands.forEach(brand => { %>
-           <label><input id="category" type="radio" name="brand" value="<%=brand.id%>" <% if (product != null && product.brand_id==brand.id ) { %>
+           <label><input id="brand" type="radio" name="brand" value="<%=brand.id%>" <% if (product != null && product.brand_id==brand.id ) { %>
             checked
             <% } %>/> <%=brand.name%>
         </label> 
