@@ -197,6 +197,30 @@ const userController = {
     }
 
   },
+  list: async (req, res) => {
+
+    try {
+        const email = req.params.email;
+
+        const respuesta = await User.findOne({
+            where: {email: email}
+        })
+
+        if (respuesta) {
+            res.json({
+                existe: false,
+            })
+        } else {
+            res.json({
+                existe: true,
+            })
+        }
+    } catch (error) {
+      res.send({error:error})
+    }
+    
+
+}
 };
 
 module.exports = userController;

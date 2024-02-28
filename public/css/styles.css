@@ -991,6 +991,19 @@ h4{
 .toast.show {
     visibility: visible;
 }
+
+/* validations */
+
+.is-invalid{
+    background-color: red;
+}
+.is-valid{
+    border-color: green;
+}
+.error{
+    color: red;
+}
+
 /* tablets */
 @media (min-width: 576px) {
     .featured-products {
