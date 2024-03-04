@@ -28,6 +28,18 @@ module.exports = {
       profile_id: 1,
       created_at: new Date(),
       updated_at: new Date(),
+    },{
+      id: 2,
+      first_name: 'cliente',
+      last_name: 'apellidoCliente',
+      email: 'cliente@cliente.com',
+      password: bcrypt.hashSync('cliente1234', 10),
+      status: 1,
+      image: "avatar-1.png",
+      address: "Calle Cliente",
+      profile_id: 3,
+      created_at: new Date(),
+      updated_at: new Date(),
     }], {});
   },
 

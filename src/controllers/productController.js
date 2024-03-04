@@ -231,12 +231,11 @@ const productController = {
         await Product.destroy({
           where: {
             id: id
-          }
+          },
         })
       }
       fs.unlinkSync(path.join(__dirname, "../../public/img/products", img));
-      res.send("flor ");
-      // res.redirect("/products");    
+      res.redirect("/products");    
     } catch (error) {
       console.log(error);
       res.send(error.message);
