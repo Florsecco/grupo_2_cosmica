@@ -1,5 +1,5 @@
 const { body } = require('express-validator');
-const { findUser } = require("../models/user.model");
+const { User } = require('../database/models');
 
 exports.validateLogin = [
     body('email')
@@ -14,11 +14,13 @@ exports.validateUser = [
     body('first_name')
         .trim()
         .notEmpty().withMessage('Debe ingresar su Nombre.').bail()
-        .isAlpha('es-ES', { ignore: ' ' }).withMessage('No debe ingresar numeros'),
+        .isAlpha('es-ES', { ignore: ' ' }).withMessage('No debe ingresar numeros.').bail()
+        .isLength({ min: 2 }).withMessage("El nombre debe tener al menos 2 letras."),
     body('last_name')
         .trim()
         .notEmpty().withMessage('Debe ingresar su Apellido.').bail()
-        .isAlpha('es-ES', { ignore: ' ' }).withMessage('No debe ingresar numeros'),
+        .isAlpha('es-ES', { ignore: ' ' }).withMessage('No debe ingresar numeros')
+        .isLength({ min: 2 }).withMessage("El apellido debe tener al menos 2 letras."),
     body('address')
         .trim()
         .notEmpty().withMessage('Debe ingresar su domicilio.').bail()
@@ -26,9 +28,12 @@ exports.validateUser = [
     body('email')
         .notEmpty().withMessage('Debe ingresar el email').bail()
         .isEmail().withMessage('Debe ingresar un email valido')
-        .custom((value) => {
-            const userExist = findUser('email', value);
-            console.log(userExist);
+        .custom(async (value) => {
+            const userExist = await User.findOne({
+                where: {
+                    email: value
+                }
+            });
             if (userExist) {
                 throw new Error('El email ingresado ya está registrado')
             };
@@ -37,7 +42,6 @@ exports.validateUser = [
         }),
     body('avatar')
         .custom((value, { req }) => {
-            console.log(value);
             if (req.file === undefined)
                 throw new Error('Tiene que cargar una imagen de avatar.');
 
@@ -57,11 +61,15 @@ exports.validateUser = [
 
 exports.validateUpdate = [
     body('first_name')
+        .trim()
         .notEmpty().withMessage('Debe ingresar su Nombre.').bail()
-        .isString().withMessage('No debe ingresar numeros'),
+        .isAlpha('es-ES', { ignore: ' ' }).withMessage('No debe ingresar numeros').bail()
+        .isLength({ min: 2 }).withMessage("El nombre debe tener al menos 2 letras."),
     body('last_name')
+        .trim()
         .notEmpty().withMessage('Debe ingresar su Apellido.').bail()
-        .isString().withMessage('No debe ingresar numeros'),
+        .isAlpha('es-ES', { ignore: ' ' }).withMessage('No debe ingresar numeros')
+        .isLength({ min: 2 }).withMessage("El apellido debe tener al menos 2 letras."),
     body('address')
         .notEmpty().withMessage('Debe ingresar su domicilio.').bail()
         .isString().withMessage('No debe ingresar numeros'),
@@ -70,7 +78,6 @@ exports.validateUpdate = [
         .isEmail().withMessage('Debe ingresar un email valido'),
     body('avatar')
         .custom((value, { req }) => {
-            console.log(req.file);
             if (req.file === undefined)
                 return true;
             if (
