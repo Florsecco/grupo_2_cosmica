@@ -41,11 +41,11 @@ module.exports = {
         allowNull: true
     },
     price:{
-        type: DataTypes.BIGINT,
+        type: DataTypes.FLOAT(10),
         allowNull: false
     },
     final_price:{
-        type: DataTypes.BIGINT,
+        type: DataTypes.FLOAT(10),
         allowNull: false
     },
     discount:{

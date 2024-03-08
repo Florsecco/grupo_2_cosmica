@@ -22,6 +22,7 @@ module.exports = {
           },
           key: 'id'
         },
+          onDelete: 'CASCADE'
     },
     product_id: {
         type: DataTypes.INTEGER(10),
@@ -33,6 +34,7 @@ module.exports = {
           },
           key: 'id'
         },
+        onDelete: 'CASCADE'
     },  
     stock: {
         type: DataTypes.INTEGER(10),

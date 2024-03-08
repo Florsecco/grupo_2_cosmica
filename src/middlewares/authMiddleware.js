@@ -3,6 +3,7 @@ function authMiddleware(req, res, next) {
     return res.redirect("/users/login");
   }
 
+  
   next();
 }
 

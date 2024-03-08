@@ -1,10 +1,10 @@
-const { User } = require('../database/models');
-const Sequelize = require('sequelize');
+const { User } = require("../database/models");
+const Sequelize = require("sequelize");
 const Op = Sequelize.Op;
 const bcrypt = require("bcryptjs");
 const salt = 10;
 const { validationResult } = require("express-validator");
-const { saveImage } = require('../middlewares/userMulterMemoryMiddleware');
+const { saveImage } = require("../middlewares/userMulterMemoryMiddleware");
 const fs = require("fs");
 
 const path = require("path");
@@ -14,7 +14,6 @@ const userController = {
     res.render("./users/register");
   },
   processRegister: async (req, res) => {
-
     const errors = validationResult(req);
 
     if (!errors.isEmpty()) {
@@ -61,7 +60,6 @@ const userController = {
     res.render("./users/editProfile", { user });
   },
   processLogin: async (req, res) => {
-
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       return res.render("./users/login", {
@@ -75,9 +73,18 @@ const userController = {
     const user = await User.findOne({
       where: {
         email: { [Op.like]: `${email}` },
-        status: 1
+        status: 1,
       },
-      attributes: ['id', 'first_name', 'last_name', 'email', 'password', 'image', 'address', 'profile_id']
+      attributes: [
+        "id",
+        "first_name",
+        "last_name",
+        "email",
+        "password",
+        "image",
+        "address",
+        "profile_id",
+      ],
     });
 
     if (!user)
@@ -88,10 +95,7 @@ const userController = {
         old: req.body,
       });
 
-    const userIsValidPassword = bcrypt.compareSync(
-      password,
-      user.password
-    );
+    const userIsValidPassword = bcrypt.compareSync(password, user.password);
 
     // console.log(bcrypt.hashSync("admin1234", salt));
     if (!userIsValidPassword)
@@ -126,7 +130,10 @@ const userController = {
     const userBody = req.body;
     const user = await User.findByPk(userId);
     if (userBody.oldPassword && userBody.password) {
-      const passwordValidation = bcrypt.compareSync(userBody.oldPassword, user.password);
+      const passwordValidation = bcrypt.compareSync(
+        userBody.oldPassword,
+        user.password
+      );
       if (user.password) {
         if (!passwordValidation) {
           return res.render("./users/editProfile", {
@@ -144,8 +151,7 @@ const userController = {
 
     if (req.file != undefined) {
       const nombreArchivo = saveImage(req.file);
-      if (!nombreArchivo)
-        return res.redirect("/users/edit");
+      if (!nombreArchivo) return res.redirect("/users/edit");
       const avatarAnterior = req.session.userLogged.image;
       user.image = nombreArchivo;
       try {
@@ -168,7 +174,7 @@ const userController = {
 
     req.session.userLogged = userJson;
     if (req.cookies.userEmail) {
-      res.clearCookie("userEmail")
+      res.clearCookie("userEmail");
       res.cookie("userEmail", userJson.email, { maxAge: 1000 * 60 * 60 });
     }
     res.redirect("/users/profile");
@@ -184,7 +190,7 @@ const userController = {
       const userDeleted = await User.findByPk(id);
 
       if (userDeleted) {
-        userDeleted.destroy()
+        userDeleted.destroy();
         req.session.destroy();
         res.clearCookie("userEmail");
         logger.info("Usuario eliminado", userDeleted);
@@ -193,9 +199,29 @@ const userController = {
       return res.redirect("/");
     } catch (error) {
       logger.error(error);
-      return res.redirect('/');
+      return res.redirect("/");
     }
+  },
+  list: async (req, res) => {
+    try {
+      const email = req.params.email;
 
+      const respuesta = await User.findOne({
+        where: { email: email },
+      });
+
+      if (respuesta) {
+        res.json({
+          existe: false,
+        });
+      } else {
+        res.json({
+          existe: true,
+        });
+      }
+    } catch (error) {
+      res.send({ error: error });
+    }
   },
 };
 
