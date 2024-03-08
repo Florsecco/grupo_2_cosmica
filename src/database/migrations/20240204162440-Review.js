@@ -19,7 +19,8 @@ module.exports = {
             // schema: 'schema'
           },
           key: 'id'
-        }
+        },
+        onDelete:'CASCADE'
       },
       user_id: {
         type: Sequelize.INTEGER,
@@ -30,7 +31,8 @@ module.exports = {
             // schema: 'schema'
           },
           key: 'id'
-        }
+        },
+        onDelete:'CASCADE'
       },
       comment: {
         type: Sequelize.STRING(255),
