@@ -1,6 +1,5 @@
 const express = require("express");
 const userController = require("../controllers/userController");
-const upload = require('../middlewares/userMulterMiddleware')
 const authMiddleware = require("../middlewares/authMiddleware");
 const guestMiddleware = require("../middlewares/guestMiddleware");
 const { uploadMemory } = require('../middlewares/userMulterMemoryMiddleware');
