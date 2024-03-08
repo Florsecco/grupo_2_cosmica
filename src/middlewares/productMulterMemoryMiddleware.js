@@ -10,9 +10,9 @@ exports.saveImage = (file) => {
 
     try {
         // Guardar la imagen en disco
-        const uniqueSuffix = "user-" + Date.now() + '-' + Math.round(Math.random() * 1E9)
+        const uniqueSuffix = "product-" + Date.now() + '-' + Math.round(Math.random() * 1E9)
         const nombreArchivo = file.fieldname + '-' + uniqueSuffix + path.extname(file.originalname); // Nombre del archivo con extensión
-        const rutaDestino = path.join(__dirname, "../../public/img/users/", nombreArchivo); // Ruta donde se guardará la imagen en disco
+        const rutaDestino = path.join(__dirname, "../../public/img/products/", nombreArchivo); // Ruta donde se guardará la imagen en disco
         console.log("Nombre de archivo en saveImage:", nombreArchivo);
         // Escribir la imagen en disco
         fs.writeFileSync(rutaDestino, file.buffer);

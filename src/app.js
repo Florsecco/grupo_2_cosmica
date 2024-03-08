@@ -1,4 +1,5 @@
 const express = require('express')
+const cors = require('cors');
 const app = express();
 const path = require('path');
 const dotenv = require('dotenv');
@@ -17,8 +18,15 @@ const mainRouter = require('./routes/main.js');
 const userRouter = require('./routes/user.js');
 const productRouter = require('./routes/product.js');
 const categoryRouter = require('./routes/category.js');
+const productApiRouter = require('./routes/api/productApiRoutes.js');
 const userLoggedMiddleware = require('./middlewares/userLoggedMiddleware.js');
 
+const corsOptions = {
+  origin: 'http://localhost:3000',
+  methods: 'GET,POST,PUT,DELETE',
+  allowedHeaders: 'Content-Type,Authorization',
+};
+app.use(cors(corsOptions));
 app.use(morgan('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -53,6 +61,7 @@ app.use('/', mainRouter);
 app.use('/users', userRouter);
 app.use('/products', productRouter);
 app.use('/categories', categoryRouter);
+app.use('/api/products', productApiRouter);
 app.use((req, res, next) => {
   res.redirect('/');
   // res.status(404).render('not-found');
