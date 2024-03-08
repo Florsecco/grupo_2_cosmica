@@ -59,6 +59,34 @@ const productsController = {
       console.log(error);
       res.send(error.message);
     }
+  },
+  getAll: async (req, res) => {
+    const transaction = await sequelize.transaction();
+    try {
+      const products = await Product.findAll();
+      await transaction.commit();
+      const responseHandler = new ResponseHandler(200, "Listado de productos.", products, req.originalUrl);
+      responseHandler.sendResponse(res);
+    } catch (error) {
+      if (transaction) await transaction.rollback();
+      console.log(error);
+      res.send(error.message);
+    }
+  },
+  getProduct: async (req, res) => {
+
+    const transaction = await sequelize.transaction();
+    const { productId } = req.params;
+    try {
+      const products = await Product.findByPk(productId);
+      await transaction.commit();
+      const responseHandler = new ResponseHandler(200, "Product.", products, req.originalUrl);
+      responseHandler.sendResponse(res);
+    } catch (error) {
+      if (transaction) await transaction.rollback();
+      console.log(error);
+      res.send(error.message);
+    }
   }
 };
 

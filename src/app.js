@@ -1,4 +1,5 @@
 const express = require('express')
+const cors = require('cors');
 const app = express();
 const path = require('path');
 const dotenv = require('dotenv');
@@ -20,6 +21,12 @@ const categoryRouter = require('./routes/category.js');
 const productApiRouter = require('./routes/api/productApiRoutes.js');
 const userLoggedMiddleware = require('./middlewares/userLoggedMiddleware.js');
 
+const corsOptions = {
+  origin: 'http://localhost:3000',
+  methods: 'GET,POST,PUT,DELETE',
+  allowedHeaders: 'Content-Type,Authorization',
+};
+app.use(cors(corsOptions));
 app.use(morgan('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
