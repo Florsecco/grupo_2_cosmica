@@ -15,6 +15,14 @@ module.exports = {
       user_id: {
         type: DataTypes.INTEGER(10),
         allowNull: false,
+        references: {
+          model: {
+            tableName: 'users',
+            // schema: 'schema'
+          },
+          key: 'id'
+        },
+        onDelete:'CASCADE'
       },
       total: {
         type: DataTypes.FLOAT(10),
