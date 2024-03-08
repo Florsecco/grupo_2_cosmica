@@ -21,6 +21,7 @@ module.exports = {
           },
           key: 'id'
         },
+        onDelete:'CASCADE'
     },
     category_id: {
         type: DataTypes.INTEGER(10),
@@ -32,6 +33,7 @@ module.exports = {
           },
           key: 'id'
         },
+        onDelete:'CASCADE'
     }
      });
   
