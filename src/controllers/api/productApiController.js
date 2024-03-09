@@ -3,6 +3,7 @@ const { Product, ColorProduct, sequelize } = require('../../database/models');
 const { saveImage } = require('../../middlewares/productMulterMemoryMiddleware');
 
 const ResponseHandler = require('../../models/ResponseHandler');
+const ResponsePaginated = require('../../models/ResponsePaginated');
 const { validationResult } = require('express-validator');
 const productsController = {
   create: async (req, res) => {
@@ -62,30 +63,46 @@ const productsController = {
   },
   getAll: async (req, res) => {
     const transaction = await sequelize.transaction();
+    const page = parseInt(req.query.page) || 1;
+    const limit = parseInt(req.query.limit) || 10;
+    const offset = (page - 1) * limit;
+    console.log(page);
     try {
-      const products = await Product.findAll();
+      const products = await Product.findAndCountAll({
+        limit,
+        offset,
+      });
+      // const responsePaginated = ResponsePaginated()
       await transaction.commit();
       const responseHandler = new ResponseHandler(200, "Listado de productos.", products, req.originalUrl);
       responseHandler.sendResponse(res);
     } catch (error) {
       if (transaction) await transaction.rollback();
       console.log(error);
-      res.send(error.message);
+      const responseHandler = new ResponseHandler(500, "Error al obtener los productos.", [], req.originalUrl);
+      responseHandler.sendResponse(res);
     }
   },
   getProduct: async (req, res) => {
 
     const transaction = await sequelize.transaction();
     const { productId } = req.params;
+    let responseHandler;
     try {
       const products = await Product.findByPk(productId);
+      if (products) {
+        responseHandler = new ResponseHandler(200, "Product.", products, req.originalUrl);
+      }
+      else {
+        responseHandler = new ResponseHandler(204, "Product.", [], req.originalUrl);
+      }
       await transaction.commit();
-      const responseHandler = new ResponseHandler(200, "Product.", products, req.originalUrl);
       responseHandler.sendResponse(res);
     } catch (error) {
-      if (transaction) await transaction.rollback();
       console.log(error);
-      res.send(error.message);
+      if (transaction) await transaction.rollback();
+      responseHandler = new ResponseHandler(204, "Error al obtener el producto.", [], req.originalUrl);
+      responseHandler.sendResponse(res);
     }
   }
 };

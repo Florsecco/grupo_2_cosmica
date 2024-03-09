@@ -10,7 +10,7 @@ import ProductDetail from './ProductDetail';
 import Post from "./Post";
 
 import NotFound from './NotFound';
-import { Link, Route, Switch } from 'react-router-dom';
+import { Link, Route, Routes } from 'react-router-dom';
 
 function SideBar() {
     return (
@@ -94,30 +94,30 @@ function SideBar() {
             {/*<!-- End Microdesafio 1 -->*/}
 
             {/*<!-- End Microdesafio 2 -->*/}
-            <Switch>
-                <Route exact path="/">
-                    <ContentWrapper />
-                </Route>
-                <Route path="/GenresInDb">
-                    <GenresInDb />
-                </Route>
-                <Route path="/LastMovieInDb">
-                    <LastMovieInDb />
-                </Route>
-                <Route path="/ContentRowMovies">
-                    <ContentRowMovies />
-                </Route>
-                <Route path="/search">
-                    <SearchMovies />
-                </Route>
-                <Route path="/products/:id" >
-                    <ProductDetail />
-                </Route>
-                <Route path="/products">
-                    <Products />
-                </Route>
-                <Route component={NotFound} />
-            </Switch>
+            <Routes>
+                <Route exact path="/" element={
+                    <ContentWrapper />}
+                />
+                <Route path="/GenresInDb" element={
+                    <GenresInDb />}
+                />
+                <Route path="/LastMovieInDb" element={
+                    <LastMovieInDb />}
+                />
+                <Route path="/ContentRowMovies" element={
+                    <ContentRowMovies />}
+                />
+                <Route path="/search" element={
+                    <SearchMovies />}
+                />
+                <Route path="/products/:idProduct" element={
+                    <ProductDetail />}
+                />
+                <Route path="/products" element={
+                    <Products />}
+                />
+                <Route element={NotFound} />
+            </Routes>
             {/*<!-- End Microdesafio 2 -->*/}
         </React.Fragment>
     )
