@@ -1,7 +1,5 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import SearchBar from './SearchBar';
-
-import { Link, Route, Switch } from 'react-router-dom';
 import axios from 'axios';
 import ProductCard from './ProductCard';
 import CardSkeleton from './CardSkeleton';
@@ -13,16 +11,18 @@ function Products() {
   const [isLoading, setIsLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
+  const [query, setQuery] = useState("");
   const limit = 10;
 
   const handleSearch = (query) => {
     console.log("Buscar productos con:", query);
+    setQuery(query);
   }
 
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await axios.get(`http://localhost:3010/api/products?page=${currentPage}&limit=${limit}`);
+        const response = await axios.get(`http://localhost:3010/api/products?page=${currentPage}&limit=${limit}&name=${query}`);
 
         setProducts(response.data.data.rows || []);
         setTotalPages(Math.ceil(response.data.data.count / limit) || 0)
@@ -33,7 +33,7 @@ function Products() {
     }
     console.log('entre al useEffect');
     fetchProducts();
-  }, [currentPage]);
+  }, [currentPage, query]);
 
   const handlePageChange = (page) => {
     setCurrentPage(page);

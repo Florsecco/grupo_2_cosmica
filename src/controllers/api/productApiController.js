@@ -1,9 +1,9 @@
 const { Product, ColorProduct, sequelize } = require('../../database/models');
 
+const { Op } = require("sequelize");
 const { saveImage } = require('../../middlewares/productMulterMemoryMiddleware');
 
 const ResponseHandler = require('../../models/ResponseHandler');
-const ResponsePaginated = require('../../models/ResponsePaginated');
 const { validationResult } = require('express-validator');
 const productsController = {
   create: async (req, res) => {
@@ -65,14 +65,19 @@ const productsController = {
     const transaction = await sequelize.transaction();
     const page = parseInt(req.query.page) || 1;
     const limit = parseInt(req.query.limit) || 10;
+    const name = req.query.name || "";
     const offset = (page - 1) * limit;
     console.log(page);
     try {
       const products = await Product.findAndCountAll({
+        where: {
+          name: {
+            [Op.like]: `%${name}%`
+          }
+        },
         limit,
         offset,
       });
-      // const responsePaginated = ResponsePaginated()
       await transaction.commit();
       const responseHandler = new ResponseHandler(200, "Listado de productos.", products, req.originalUrl);
       responseHandler.sendResponse(res);
