@@ -79,7 +79,7 @@ function SideBar() {
             {/*<!-- End of Sidebar -->*/}
 
             {/*<!-- Microdesafio 1 -->*/}
-            {/*<!--<Route exact path="/">
+            {/*<!--<Route exact path="/" >
                 <ContentWrapper />
             </Route>
             <Route path="/GenresInDb">
