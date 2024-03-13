@@ -40,7 +40,7 @@ const userApiController = {
           "address",
         ],
       });
-
+      if(user){
       res.json({
         id: user.id,
         first_name: user.first_name,
@@ -48,7 +48,10 @@ const userApiController = {
         email: user.email,
         image: `http://localhost:3010/img/users/${user.image}`,
         address: user.address,
-      });
+      })}
+      else{
+        res.json({user:'Not Found'})
+      }
     } catch (error) {
       res.send({ error: error });
     }
