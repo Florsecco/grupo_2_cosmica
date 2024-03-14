@@ -84,7 +84,10 @@ const productsController = {
         }],
         limit,
         offset,
+        distinct: true
       });
+
+      console.log(count);
 
       const productsWithDetail = rows.map((product) => {
         return {
