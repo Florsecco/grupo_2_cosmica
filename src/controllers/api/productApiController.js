@@ -1,4 +1,4 @@
-const { Product, ColorProduct, Color, Category, sequelize } = require('../../database/models');
+const { Product, ColorProduct, Color, Category, Review, sequelize } = require('../../database/models');
 
 const { Op } = require("sequelize");
 const { saveImage } = require('../../middlewares/productMulterMemoryMiddleware');
@@ -86,7 +86,7 @@ const productsController = {
         offset,
       });
 
-      const productos = rows.map((product) => {
+      const productsWithDetail = rows.map((product) => {
         return {
           ...product.toJSON(),
           detail: `http://localhost:3010/api/products/${product.id}`
@@ -115,7 +115,7 @@ const productsController = {
       const products = {
         count,
         countByCategory,
-        products: productos
+        products: productsWithDetail
       };
 
       await transaction.commit();
@@ -126,17 +126,39 @@ const productsController = {
       console.log(error);
       const responseHandler = new ResponseHandler(500, "Error al obtener los productos.", [], req.originalUrl);
       responseHandler.sendResponse(res);
-    }
+    };
   },
   getProduct: async (req, res) => {
-
     const transaction = await sequelize.transaction();
     const { productId } = req.params;
     let responseHandler;
     try {
-      const products = await Product.findByPk(productId);
-      if (products) {
-        responseHandler = new ResponseHandler(200, "Product.", products, req.originalUrl);
+      const result = await Product.findByPk(productId, {
+        attributes: {exclude: ["status", "created_at", "updated_at"]},
+        include: [{
+          model: Review,
+          attributes: ["id", "user_id", "comment", "rating"]
+        },
+        {
+          model: ColorProduct,
+          as: "stocks",
+          attributes: {exclude: ["product_id"]}
+        },
+        {
+          model: Color,
+          as: "colors",
+          attributes: ["id", "name"],
+          through: {attributes: []}
+        }]
+      });
+
+      const product = {
+        ...result.toJSON(),
+        image: `http://localhost:3010/img/products/${result.image}`
+      };
+
+      if (product) {
+        responseHandler = new ResponseHandler(200, "Product.", product, req.originalUrl);
       }
       else {
         responseHandler = new ResponseHandler(204, "Product.", [], req.originalUrl);
