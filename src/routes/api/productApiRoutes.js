@@ -11,6 +11,10 @@ router.post('/create', uploadMemory.single('product'), authMiddleware, validateC
 
 router.get('/', productApiController.getAll);
 
+router.get('/count', productApiController.count);
+
+router.get('/last', productApiController.getLast);
+
 router.get("/:productId", productApiController.getProduct);
 
 module.exports = router;

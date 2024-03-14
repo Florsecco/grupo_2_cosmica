@@ -1,4 +1,4 @@
-const { Product, ColorProduct, Color, Category, Review, sequelize } = require('../../database/models');
+const { Product, ColorProduct,Category,User, Color, Review, sequelize } = require('../../database/models');
 
 const { Op } = require("sequelize");
 const { saveImage } = require('../../middlewares/productMulterMemoryMiddleware');
@@ -57,6 +57,41 @@ const productsController = {
       responseHandler.sendResponse(res);
     } catch (error) {
       if (transaction) await transaction.rollback();
+      console.log(error);
+      res.send(error.message);
+    }
+  },
+  count: async (req, res) => {
+    try {
+      const categories = await Category.findAll({
+        attributes: ["id","name"],
+      });
+      const products = await Product.findAll({
+        attributes: ["id"],
+      });
+      const users = await User.findAll({
+        attributes: ["id"],
+      });
+      res.json({
+        countCat:categories.length,
+        categories: categories,
+        countProd: products.length,
+        countUser: users.length
+      });
+    } catch (error) {
+      console.log(error);
+      res.send(error.message);
+    }
+  },
+  getLast:async (req, res) => {
+    try {
+      const products = await Product.findAll({
+        order:[['id','DESC']],
+        limit: 1
+      });
+      
+      res.json(products);
+    } catch (error) {
       console.log(error);
       res.send(error.message);
     }
