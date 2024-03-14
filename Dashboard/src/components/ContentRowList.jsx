@@ -23,7 +23,7 @@ function ContentRowList(){
             console.log("%cse monto el componente", "color:green");
             fetchCount()
         }, []);
-        const cardsList = [{title:'Productos',color:'primary',cuantity: products,icon:'fa-award'},{title:'Categorías',color:'success',cuantity: categories,icon:'fa-award'},{title:'Usuarios',color:'warning',cuantity: users,icon:'fa-award'},]
+        const cardsList = [{title:'Productos',color:'primary',cuantity: products,icon:'fa-clipboard', link:'/products'},{title:'Categorías',color:'success',cuantity: categories,icon:'fa-list', link:'/categories'},{title:'Usuarios',color:'warning',cuantity: users,icon:'fa-users', link:'/users'},]
        
         return (
     

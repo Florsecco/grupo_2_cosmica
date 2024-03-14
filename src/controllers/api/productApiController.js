@@ -64,7 +64,7 @@ const productsController = {
   count: async (req, res) => {
     try {
       const categories = await Category.findAll({
-        attributes: ["name"],
+        attributes: ["id","name"],
       });
       const products = await Product.findAll({
         attributes: ["id"],
