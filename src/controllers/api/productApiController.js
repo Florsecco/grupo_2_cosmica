@@ -58,6 +58,7 @@ const productsController = {
     } catch (error) {
       if (transaction) await transaction.rollback();
       console.log(error);
+      log.logerror("sadasdasds")
       res.send(error.message);
     }
   },
