@@ -1,6 +1,5 @@
 const express = require("express");
 const userController = require("../controllers/userController");
-const upload = require('../middlewares/userMulterMiddleware')
 const authMiddleware = require("../middlewares/authMiddleware");
 const guestMiddleware = require("../middlewares/guestMiddleware");
 const { uploadMemory } = require('../middlewares/userMulterMemoryMiddleware');
@@ -35,9 +34,6 @@ router.get('/logout', authMiddleware, userController.logout)
 // Delete //
 router.delete('/', authMiddleware, userController.delete)
 
-// Users List // 
-
-router.get('/validate/:email',  userController.list)
 
 
 module.exports = router;
