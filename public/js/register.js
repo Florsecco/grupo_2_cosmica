@@ -23,7 +23,7 @@ const validations = [
     validations: [
       {
         validator: isEmpty,
-        errorMsg: "Debes completar tu nombre",
+        errorMsg: "Debes completar tu apellido",
       },
       {
         validator: long,
@@ -58,10 +58,10 @@ const validations = [
           console.log('entro por el validador');
           //timeOutID =
           //setTimeout(() => {
-          const res = await fetch(`/users/validate/${input.value}`)
+          const res = await fetch(`/api/users/validate/${input.value}`)
           const data = await res.json()
           //console.log(data);
-          return data.existe
+          return data.noExiste
           //}, 1500)
           
       },

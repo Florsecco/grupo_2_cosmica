@@ -18,7 +18,9 @@ const mainRouter = require('./routes/main.js');
 const userRouter = require('./routes/user.js');
 const productRouter = require('./routes/product.js');
 const categoryRouter = require('./routes/category.js');
+const userApiRouter = require('./routes/api/userApiRoutes.js');
 const productApiRouter = require('./routes/api/productApiRoutes.js');
+const categoriesApiRouter = require('./routes/api/categoriesApiRoutes.js');
 const userLoggedMiddleware = require('./middlewares/userLoggedMiddleware.js');
 
 const corsOptions = {
@@ -61,7 +63,9 @@ app.use('/', mainRouter);
 app.use('/users', userRouter);
 app.use('/products', productRouter);
 app.use('/categories', categoryRouter);
+app.use('/api/users', userApiRouter);
 app.use('/api/products', productApiRouter);
+app.use('/api/categories', categoriesApiRouter);
 app.use((req, res, next) => {
   res.redirect('/');
   // res.status(404).render('not-found');

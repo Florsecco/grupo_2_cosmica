@@ -14,11 +14,11 @@ const validations = [
         validations: [
             {
                 validator: isEmpty,
-                errorMsg: "El email no puede estar vacio"
+                errorMsg: "El email no puede estar vacio!"
             },
             {
                 validator: isEmailValid,
-                errorMsg: "El email no es valido"
+                errorMsg: "El email no es valido!"
             }
         ]
     },
@@ -27,18 +27,55 @@ const validations = [
         validations: [
             {
                 validator: isEmpty,
-                errorMsg: "La contraseña no puede estar vacia"
+                errorMsg: "La contraseña no puede estar vacia!"
             },
         ]
     }
 ]
 
 window.addEventListener("load", function () {    
-    const form = document.querySelector("form.form")
+    const form = document.querySelector(".form-register")
+    const password = document.querySelector('i.fa-eye-slash')
+    password.addEventListener('click', ()=>{
+        if (form['password'].type === "password") {
+            form['password'].type = "text";
+          } else {
+            form['password'].type = "password";
+          }
+    })
 
+    validations.forEach((inputToValidate) => {
+        const errores1 = [];
+        const input = form[inputToValidate.inputName];
+        input.addEventListener("blur", async(e) => {
+          for (const validation of inputToValidate.validations) {
+            const isValid = await validation.validator(input);
+            if (!isValid) {
+              if (input.name == "password") {
+                  input.parentElement.parentElement.querySelector(
+                      ".error"
+                      ).innerHTML = validation.errorMsg;
+                      errores1.push(validation.errorMsg);
+                return;
+              }
+              input.parentElement.querySelector(".error").innerHTML =
+                validation.errorMsg;
+                errores1.push(validation.errorMsg);
+              return;
+            }
+          }
+          if (input.name == "password" ) {
+            input.parentElement.parentElement.querySelector(".error").innerHTML =
+              "";
+          } else {
+            input.parentElement.querySelector(".error").innerHTML = "";
+          }
+        });
+      });
+    
     form.addEventListener("submit", function (e) {
         e.preventDefault();
-
+        console.log('entro por el submit');
         const errores = [];
 
         validations.forEach((inputToValidate) => {
@@ -47,17 +84,25 @@ window.addEventListener("load", function () {
             for (const validation of inputToValidate.validations) {
                 const isValid = validation.validator(input);
                 if (!isValid) {
-                    errores.push(validation.errorMsg);
-                    input.parentElement.classList.add("is-invalid");
-                    input.parentElement.classList.remove("is-valid");
-                    input.parentElement.querySelector(".error").innerHTML =
-                        validation.errorMsg;
-                    return
+                    if (input.name == "password" ) {
+                        input.parentElement.parentElement.querySelector(
+                          ".error"
+                        ).innerHTML = validation.errorMsg;
+                        errores.push(validation.errorMsg);
+                        return;
+                      }
+                      input.parentElement.querySelector(".error").innerHTML =
+                      validation.errorMsg;
+                      errores.push(validation.errorMsg);
+          return;
                 }
             }
-            input.parentElement.classList.add("is-valid");
-            input.parentElement.classList.remove("is-invalid");
-            input.parentElement.querySelector(".error").innerHTML = "";
+            if (input.name == "password" ) {
+                input.parentElement.parentElement.querySelector(".error").innerHTML =
+                  "";
+              } else {
+                input.parentElement.querySelector(".error").innerHTML = "";
+              }
         });
 
         if (errores.length == 0) {

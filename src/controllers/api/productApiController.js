@@ -1,4 +1,4 @@
-const { Product, ColorProduct, sequelize } = require('../../database/models');
+const { Product, ColorProduct,Category,User, Color, Review, sequelize } = require('../../database/models');
 
 const { Op } = require("sequelize");
 const { saveImage } = require('../../middlewares/productMulterMemoryMiddleware');
@@ -62,23 +62,101 @@ const productsController = {
       res.send(error.message);
     }
   },
+  count: async (req, res) => {
+    try {
+      const categories = await Category.findAll({
+        attributes: ["id","name"],
+      });
+      const products = await Product.findAll({
+        attributes: ["id"],
+      });
+      const users = await User.findAll({
+        attributes: ["id"],
+      });
+      res.json({
+        countCat:categories.length,
+        categories: categories,
+        countProd: products.length,
+        countUser: users.length
+      });
+    } catch (error) {
+      console.log(error);
+      res.send(error.message);
+    }
+  },
+  getLast:async (req, res) => {
+    try {
+      const products = await Product.findAll({
+        order:[['id','DESC']],
+        limit: 1
+      });
+      
+      res.json(products);
+    } catch (error) {
+      console.log(error);
+      res.send(error.message);
+    }
+  },
   getAll: async (req, res) => {
     const transaction = await sequelize.transaction();
     const page = parseInt(req.query.page) || 1;
     const limit = parseInt(req.query.limit) || 10;
     const name = req.query.name || "";
     const offset = (page - 1) * limit;
-    console.log(page);
+
     try {
-      const products = await Product.findAndCountAll({
+      const {count, rows} = await Product.findAndCountAll({
         where: {
           name: {
             [Op.like]: `%${name}%`
           }
         },
+        attributes: ["id", "name", "description_short", "image"],
+        include: [{
+          model: Color,
+          as: "colors",
+          attributes: ["id", "name"],
+          through: {attributes: []}
+        }],
         limit,
         offset,
+        distinct: true
       });
+
+      console.log(count);
+
+      const productsWithDetail = rows.map((product) => {
+        return {
+          ...product.toJSON(),
+          detail: `http://localhost:3010/api/products/${product.id}`
+        };
+      });
+
+      const results = await Product.findAll({
+        attributes: [
+          [sequelize.fn('COUNT', sequelize.col('product.id')), 'totalProducts']
+        ],
+        group: "category_id",
+        include: [{
+          model: Category,
+          as: "category",
+          attributes: ["name"]
+        }]
+      });
+
+      const countByCategory = {};
+      results.forEach(result => {
+        const name = result.category.name;
+        const totalProducts = result.getDataValue('totalProducts');
+        countByCategory[name] = totalProducts;
+      });
+
+      const products = {
+        count,
+        countByCategory,
+        products: productsWithDetail
+      };
+
       await transaction.commit();
       const responseHandler = new ResponseHandler(200, "Listado de productos.", products, req.originalUrl);
       responseHandler.sendResponse(res);
@@ -87,17 +165,39 @@ const productsController = {
       console.log(error);
       const responseHandler = new ResponseHandler(500, "Error al obtener los productos.", [], req.originalUrl);
       responseHandler.sendResponse(res);
-    }
+    };
   },
   getProduct: async (req, res) => {
-
     const transaction = await sequelize.transaction();
     const { productId } = req.params;
     let responseHandler;
     try {
-      const products = await Product.findByPk(productId);
-      if (products) {
-        responseHandler = new ResponseHandler(200, "Product.", products, req.originalUrl);
+      const result = await Product.findByPk(productId, {
+        attributes: {exclude: ["status", "created_at", "updated_at"]},
+        include: [{
+          model: Review,
+          attributes: ["id", "user_id", "comment", "rating"]
+        },
+        {
+          model: ColorProduct,
+          as: "stocks",
+          attributes: {exclude: ["product_id"]}
+        },
+        {
+          model: Color,
+          as: "colors",
+          attributes: ["id", "name"],
+          through: {attributes: []}
+        }]
+      });
+
+      const product = {
+        ...result.toJSON(),
+        image: `http://localhost:3010/img/products/${result.image}`
+      };
+
+      if (product) {
+        responseHandler = new ResponseHandler(200, "Product.", product, req.originalUrl);
       }
       else {
         responseHandler = new ResponseHandler(204, "Product.", [], req.originalUrl);
