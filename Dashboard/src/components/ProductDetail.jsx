@@ -5,6 +5,8 @@ import { useParams, Link } from 'react-router-dom';
 import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
 import BasicForm from './BasicForm';
+import AdvancedForm from './AdvancedForm';
+import ProductForm from './ProductForm';
 
 function ProductDetail() {
   const { idProduct } = useParams();
@@ -19,7 +21,7 @@ function ProductDetail() {
 
         const response = await axios.get(`http://localhost:3010/api/products/${idProduct}`);
         setProduct(response.data.data || null);
-        console.log(response.data.data);
+        // console.log(response.data.data);
         setIsLoading(false);
       } catch (error) {
         console.log(error);
@@ -39,9 +41,11 @@ function ProductDetail() {
       <h2>{product.name || <Skeleton />}</h2>
       <p>{product.description_short || <Skeleton count={2} />}</p>
       <p>{product.description_long || <Skeleton count={3} />}</p>
-      <BasicForm></BasicForm>
+      {/* <BasicForm></BasicForm> */}
+      {/* <AdvancedForm></AdvancedForm> */}
+      <ProductForm></ProductForm>
 
-      <table className="table table-dark">
+      {/* <table className="table table-dark">
         <thead>
           <tr>
             <th scope="col">#</th>
@@ -70,7 +74,7 @@ function ProductDetail() {
             <td>@twitter</td>
           </tr>
         </tbody>
-      </table>
+      </table> */}
     </div>
   )
 }
