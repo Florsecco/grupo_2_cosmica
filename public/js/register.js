@@ -23,7 +23,7 @@ const validations = [
     validations: [
       {
         validator: isEmpty,
-        errorMsg: "Debes completar tu nombre",
+        errorMsg: "Debes completar tu apellido",
       },
       {
         validator: long,
