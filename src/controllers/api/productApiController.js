@@ -134,7 +134,7 @@ const productsController = {
 
       const results = await Product.findAll({
         attributes: [
-          [sequelize.fn('COUNT', sequelize.col('product.id')), 'totalProducts']
+          [sequelize.fn('COUNT', sequelize.col('Product.id')), 'totalProducts']
         ],
         group: "category_id",
         include: [{

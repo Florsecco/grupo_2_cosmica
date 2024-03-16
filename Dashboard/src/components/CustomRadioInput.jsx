@@ -10,9 +10,6 @@ const CustomRadioInput = ({ label, ...props }) => {
           className={meta.touched && meta.error ? "input-error" : ""} />
         {label}
       </label>
-      {meta.touched && meta.error ? (
-        <div className="">{meta.error}</div>
-      ) : null}
     </div>
   );
 };
