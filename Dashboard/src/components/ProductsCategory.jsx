@@ -10,15 +10,20 @@ function ProductsCategory() {
   const [products, setProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [categoryName, setCategoryName] = useState(1);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
+  const limit = 5;
 
   const fetchProducts = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:3010/api/categories/${idCat}`
+        `http://localhost:3010/api/products/categories/${idCat}?page=${currentPage}&limit=${limit}`
       );
-      setCategoryName(response.data.name);
-      setProducts(response.data.products || []);
+      console.log(response);
+      setCategoryName(response.data.message);
+      setProducts(response.data.data.products || []);
       setIsLoading(false);
+      setTotalPages(Math.ceil(response.data.data.count / limit) || 0)
     } catch (error) {
       console.log(error);
     }
@@ -26,7 +31,11 @@ function ProductsCategory() {
 
   useEffect(() => {
     fetchProducts();
-  }, []);
+  }, [currentPage]);
+
+  const handlePageChange = (page) => {
+    setCurrentPage(page);
+  }
 
   return (
     <div className="container-fluid">
@@ -37,6 +46,11 @@ function ProductsCategory() {
           products.map((product) => {
             return <ProductCard product={product} key={product.id} />;
           })}
+      </div>
+      <div className='row'>
+        <button disabled={currentPage === 1} onClick={() => handlePageChange(currentPage - 1)}>Anterior</button>
+        <span>Pagina {currentPage} de {totalPages}</span>
+        <button disabled={currentPage === totalPages} onClick={() => handlePageChange(currentPage + 1)}>Siguiente</button>
       </div>
     </div>
   );
