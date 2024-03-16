@@ -1,10 +1,7 @@
 import { useField } from "formik";
 
 const CustomCheckBox = ({ label, ...props }) => {
-  console.log("Entre al custominput");
   const [field, meta, helpers] = useField(props);
-  console.log("field", field);
-  console.log("meta", meta);
   return (
     <>
       <div className="checkbox">

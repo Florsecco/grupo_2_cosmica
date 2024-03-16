@@ -1,10 +1,7 @@
 import { useField } from "formik";
 
 const CustomSelect = ({ label, ...props }) => {
-  console.log("Entre al custominput");
   const [field, meta, helpers] = useField(props);
-  console.log("field", field);
-  console.log("meta", meta);
   return (
     <>
       <label>{label}</label>
