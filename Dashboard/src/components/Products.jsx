@@ -16,6 +16,7 @@ function Products() {
 
   const handleSearch = (query) => {
     console.log("Buscar productos con:", query);
+    setCurrentPage(1);
     setQuery(query);
   }
 

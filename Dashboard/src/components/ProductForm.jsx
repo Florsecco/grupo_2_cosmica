@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import * as yup from 'yup';
 import axios from 'axios';
 import CustomInput from "./CustomInput";
-import CustomRadioInput from "./CustomRadioInput";
 import CustomTextAreaInput from "./CustomTextAreaInput";
 import CustomImageInput from "./CustomImageInput";
 import CustomSelect from "./CustomSelect";
@@ -11,16 +10,36 @@ import CustomColor from "./CustomColor";
 import CustomBrand from "./CustomBrand";
 
 const onSubmit = async (values, actions) => {
-  console.log(values);
-  console.log(actions);
-  console.log("submitted");
-  await new Promise((resolve) => setTimeout(resolve, 1000));
-  actions.resetForm();
+  try {
+    const formData = new FormData();
+    formData.append('name', values.name);
+    formData.append('description_short', values.description_short);
+    formData.append('description_long', values.description_long);
+    formData.append('brand_id', values.brand_id);
+    formData.append('category_id', values.category_id);
+    formData.append('ingredients', values.ingredients);
+    formData.append('price', values.price);
+    formData.append('discount', values.discount);
+    formData.append('product', values.product);
+    formData.append('colorStocks', JSON.stringify(values.colorStocks));
+
+    const response = await axios.post("http://localhost:3010/api/products/create", formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data'
+      }
+    });
+
+    // Restablecer el formulario después de enviar los datos
+    if (response.status == 200)
+      actions.resetForm();
+  } catch (error) {
+    console.error(error);
+  }
 }
 
-const ProductForm = () => {
+const ProductForm = ({ idProduct }) => {
 
-
+  const [initialValues, setInitialValues] = useState(null);
   const [brands, setBrands] = useState();
   const [categories, setCategory] = useState();
   const [isLoading, setIsLoading] = useState(true);
@@ -30,15 +49,9 @@ const ProductForm = () => {
     const fetchApi = async () => {
       try {
         const responseBrand = await axios.get("http://localhost:3010/api/brands");
-        // console.log(responseBrand);
         setBrands(responseBrand.data.data || null);
-        // console.log(brands);
-
         const responseCategory = await axios.get("http://localhost:3010/api/categories");
-        // console.log(responseCategory);
         setCategory(responseCategory.data.data || null);
-        // console.log(categories);
-
         setIsLoading(false);
       } catch (error) {
         console.error(error);
@@ -48,7 +61,51 @@ const ProductForm = () => {
 
   }, []);
 
+  useEffect(() => {
 
+    console.log("El product id es:", idProduct);
+    if (idProduct) {
+      fetchProduct(idProduct);
+    } else {
+      setInitialValues({
+        name: "",
+        description_short: "",
+        description_long: "",
+        brand_id: "",
+        ingredients: "",
+        price: "",
+        product: null,
+        category_id: "",
+        colorStocks: [],
+        discount: ""
+      });
+    }
+  }, [idProduct]);
+
+  const fetchProduct = async (id) => {
+    try {
+      const response = await axios.get(`http://localhost:3010/api/products/${id}`);
+      const productData = response.data.data;
+      console.log("productData", productData);
+      setInitialValues({
+        name: productData.name,
+        description_short: productData.description_short,
+        description_long: productData.description_long,
+        brand_id: productData.brand_id,
+        ingredients: productData.ingredients,
+        price: productData.price,
+        product: null, // No cargamos la imagen al actualizar
+        category_id: productData.category_id + "",
+        // colorStocks: productData.colors.map(color => ({
+        //   color_id: color.color_id,
+        //   stock: color.stock
+        // })),
+        discount: productData.discount
+      });
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   console.log(brands);
   const productCreateSchema = !isLoading && yup.object().shape({
@@ -76,7 +133,7 @@ const ProductForm = () => {
     <>
       {isLoading && <p>Loading...</p>}
       {!isLoading && <Formik
-        initialValues={{ name: "", description_short: "", description_long: "", brand_id: "", ingredients: "", price: "", product: null, category_id: "", colors_id: [] }}
+        initialValues={initialValues}
         validationSchema={productCreateSchema}
         onSubmit={onSubmit}
       >
@@ -111,6 +168,12 @@ const ProductForm = () => {
               type="number"
               placeholder="$12.34"
             />
+            <CustomInput
+              label="Descuento"
+              name="discount"
+              type="number"
+              placeholder="10"
+            />
 
             <CustomImageInput
               name="product"
@@ -128,12 +191,14 @@ const ProductForm = () => {
             </CustomSelect>
             <CustomColor
               label="Colores"
-              name="colors_id"
+              name="colorStocks"
               type="checkbox"
             />
             <CustomBrand
               label="Marcas"
               name="brand_id"
+              brands={brands}
+              value={initialValues.brand_id}
             />
             <button disabled={isSubmitting} type="submit">Submit</button>
           </Form>

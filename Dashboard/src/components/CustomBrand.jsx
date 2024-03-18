@@ -4,23 +4,8 @@ import axios from 'axios';
 import CustomSelect from "./CustomSelect";
 import CustomRadioInput from "./CustomRadioInput";
 
-const CustomBrand = ({ label, ...props }) => {
+const CustomBrand = ({ label, brands, ...props }) => {
   const [field, meta, helpers] = useField(props);
-  const [brands, setBrands] = useState();
-
-  useEffect(() => {
-    const fetchBrand = async () => {
-      try {
-        const responseBrand = await axios.get("http://localhost:3010/api/brands");
-        setBrands(responseBrand.data.data || null);
-      } catch (error) {
-        console.error(error);
-      }
-    }
-
-    fetchBrand();
-  }, [])
-
   return (
     <div>
       <br />
@@ -34,6 +19,7 @@ const CustomBrand = ({ label, ...props }) => {
             name={props.name}
             value={brand.id}
             key={brand.id}
+            selectedValue={props.value}
           />
         ))
       }

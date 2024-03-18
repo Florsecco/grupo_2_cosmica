@@ -7,7 +7,7 @@ const { validateCreateProduct } = require('../../validators/productValidator');
 const { uploadMemory } = require('../../middlewares/productMulterMemoryMiddleware');
 
 // Post
-router.post('/create', uploadMemory.single('product'), authMiddleware, validateCreateProduct, productApiController.create);
+router.post('/create', uploadMemory.single('product'), /* authMiddleware, */ validateCreateProduct, productApiController.create);
 
 router.get('/', productApiController.getAll);
 

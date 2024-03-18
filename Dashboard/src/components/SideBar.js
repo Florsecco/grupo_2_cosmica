@@ -14,6 +14,8 @@ import Post from "./Post";
 
 import NotFound from "./NotFound";
 import { Link, Route, Routes } from "react-router-dom";
+import ProductCreate from "./ProductCreate";
+import ProductUpdate from "./ProductUpdate";
 
 function SideBar() {
   return (
@@ -112,12 +114,15 @@ function SideBar() {
         <Route path="/LastProductInDb" element={<LastProductInDb />} />
         <Route path="/ContentRowMovies" element={<ContentRowMovies />} />
         <Route path="/search" element={<SearchMovies />} />
+        <Route path="/products/create" element={<ProductCreate />} />
         <Route path="/products/:idProduct" element={<ProductDetail />} />
+        <Route path="/products/:idProduct/update" element={<ProductUpdate />} />
         <Route path="/products" element={<Products />} />
         <Route path="/categories/:idCat" element={<ProductsCategory />} />
         <Route path="/users" element={<UserList />} />
         <Route path="/users/:idUser" element={<UserDetail />} />
         <Route element={NotFound} />
+
       </Routes>
       {/*<!-- End Microdesafio 2 -->*/}
     </React.Fragment>

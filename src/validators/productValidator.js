@@ -22,7 +22,7 @@ exports.validateCreateProduct = [
   //       throw new Error('La categoria seleccionada no existe');
   //     return true;
   //   }),
-  body('brand')
+  body('brand_id')
     .notEmpty().withMessage('Debe seleccionar una marca para el producto.').bail()
     .custom(async (value) => {
       console.log(value);

@@ -1,4 +1,4 @@
-const { Product, ColorProduct,Category,User, Color, Review, sequelize } = require('../../database/models');
+const { Product, ColorProduct, Category, User, Color, Review, sequelize } = require('../../database/models');
 
 const { Op } = require("sequelize");
 const { saveImage } = require('../../middlewares/productMulterMemoryMiddleware');
@@ -17,7 +17,6 @@ const productsController = {
         const responseHandler = new ResponseHandler(404, "Errores en el formulario.", errors.mapped(), req.originalUrl);
         return responseHandler.sendResponse(res);
       }
-
       const colorStocks = JSON.parse(req.body.colorStocks);
 
       const price = parseInt(req.body.price);
@@ -36,7 +35,7 @@ const productsController = {
         price,
         discount,
         final_price,
-        brand_id: req.body.brand
+        brand_id: req.body.brand_id
       }, { transaction });
       console.log(JSON.stringify(product, null, 4));
       console.log(product.id);
@@ -53,19 +52,18 @@ const productsController = {
       };
 
       await transaction.commit();
-      const responseHandler = new ResponseHandler(200, "Listado.", [], req.originalUrl);
+      const responseHandler = new ResponseHandler(200, "Producto Creado.", [], req.originalUrl);
       responseHandler.sendResponse(res);
     } catch (error) {
       if (transaction) await transaction.rollback();
       console.log(error);
-      log.logerror("sadasdasds")
       res.send(error.message);
     }
   },
   count: async (req, res) => {
     try {
       const categories = await Category.findAll({
-        attributes: ["id","name"],
+        attributes: ["id", "name"],
       });
       const products = await Product.findAll({
         attributes: ["id"],
@@ -74,7 +72,7 @@ const productsController = {
         attributes: ["id"],
       });
       res.json({
-        countCat:categories.length,
+        countCat: categories.length,
         categories: categories,
         countProd: products.length,
         countUser: users.length
@@ -84,13 +82,13 @@ const productsController = {
       res.send(error.message);
     }
   },
-  getLast:async (req, res) => {
+  getLast: async (req, res) => {
     try {
       const products = await Product.findAll({
-        order:[['id','DESC']],
+        order: [['id', 'DESC']],
         limit: 1
       });
-      
+
       res.json(products);
     } catch (error) {
       console.log(error);
@@ -105,7 +103,7 @@ const productsController = {
     const offset = (page - 1) * limit;
 
     try {
-      const {count, rows} = await Product.findAndCountAll({
+      const { count, rows } = await Product.findAndCountAll({
         where: {
           name: {
             [Op.like]: `%${name}%`
@@ -116,7 +114,7 @@ const productsController = {
           model: Color,
           as: "colors",
           attributes: ["id", "name"],
-          through: {attributes: []}
+          through: { attributes: [] }
         }],
         limit,
         offset,
@@ -173,7 +171,7 @@ const productsController = {
     let responseHandler;
     try {
       const result = await Product.findByPk(productId, {
-        attributes: {exclude: ["status", "created_at", "updated_at"]},
+        attributes: { exclude: ["status", "created_at", "updated_at"] },
         include: [{
           model: Review,
           attributes: ["id", "user_id", "comment", "rating"]
@@ -181,13 +179,13 @@ const productsController = {
         {
           model: ColorProduct,
           as: "stocks",
-          attributes: {exclude: ["product_id"]}
+          attributes: { exclude: ["product_id"] }
         },
         {
           model: Color,
           as: "colors",
           attributes: ["id", "name"],
-          through: {attributes: []}
+          through: { attributes: [] }
         }]
       });
 
