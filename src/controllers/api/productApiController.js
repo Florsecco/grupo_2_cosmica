@@ -65,6 +65,7 @@ const productsController = {
     try {
       const categories = await Category.findAll({
         attributes: ["id","name"],
+        include:{ model: Product,as: 'products', attributes: ['id','name']}
       });
       const products = await Product.findAll({
         attributes: ["id"],
@@ -208,6 +209,39 @@ const productsController = {
       if (transaction) await transaction.rollback();
       responseHandler = new ResponseHandler(204, "Error al obtener el producto.", [], req.originalUrl);
       responseHandler.sendResponse(res);
+    }
+  },
+  getCategories:async (req, res) => {
+    try {
+      const page = parseInt(req.query.page) || 1;
+      const limit = parseInt(req.query.limit) || 20;
+      const offset = (page - 1) * limit;
+      const {id} = req.params
+      const categoryName = await Category.findByPk(id,{
+        attributes: ["name"],
+      })
+      const {count, rows} = await Product.findAndCountAll({
+        where: {
+          category_id: id,
+        },
+        limit,
+        offset,
+        distinct: true
+      });
+      const productsArray = rows.map((product) => {
+        return {
+          ...product.toJSON()
+        };
+      });
+      const products = {
+        count,
+        products: productsArray
+      };
+      const responseHandler = new ResponseHandler(200, categoryName.name, products);
+      responseHandler.sendResponse(res);
+    } catch (error) {
+      console.log(error);
+      res.send(error.message);
     }
   }
 };
