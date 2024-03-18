@@ -1,9 +1,9 @@
-import React from "react";
+import React, { useState,useEffect } from "react";
 import image from "../assets/images/logo-DH.png";
 import ContentWrapper from "./ContentWrapper";
 import CategoriesInDb from "./CategoriesInDb";
 import LastProductInDb from "./LastProductInDb";
-import ContentRowMovies from "./ContentRowList";
+import ContentRowList from "./ContentRowList";
 import SearchMovies from "./SearchMovies";
 import Products from "./Products";
 import ProductDetail from "./ProductDetail";
@@ -14,8 +14,20 @@ import Post from "./Post";
 
 import NotFound from "./NotFound";
 import { Link, Route, Routes } from "react-router-dom";
+import LoginForm from "./LoginForm";
 
 function SideBar() {
+  const [user,setUser] = useState([])
+  const handleLogOut = ()=>{
+    setUser([])
+    window.sessionStorage.removeItem('userLogged');
+  }
+
+  useEffect(()=>{
+    const userLogged = window.sessionStorage.getItem('userLogged')
+    if(userLogged != null){
+      setUser(JSON.parse(userLogged))}
+  }, [])
   return (
     <React.Fragment>
       {/*<!-- Sidebar -->*/}
@@ -24,14 +36,14 @@ function SideBar() {
         id="accordionSidebar"
       >
         {/*<!-- Sidebar - Brand -->*/}
-        <a
+        <Link
           className="sidebar-brand d-flex align-items-center justify-content-center"
           href="/"
         >
           <div className="sidebar-brand-icon">
             <img className="w-100" src={image} alt="Digital House" />
           </div>
-        </a>
+        </Link>
 
         {/*<!-- Divider -->*/}
         <hr className="sidebar-divider my-0" />
@@ -40,7 +52,7 @@ function SideBar() {
         <li className="nav-item active">
           <Link className="nav-link" to="/">
             <i className="fas fa-fw fa-tachometer-alt"></i>
-            <span>Dashboard - DH movies</span>
+            <span>Dashboard - Cosmica</span>
           </Link>
         </li>
 
@@ -48,43 +60,50 @@ function SideBar() {
         <hr className="sidebar-divider" />
 
         {/*<!-- Heading -->*/}
-        <div className="sidebar-heading">Actions</div>
+        { user.length > 0 &&
 
+          (<>
+<div className="sidebar-heading">Actions</div>
+          <li className="nav-item">
+            <Link className="nav-link" to="/categories">
+              <i className="fas fa-fw fa-folder"></i>
+              <span>Categorías</span>
+            </Link>
+          </li>
+  
+          {/*<!-- Nav Item - Tables -->*/}
+          <li className="nav-item nav-link">
+            <Link className="nav-link" to="/ContentRowMovies">
+              <i className="fas fa-fw fa-table"></i>
+              <span>Tables</span>
+            </Link>
+          </li>
+          <li className="nav-item nav-link">
+            <Link className="nav-link" to="/search">
+              <i className="fas fa-fw fa-table"></i>
+              <span>Search</span>
+            </Link>
+          </li>
+          <li className="nav-item nav-link">
+            <Link className="nav-link" to="/products">
+              <i className="fas fa-fw fa-table"></i>
+              <span>Products</span>
+            </Link>
+          </li>
+          <li className="nav-item">
+            <Link className="nav-link" to="/users">
+              <i className="fas fa-fw fa-users"></i>
+              <span>Usuarios</span>
+            </Link>
+          </li>
+          <li className="nav-item">
+            <Link className="nav-link" onClick={handleLogOut}>
+              <span>Cerrar Sesión</span>
+            </Link>
+          </li>
+          </>
+          )}
         {/*<!-- Nav Item - Pages -->*/}
-        <li className="nav-item">
-          <Link className="nav-link" to="/categories">
-            <i className="fas fa-fw fa-folder"></i>
-            <span>Categorías</span>
-          </Link>
-        </li>
-
-        {/*<!-- Nav Item - Charts -->*/}
-        <li className="nav-item">
-          <Link className="nav-link" to="/LastMovieInDb">
-            <i className="fas fa-fw fa-chart-area"></i>
-            <span>Charts</span>
-          </Link>
-        </li>
-
-        {/*<!-- Nav Item - Tables -->*/}
-        <li className="nav-item nav-link">
-          <Link className="nav-link" to="/ContentRowMovies">
-            <i className="fas fa-fw fa-table"></i>
-            <span>Tables</span>
-          </Link>
-        </li>
-        <li className="nav-item nav-link">
-          <Link className="nav-link" to="/search">
-            <i className="fas fa-fw fa-table"></i>
-            <span>Search</span>
-          </Link>
-        </li>
-        <li className="nav-item nav-link">
-          <Link className="nav-link" to="/products">
-            <i className="fas fa-fw fa-table"></i>
-            <span>Products</span>
-          </Link>
-        </li>
         {/*<!-- Divider -->*/}
         <hr className="sidebar-divider d-none d-md-block" />
       </ul>
@@ -107,16 +126,21 @@ function SideBar() {
 
       {/*<!-- End Microdesafio 2 -->*/}
       <Routes>
-        <Route exact path="/" element={<ContentWrapper />} />
+        <Route exact path="/" element={!user.length>0 ? <LoginForm setUser={setUser}/> : <ContentWrapper user={user} />} />
+        <Route path="/login" element={!user.length>0 ? <LoginForm setUser={setUser}/> : <ContentWrapper  user={user} />} />
+        {user.length>0 && (
+          <>
         <Route path="/categories" element={<CategoriesInDb />} />
         <Route path="/LastProductInDb" element={<LastProductInDb />} />
-        <Route path="/ContentRowMovies" element={<ContentRowMovies />} />
+        <Route path="/ContentRowMovies" element={<ContentRowList />} />
         <Route path="/search" element={<SearchMovies />} />
         <Route path="/products/:idProduct" element={<ProductDetail />} />
         <Route path="/products" element={<Products />} />
         <Route path="/categories/:idCat" element={<ProductsCategory />} />
         <Route path="/users" element={<UserList />} />
         <Route path="/users/:idUser" element={<UserDetail />} />
+        </>
+        )}
         <Route element={NotFound} />
       </Routes>
       {/*<!-- End Microdesafio 2 -->*/}

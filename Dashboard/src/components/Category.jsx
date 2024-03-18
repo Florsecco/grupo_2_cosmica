@@ -5,7 +5,7 @@ function Category(props) {
     return(
     <div className="col-lg-6 mb-4">
     <div className="card bg-dark text-white shadow">
-     <Link to={`/categories/${props.id}`}> <div className="card-body">{props.name}</div></Link>
+     <Link to={`/categories/${props.id}`}> <div className="card-body">{props.name} ({props.products.length})</div></Link>
     </div>
   </div> 
     )
