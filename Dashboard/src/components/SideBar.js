@@ -1,5 +1,5 @@
+import image from "../assets/images/cosmica_logo_almostwhite.png";
 import React, { useState,useEffect } from "react";
-import image from "../assets/images/logo-DH.png";
 import ContentWrapper from "./ContentWrapper";
 import CategoriesInDb from "./CategoriesInDb";
 import LastProductInDb from "./LastProductInDb";
@@ -10,7 +10,7 @@ import ProductDetail from "./ProductDetail";
 import ProductsCategory from "./ProductsCategory";
 import UserList from "./UserList";
 import UserDetail from "./UserDetail";
-import Post from "./Post";
+//import Post from "./Post";
 
 import NotFound from "./NotFound";
 import { Link, Route, Routes } from "react-router-dom";
@@ -60,6 +60,7 @@ function SideBar() {
         <hr className="sidebar-divider" />
 
         {/*<!-- Heading -->*/}
+
         { user.length > 0 &&
 
           (<>
