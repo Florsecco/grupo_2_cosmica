@@ -1,5 +1,5 @@
 import React from "react";
-import image from "../assets/images/logo-DH.png";
+import image from "../assets/images/cosmica_logo_almostwhite.png";
 import ContentWrapper from "./ContentWrapper";
 import CategoriesInDb from "./CategoriesInDb";
 import LastProductInDb from "./LastProductInDb";
@@ -10,7 +10,7 @@ import ProductDetail from "./ProductDetail";
 import ProductsCategory from "./ProductsCategory";
 import UserList from "./UserList";
 import UserDetail from "./UserDetail";
-import Post from "./Post";
+//import Post from "./Post";
 
 import NotFound from "./NotFound";
 import { Link, Route, Routes } from "react-router-dom";
@@ -40,7 +40,7 @@ function SideBar() {
         <li className="nav-item active">
           <Link className="nav-link" to="/">
             <i className="fas fa-fw fa-tachometer-alt"></i>
-            <span>Dashboard - DH movies</span>
+            <span>Dashboard - Cosmica</span>
           </Link>
         </li>
 
@@ -48,7 +48,7 @@ function SideBar() {
         <hr className="sidebar-divider" />
 
         {/*<!-- Heading -->*/}
-        <div className="sidebar-heading">Actions</div>
+        <div className="sidebar-heading">Acciones</div>
 
         {/*<!-- Nav Item - Pages -->*/}
         <li className="nav-item">
@@ -70,19 +70,19 @@ function SideBar() {
         <li className="nav-item nav-link">
           <Link className="nav-link" to="/ContentRowMovies">
             <i className="fas fa-fw fa-table"></i>
-            <span>Tables</span>
+            <span>Tablas</span>
           </Link>
         </li>
         <li className="nav-item nav-link">
           <Link className="nav-link" to="/search">
-            <i className="fas fa-fw fa-table"></i>
-            <span>Search</span>
+            <i className="fas fa-fw fa-search"></i>
+            <span>Busqueda</span>
           </Link>
         </li>
         <li className="nav-item nav-link">
           <Link className="nav-link" to="/products">
-            <i className="fas fa-fw fa-table"></i>
-            <span>Products</span>
+            <i className="fas fa-fw fa-shopping-cart"></i>
+            <span>Productos</span>
           </Link>
         </li>
         {/*<!-- Divider -->*/}
