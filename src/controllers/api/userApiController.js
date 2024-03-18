@@ -88,6 +88,7 @@ const userApiController = {
       where: {
         email: { [Op.like]: `${email}` },
         status: 1,
+        profile_id: 1
       },
       attributes: [
         "id",
@@ -110,15 +111,15 @@ const userApiController = {
     // console.log(bcrypt.hashSync("admin1234", salt));
     if (!userIsValidPassword){
       console.log('entro por el !userisValidPassword');
-      res.json({user:'Not Found'})
-    }
+      res.json({user:'Not password'})
+    }else{
 
     const userJson = user.get({ plain: true });
     delete userJson.password;
 
     // req.session.userLogged = userJson;
 
-    return res.json(userJson)}
+    return res.json(userJson)}}
   },
   logout:(req,res)=>{
 

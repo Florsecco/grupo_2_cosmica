@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import image from "../assets/images/logo-DH.png";
 import ContentWrapper from "./ContentWrapper";
 import CategoriesInDb from "./CategoriesInDb";
@@ -20,7 +20,14 @@ function SideBar() {
   const [user,setUser] = useState([])
   const handleLogOut = ()=>{
     setUser([])
+    window.sessionStorage.removeItem('userLogged');
   }
+
+  useEffect(()=>{
+    const userLogged = window.sessionStorage.getItem('userLogged')
+    if(userLogged != null){
+      setUser(JSON.parse(userLogged))}
+  }, [])
   return (
     <React.Fragment>
       {/*<!-- Sidebar -->*/}
@@ -29,14 +36,14 @@ function SideBar() {
         id="accordionSidebar"
       >
         {/*<!-- Sidebar - Brand -->*/}
-        <a
+        <Link
           className="sidebar-brand d-flex align-items-center justify-content-center"
           href="/"
         >
           <div className="sidebar-brand-icon">
             <img className="w-100" src={image} alt="Digital House" />
           </div>
-        </a>
+        </Link>
 
         {/*<!-- Divider -->*/}
         <hr className="sidebar-divider my-0" />
@@ -120,7 +127,7 @@ function SideBar() {
       {/*<!-- End Microdesafio 2 -->*/}
       <Routes>
         <Route exact path="/" element={!user.length>0 ? <LoginForm setUser={setUser}/> : <ContentWrapper user={user} />} />
-        <Route path="/login" element={!user.length>0 ? <LoginForm setUser={setUser}/> : <ContentWrapper />} />
+        <Route path="/login" element={!user.length>0 ? <LoginForm setUser={setUser}/> : <ContentWrapper  user={user} />} />
         {user.length>0 && (
           <>
         <Route path="/categories" element={<CategoriesInDb />} />

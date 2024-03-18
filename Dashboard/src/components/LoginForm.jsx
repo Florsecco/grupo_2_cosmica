@@ -1,21 +1,22 @@
-import { useFormik } from "formik";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
 function LoginForm({ setUser }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(false);
+  const [msgError, setMsgError ] = useState('')
 
   const handleSubmit1 = async (e) => {
     e.preventDefault();
-    
+
     try {
-        if (email === "" || password === "") {
-            setError(true);
-            return;
-          } else {
-            setError(false);
-          }
+      if (email === "" || password === "") {
+        setError(true);
+        setMsgError('Todos los campos son obligatorios')
+        return;
+      } else {
+        setError(false);
+      }
       const response = await fetch("http://localhost:3010/api/users/login", {
         method: "POST",
         headers: {
@@ -27,24 +28,24 @@ function LoginForm({ setUser }) {
         }),
       });
       const data = await response.json();
-      setUser([data.first_name]);
-      console.log(data);
+      console.log('data',data);
+      if (data.user === "Not Found") {
+        setError(true);
+        setMsgError('No tienes permisos')
+        setUser([]);
+      } else if (data.user === "Not password") {
+        setError(true);
+        setMsgError('La contraseña es incorrecta')
+        setUser([]);
+      } else {
+        setUser([data.first_name,data.image]);
+        window.sessionStorage.setItem(
+          'userLogged', JSON.stringify([data.first_name,data.image])
+        )
+      }
     } catch (error) {
       console.log(error);
     }
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    if (email === "" || password === "") {
-      setError(true);
-      return;
-    } else {
-      handleSubmit1();
-    }
-    setError(false);
-    setUser([email]);
   };
 
   return (
@@ -70,46 +71,10 @@ function LoginForm({ setUser }) {
         />
         <button type="submit">Iniciar Sesión</button>
       </form>
-      {error && <p>Todos los campos son obligatorios</p>}
+      {error && (
+        <p className="text-danger">{msgError}</p>
+      )}
     </>
   );
 }
-
-// const LoginForm = () => {
-//   const formik = useFormik({
-//     initialValues: {
-//       email: "",
-//       password: ""
-//     },
-//     onSubmit: values => {
-//         alert(JSON.stringify(values, null, 2));
-//       },
-//   });
-//   console.log(formik);
-//   return (
-//     <>
-//     <h1>Login</h1>
-//     <form autoComplete="off" onSubmit={formik.handleSubmit}>
-//       <label htmlFor="email">Email</label>
-//       <input
-//         id="email"
-//         type="email"
-//         placeholder="Enter your email"
-//         value={formik.values.email}
-//         onChange={formik.handleChange}
-//       />
-//       <label htmlFor="password">Password</label>
-//       <input
-//         id="password"
-//         type="password"
-//         placeholder="Enter your password"
-//         value={formik.values.password}
-//         onChange={formik.handleChange}
-//         onBlur={formik.handleBlur}
-//       />
-//       <button type="submit">Iniciar Sesión</button>
-//     </form>
-//     </>
-//   );
-// };
 export default LoginForm;
