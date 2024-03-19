@@ -2,9 +2,7 @@ import image from "../assets/images/cosmica_logo_almostwhite.png";
 import React, { useState,useEffect } from "react";
 import ContentWrapper from "./ContentWrapper";
 import CategoriesInDb from "./CategoriesInDb";
-import LastProductInDb from "./LastProductInDb";
 import ContentRowList from "./ContentRowList";
-import SearchMovies from "./SearchMovies";
 import Products from "./Products";
 import ProductDetail from "./ProductDetail";
 import ProductsCategory from "./ProductsCategory";
@@ -14,13 +12,22 @@ import UserDetail from "./UserDetail";
 
 import NotFound from "./NotFound";
 import { Link, Route, Routes } from "react-router-dom";
+import ProductCreate from "./ProductCreate";
+import ProductUpdate from "./ProductUpdate";
 import LoginForm from "./LoginForm";
 
 function SideBar() {
   const [user,setUser] = useState([])
+  const [options, setOptions] = useState(false)
+  const [display, setDisplay] = useState(true)
+
+
   const handleLogOut = ()=>{
     setUser([])
     window.sessionStorage.removeItem('userLogged');
+  }
+  const displayOptions = ()=>{
+    setOptions(!options)
   }
 
   useEffect(()=>{
@@ -29,10 +36,10 @@ function SideBar() {
       setUser(JSON.parse(userLogged))}
   }, [])
   return (
-    <React.Fragment>
+    <React.Fragment >
       {/*<!-- Sidebar -->*/}
       <ul
-        className="navbar-nav bg-gradient-secondary sidebar sidebar-dark accordion"
+        className={`navbar-nav bg-gradient-secondary sidebar sidebar-dark accordion ${display ? 'd-none': '' } d-md-block`}
         id="accordionSidebar"
       >
         {/*<!-- Sidebar - Brand -->*/}
@@ -74,23 +81,32 @@ function SideBar() {
   
           {/*<!-- Nav Item - Tables -->*/}
           <li className="nav-item nav-link">
-            <Link className="nav-link" to="/ContentRowMovies">
+            <Link className="nav-link" to="/options">
               <i className="fas fa-fw fa-table"></i>
-              <span>Tables</span>
+              <span>Opciones</span>
             </Link>
           </li>
           <li className="nav-item nav-link">
-            <Link className="nav-link" to="/search">
+            <Link className="nav-link" onClick={displayOptions}>
               <i className="fas fa-fw fa-table"></i>
-              <span>Search</span>
+              <span>Productos</span>
             </Link>
           </li>
+          {options && (
+          <>
           <li className="nav-item nav-link">
-            <Link className="nav-link" to="/products">
-              <i className="fas fa-fw fa-table"></i>
-              <span>Products</span>
+            <Link className="nav-link" to='/products'>
+              <i className="fas fa-fw fa-arrow-right"></i>
+              <span>Lista de Productos</span>
+            </Link>
+          </li><li className="nav-item nav-link">
+            <Link className="nav-link" to='/products/create'>
+              <i className="fas fa-fw fa-plus"></i>
+              <span>Crear Un Producto</span>
             </Link>
           </li>
+          </>
+          )}
           <li className="nav-item">
             <Link className="nav-link" to="/users">
               <i className="fas fa-fw fa-users"></i>
@@ -127,22 +143,23 @@ function SideBar() {
 
       {/*<!-- End Microdesafio 2 -->*/}
       <Routes>
-        <Route exact path="/" element={!user.length>0 ? <LoginForm setUser={setUser}/> : <ContentWrapper user={user} />} />
-        <Route path="/login" element={!user.length>0 ? <LoginForm setUser={setUser}/> : <ContentWrapper  user={user} />} />
+        <Route exact path="/" element={!user.length>0 ? <LoginForm setUser={setUser}/> : <ContentWrapper user={user} setDisplay={setDisplay} display={display} />} />
+        <Route path="/login" element={!user.length>0 ? <LoginForm setUser={setUser}/> : <ContentWrapper  user={user} setDisplay={setDisplay} display={display}/>} />
         {user.length>0 && (
           <>
         <Route path="/categories" element={<CategoriesInDb />} />
-        <Route path="/LastProductInDb" element={<LastProductInDb />} />
-        <Route path="/ContentRowMovies" element={<ContentRowList />} />
-        <Route path="/search" element={<SearchMovies />} />
-        <Route path="/products/:idProduct" element={<ProductDetail />} />
-        <Route path="/products" element={<Products />} />
-        <Route path="/categories/:idCat" element={<ProductsCategory />} />
-        <Route path="/users" element={<UserList />} />
-        <Route path="/users/:idUser" element={<UserDetail />} />
+        <Route path="/options" element={<ContentRowList />} />
+        <Route path="/products/create" element={<ProductCreate />} />
+        <Route path="/products/:idProduct" element={<ProductDetail user={user} setDisplay={setDisplay} display={display}/>} />
+        <Route path="/products/:idProduct/update" element={<ProductUpdate />} />
+        <Route path="/products" element={<Products user={user} setDisplay={setDisplay} display={display} />} />
+        <Route path="/categories/:idCat" element={<ProductsCategory user={user} setDisplay={setDisplay} display={display} />} />
+        <Route path="/users" element={<UserList user={user} setDisplay={setDisplay} display={display} />} />
+        <Route path="/users/:idUser" element={<UserDetail user={user} setDisplay={setDisplay} display={display} />} />
         </>
         )}
         <Route element={NotFound} />
+
       </Routes>
       {/*<!-- End Microdesafio 2 -->*/}
     </React.Fragment>

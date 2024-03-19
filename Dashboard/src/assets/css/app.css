@@ -54,6 +54,10 @@ html {
     -webkit-tap-highlight-color: transparent
 }
 
+.maxheight{
+    max-height: 150px;
+}
+
 article,
 aside,
 figcaption,
@@ -178,9 +182,8 @@ a {
     background-color: transparent
 }
 
-a:hover {
-    color: #224abe;
-    text-decoration: underline
+.maxwidth{
+    max-width: 300px;
 }
 
 a:not([href]):not([tabindex]) {
@@ -589,6 +592,12 @@ pre code {
     margin-right: auto;
     margin-left: auto
 }
+
+.btn-width{
+    max-width: 90%;
+}
+
+
 
 @media (min-width:576px) {
     .container {
@@ -1105,7 +1114,7 @@ pre code {
 
     .col-md-4 {
         flex: auto;
-        max-width: 100%
+        max-width: 30%
     }
 
     .col-md-5 {
@@ -1297,7 +1306,7 @@ pre code {
 
     .col-lg-6 {
         flex: auto;
-        max-width: 100%
+        max-width: 45%
     }
 
     .col-lg-7 {
@@ -1906,9 +1915,12 @@ pre code {
 }
 
 .pageindicator {
-    margin-left: 1rem;
-    margin-right: 1rem
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+    font-size: 0.8rem
 }
+
+
 
 @media (max-width:575.98px) {
     .table-responsive-sm {
@@ -1917,6 +1929,7 @@ pre code {
         overflow-x: auto;
         -webkit-overflow-scrolling: touch
     }
+
 
     .table-responsive-sm>.table-bordered {
         border: 0
@@ -1934,6 +1947,7 @@ pre code {
     .table-responsive-md>.table-bordered {
         border: 0
     }
+
 }
 
 @media (max-width:991.98px) {
@@ -3328,7 +3342,7 @@ input[type=submit].btn-block {
     }
 
     .tab{
-        max-width: 100%;
+        max-width: 30%;
     }
 }
 
@@ -11221,7 +11235,7 @@ a:focus {
 
 .sidebar {
     width: 6.5rem;
-    min-height: 100vh
+    min-height: 100vh;
 }
 
 .sidebar .nav-item {
@@ -11360,9 +11374,9 @@ a:focus {
     font-size: 2rem
 }
 
-.sidebar .sidebar-brand .sidebar-brand-text {
+/* .sidebar .sidebar-brand .sidebar-brand-text {
     display: none
-}
+} */
 
 .sidebar hr.sidebar-divider {
     margin: 0 1rem 1rem
@@ -11377,7 +11391,7 @@ a:focus {
 
 @media (min-width:768px) {
     .sidebar {
-        width: 14rem !important
+        width: 14rem !important;
     }
 
     .sidebar .nav-item .collapse {

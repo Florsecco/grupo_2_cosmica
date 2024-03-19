@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-
 import Category from "./Category.jsx";
 
 function CategoriesInDb() {
@@ -23,20 +22,22 @@ function CategoriesInDb() {
   }, []);
 
   return (
-    <div className="col-lg-6 mb-4">
-      <div className="card shadow mb-4">
-        <div className="card-header py-3">
-          <h5 className="m-0 font-weight-bold text-gray-800">Categorías</h5>
-        </div>
-        <div className="card-body">
-          <div className="row">
-            {categories.map((cat, i) => {
-              return <Category key={i} {...cat} />;
-            })}
+
+        <div className="col-lg-6 mb-4">
+          <div className="card shadow mb-4">
+            <div className="card-header py-3">
+              <h5 className="m-0 font-weight-bold text-gray-800">Categorías</h5>
+            </div>
+            <div className="card-body">
+              <div className="row">
+                {categories.map((cat, i) => {
+                  return <Category key={i} {...cat} />;
+                })}
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-    </div>
+
   );
 }
 
