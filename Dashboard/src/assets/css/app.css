@@ -248,13 +248,14 @@ label {
 }
 
 button {
-    border-radius: 0
+    border-radius: 50 px;
 }
 
 button:focus {
     outline: 1px dotted;
     outline: 5px auto -webkit-focus-ring-color
 }
+
 
 button,
 input,
@@ -10700,7 +10701,8 @@ a:focus {
 }
 
 #wrapper {
-    display: flex
+    display: flex;
+    background-color: #f4f2fb ;
 }
 
 #wrapper #content-wrapper {

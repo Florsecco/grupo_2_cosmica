@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-
+import "./LoginForm.css";
 function LoginForm({ setUser }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(false);
-  const [msgError, setMsgError ] = useState('')
+  const [msgError, setMsgError] = useState("");
 
   const handleSubmit1 = async (e) => {
     e.preventDefault();
@@ -12,7 +12,7 @@ function LoginForm({ setUser }) {
     try {
       if (email === "" || password === "") {
         setError(true);
-        setMsgError('Todos los campos son obligatorios')
+        setMsgError("Todos los campos son obligatorios");
         return;
       } else {
         setError(false);
@@ -28,20 +28,21 @@ function LoginForm({ setUser }) {
         }),
       });
       const data = await response.json();
-      console.log('data',data);
+      console.log("data", data);
       if (data.user === "Not Found") {
         setError(true);
-        setMsgError('No tienes permisos')
+        setMsgError("No tienes permisos");
         setUser([]);
       } else if (data.user === "Not password") {
         setError(true);
-        setMsgError('La contraseña es incorrecta')
+        setMsgError("La contraseña es incorrecta");
         setUser([]);
       } else {
-        setUser([data.first_name,data.image]);
+        setUser([data.first_name, data.image]);
         window.sessionStorage.setItem(
-          'userLogged', JSON.stringify([data.first_name,data.image])
-        )
+          "userLogged",
+          JSON.stringify([data.first_name, data.image])
+        );
       }
     } catch (error) {
       console.log(error);
@@ -50,30 +51,32 @@ function LoginForm({ setUser }) {
 
   return (
     <>
-      <h1>Login</h1>
-      <form action="" onSubmit={handleSubmit1}>
-        <label htmlFor="email">Email</label>
-        <input
-          type="email"
-          name="email"
-          id=""
-          placeholder="nombre@hotmail.com"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-        <label htmlFor="password">Contraseña</label>
-        <input
-          type="password"
-          name="password"
-          placeholder="******"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        <button type="submit">Iniciar Sesión</button>
-      </form>
-      {error && (
-        <p className="text-danger">{msgError}</p>
-      )}
+      <div className="container d-flex justify-content-center align-items-center vh-100">
+        <form className='mainForm' action="" onSubmit={handleSubmit1}>
+          <h1>Login</h1>
+          <label htmlFor="email">Email</label>
+          <input
+            type="email"
+            name="email"
+            id=""
+            placeholder="nombre@hotmail.com"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <label htmlFor="password">Contraseña</label>
+          <input
+            type="password"
+            name="password"
+            placeholder="******"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <button type="submit" className="loginButton">
+            Iniciar Sesión
+          </button>
+        </form>
+      </div>
+      {error && <p className="text-danger">{msgError}</p>}
     </>
   );
 }
