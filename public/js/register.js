@@ -10,11 +10,11 @@ const validations = [
     validations: [
       {
         validator: isEmpty,
-        errorMsg: "Debes completar tu nombre",
+        errorMsg: "Debes completar tu nombre!",
       },
       {
         validator: long,
-        errorMsg: "Debe tener al menos 2 caracteres",
+        errorMsg: "Debe tener al menos 2 caracteres!",
       },
     ],
   },
@@ -23,11 +23,11 @@ const validations = [
     validations: [
       {
         validator: isEmpty,
-        errorMsg: "Debes completar tu apellido",
+        errorMsg: "Debes completar tu apellido!",
       },
       {
         validator: long,
-        errorMsg: "Debe tener al menos 2 caracteres",
+        errorMsg: "Debe tener al menos 2 caracteres!",
       },
     ],
   },
@@ -36,7 +36,7 @@ const validations = [
     validations: [
       {
         validator: isEmpty,
-        errorMsg: "Debes ingresar un correo electronico",
+        errorMsg: "Debes ingresar un correo electronico!",
       },
       {
         validator: function (input) {
@@ -50,22 +50,15 @@ const validations = [
             return false;
           }
         },
-        errorMsg: "Debes ingresar un correo electronico valido ",
+        errorMsg: "Debes ingresar un correo electronico valido!",
       },
       {
         validator:async (input) => {
-          //clearTimeout(timeOutID);
-          console.log('entro por el validador');
-          //timeOutID =
-          //setTimeout(() => {
           const res = await fetch(`/api/users/validate/${input.value}`)
           const data = await res.json()
-          //console.log(data);
           return data.noExiste
-          //}, 1500)
-          
       },
-        errorMsg: "Este correo ya esta registrado",
+        errorMsg: "Este correo ya esta registrado!",
       },
     ],
   },
@@ -74,11 +67,11 @@ const validations = [
     validations: [
       {
         validator: isEmpty,
-        errorMsg: "Debes ingresar una contraseña",
+        errorMsg: "Debes ingresar una contraseña!",
       },
       {
         validator: (input) => input.value.length >= 8,
-        errorMsg: "La contraseña debe tener al menos 8 caracteres",
+        errorMsg: "La contraseña debe tener al menos 8 caracteres!",
       },
       {
         validator: function comprobarContraseña(input) {
@@ -88,7 +81,7 @@ const validations = [
             return false;
           }
         },
-        errorMsg: "La contraseña debe tener una mayuscula y una miscula",
+        errorMsg: "La contraseña debe tener una mayuscula y una miscula!",
       },
       {
         validator: function comprobarContraseña(input) {
@@ -98,7 +91,7 @@ const validations = [
             return false;
           }
         },
-        errorMsg: "La contraseña debe tener un numero",
+        errorMsg: "La contraseña debe tener un numero!",
       },
       {
         validator: function comprobarContraseña(input) {
@@ -108,7 +101,7 @@ const validations = [
             return false;
           }
         },
-        errorMsg: "La contraseña debe tener un caracter especial",
+        errorMsg: "La contraseña debe tener un caracter especial!",
       },
     ],
   },
@@ -117,7 +110,7 @@ const validations = [
     validations: [
       {
         validator: isEmpty,
-        errorMsg: "Debes ingresar la contraseña",
+        errorMsg: "Debes ingresar la contraseña!",
       },
       {
         validator: (input) => {
@@ -126,7 +119,7 @@ const validations = [
           }
           return false;
         },
-        errorMsg: "La contraseñas deben coincidir",
+        errorMsg: "La contraseñas deben coincidir!",
       },
     ],
   },
@@ -135,11 +128,11 @@ const validations = [
     validations: [
       {
         validator: isEmpty,
-        errorMsg: "Debes completar tu direccion",
+        errorMsg: "Debes completar tu direccion!",
       },
       {
         validator: long,
-        errorMsg: "Debe tener al menos 2 caracteres",
+        errorMsg: "Debe tener al menos 2 caracteres!",
       },
     ],
   },
@@ -155,7 +148,7 @@ const validations = [
             return false;
           }
         },
-        errorMsg: "Debes subir una imagen",
+        errorMsg: "Debes subir una imagen!",
       },
       {
         validator: (input) => {
@@ -171,7 +164,7 @@ const validations = [
             return false;
           }
         },
-        errorMsg: "Las extensiones permitidas son: JPG, JPEG, PNG, GIF.",
+        errorMsg: "Las extensiones permitidas son: JPG, JPEG, PNG, GIF!",
       },
     ],
   },
