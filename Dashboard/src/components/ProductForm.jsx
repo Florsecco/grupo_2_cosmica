@@ -201,7 +201,7 @@ const ProductForm = ({ idProduct }) => {
               brands={brands}
               value={initialValues.brand_id}
             />
-            <button disabled={isSubmitting} type="submit">Submit</button>
+            <button disabled={isSubmitting} className="btn btn-info" type="submit">Submit</button>
           </Form>
         )}
       </Formik>}

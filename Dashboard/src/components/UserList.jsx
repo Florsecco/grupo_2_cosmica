@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { useParams } from "react-router-dom";
+import TopBar from './TopBar';
+
 
 import UserCard from "./UserCard";
 import CardSkeleton from "./CardSkeleton";
 
-function UserList() {
+function UserList({user, setDisplay, display}) {
   const [users, setUsers] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -27,6 +28,10 @@ function UserList() {
   }, []);
 
   return (
+
+    <div id="content-wrapper" className="d-flex flex-column">
+      <div id="content">
+      <TopBar user ={user} setDisplay={setDisplay} display={display}/>
     <div className="container-fluid">
       <h5>Usuarios</h5>
       <div className="row">
@@ -36,6 +41,8 @@ function UserList() {
             return <UserCard {...user} key={user.id} />;
           })}
       </div>
+    </div>
+    </div>
     </div>
   );
 }

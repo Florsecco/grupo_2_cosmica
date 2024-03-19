@@ -21,7 +21,7 @@ function ContentRowCenter(){
 
 
     return (
-        <div className="row">
+        <div className="row flex-row">
             
             {/*<!-- Last Movie in DB -->*/}
             <LastProductInDb  {...product}/>
