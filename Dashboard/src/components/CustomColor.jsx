@@ -29,6 +29,11 @@ const CustomColor = ({ label, ...props }) => {
     fetchColors();
   }, [category_id])
 
+  useEffect(() => {
+    const initialSelectedColors = colorStocks.map(color => color.color_id);
+    setSelectedColors(initialSelectedColors);
+  }, [colorStocks])
+
   const handleColorChange = (colorId, checked) => {
     if (checked) {
       setSelectedColors(prevState => [...prevState, colorId]);
@@ -38,30 +43,35 @@ const CustomColor = ({ label, ...props }) => {
   };
 
   const handleStockChange = (colorId, stock) => {
-    const colorStock = colorStocks.find(color => color.color_id === colorId);
-    if (colorStock) {
-      colorStock.stock = stock;
-    }
-    else {
-      colorStocks.push({ color_id: colorId, stock })
-    }
-    setFieldValue(props.name, colorStocks);
-  };
+    const updatedColorStocks = colorStocks.map(color => {
+      if (color.color_id == colorId) {
+        return { ...color, stock };
+      }
+      return color;
+    });
 
+    setFieldValue(props.name, updatedColorStocks);
+    // const colorStock = colorStocks.find(color => color.color_id === colorId);
+    // if (colorStock) {
+    //   colorStock.stock = stock;
+    // }
+    // else {
+    //   colorStocks.push({ color_id: colorId, stock })
+    // }
+    // setFieldValue(props.name, colorStocks);
+  };
+  console.log(colorStocks);
+  console.log(selectedColors);
   return (
     <div>
       {colors && colors.map((color) => (
-        // <CustomCheckBox
-        //   label={color.name}
-        //   name={props.name}
-        //   key={color.id}
-        //   value={color.id}
-        // />
         <div key={color.id}>
           <input
             type="checkbox"
             id={color.id}
             name={props.name}
+            checked={selectedColors.includes(color.id)}
+            // checked={colorStocks.find(c => c.color_id == color.id) && selectedColors.push(color.id)}
             value={color.id}
             onChange={(e) => handleColorChange(color.id, e.target.checked)}
           />
@@ -70,6 +80,7 @@ const CustomColor = ({ label, ...props }) => {
             <input
               type="number"
               name="stocks"
+              value={colorStocks.find(c => c.color_id == color.id)?.stock || ""}
               // value={selectedColors.find(id => id === color.id)}
               onChange={(e) => handleStockChange(color.id, e.target.value)}
               placeholder="Stock"

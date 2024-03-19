@@ -96,6 +96,7 @@ const ProductForm = ({ idProduct }) => {
         price: productData.price,
         product: null, // No cargamos la imagen al actualizar
         category_id: productData.category_id + "",
+        colorStocks: productData.stocks,
         // colorStocks: productData.colors.map(color => ({
         //   color_id: color.color_id,
         //   stock: color.stock

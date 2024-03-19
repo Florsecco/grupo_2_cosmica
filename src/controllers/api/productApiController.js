@@ -179,7 +179,7 @@ const productsController = {
         {
           model: ColorProduct,
           as: "stocks",
-          attributes: { exclude: ["product_id"] }
+          attributes: { exclude: ["id", "product_id"] }
         },
         {
           model: Color,
@@ -208,6 +208,78 @@ const productsController = {
       responseHandler = new ResponseHandler(204, "Error al obtener el producto.", [], req.originalUrl);
       responseHandler.sendResponse(res);
     }
+  },
+  update: async (req, res) => {
+    const transaction = await sequelize.transaction();
+    try {
+      const id = req.params.id;
+      const product = await Product.findByPk(id, {
+        include: [
+          {
+            model: Color,
+            as: 'colors',
+            through: {
+              attributes: ['stock', 'id']
+            }
+          }
+        ]
+      }, { transaction });
+      const { name, description_short, description_long, category, ingredients, price, discount, brand, color } = req.body;
+      const finalPrice = price - (price * discount) / 100;
+      let img = product.image
+      if (req.file != undefined) {
+        fs.unlinkSync(
+          path.join(__dirname, "../../public/img/products", img)
+        );
+        img = req.file.filename
+      }
+      await Product.update({
+        name: name,
+        description_short: description_short,
+        description_long: description_long,
+        category_id: category,
+        ingredients: ingredients,
+        image: img,
+        price: price,
+        discount: discount,
+        final_price: finalPrice,
+        brand_id: brand,
+      }, {
+        where: {
+          id: req.params.id
+        }
+      }, { transaction })
+      const colorStocks = JSON.parse(req.body.colorStocks);
+
+      for (const colorStock of colorStocks) {
+        const productColor = await ColorProduct.findOne({
+          where: {
+            product_id: id,
+            color_id: color
+          }
+        });
+        
+        console.log(colorStock);
+        await ColorProduct.update({
+          stock: colorStock.stock
+        }, {
+          where: {
+            product_id: id,
+            color_id: colorStock.color_id
+          }
+        }, { transaction });
+      };
+
+
+      await transaction.commit();
+      const responseHandler = new ResponseHandler(200, "Producto Actualizado.", [], req.originalUrl);
+      responseHandler.sendResponse(res);
+    } catch (error) {
+      if (transaction) await transaction.rollback();
+      console.log(error);
+      res.send(error.message);
+    }
+
   }
 };
 
