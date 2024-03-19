@@ -98,7 +98,7 @@ function SideBar() {
             </Link>
           </li>
           <li className="nav-item">
-            <Link className="nav-link" onClick={handleLogOut}>
+            <Link className="nav-link" to='/' onClick={handleLogOut}>
               <span>Cerrar Sesión</span>
             </Link>
           </li>
