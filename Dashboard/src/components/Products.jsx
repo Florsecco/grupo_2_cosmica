@@ -74,9 +74,9 @@ function Products() {
         }
       </div>
       <div className='row'>
-        <button disabled={currentPage === 1} onClick={() => handlePageChange(currentPage - 1)}>Anterior</button>
-        <span>Pagina {currentPage} de {totalPages}</span>
-        <button disabled={currentPage === totalPages} onClick={() => handlePageChange(currentPage + 1)}>Siguiente</button>
+        <button disabled={currentPage === 1} onClick={() => handlePageChange(currentPage - 1)} class='pagebutton'>Anterior</button>
+        <span class='pageindicator'>Pagina {currentPage} de {totalPages}</span>
+        <button disabled={currentPage === totalPages} onClick={() => handlePageChange(currentPage + 1)} class='pagebutton'>Siguiente</button>
       </div>
     </div>
   );
