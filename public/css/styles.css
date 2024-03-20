@@ -739,6 +739,12 @@ h4 {
     height: 30px;
     margin-top: 5px;
     margin-bottom: 5px;
+    color: #1b0025;
+    cursor: pointer;
+    transition: background-color 0.5s;
+}
+.form-register button:hover {
+    background-color: #8a2be2;
 }
 
 .form-register .avatar input {
@@ -821,8 +827,20 @@ h4 {
 
 /*login */
 .button-login button {
+    background-color: #ff5355;
     color: #1b0025;
-}
+    cursor: pointer; 
+    transition: background-color 0.5s; 
+    }
+      
+      
+.button-login button:hover {
+    background-color: #8a2be2; /* Cambia el color de fondo a violeta cuando se hace hover */
+    
+
+    }
+      
+
 
 .button-remember {
     display: flex;
