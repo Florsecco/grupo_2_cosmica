@@ -202,6 +202,10 @@ const productsController = {
         responseHandler = new ResponseHandler(204, "Product.", [], req.originalUrl);
       }
       await transaction.commit();
+      product.stocks.forEach(stock => {
+        console.log("Color_id:", stock.color_id);
+        console.log("stock:", stock.stock);
+      });
       responseHandler.sendResponse(res);
     } catch (error) {
       console.log(error);
@@ -214,26 +218,36 @@ const productsController = {
     const transaction = await sequelize.transaction();
     try {
       const id = req.params.id;
+      console.log("id:", id);
+      console.log("entre:", req.body);
+
       const product = await Product.findByPk(id, {
         include: [
+          {
+            model: ColorProduct,
+            as: "stocks",
+          },
           {
             model: Color,
             as: 'colors',
             through: {
               attributes: ['stock', 'id']
-            }
+            },
+
           }
         ]
       }, { transaction });
-      const { name, description_short, description_long, category, ingredients, price, discount, brand, color } = req.body;
+      const { name, description_short, description_long, category, ingredients, price, discount, brand } = req.body;
       const finalPrice = price - (price * discount) / 100;
       let img = product.image
       if (req.file != undefined) {
         fs.unlinkSync(
           path.join(__dirname, "../../public/img/products", img)
         );
-        img = req.file.filename
+        img = saveImage(req.file);
       }
+
+      // const nombreArchivo = saveImage(req.file);
       await Product.update({
         name: name,
         description_short: description_short,
@@ -252,23 +266,34 @@ const productsController = {
       }, { transaction })
       const colorStocks = JSON.parse(req.body.colorStocks);
 
+      for (const colorProduct of product.stocks) {
+        const colorProductToDelete = colorStocks.find(c => c.color_id === colorProduct.color_id);
+        console.log("colorProductToDelete", colorProductToDelete);
+        console.log("colorProduct", colorProduct);
+        if (colorProductToDelete === undefined) {
+          console.log("Por borrar:", colorProductToDelete);
+          await ColorProduct.destroy({ where: { id: colorProduct.id } }, { transaction });
+        } else {
+          colorProduct.stock = colorProductToDelete.stock;
+          await colorProduct.save({ transaction });
+        }
+      }
+
       for (const colorStock of colorStocks) {
         const productColor = await ColorProduct.findOne({
-          where: {
-            product_id: id,
-            color_id: color
-          }
-        });
-        
-        console.log(colorStock);
-        await ColorProduct.update({
-          stock: colorStock.stock
-        }, {
           where: {
             product_id: id,
             color_id: colorStock.color_id
           }
         }, { transaction });
+
+        if (productColor == null) {
+          await ColorProduct.create({
+            product_id: id,
+            color_id: colorStock.color_id,
+            stock: colorStock.stock
+          }, { transaction });
+        }
       };
 
 
