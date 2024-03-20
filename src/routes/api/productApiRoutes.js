@@ -8,7 +8,7 @@ const { uploadMemory } = require('../../middlewares/productMulterMemoryMiddlewar
 
 // Post
 router.post('/create', uploadMemory.single('product'), /* authMiddleware, */ validateCreateProduct, productApiController.create);
-
+router.put("/:id", uploadMemory.single('product'), productApiController.update);
 router.get('/', productApiController.getAll);
 
 router.get('/count', productApiController.count);
