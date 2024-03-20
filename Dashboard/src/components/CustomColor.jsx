@@ -35,10 +35,24 @@ const CustomColor = ({ label, ...props }) => {
   }, [colorStocks])
 
   const handleColorChange = (colorId, checked) => {
+    console.log("El colorId es:", colorId);
+    console.log("checked es:", checked);
     if (checked) {
       setSelectedColors(prevState => [...prevState, colorId]);
+      colorStocks.push({ color_id: colorId, stock: 0 })
+      setFieldValue(props.name, colorStocks);
+
     } else {
       setSelectedColors(prevState => prevState.filter(id => id !== colorId));
+      const updatedColorStocks = colorStocks.filter(color => {
+        console.log(color);
+        console.log(color.color_id);
+        if (color.color_id !== colorId) {
+          return color
+        }
+      });
+      console.log(updatedColorStocks);
+      setFieldValue(props.name, updatedColorStocks);
     }
   };
 
