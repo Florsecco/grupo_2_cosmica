@@ -6,6 +6,7 @@ const CustomTextAreaInput = ({ label, ...props }) => {
   return (
     <div>
       <label htmlFor={props.id || props.name}>{label}</label>
+      <br></br>
       <textarea {...field} {...props}
         className={meta.touched && meta.error ? "input-error" : ""} />
       {meta.touched && meta.error ? (
