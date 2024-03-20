@@ -1326,4 +1326,8 @@ h4 {
     .profile .password input {
         width: 340px;
     }
+
+    .bars{
+        display: none
+    }
 }
