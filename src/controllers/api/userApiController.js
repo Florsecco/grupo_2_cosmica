@@ -1,5 +1,7 @@
 const db = require("../../database/models");
-
+const Sequelize = require("sequelize");
+const bcrypt = require("bcryptjs");
+const Op = Sequelize.Op;
 const User = db.User;
 
 const userApiController = {
@@ -77,6 +79,51 @@ const userApiController = {
       res.send({ error: error });
     }
   },
+  login: async (req, res) => {
+
+    const { email, password } = req.body;
+    console.log(req.body);
+
+    const user = await User.findOne({
+      where: {
+        email: { [Op.like]: `${email}` },
+        status: 1,
+        profile_id: 1
+      },
+      attributes: [
+        "id",
+        "first_name",
+        "last_name",
+        "email",
+        "password",
+        "image",
+        "address",
+        "profile_id",
+      ],
+    });
+    console.log(user);
+    if (!user){
+     res.json({user:'Not Found'})
+    }else{
+
+    const userIsValidPassword = bcrypt.compareSync(password, user.password);
+    console.log(userIsValidPassword);
+    // console.log(bcrypt.hashSync("admin1234", salt));
+    if (!userIsValidPassword){
+      console.log('entro por el !userisValidPassword');
+      res.json({user:'Not password'})
+    }else{
+
+    const userJson = user.get({ plain: true });
+    delete userJson.password;
+
+    // req.session.userLogged = userJson;
+
+    return res.json(userJson)}}
+  },
+  logout:(req,res)=>{
+
+  }
 };
 
 module.exports = userApiController;

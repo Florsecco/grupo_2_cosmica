@@ -143,11 +143,12 @@ const userController = {
             old: req.body,
             user: null,
           });
+        }else{
+          user.password = bcrypt.hashSync(userBody.password, 10);
         }
       }
     }
 
-    user.password = bcrypt.hashSync(userBody.password, 10);
 
     if (req.file != undefined) {
       const nombreArchivo = saveImage(req.file);

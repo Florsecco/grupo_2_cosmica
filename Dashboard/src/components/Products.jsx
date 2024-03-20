@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import SearchBar from './SearchBar';
 import axios from 'axios';
+import TopBar from './TopBar';
 import ProductCard from './ProductCard';
 import CardSkeleton from './CardSkeleton';
 
 
-function Products() {
+function Products({user,setDisplay, display}) {
   console.log('entre al componente');
   const [products, setProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -24,8 +25,6 @@ function Products() {
     const fetchProducts = async () => {
       try {
         const response = await axios.get(`http://localhost:3010/api/products?page=${currentPage}&limit=${limit}&name=${query}`);
-        console.log(response);
-
         setProducts(response.data.data.products || []);
         setTotalPages(Math.ceil(response.data.data.count / limit) || 0)
         setIsLoading(false);
@@ -43,7 +42,9 @@ function Products() {
 
 
   return (
-
+<div id="content-wrapper" className="d-flex flex-column">
+      <div id="content">
+                    <TopBar user ={user} setDisplay={setDisplay} display={display}/>
     <div className="container-fluid">
       <SearchBar onSearch={handleSearch} />
       <div className="row">
@@ -76,11 +77,13 @@ function Products() {
           })
         }
       </div>
-      <div className='row'>
-        <button disabled={currentPage === 1} onClick={() => handlePageChange(currentPage - 1)}>Anterior</button>
-        <span>Pagina {currentPage} de {totalPages}</span>
-        <button disabled={currentPage === totalPages} onClick={() => handlePageChange(currentPage + 1)}>Siguiente</button>
+      <div className='row btn-width align-items-start'>
+        <button disabled={currentPage === 1} onClick={() => handlePageChange(currentPage - 1)} className='btn btn-info btn-sm' >Anterior</button>
+        <span className='pageindicator'>Pág. {currentPage} de {totalPages}</span>
+        <button disabled={currentPage === totalPages} onClick={() => handlePageChange(currentPage + 1)} className='btn btn-info btn-sm'>Siguiente</button>
       </div>
+    </div>
+    </div>
     </div>
   );
 }

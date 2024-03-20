@@ -15,6 +15,8 @@ router.get('/count', productApiController.count);
 
 router.get('/last', productApiController.getLast);
 
+router.get('/categories/:id', productApiController.getCategories);
+
 router.get("/:productId", productApiController.getProduct);
 
 module.exports = router;

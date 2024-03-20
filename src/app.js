@@ -70,14 +70,3 @@ app.use((req, res, next) => {
   res.redirect('/');
   // res.status(404).render('not-found');
 });
-
-
-
-
-
-
-
-
-
-
-
