@@ -202,7 +202,7 @@ const ProductForm = ({ idProduct }) => {
       >
 
         {({ isSubmitting }) => (
-          <Form className="d-flex flex-column p-4">
+          <Form className="d-flex flex-column p-4 formCreate">
             <CustomInput
               label="Nombre"
               name="name"

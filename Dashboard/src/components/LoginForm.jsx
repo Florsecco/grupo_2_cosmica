@@ -52,7 +52,7 @@ function LoginForm({ setUser }) {
   return (
     <>
       <div className="container d-flex justify-content-center align-items-center vh-100">
-        <form className='mainForm' action="" onSubmit={handleSubmit1}>
+        <form className='mainForm d-flex justify-content-center align-items-center' action="" onSubmit={handleSubmit1}>
           <h1>Login</h1>
           <label htmlFor="email">Email</label>
           <input

@@ -14,12 +14,12 @@
   margin-bottom: 10px;
   border-radius: 10px;
 } */
-form{
+form.formCreate{
   max-width: 500px;
   display: flex;
 
 }
-form button{
+form.formCreate button{
   width: 200px;
   text-align: center;
 }
