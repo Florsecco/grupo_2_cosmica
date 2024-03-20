@@ -27,6 +27,15 @@ module.exports = {
      },{
       id:8,
       name:'Gold'
+     },{
+      id:9,
+      name:'Cyan'
+     },{
+      id:10,
+      name:'Turqoise'
+     },{
+      id:11,
+      name:'Silver'
      },], {});
   },
 

@@ -202,51 +202,51 @@ const ProductForm = ({ idProduct }) => {
       >
 
         {({ isSubmitting }) => (
-          <Form>
+          <Form className="d-flex flex-column p-4">
             <CustomInput
               label="Nombre"
               name="name"
               type="text"
               placeholder="Ingrese el nombre del producto"
             />
-            <br />
+
             <CustomTextAreaInput
               label="Descripcion Corta"
               name="description_short"
               placeholder="Descripcion corta del producto"
             />
-            <br />
+
             <CustomTextAreaInput
               label="Descripcion Larga"
               name="description_long"
               placeholder="Descripcion Larga del producto"
             />
-            <br />
+
             <CustomTextAreaInput
               label="Ingredientes"
               name="ingredients"
               placeholder="Ingredientes del producto."
             />
-            <br />
+
             <CustomInput
               label="Precio"
               name="price"
               type="number"
               placeholder="$12.34"
             />
-            <br />
+
             <CustomInput
               label="Descuento"
               name="discount"
               type="number"
               placeholder="10"
             />
-            <br />
+
             <CustomImageInput
               name="product"
               label="Imagen"
             />
-            <br />
+
             <CustomSelect
               label="Categoria"
               name="category_id"
@@ -257,13 +257,13 @@ const ProductForm = ({ idProduct }) => {
               ))
               }
             </CustomSelect>
-            <br />
+
             <CustomColor
               label="Colores"
               name="colorStocks"
               type="checkbox"
             />
-            <br />
+
             <CustomBrand
               label="Marcas"
               name="brand_id"

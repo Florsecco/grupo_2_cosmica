@@ -4,15 +4,16 @@ import { useField } from 'formik';
 const CustomRadioInput = ({ label, selectedValue, ...props }) => {
   const [field, meta] = useField(props);
   return (
-    <div>
-      <label>
+      <div className='d-flex flex-row align-items-center p-1'>  
+      <label className='p-2' >
+        {label}
+        </label>
         <input type='radio'{...field} {...props}
           className={meta.touched && meta.error ? "input-error" : ""}
           checked={props.value == field.value}
         />
-        {label}
-      </label>
-    </div>
+      
+      </div>
   );
 };
 

@@ -20,7 +20,6 @@ function UserDetail({user, setDisplay, display}) {
         const response = await axios.get(`http://localhost:3010/api/users/${idUser}`);
         console.log(response.data);
         setUserDet(response.data)
-
         setIsLoading(false);
       } catch (error) {
         console.log(error);
@@ -37,20 +36,21 @@ function UserDetail({user, setDisplay, display}) {
       {isLoading && <p>Loading...</p>}
 
       {!isLoading &&
-        <Link to="/users">Volver a Usuarios</Link>
+        <Link className='linkColor' to="/users">Volver a Usuarios</Link>
       }
-
-      <h2>{userDet.first_name || <Skeleton />} {userDet.last_name || <Skeleton />}</h2>
+      <div className='d-flex flex-column justify-content-center align-items-center'>
+      <h5 className="m-0 font-weight-bold text-gray-800">{userDet.first_name || <Skeleton />} {userDet.last_name || <Skeleton />}</h5>
       <img
             className="img-fluid px-3 px-sm-4 mt-3 mb-4"
             src={userDet.image}
             alt={userDet.first_name}
-            style={{ width: '50%', objectFit: 'cover' }}
+            style={{ maxWidth: '350px ', objectFit: 'cover' }}
           />
-      <p>Email: {userDet.email || <Skeleton count={2} />}</p>
-      <p>Dirección: {userDet.address || <Skeleton count={3} />}</p> 
+      <p><i className="fas fa-at"></i> Email: {userDet.email || <Skeleton count={1} />}</p>
+      <p><i className="fas fa-street-view"></i> Dirección: {userDet.address || <Skeleton count={1} />}</p> 
+      <p><i className="fas fa-id-badge"></i> Perfil: {userDet.profile || <Skeleton count={1} />}</p> 
 
-      
+      </div>
     </div>
     </div>
     </>

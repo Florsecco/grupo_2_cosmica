@@ -77,9 +77,9 @@ const CustomColor = ({ label, ...props }) => {
   console.log(colorStocks);
   console.log(selectedColors);
   return (
-    <div>
+    <div className="d-flex flex-colum align-items-start p-1">
       {colors && colors.map((color) => (
-        <div key={color.id}>
+        <div className="d-flex flex-row align-items-center" key={color.id}>
           <input
             type="checkbox"
             id={color.id}
@@ -88,8 +88,9 @@ const CustomColor = ({ label, ...props }) => {
             // checked={colorStocks.find(c => c.color_id == color.id) && selectedColors.push(color.id)}
             value={color.id}
             onChange={(e) => handleColorChange(color.id, e.target.checked)}
+            className="p-2"
           />
-          <label htmlFor={color.id}>{color.name}</label>
+          <label className="p-2" htmlFor={color.id}>{color.name}</label>
           {selectedColors.includes(color.id) && (
             <input
               type="number"
@@ -98,6 +99,7 @@ const CustomColor = ({ label, ...props }) => {
               // value={selectedColors.find(id => id === color.id)}
               onChange={(e) => handleStockChange(color.id, e.target.value)}
               placeholder="Stock"
+              className="max"
             />
           )}
         </div>

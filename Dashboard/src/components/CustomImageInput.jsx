@@ -10,7 +10,7 @@ const CustomImageInput = ({ label, ...props }) => {
   };
 
   return (
-    <div>
+    <div className="p-1"> 
       <label htmlFor={props.id || props.name}>{label}</label>
       <input
         type="file"

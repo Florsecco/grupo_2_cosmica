@@ -1,10 +1,7 @@
 import React, { useState,useEffect } from "react";
 import SideBar from './SideBar';
-import ContentWrapper from './ContentWrapper';
 import { SkeletonTheme } from 'react-loading-skeleton';
 function App() {
-  const [showMenu, setShowMenu] = useState(false)
-
   return (
     <React.Fragment>
       <SkeletonTheme baseColor='#313131' highlightColor='#525252'>

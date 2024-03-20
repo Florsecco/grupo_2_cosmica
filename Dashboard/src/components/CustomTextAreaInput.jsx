@@ -4,7 +4,7 @@ import { useField } from 'formik';
 const CustomTextAreaInput = ({ label, ...props }) => {
   const [field, meta] = useField(props);
   return (
-    <div>
+    <div className="p-1">
       <label htmlFor={props.id || props.name}>{label}</label>
       <br></br>
       <textarea {...field} {...props}

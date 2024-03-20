@@ -3,6 +3,7 @@ const Sequelize = require("sequelize");
 const bcrypt = require("bcryptjs");
 const Op = Sequelize.Op;
 const User = db.User;
+const Profile = db.Profile
 
 const userApiController = {
   getAll: async (req, res) => {
@@ -41,7 +42,9 @@ const userApiController = {
           "image",
           "address",
         ],
+        include:{ model: Profile, attributes: ['id','name']}
       });
+      console.log(user.Profile.name);
       if(user){
       res.json({
         id: user.id,
@@ -50,6 +53,7 @@ const userApiController = {
         email: user.email,
         image: `http://localhost:3010/img/users/${user.image}`,
         address: user.address,
+        profile: user.Profile.name
       })}
       else{
         res.json({user:'Not Found'})

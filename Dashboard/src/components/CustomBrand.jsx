@@ -7,10 +7,9 @@ import CustomRadioInput from "./CustomRadioInput";
 const CustomBrand = ({ label, brands, ...props }) => {
   const [field, meta, helpers] = useField(props);
   return (
-    <div>
-      <br />
+    <div className="p-1">
       <label>{label}</label>
-      <br />
+      <div  className="d-flex flex-row flex-wrap">
       {
         brands && brands.map(brand => (
 
@@ -23,6 +22,7 @@ const CustomBrand = ({ label, brands, ...props }) => {
           />
         ))
       }
+      </div>
       {meta.touched && meta.error && <div className="">{meta.error}</div>}
 
     </div>

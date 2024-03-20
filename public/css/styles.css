@@ -54,6 +54,8 @@ footer {
     font-size: 2em;
     max-width: 1200px;
     margin: auto;
+    padding-left: 10px;
+    padding-right: 10px;
     background-color: #f4f2fb;
 }
 
@@ -108,7 +110,7 @@ footer {
 .category-section {
     color: white;
     background-color: #3e005b;
-    padding: 5px;
+    padding: 10px;
 }
 
 /* titulo de la barra de categorias */
@@ -663,7 +665,7 @@ h4 {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-top: 10px;
+    margin-top: 50px;
     margin-bottom: 10px;
 }
 
@@ -1233,7 +1235,7 @@ h4 {
         border-radius: 15px;
         width: 300px;
         margin: auto;
-        margin-top: 10px;
+        margin-top: 90px;
         margin-bottom: 10px;
     }
 

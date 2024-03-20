@@ -230,9 +230,13 @@ svg {
 }
 
 table {
-    border-collapse: collapse
+    border-collapse: collapse;
+    max-width: 1200px;
 }
-
+.linkColor{
+    color: #ff5355;
+    padding: 15px;
+}
 caption {
     padding-top: .75rem;
     padding-bottom: .75rem;
