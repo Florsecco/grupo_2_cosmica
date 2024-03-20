@@ -75,8 +75,13 @@ function LoginForm({ setUser }) {
             Iniciar Sesión
           </button>
         </form>
+        {error && (
+        <div className="containerAlert d-flex justify-content-center align-items-center mt-3">
+          <div className="alert alert-danger mt-3" role="alert">
+            {msgError}
+          </div>
+        </div>)}
       </div>
-      {error && <p className="text-danger">{msgError}</p>}
     </>
   );
 }

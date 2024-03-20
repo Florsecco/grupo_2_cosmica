@@ -7019,7 +7019,8 @@ button.bg-dark:hover {
 }
 
 .d-flex {
-    display: flex !important
+    display: flex !important;
+    flex-direction: column;
 }
 
 .d-inline-flex {
