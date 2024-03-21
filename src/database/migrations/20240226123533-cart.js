@@ -37,7 +37,7 @@ module.exports = {
         type: DataTypes.DATE,
       },
       updated_at: {
-        allowNull: false,
+        allowNull: true,
         type: DataTypes.DATE,
       },
      });
