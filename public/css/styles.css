@@ -1131,6 +1131,9 @@ h4 {
 .toast.show {
     visibility: visible;
 }
+.btnShow{
+    display: none;
+}
 
 /* validations */
 

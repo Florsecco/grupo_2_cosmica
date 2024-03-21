@@ -36,14 +36,15 @@ document.addEventListener('DOMContentLoaded', function () {
         response.json()
       )
       .then(review => {
+        console.log(review);
         if (review.meta.status == 200) {
-          const { comment, rating, created_at } = review.data;
+          const { comment, rating, created_at , firstName, lastName} = review.data;
           const commentDiv = document.createElement('div');
           commentDiv.classList.add('comment');
           const commentP = document.createElement('p');
           commentP.textContent = comment;
           const usuarioP = document.createElement('p');
-          usuarioP.textContent = "Por: Falta Hacer";
+          usuarioP.textContent = "Por: "+' '+firstName+' ' +lastName;
           const fechaP = document.createElement('p');
           fechaP.textContent = `Fecha: ${new Date(created_at).toDateString()}`;
           commentDiv.appendChild(commentP);
@@ -73,12 +74,21 @@ document.addEventListener('DOMContentLoaded', function () {
           console.log(commentText);
           checkedStar.forEach(label => label.classList.remove('checked'));
           mostrarToast(review.message);
+
+          
+
         }
       })
       .catch(error => {
         console.error("Error al enviar el comentario:", error);
       })
   });
+  const btnComment = document.getElementById('btnComment')
+  console.log(btnComment);
+  btnComment.addEventListener('click', ()=>{
+    document.getElementById('noComment').classList.add('btnShow')
+    commentForm.classList.add('btnShow')
+  })
 
   function marcarEstrellasSeleccionadas(index) {
     const starLabels = document.querySelectorAll('.star-rating label');

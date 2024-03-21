@@ -81,7 +81,7 @@
               <h3>Reseñas <i class="fa-regular fa-square-caret-down"></i></h3>
               <div class="comments">
                 <% if (product.Reviews.length == 0) { %>
-                  <div class="comment">
+                  <div class="comment" id="noComment">
                     <p>Todavia no tiene ninguna reseña</p>
                   </div>
                 <% } %>
@@ -128,7 +128,7 @@
                   <label for="rating4"></label>
                   <label for="rating5"></label>
                 </div>
-                <button type="submit">Enviar comentario</button>
+                <button id="btnComment" type="submit">Enviar comentario</button>
               </form>
               <% } %>
           </section>
