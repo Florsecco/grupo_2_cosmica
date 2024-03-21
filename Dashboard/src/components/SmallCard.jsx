@@ -1,11 +1,11 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+//import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 function SmallCard(props){
     return(
         
-        <div className="col-md-4 mb-4">
+        <div className="col-md-4 mb-4 tab maxheight">
             <div className={`card border-left-${props.color} shadow h-100 py-2`}>
                 <div className="card-body">
                 <Link to={`${props.link}`}>

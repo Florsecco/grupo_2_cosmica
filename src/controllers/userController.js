@@ -143,11 +143,12 @@ const userController = {
             old: req.body,
             user: null,
           });
+        }else{
+          user.password = bcrypt.hashSync(userBody.password, 10);
         }
       }
     }
 
-    user.password = bcrypt.hashSync(userBody.password, 10);
 
     if (req.file != undefined) {
       const nombreArchivo = saveImage(req.file);
@@ -188,17 +189,20 @@ const userController = {
     try {
       const id = req.session.userLogged.id;
       const userDeleted = await User.findByPk(id);
-
+      console.log(userDeleted);
+      let img
       if (userDeleted) {
+        img = userDeleted.image
         userDeleted.destroy();
         req.session.destroy();
         res.clearCookie("userEmail");
-        logger.info("Usuario eliminado", userDeleted);
+        fs.unlinkSync(path.join(__dirname, "../../public/img/users", img));
+        console.log("Usuario eliminado", userDeleted);
         return res.redirect("/users/login");
       }
       return res.redirect("/");
     } catch (error) {
-      logger.error(error);
+      console.log(error);
       return res.redirect("/");
     }
   },

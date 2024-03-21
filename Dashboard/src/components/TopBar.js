@@ -1,14 +1,16 @@
 import React from 'react';
-import foto from '../assets/images/jordan-walke.png';
 
-function TopBar(){
+function TopBar({user,setDisplay, display}){
+	const changeDisplay = ()=>{
+		setDisplay(!display)
+	}
     return(
         <React.Fragment>
 				{/*<!-- Topbar -->*/}
 				<nav className="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
 
 					{/*<!-- Sidebar Toggle (Topbar) -->*/}
-					<button id="sidebarToggleTop" className="btn btn-link d-md-none rounded-circle mr-3">
+					<button onClick={changeDisplay} id="sidebarToggleTop" className="btn btn-link d-md-none rounded-circle mr-3">
 						<i className="fa fa-bars"></i>
 					</button>
 
@@ -38,8 +40,8 @@ function TopBar(){
 						{/*<!-- Nav Item - User Information -->*/}
 						<li className="nav-item dropdown no-arrow">
 							<a className="nav-link dropdown-toggle" href="/" id="userDropdown">
-								<span className="mr-2 d-none d-lg-inline text-gray-600 small">Jordan Walke</span>
-								<img className="img-profile rounded-circle" src={foto} alt="Jordan Walke - Creador de React" width="60"/>
+								<span className="mr-2 d-none d-lg-inline text-gray-600 small">{user[0]}</span>
+								<img className="img-profile rounded-circle" src={`http://localhost:3010/img/users/${user[1]}`} alt="Jordan Walke - Creador de React" width="60"/>
 							</a>
 						</li>
 

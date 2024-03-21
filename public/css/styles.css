@@ -8,6 +8,9 @@ body {
     font-family: "Roboto", sans-serif;
     background-color: #f4f2fb;
     font-size: 12px;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
 h3 {
@@ -25,6 +28,8 @@ header {
 
 footer {
     background-color: #ff5355;
+    margin-top: auto;
+    text-align: center;
 }
 
 
@@ -49,6 +54,8 @@ footer {
     font-size: 2em;
     max-width: 1200px;
     margin: auto;
+    padding-left: 10px;
+    padding-right: 10px;
     background-color: #f4f2fb;
 }
 
@@ -103,7 +110,7 @@ footer {
 .category-section {
     color: white;
     background-color: #3e005b;
-    padding: 5px;
+    padding: 10px;
 }
 
 /* titulo de la barra de categorias */
@@ -658,7 +665,7 @@ h4 {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-top: 10px;
+    margin-top: 50px;
     margin-bottom: 10px;
 }
 
@@ -732,6 +739,12 @@ h4 {
     height: 30px;
     margin-top: 5px;
     margin-bottom: 5px;
+    color: #1b0025;
+    cursor: pointer;
+    transition: background-color 0.5s;
+}
+.form-register button:hover {
+    background-color: #8a2be2;
 }
 
 .form-register .avatar input {
@@ -814,8 +827,20 @@ h4 {
 
 /*login */
 .button-login button {
+    background-color: #ff5355;
     color: #1b0025;
-}
+    cursor: pointer; 
+    transition: background-color 0.5s; 
+    }
+      
+      
+.button-login button:hover {
+    background-color: #8a2be2; /* Cambia el color de fondo a violeta cuando se hace hover */
+    
+
+    }
+      
+
 
 .button-remember {
     display: flex;
@@ -1106,6 +1131,9 @@ h4 {
 .toast.show {
     visibility: visible;
 }
+.btnShow{
+    display: none;
+}
 
 /* validations */
 
@@ -1228,7 +1256,7 @@ h4 {
         border-radius: 15px;
         width: 300px;
         margin: auto;
-        margin-top: 10px;
+        margin-top: 90px;
         margin-bottom: 10px;
     }
 
@@ -1320,5 +1348,9 @@ h4 {
 
     .profile .password input {
         width: 340px;
+    }
+
+    .bars{
+        display: none
     }
 }

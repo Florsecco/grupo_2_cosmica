@@ -68,10 +68,11 @@ const productController = {
         }
       });
       if (product === undefined) res.redirect("../not-found");
-
       const reviews = await product.getReviews();
-      let userHasCommented = reviews.some((review) => review.user_id == user_id);
+      let userHasCommented = reviews.some((review) => review.user_id === user_id && review.product_id === product.id);
+      console.log(userHasCommented);
       const productJson = product.get({ plain: true });
+      // console.log(productJson.Reviews[0].User);
       res.render("./products/productDetail", { product: productJson, products, toThousand, userHasCommented });
     } catch (error) {
       console.log(error);
@@ -259,6 +260,7 @@ const productController = {
   comment: async (req, res) => {
     try {
       const user_id = req.session.userLogged.id;
+      console.log(req.session.userLogged);
       const product_id = parseInt(req.params.id);
       const { commentText: comment, rating } = req.body;
       const product = await Product.findByPk(product_id);
@@ -268,10 +270,13 @@ const productController = {
       }
       const commentCreated = await product.createReview({ user_id, comment, rating });
       const commentJson = commentCreated.get({ plain: true });
-      delete commentJson.product_id;
-      delete commentJson.user_id;
-      delete commentJson.updated_at;
-      const responseHandler = new ResponseHandler(200, "Comentario Creado", commentJson, req.originalUrl);
+      const userReview = await User.findByPk(commentJson.user_id, {attributes:['first_name', 'last_name']})
+      const response = {...commentJson,firstName: userReview.first_name, lastName: userReview.last_name};
+      console.log(response);
+      delete response.product_id;
+      delete response.user_id;
+      delete response.updated_at;
+      const responseHandler = new ResponseHandler(200, "Comentario Creado", response, req.originalUrl);
       responseHandler.sendResponse(res);
 
     } catch (error) {

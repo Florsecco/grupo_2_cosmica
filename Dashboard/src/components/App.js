@@ -1,6 +1,5 @@
-import React from 'react';
+import React, { useState,useEffect } from "react";
 import SideBar from './SideBar';
-import ContentWrapper from './ContentWrapper';
 import { SkeletonTheme } from 'react-loading-skeleton';
 function App() {
   return (

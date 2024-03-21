@@ -18,7 +18,7 @@ const SearchBar = ({ onSearch }) => {
         <input type="text" placeholder='Buscar Productos...' className="form-control" value={query} onChange={handleChange} />
       </div>
       <button type="submit" className="btn btn-info">
-        Search
+        Buscar
       </button>
     </form>
   );
