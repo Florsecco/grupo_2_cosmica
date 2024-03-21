@@ -124,9 +124,6 @@ const userApiController = {
     // req.session.userLogged = userJson;
 
     return res.json(userJson)}}
-  },
-  logout:(req,res)=>{
-
   }
 };
 

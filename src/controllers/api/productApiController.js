@@ -1,8 +1,9 @@
 const { Product, ColorProduct, Category, User, Color, Review, sequelize } = require('../../database/models');
+const fs = require("fs");
+const path = require("path");
 
 const { Op } = require("sequelize");
 const { saveImage } = require('../../middlewares/productMulterMemoryMiddleware');
-
 const ResponseHandler = require('../../models/ResponseHandler');
 const { validationResult } = require('express-validator');
 const productsController = {
@@ -335,6 +336,31 @@ const productsController = {
       };
       const responseHandler = new ResponseHandler(200, categoryName.name, products);
       responseHandler.sendResponse(res);
+    } catch (error) {
+      console.log(error);
+      res.send(error.message);
+    }
+  },
+  delete:async (req, res) => {
+    try {
+      let img
+      const { id } = req.params;
+      const product = await Product.findByPk(id);
+      if (product === undefined) {
+        res.json({product:'Not Found'})
+      }
+
+      else {
+        img = product.image
+        console.log(img);
+        await Product.destroy({
+          where: {
+            id: id
+          },
+        })
+      }
+      fs.unlinkSync(path.join(__dirname, "../../../public/img/products", img));
+      res.json({product: 'Deleted'});    
     } catch (error) {
       console.log(error);
       res.send(error.message);

@@ -6,7 +6,6 @@ router.get("/", userApiController.getAll);
 
 router.post("/login", userApiController.login);
 
-router.get('/logout',  userApiController.logout)
 
 router.get("/:id", userApiController.findOne);
 

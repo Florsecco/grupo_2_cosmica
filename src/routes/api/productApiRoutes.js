@@ -19,4 +19,7 @@ router.get('/categories/:id', productApiController.getCategories);
 
 router.get("/:productId", productApiController.getProduct);
 
+router.delete('/:id',productApiController.delete)
+
+
 module.exports = router;

@@ -14,6 +14,25 @@ function ProductDetail({user,setDisplay, display}) {
 
   const [isLoading, setIsLoading] = useState(true);
 
+  const deleteFetch = async()=>{
+    try {
+      const response = await fetch(`http://localhost:3010/api/products/${idProduct}`, {
+          method: "DELETE",
+        });
+        const data = await response.json();
+        console.log(data);
+      
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  const confirmDelete = ()=>{
+    const confirmar = prompt('Seguro?')
+    if(confirmar === 'si'){
+      deleteFetch()
+    }
+  }
+  
   useEffect(() => {
     const fetchProduct = async () => {
       try {
@@ -53,7 +72,7 @@ function ProductDetail({user,setDisplay, display}) {
       </ul>
       <div className='d-flex flex-row'>
       <Link to={`/products/${product.id}/update`} className="btn btn-info m-1" rel="nofollow" href="/">Editar</Link>
-      <Link  className="btn btn-info m-1" rel="nofollow" href="/">Eliminar</Link>
+      <Link onClick={confirmDelete} to={'/'} className="btn btn-info m-1" rel="nofollow" href="/">Eliminar</Link>
     </div>
     </div>
     <br />
