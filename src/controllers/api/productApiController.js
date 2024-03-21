@@ -53,7 +53,7 @@ const productsController = {
       };
 
       await transaction.commit();
-      const responseHandler = new ResponseHandler(200, "Producto Creado.", [], req.originalUrl);
+      const responseHandler = new ResponseHandler(200, "Producto Creado.", product, req.originalUrl);
       responseHandler.sendResponse(res);
     } catch (error) {
       if (transaction) await transaction.rollback();
@@ -65,7 +65,7 @@ const productsController = {
     try {
       const categories = await Category.findAll({
         attributes: ["id", "name"],
-        include:{ model: Product,as: 'products', attributes: ['id','name']}
+        include: { model: Product, as: 'products', attributes: ['id', 'name'] }
       });
       const products = await Product.findAll({
         attributes: ["id"],
@@ -308,16 +308,16 @@ const productsController = {
     }
 
   },
-  getCategories:async (req, res) => {
+  getCategories: async (req, res) => {
     try {
       const page = parseInt(req.query.page) || 1;
       const limit = parseInt(req.query.limit) || 20;
       const offset = (page - 1) * limit;
-      const {id} = req.params
-      const categoryName = await Category.findByPk(id,{
+      const { id } = req.params
+      const categoryName = await Category.findByPk(id, {
         attributes: ["name"],
       })
-      const {count, rows} = await Product.findAndCountAll({
+      const { count, rows } = await Product.findAndCountAll({
         where: {
           category_id: id,
         },
@@ -341,13 +341,13 @@ const productsController = {
       res.send(error.message);
     }
   },
-  delete:async (req, res) => {
+  delete: async (req, res) => {
     try {
       let img
       const { id } = req.params;
       const product = await Product.findByPk(id);
       if (product === undefined) {
-        res.json({product:'Not Found'})
+        res.json({ product: 'Not Found' })
       }
 
       else {
@@ -360,7 +360,7 @@ const productsController = {
         })
       }
       fs.unlinkSync(path.join(__dirname, "../../../public/img/products", img));
-      res.json({product: 'Deleted'});    
+      res.json({ product: 'Deleted' });
     } catch (error) {
       console.log(error);
       res.send(error.message);

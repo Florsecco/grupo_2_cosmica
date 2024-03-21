@@ -8,10 +8,11 @@ import CustomImageInput from "./CustomImageInput";
 import CustomSelect from "./CustomSelect";
 import CustomColor from "./CustomColor";
 import CustomBrand from "./CustomBrand";
-
+import { useNavigate } from 'react-router-dom';
 
 
 const ProductForm = ({ idProduct }) => {
+  const navigate = useNavigate();
 
   const [initialValues, setInitialValues] = useState(null);
   const [brands, setBrands] = useState();
@@ -78,19 +79,29 @@ const ProductForm = ({ idProduct }) => {
             'Content-Type': 'multipart/form-data'
           }
         });
+        if (response.status == 200 && response.data.data) {
+          navigate(`../products/${idProduct}`);
+        }
       } else {
         response = await axios.post("http://localhost:3010/api/products/create", formData, {
           headers: {
             'Content-Type': 'multipart/form-data'
           }
         });
+        if (response.status == 200 && response.data.data) {
+          const id = response.data.data.id;
+          navigate(`../products/${id}`);
+        }
       }
-      console.log(response);
+
       // Restablecer el formulario después de enviar los datos
       if (response.status == 200)
         actions.resetForm();
     } catch (error) {
       console.error(error);
+    }
+    finally {
+      actions.setSubmitting(false);
     }
   }
 
