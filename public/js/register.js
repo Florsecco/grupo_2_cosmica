@@ -81,7 +81,7 @@ const validations = [
             return false;
           }
         },
-        errorMsg: "La contraseña debe tener una mayuscula y una miscula!",
+        errorMsg: "La contraseña debe tener una mayuscula y una minuscula!",
       },
       {
         validator: function comprobarContraseña(input) {
