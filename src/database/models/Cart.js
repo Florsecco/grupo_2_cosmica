@@ -23,7 +23,7 @@ module.exports = (sequelize, dataTypes) => {
       type: dataTypes.DATE,
     },
     updated_at: {
-      allowNull: false,
+      allowNull: true,
       type: dataTypes.DATE,
     },
   };
