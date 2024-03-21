@@ -1,4 +1,4 @@
-const { Product, ColorProduct, Category, User, Color, Review, sequelize } = require('../../database/models');
+const { Product, ColorProduct, Category, User, Color, Review, sequelize, Brand } = require('../../database/models');
 const fs = require("fs");
 const path = require("path");
 
@@ -188,14 +188,25 @@ const productsController = {
           as: "colors",
           attributes: ["id", "name"],
           through: { attributes: [] }
-        }]
+        },
+        {
+          model: Brand,
+          as: "brand",
+          attributes: ["id", "name"],
+        },
+        {
+          model: Category,
+          as: 'category',
+          attributes: ["id", "name"],
+        }
+      ]
       });
 
       const product = {
         ...result.toJSON(),
         image: `http://localhost:3010/img/products/${result.image}`
       };
-
+      console.log(product);
       if (product) {
         responseHandler = new ResponseHandler(200, "Product.", product, req.originalUrl);
       }

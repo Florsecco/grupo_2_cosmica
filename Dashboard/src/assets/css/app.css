@@ -185,6 +185,9 @@ a {
 .maxwidth{
     max-width: 300px;
 }
+.maxwidthDet{
+    width: 600px;
+}
 
 a:not([href]):not([tabindex]) {
     color: inherit;

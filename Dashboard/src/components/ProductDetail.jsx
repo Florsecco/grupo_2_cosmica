@@ -11,6 +11,9 @@ function ProductDetail({user,setDisplay, display}) {
   console.log(idProduct);
   const [product, setProduct] = useState({});
   const [colors, setColors] = useState([])
+  const [stocks, setStocks] = useState([])
+  const [brand, setBrand] = useState([])
+  const [category, setCategory] = useState([])
 
   const [isLoading, setIsLoading] = useState(true);
 
@@ -39,7 +42,11 @@ function ProductDetail({user,setDisplay, display}) {
 
         const response = await axios.get(`http://localhost:3010/api/products/${idProduct}`);
         setProduct(response.data.data || null);
+        console.log(response.data.data);
         setColors(response.data.data.colors)
+        setStocks(response.data.data.stocks)
+        setBrand(response.data.data.brand)
+        setCategory(response.data.data.category)
         setIsLoading(false);
       } catch (error) {
         console.log(error);
@@ -62,14 +69,20 @@ function ProductDetail({user,setDisplay, display}) {
             alt={product.name}
             style={{ objectFit: 'cover' }}
           />
-          <p>${product.final_price || <Skeleton count={2} />}</p>
-      <p>{product.description_short || <Skeleton count={2} />}</p>
-      <p>{product.description_long || <Skeleton count={3} />}</p>
+      <p>Marca: {brand.name || <Skeleton count={3} />}</p>
+      <p>Categoría: {category.name || <Skeleton count={3} />}</p>
+          <p>Precio: ${product.final_price || <Skeleton count={2} />}</p>
+          <p>Descuento: {product.discount}%</p>
 <ul>
       {colors.map((color,i)=>{
-        return (<li key={i}>{color.name}</li>)
+        return (<li key={i}>Color: {color.name} -
+        {stocks.map((stock)=>{
+          return (stock.color_id === color.id ? ' Stock: '+ stock.stock : '')})}
+        </li>)
       })}
       </ul>
+      <p>{product.description_short || <Skeleton count={2} />}</p>
+      <p>{product.description_long || <Skeleton count={3} />}</p>
       <div className='d-flex flex-row'>
       <Link to={`/products/${product.id}/update`} className="btn btn-info m-1" rel="nofollow" href="/">Editar</Link>
       <Link onClick={confirmDelete} to={'/'} className="btn btn-info m-1" rel="nofollow" href="/">Eliminar</Link>
