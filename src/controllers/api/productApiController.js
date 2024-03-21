@@ -243,7 +243,7 @@ const productsController = {
       let img = product.image
       if (req.file != undefined) {
         fs.unlinkSync(
-          path.join(__dirname, "../../public/img/products", img)
+          path.join(__dirname, "../../../public/img/products", img)
         );
         img = saveImage(req.file);
       }
